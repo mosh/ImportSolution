@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</ProjectGuid>
     <OutputType>Import</OutputType>
-    <AssemblyName>AppAuth</AssemblyName>
+    <AssemblyName>BEMCheckBox</AssemblyName>
     <SDK>iOS</SDK>
   </PropertyGroup>
   <ItemGroup>
@@ -12,7 +12,9 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="AppAuth\iOS\AppAuth.framework" />
+    <ImportFramework Include="BEMCheckBox\iOS\BEMCheckBox.framework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>
