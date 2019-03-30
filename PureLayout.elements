@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</ProjectGuid>
+    <OutputType>Import</OutputType>
+    <AssemblyName>PureLayout</AssemblyName>
+    <SDK>iOS</SDK>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UIKit" />
+    <Reference Include="Foundation" />
+    <Reference Include="rtl" />
+    <Reference Include="CoreFoundation" />
+    <Reference Include="CoreGraphics" />
+    <AppFramework Include="PureLayout\iOS\PureLayout.framework" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
+</Project>
