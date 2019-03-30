@@ -12,7 +12,9 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="PureLayout\iOS\PureLayout.framework" />
+    <ImportFramework Include="PureLayout\iOS\PureLayout.framework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>
