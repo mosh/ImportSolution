@@ -12,7 +12,7 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <AppFramework Include="AppAuth\iOS\AppAuth.framework" />
+    <ImportFramework Include="AppAuth\iOS\AppAuth.framework" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>

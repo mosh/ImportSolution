@@ -12,7 +12,7 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <AppFramework Include="Realm\iOS\Realm.framework" />
+    <ImportFramework Include="Realm\iOS\Realm.framework" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>
