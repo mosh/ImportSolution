@@ -5,6 +5,7 @@
     <OutputType>Import</OutputType>
     <AssemblyName>PureLayout</AssemblyName>
     <SDK>iOS</SDK>
+    <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />
