@@ -15,6 +15,7 @@
     <ImportFramework Include="BEMCheckBox\iOS\BEMCheckBox.framework">
       <Private>True</Private>
     </ImportFramework>
+    <Reference Include="QuartzCore" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>
