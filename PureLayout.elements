@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</ProjectGuid>
+    <ProjectGuid>{b97e5bb2-965f-468f-9c3d-3f1f52c0e90e}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>PureLayout</AssemblyName>
     <SDK>iOS</SDK>

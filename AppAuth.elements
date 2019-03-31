@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</ProjectGuid>
+    <ProjectGuid>{3ea6b98c-332b-4242-99f0-1cced696ae02}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>AppAuth</AssemblyName>
     <SDK>iOS</SDK>
