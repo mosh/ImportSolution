@@ -17,7 +17,7 @@
     <Reference Include="CoreGraphics" />
     <ImportFramework Include="MaterialComponents\iOS\MaterialComponents.framework" />
     <ProjectReference Include="MDFTextAccessibility">
-      <HintPath />
+      <HintPath>Bin\Debug\iOS\MDFTextAccessibility.fx</HintPath>
       <Project>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</Project>
       <ProjectFile>MDFTextAccessibility.elements</ProjectFile>
     </ProjectReference>
