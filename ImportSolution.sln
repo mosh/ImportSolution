@@ -5,6 +5,10 @@ Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "AppAuth", "AppAuth.elements
 EndProject
 Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "BEMCheckBox", "BEMCheckBox.elements", "{F3D42005-1938-4410-BF2D-A7C7C21DE5DE}"
 EndProject
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MDFTextAccessibility", "MDFTextAccessibility.elements", "{E5AC4600-2135-4E8C-B629-A24D503DE2F9}"
+EndProject
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MaterialComponents", "MaterialComponents.elements", "{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}"
+EndProject
 Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "PureLayout", "PureLayout.elements", "{B97E5BB2-965F-468F-9C3D-3F1F52C0E90E}"
 EndProject
 Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Realm", "Realm.elements", "{3F70B500-83BE-4A5E-99B5-EC9FFDB343C8}"

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}</ProjectGuid>
+    <OutputType>Import</OutputType>
+    <AssemblyName>MaterialComponents</AssemblyName>
+    <SDK>iOS</SDK>
+    <ImportCodeGen>Oxygene</ImportCodeGen>
+    <ImportForceIncludes>MaterialComponents/MDCMultilineTextInputDelegate.h=MaterialComponents/MDCTextInput.h</ImportForceIncludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UIKit" />
+    <Reference Include="Foundation" />
+    <Reference Include="rtl" />
+    <Reference Include="CoreFoundation" />
+    <Reference Include="QuartzCore" />
+    <Reference Include="CoreGraphics" />
+    <ImportFramework Include="MaterialComponents\iOS\MaterialComponents.framework" />
+    <ProjectReference Include="MDFTextAccessibility">
+      <HintPath />
+      <Project>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</Project>
+      <ProjectFile>MDFTextAccessibility.elements</ProjectFile>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
+</Project>
