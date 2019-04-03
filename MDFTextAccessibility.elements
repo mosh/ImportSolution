@@ -13,7 +13,9 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="MDFTextAccessibility\iOS\MDFTextAccessibility.framework" />
+    <ImportFramework Include="MDFTextAccessibility\iOS\MDFTextAccessibility.framework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
 </Project>
