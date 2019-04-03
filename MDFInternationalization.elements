@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{F1AAB223-7C41-4685-A4C2-A673576B386C}</ProjectGuid>
+    <Mode>Toffee</Mode>
+    <SubMode>iOS</SubMode>
+    <SDK>iOS</SDK>
+    <OutputType>Import</OutputType>
+    <ImportCodeGen>Oxygene</ImportCodeGen>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="rtl" />
+    <Reference Include="Foundation" />
+    <Reference Include="CoreFoundation" />
+    <Reference Include="CoreGraphics" />
+    <Reference Include="UIKit" />
+    <ImportFramework Include="MDFInternationalization\iOS\MDFInternationalization.framework">
+      <Private>True</Private>
+    </ImportFramework>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
+</Project>
