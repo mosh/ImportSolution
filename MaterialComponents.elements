@@ -19,7 +19,7 @@
       <Private>True</Private>
     </ImportFramework>
     <ProjectReference Include="MDFTextAccessibility">
-      <HintPath>Bin\Debug\iOS\MDFTextAccessibility.fx</HintPath>
+      <HintPath>Bin\Debug\iOS Simulator\MDFTextAccessibility.fx</HintPath>
       <Project>{E5AC4600-2135-4E8C-B629-A24D503DE2F9}</Project>
       <ProjectFile>MDFTextAccessibility.elements</ProjectFile>
     </ProjectReference>
