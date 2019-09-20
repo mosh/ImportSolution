@@ -18,11 +18,9 @@
     <ImportFramework Include="MaterialComponentsBeta\iOS\MaterialComponentsBeta.framework">
       <Private>True</Private>
     </ImportFramework>
-    <ProjectReference Include="MaterialComponents">
-      <HintPath>..\..\ImportSolution\Bin\Debug\iOS Simulator\MaterialComponents.fx</HintPath>
-      <Project>{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}</Project>
-      <ProjectFile>..\..\ImportSolution\MaterialComponents.elements</ProjectFile>
-    </ProjectReference>
+    <RemoteProjectReference Include="github.com/mosh/ImportSolution/MaterialComponents.elements:*">
+      <Private>True</Private>
+    </RemoteProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
