@@ -7,7 +7,7 @@
     <SDK>iOS</SDK>
     <OutputType>Import</OutputType>
     <ImportCodeGen>Oxygene</ImportCodeGen>
-    <ImportSearchPaths>/Users/JohnMoshakis/Documents/develop/Nougat/MaterialTableView/ImportSolution/MaterialComponents/iOS/MaterialComponents.framework/Headers</ImportSearchPaths>
+    <ImportSearchPaths>/Users/JohnMoshakis/Documents/develop/Nougat/ImportSolution/MaterialComponents/iOS/MaterialComponents.framework/Headers</ImportSearchPaths>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="rtl" />
@@ -18,9 +18,11 @@
     <ImportFramework Include="MaterialComponentsBeta\iOS\MaterialComponentsBeta.framework">
       <Private>True</Private>
     </ImportFramework>
-    <RemoteProjectReference Include="github.com/mosh/ImportSolution/MaterialComponents.elements:*">
-      <Private>True</Private>
-    </RemoteProjectReference>
+    <ProjectReference Include="MaterialComponents">
+      <HintPath>Bin\Debug\iOS Simulator\MaterialComponents.fx</HintPath>
+      <Project>{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}</Project>
+      <ProjectFile>MaterialComponents.elements</ProjectFile>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

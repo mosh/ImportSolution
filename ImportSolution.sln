@@ -9,7 +9,7 @@ Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MDFTextAccessibility", "MDF
 EndProject
 Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MaterialComponents", "MaterialComponents.elements", "{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}"
 EndProject
-Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MaterialComponentsBeta", "..\MaterialTableView\ImportSolution\MaterialComponentsBeta.elements", "{3CBB9015-B228-4165-9591-5F0CF4716D8F}"
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "MaterialComponentsBeta", "MaterialComponentsBeta.elements", "{3CBB9015-B228-4165-9591-5F0CF4716D8F}"
 EndProject
 Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "PureLayout", "PureLayout.elements", "{B97E5BB2-965F-468F-9C3D-3F1F52C0E90E}"
 EndProject
