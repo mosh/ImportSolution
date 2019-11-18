@@ -21,6 +21,8 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
   <ItemGroup>
-    <AppFramework Include="..\Aeris\AerisCoreUI.framework" />
+    <ImportFramework Include="..\Aeris\AerisCoreUI.framework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
 </Project>

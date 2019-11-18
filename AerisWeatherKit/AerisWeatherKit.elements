@@ -20,7 +20,9 @@
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppFramework Include="..\Aeris\AerisWeatherKit.framework" />
+    <ImportFramework Include="..\Aeris\AerisWeatherKit.framework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
