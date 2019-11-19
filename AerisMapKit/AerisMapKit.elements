@@ -33,5 +33,16 @@
       <ProjectFile>..\AerisCore\AerisCore.elements</ProjectFile>
     </ProjectReference>
     <Reference Include="UIKit" />
+    <Reference Include="MapKit" />
+    <ProjectReference Include="AerisWeatherKit">
+      <HintPath>..\AerisWeatherKit\Bin\Debug\iOS\AerisWeatherKit.fx</HintPath>
+      <Project>{636F8748-A246-47C7-869D-1C3990B43CB8}</Project>
+      <ProjectFile>..\AerisWeatherKit\AerisWeatherKit.elements</ProjectFile>
+    </ProjectReference>
+    <ProjectReference Include="AerisCoreUI">
+      <HintPath>..\AerisCoreUI\Bin\Debug\iOS\AerisCoreUI.fx</HintPath>
+      <Project>{262A90E9-CE2A-463B-99F9-4B5E18704A48}</Project>
+      <ProjectFile>..\AerisCoreUI\AerisCoreUI.elements</ProjectFile>
+    </ProjectReference>
   </ItemGroup>
 </Project>
