@@ -3,7 +3,6 @@
   <PropertyGroup>
     <ProjectGuid>{5C9A09D9-D358-4B33-AC1F-CE6A8BB78CA2}</ProjectGuid>
     <OutputType>Import</OutputType>
-    <RootNamespace>AerisCore</RootNamespace>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>

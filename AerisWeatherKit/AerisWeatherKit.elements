@@ -3,7 +3,6 @@
   <PropertyGroup>
     <ProjectGuid>{636F8748-A246-47C7-869D-1C3990B43CB8}</ProjectGuid>
     <OutputType>Import</OutputType>
-    <RootNamespace>AerisWeatherKit</RootNamespace>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>

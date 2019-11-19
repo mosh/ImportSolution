@@ -3,7 +3,6 @@
   <PropertyGroup>
     <ProjectGuid>{CAB8B790-08C1-4759-8CE3-6A1178032FDA}</ProjectGuid>
     <OutputType>Import</OutputType>
-    <RootNamespace>AerisMapKit</RootNamespace>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>
