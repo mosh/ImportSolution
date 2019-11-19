@@ -33,5 +33,6 @@
       <Project>{5C9A09D9-D358-4B33-AC1F-CE6A8BB78CA2}</Project>
       <ProjectFile>..\AerisCore\AerisCore.elements</ProjectFile>
     </ProjectReference>
+    <Reference Include="UIKit" />
   </ItemGroup>
 </Project>
