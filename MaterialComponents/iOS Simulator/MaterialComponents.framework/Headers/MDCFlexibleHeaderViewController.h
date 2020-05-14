@@ -14,6 +14,11 @@
 
 #import <UIKit/UIKit.h>
 
+// TODO(b/151929968): Delete import of delegate headers when client code has been migrated to no
+// longer import delegates as transitive dependencies.
+#import "MDCFlexibleHeaderSafeAreaDelegate.h"
+#import "MDCFlexibleHeaderViewLayoutDelegate.h"
+
 @class MDCFlexibleHeaderView;
 @protocol MDCFlexibleHeaderViewLayoutDelegate;
 @protocol MDCFlexibleHeaderSafeAreaDelegate;
@@ -39,6 +44,34 @@
 
 /** The flexible header view instance that this controller manages. */
 @property(nonatomic, strong, nonnull, readonly) MDCFlexibleHeaderView *headerView;
+
+/**
+ A Boolean value that governs whether the hairline is shown.
+
+ The hairline is a narrow line (i.e. a divider / dividing line) shown at the bottom edge of the
+ Flexible Header view.
+
+ Defaults to NO.
+ */
+@property(nonatomic) BOOL showsHairline;
+
+/**
+ The color of the hairline.
+
+ The hairline is a narrow line (i.e. a divider / dividing line) shown at the bottom edge of the
+ Flexible Header view.
+
+ Defaults to black.
+ */
+@property(nonatomic, strong, nonnull) UIColor *hairlineColor;
+
+/**
+ A block that is invoked when the @c MDCFlexibleHeaderViewController receives a call to @c
+ traitCollectionDidChange:. The block is called after the call to the superclass.
+ */
+@property(nonatomic, copy, nullable) void (^traitCollectionDidChangeBlock)
+    (MDCFlexibleHeaderViewController *_Nonnull flexibleHeaderViewController,
+     UITraitCollection *_Nullable previousTraitCollection);
 
 /** The layout delegate will be notified of any changes to the flexible header view's frame. */
 @property(nonatomic, weak, nullable) id<MDCFlexibleHeaderViewLayoutDelegate> layoutDelegate;
@@ -101,8 +134,30 @@
  topLayoutGuideViewController's top layout guide, which would then be included in the
  next read of the ancestor's safe area inset, compounding the safe area inset and increasing the
  header height infinitely.
+
+ If your app only supports iOS 11+, you can instead set
+ permitInferringTopSafeAreaFromTopLayoutGuideViewController to YES.
  */
 @property(nonatomic) BOOL inferTopSafeAreaInsetFromViewController;
+
+/**
+ This runtime flag affects the way the top safe area is calculated.
+
+ When disabled, if both inferTopSafeAreaInsetFromViewController and topLayoutGuideAdjustmentEnabled
+ are set to YES, and the view controller selected to extract the safe area inset from (either
+ automatically or via the delegate) is the same as topLayoutGuideViewController, the app will
+ crash.
+
+ When enabled, the app will not crash in the situation described above. This is only supported on
+ iOS 11+.
+
+ Enable this property before setting inferTopSafeAreaInsetFromViewController or
+ topLayoutGuideViewController.
+
+ By default this is NO. In the future it will be enabled by default and eventually removed.
+ */
+@property(nonatomic)
+    BOOL permitInferringTopSafeAreaFromTopLayoutGuideViewController NS_AVAILABLE_IOS(11.0);
 
 /**
  When a WKWebView's scroll view is the tracking scroll view, this behavioral flag affects whether
@@ -146,6 +201,13 @@
 
 /**
  The status bar style that should be used for this view controller.
+
+ If the header view controller has been added as a child view controller then you will need to
+ assign the header view controller to the parent's childViewControllerForStatusBarStyle property
+ in order for preferredStatusBarStyle to have any effect.
+
+ See inferPreferredStatusBarStyle for more details about how this property's setter and getter
+ should be interpreted.
  */
 @property(nonatomic) UIStatusBarStyle preferredStatusBarStyle;
 
@@ -164,34 +226,6 @@
  Default is YES.
  */
 @property(nonatomic) BOOL inferPreferredStatusBarStyle;
-
-@end
-
-/**
- This delegate makes it possible to customize which ancestor view controller is used when
- inferTopSafeAreaInsetFromViewController is enabled on MDCFlexibleHeaderViewController.
- */
-@protocol MDCFlexibleHeaderSafeAreaDelegate
-- (UIViewController *_Nullable)flexibleHeaderViewControllerTopSafeAreaInsetViewController:
-    (nonnull MDCFlexibleHeaderViewController *)flexibleHeaderViewController;
-@end
-
-/**
- An object may conform to this protocol in order to receive layout change events caused by a
- MDCFlexibleHeaderView.
- */
-@protocol MDCFlexibleHeaderViewLayoutDelegate <NSObject>
-@required
-
-/**
- Informs the receiver that the flexible header view's frame has changed.
-
- The receiver should use the MDCFlexibleHeader scrollPhase APIs in order to react to the frame
- changes.
- */
-- (void)flexibleHeaderViewController:
-            (nonnull MDCFlexibleHeaderViewController *)flexibleHeaderViewController
-    flexibleHeaderViewFrameDidChange:(nonnull MDCFlexibleHeaderView *)flexibleHeaderView;
 
 @end
 
