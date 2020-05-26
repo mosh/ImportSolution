@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{3ea6b98c-332b-4242-99f0-1cced696ae02}</ProjectGuid>
+    <ProjectGuid>{3EA6B98C-332B-4242-99F0-1CCED696AE02}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>AppAuth</AssemblyName>
     <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />

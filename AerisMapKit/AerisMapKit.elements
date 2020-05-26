@@ -4,9 +4,10 @@
     <ProjectGuid>{CAB8B790-08C1-4759-8CE3-6A1178032FDA}</ProjectGuid>
     <OutputType>Import</OutputType>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
-    <Mode>Toffee</Mode>
+    <Mode>Island</Mode>
     <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
+    <SubMode>Darwin</SubMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\Bin\Debug</OutputPath>

@@ -6,6 +6,8 @@
     <AssemblyName>MDFTextAccessibility</AssemblyName>
     <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />

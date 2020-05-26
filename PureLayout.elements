@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{b97e5bb2-965f-468f-9c3d-3f1f52c0e90e}</ProjectGuid>
+    <ProjectGuid>{B97E5BB2-965F-468F-9C3D-3F1F52C0E90E}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>PureLayout</AssemblyName>
     <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />
