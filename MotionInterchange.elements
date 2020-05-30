@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{1AF1F42B-CAF5-4CEB-AD1F-145F910B9820}</ProjectGuid>
+    <ProjectGuid>{b648d95f-a7cc-449b-ad02-a6ec9877dee7}</ProjectGuid>
     <Mode>Toffee</Mode>
     <SubMode>iOS</SubMode>
     <SDK>iOS</SDK>
