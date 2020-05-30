@@ -16,9 +16,11 @@
     <ImportFramework Include="MotionAnimator\iOS\MotionAnimator.framework">
       <Private>True</Private>
     </ImportFramework>
-    <RemoteProjectReference Include="github.com/mosh/ImportSolution/MotionInterchange.elements:*">
-      <Private>True</Private>
-    </RemoteProjectReference>
+    <ProjectReference Include="MotionInterchange">
+      <HintPath>Bin\Debug\iOS\MotionInterchange.fx</HintPath>
+      <Project>{B648D95F-A7CC-449B-AD02-A6EC9877DEE7}</Project>
+      <ProjectFile>MotionInterchange.elements</ProjectFile>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
