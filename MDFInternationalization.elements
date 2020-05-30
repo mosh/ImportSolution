@@ -2,8 +2,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectGuid>{F1AAB223-7C41-4685-A4C2-A673576B386C}</ProjectGuid>
-    <Mode>Toffee</Mode>
-    <SubMode>iOS</SubMode>
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
     <SDK>iOS</SDK>
     <OutputType>Import</OutputType>
     <ImportCodeGen>Oxygene</ImportCodeGen>
