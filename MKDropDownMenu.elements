@@ -7,6 +7,7 @@
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>
+    <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\Bin\Debug</OutputPath>
