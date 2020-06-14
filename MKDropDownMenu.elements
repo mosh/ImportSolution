@@ -23,7 +23,7 @@
     <Reference Include="#" />
   </ItemGroup>
   <ItemGroup>
-    <ImportFramework Include="MKDropDownMenu\Bin\Debug\iOS\MKDropDownMenu.framework">
+    <ImportFramework Include="MKDropDownMenu\Bin\iOS\MKDropDownMenu.framework">
       <Private>True</Private>
     </ImportFramework>
   </ItemGroup>
