@@ -1,0 +1,2 @@
+Realm/iOS/Realm.framework/Realm filter=lfs diff=lfs merge=lfs -text
+Realm/iOS[[:space:]]Simulator/Realm.framework/Realm filter=lfs diff=lfs merge=lfs -text
