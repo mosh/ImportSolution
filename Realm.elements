@@ -16,7 +16,7 @@
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>iOS</SDK>
-    <SupportMacCatalyst>True</SupportMacCatalyst>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />
