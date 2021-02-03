@@ -7,7 +7,19 @@
     <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
-  <ItemGroup>
+<PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+    <ItemGroup>
     <Reference Include="UIKit" />
     <Reference Include="Foundation" />
     <Reference Include="rtl" />
