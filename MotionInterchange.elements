@@ -2,12 +2,22 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectGuid>{b648d95f-a7cc-449b-ad02-a6ec9877dee7}</ProjectGuid>
-    <Mode>Toffee</Mode>
-    <SubMode>iOS</SubMode>
-    <SDK>iOS</SDK>
     <OutputType>Import</OutputType>
     <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
+<PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="rtl" />
     <Reference Include="Foundation" />

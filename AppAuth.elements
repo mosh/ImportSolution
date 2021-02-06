@@ -4,7 +4,6 @@
     <ProjectGuid>{3ea6b98c-332b-4242-99f0-1cced696ae02}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>AppAuth</AssemblyName>
-    <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
 <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">

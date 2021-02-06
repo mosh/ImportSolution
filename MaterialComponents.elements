@@ -4,9 +4,20 @@
     <ProjectGuid>{27BBBD62-B2EF-4D57-B82A-DFEFCE99D967}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>MaterialComponents</AssemblyName>
-    <SDK>iOS</SDK>
     <ImportCodeGen>Oxygene</ImportCodeGen>
     <ImportForceIncludes>MaterialComponents/MDCMultilineTextInputDelegate.h=MaterialComponents/MDCTextInput.h</ImportForceIncludes>
+  </PropertyGroup>
+<PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />

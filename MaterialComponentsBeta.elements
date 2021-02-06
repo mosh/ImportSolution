@@ -2,12 +2,21 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectGuid>{3CBB9015-B228-4165-9591-5F0CF4716D8F}</ProjectGuid>
-    <Mode>Toffee</Mode>
-    <SubMode>iOS</SubMode>
-    <SDK>iOS</SDK>
     <OutputType>Import</OutputType>
     <ImportCodeGen>Oxygene</ImportCodeGen>
     <ImportSearchPaths>/Users/JohnMoshakis/Documents/develop/Nougat/ImportSolution/MaterialComponents/iOS/MaterialComponents.framework/Headers</ImportSearchPaths>
+  </PropertyGroup>
+<PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="rtl" />
