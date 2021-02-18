@@ -18,6 +18,15 @@
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Target)' == 'Island.macOS'">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>macOS</SDK>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Target)' == 'Toffee.macOS'">
+    <Mode>Toffee</Mode>
+    <SubMode>macOS</SubMode>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <OutputPath>.\Bin\Debug</OutputPath>
     <Optimize>False</Optimize>
@@ -28,12 +37,11 @@
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="UIKit" />
     <Reference Include="Foundation" />
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="Realm\iOS\Realm.framework">
+    <ImportFramework Include="Realm/Realm.xcframework">
       <Private>True</Private>
     </ImportFramework>
   </ItemGroup>
