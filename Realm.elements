@@ -27,6 +27,15 @@
     <Mode>Toffee</Mode>
     <SubMode>macOS</SubMode>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Target)' == 'Island.watchOS'">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>watchOS</SDK>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Target)' == 'Toffee.watchOS'">
+    <Mode>Toffee</Mode>
+    <SubMode>watchOS</SubMode>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <OutputPath>.\Bin\Debug</OutputPath>
     <Optimize>False</Optimize>
