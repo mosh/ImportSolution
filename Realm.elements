@@ -18,7 +18,7 @@
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Target)' == 'Island.macOS'">
+  <PropertyGroup Condition="'$(Target)' == 'Island.Darwin.macOS'">
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>macOS</SDK>
@@ -27,7 +27,7 @@
     <Mode>Toffee</Mode>
     <SubMode>macOS</SubMode>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Target)' == 'Island.watchOS'">
+  <PropertyGroup Condition="'$(Target)' == 'Island.Darwin.watchOS'">
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>watchOS</SDK>
