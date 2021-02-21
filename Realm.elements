@@ -8,7 +8,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
     <Mode>Toffee</Mode>
-    <SDK>iOS</SDK>
+    <SubMode>iOS</SubMode>
     <SupportMacCatalyst>False</SupportMacCatalyst>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
   </PropertyGroup>
