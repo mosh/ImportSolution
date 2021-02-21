@@ -3,8 +3,12 @@
   <PropertyGroup>
     <ProjectGuid>{3f70b500-83be-4a5e-99b5-ec9ffdb343c8}</ProjectGuid>
     <OutputType>Import</OutputType>
-    <AssemblyName>Realm</AssemblyName>
+    <BinaryName>Realm</BinaryName>
     <ImportCodeGen>Oxygene</ImportCodeGen>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Target)' == 'Toffee.macOS'">
+    <Mode>Toffee</Mode>
+    <SubMode>macOS</SubMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
     <Mode>Toffee</Mode>
@@ -21,10 +25,6 @@
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>macOS</SDK>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Target)' == 'Toffee.macOS'">
-    <Mode>Toffee</Mode>
-    <SubMode>macOS</SubMode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Target)' == 'Island.Darwin.watchOS'">
     <Mode>Island</Mode>
