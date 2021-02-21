@@ -10,7 +10,6 @@
     <Mode>Toffee</Mode>
     <SubMode>iOS</SubMode>
     <SupportMacCatalyst>False</SupportMacCatalyst>
-    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
     <Mode>Island</Mode>
@@ -53,5 +52,5 @@
       <Private>True</Private>
     </ImportFramework>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
