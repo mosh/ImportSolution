@@ -46,10 +46,9 @@
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Foundation" />
-    <Reference Include="rtl" />
-    <Reference Include="CoreFoundation" />
-    <Reference Include="CoreGraphics" />
+    <Reference Include="#" />
+  </ItemGroup>
+  <ItemGroup>
     <ImportFramework Include="Realm/Realm.xcframework">
       <Private>True</Private>
     </ImportFramework>
