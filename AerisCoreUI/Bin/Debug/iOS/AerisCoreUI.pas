@@ -119,9 +119,9 @@ type
     class method AWFGraphSeriesRangeIsEmpty(range: AerisCoreUI.AWFGraphSeriesRange): BOOL; public;
     class method AWFGraphSeriesDomainMake(xMin: CGFloat; xMax: CGFloat; yMin: CGFloat; yMax: CGFloat): AerisCoreUI.AWFGraphSeriesDomain; public;
     class method AWFGraphSeriesDomainIsEmpty(domain: AerisCoreUI.AWFGraphSeriesDomain): BOOL; public;
-    class var AWFGraphCalloutValueKey: not nullable NSString; public;
-    class var AWFGraphCalloutNameKey: not nullable NSString; public;
-    class var AWFGraphCalloutColorKey: not nullable NSString; public;
+    class var AWFGraphCalloutValueKey: NSString; public;
+    class var AWFGraphCalloutNameKey: NSString; public;
+    class var AWFGraphCalloutColorKey: NSString; public;
 
   end;
 
@@ -192,7 +192,7 @@ type
 
     property messageTextAttributes: NSDictionary<id,id>; public;
 
-    property backgroundFillColor: not nullable UIColor; public;
+    property backgroundFillColor: UIColor; public;
 
     property cornerRadius: CGFloat; public;
 
@@ -211,40 +211,40 @@ type
     property tapAnywhereToDismissEnabled: BOOL; public;
 
     [NonSwiftOnly]
-    method initWithTitle(title: nullable NSString) message(message: nullable NSString): not nullable instancetype; public;
+    method initWithTitle(title: nullable NSString) message(message: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withTitle(title: nullable NSString) message(message: nullable NSString): not nullable instancetype; public;
+    class constructor withTitle(title: nullable NSString) message(message: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    method initWithMessage(message: nullable NSString): not nullable instancetype; public;
+    method initWithMessage(message: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMessage(message: nullable NSString): not nullable instancetype; public;
+    class constructor withMessage(message: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    method initWithContentView(contentView: not nullable UIView): not nullable instancetype; public;
+    method initWithContentView(contentView: UIView): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withContentView(contentView: not nullable UIView): not nullable instancetype; public;
+    class constructor withContentView(contentView: UIView): instancetype; public;
     [NonSwiftOnly]
-    method presentFromPoint(point: CGPoint) inView(view: not nullable UIView) constrainedToView(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method presentFromPoint(point: CGPoint) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
     [Alias]
     [SwiftOnly]
-    method present(point: CGPoint) &in(view: not nullable UIView) constrainedTo(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method present(point: CGPoint) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
     [NonSwiftOnly]
-    method presentFromRect(rect: CGRect) inView(view: not nullable UIView) constrainedToView(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method presentFromRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
     [Alias]
     [SwiftOnly]
-    method present(rect: CGRect) &in(view: not nullable UIView) constrainedTo(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method present(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
     [NonSwiftOnly]
-    method presentFromView(fromView: not nullable UIView) inView(view: not nullable UIView) constrainedToView(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method presentFromView(fromView: UIView) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
     [Alias]
     [SwiftOnly]
-    method present(fromView: not nullable UIView) &in(view: not nullable UIView) constrainedTo(constrainedView: not nullable UIView) animated(animated: BOOL); public;
+    method present(fromView: UIView) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
     method dismiss(animated: BOOL); public;
-    property backgroundFill: not nullable UIColor; public;
+    property backgroundFill: UIColor; public;
 
 
   end;
@@ -269,15 +269,15 @@ type
     property minimumScaleFactor: CGFloat; public;
 
     [NonSwiftOnly]
-    method applyToLabel(label: not nullable UILabel); public;
+    method applyToLabel(label: UILabel); public;
     [Alias]
     [SwiftOnly]
-    method apply(label: not nullable UILabel); public;
+    method apply(label: UILabel); public;
     [NonSwiftOnly]
-    method applyToLabel(label: not nullable UILabel) withFontSize(fontSize: CGFloat); public;
+    method applyToLabel(label: UILabel) withFontSize(fontSize: CGFloat); public;
     [Alias]
     [SwiftOnly]
-    method apply(label: not nullable UILabel) withFontSize(fontSize: CGFloat); public;
+    method apply(label: UILabel) withFontSize(fontSize: CGFloat); public;
 
   end;
 
@@ -318,29 +318,29 @@ type
     property labelIntervalRanges: NSArray<AerisCoreUI.AWFColorRampIntervalRange>; public;
 
     [NonSwiftOnly]
-    method initWithColorStops(stops: NSArray<AerisCoreUI.AWFColorStop>): not nullable instancetype; public;
+    method initWithColorStops(stops: NSArray<AerisCoreUI.AWFColorStop>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withColorStops(stops: NSArray<AerisCoreUI.AWFColorStop>): not nullable instancetype; public;
-    method addStop(stop: not nullable AerisCoreUI.AWFColorStop); public;
+    class constructor withColorStops(stops: NSArray<AerisCoreUI.AWFColorStop>): instancetype; public;
+    method addStop(stop: AerisCoreUI.AWFColorStop); public;
     method addStops(stops: NSArray<AerisCoreUI.AWFColorStop>); public;
     [NonSwiftOnly]
-    method addStopWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat): not nullable AerisCoreUI.AWFColorStop; public;
+    method addStopWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat): AerisCoreUI.AWFColorStop; public;
     [Alias]
     [SwiftOnly]
-    method addStop(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat): not nullable AerisCoreUI.AWFColorStop; public;
+    method addStop(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat): AerisCoreUI.AWFColorStop; public;
     [NonSwiftOnly]
-    method addStopWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): not nullable AerisCoreUI.AWFColorStop; public;
+    method addStopWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): AerisCoreUI.AWFColorStop; public;
     [Alias]
     [SwiftOnly]
-    method addStop(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): not nullable AerisCoreUI.AWFColorStop; public;
+    method addStop(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): AerisCoreUI.AWFColorStop; public;
     [NonSwiftOnly]
-    method addStopWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString) alpha(alpha: CGFloat): not nullable AerisCoreUI.AWFColorStop; public;
+    method addStopWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString) alpha(alpha: CGFloat): AerisCoreUI.AWFColorStop; public;
     [Alias]
     [SwiftOnly]
-    method addStop(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString) alpha(alpha: CGFloat): not nullable AerisCoreUI.AWFColorStop; public;
-    method removeStop(stop: not nullable AerisCoreUI.AWFColorStop); public;
+    method addStop(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString) alpha(alpha: CGFloat): AerisCoreUI.AWFColorStop; public;
+    method removeStop(stop: AerisCoreUI.AWFColorStop); public;
     method removeAllStops; public;
 
   end;
@@ -354,14 +354,14 @@ type
 
     property labelAlignment: NSTextAlignment; public;
 
-    property color: not nullable UIColor; public;
+    property color: UIColor; public;
 
     [NonSwiftOnly]
-    method initWithValue(value: CGFloat) color(color: not nullable UIColor) label(label: nullable NSString): not nullable instancetype; public;
+    method initWithValue(value: CGFloat) color(color: UIColor) label(label: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withValue(value: CGFloat) color(color: not nullable UIColor) label(label: nullable NSString): not nullable instancetype; public;
+    class constructor withValue(value: CGFloat) color(color: UIColor) label(label: nullable NSString): instancetype; public;
 
   end;
 
@@ -377,35 +377,35 @@ type
     property isEvery: BOOL; public;
 
     [NonSwiftOnly]
-    class method rangeFromValue(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): not nullable instancetype; public;
+    class method rangeFromValue(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method range(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): not nullable instancetype; public;
+    class method range(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromValue(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): not nullable instancetype; public;
+    class constructor withFromValue(fromValue: CGFloat) toValue(toValue: CGFloat) withInterval(interval: CGFloat): instancetype; public;
     [NonSwiftOnly]
-    class method rangeFromString(string: not nullable NSString): not nullable instancetype; public;
+    class method rangeFromString(string: NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method range(string: not nullable NSString): not nullable instancetype; public;
+    class method range(string: NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFrom(string: not nullable NSString): not nullable instancetype; public;
+    class constructor withFrom(string: NSString): instancetype; public;
     [NonSwiftOnly]
-    class method arrayOfRangesFromString(string: not nullable NSString): NSArray<AerisCoreUI.AWFColorRampIntervalRange>; public;
+    class method arrayOfRangesFromString(string: NSString): NSArray<AerisCoreUI.AWFColorRampIntervalRange>; public;
     [Alias]
     [SwiftOnly]
-    class method arrayOfRanges(string: not nullable NSString): NSArray<AerisCoreUI.AWFColorRampIntervalRange>; public;
+    class method arrayOfRanges(string: NSString): NSArray<AerisCoreUI.AWFColorRampIntervalRange>; public;
 
   end;
 
   AerisCoreUI.AWFColorStop = class(AWFAutoCodingObject)
   private
 
-    property color: not nullable UIColor; public;
+    property color: UIColor; public;
 
     property alpha: CGFloat; public;
 
@@ -416,41 +416,41 @@ type
     property labelValue: nullable NSString; public;
 
     [NonSwiftOnly]
-    class method stopWithColor(color: not nullable UIColor) value(value: CGFloat): not nullable instancetype; public;
+    class method stopWithColor(color: UIColor) value(value: CGFloat): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method stop(color: not nullable UIColor) value(value: CGFloat): not nullable instancetype; public;
+    class method stop(color: UIColor) value(value: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithColor(color: not nullable UIColor) value(value: CGFloat): not nullable instancetype; public;
+    class constructor withWithColor(color: UIColor) value(value: CGFloat): instancetype; public;
     [NonSwiftOnly]
-    class method stopWithColor(color: not nullable UIColor) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class method stopWithColor(color: UIColor) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method stop(color: not nullable UIColor) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class method stop(color: UIColor) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithColor(color: not nullable UIColor) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class constructor withWithColor(color: UIColor) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    class method stopWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat): not nullable instancetype; public;
+    class method stopWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method stop(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat): not nullable instancetype; public;
+    class method stop(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat): not nullable instancetype; public;
+    class constructor withWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat): instancetype; public;
     [NonSwiftOnly]
-    class method stopWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class method stopWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method stop(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class method stop(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithColor(color: not nullable UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): not nullable instancetype; public;
+    class constructor withWithColor(color: UIColor) steps(steps: NSUInteger) value(value: CGFloat) label(label: nullable NSString): instancetype; public;
 
   end;
 
@@ -464,32 +464,32 @@ type
     property rows: NSArray<AerisCoreUI.AWFTableSectionRow>; public;
 
     [NonSwiftOnly]
-    class method sectionWithTitle(title: nullable NSString): not nullable instancetype; public;
+    class method sectionWithTitle(title: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method section(title: nullable NSString): not nullable instancetype; public;
+    class method section(title: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: nullable NSString): not nullable instancetype; public;
+    class constructor withWithTitle(title: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    class method sectionWithTitle(title: nullable NSString) rows(rows: NSArray<id>): not nullable instancetype; public;
+    class method sectionWithTitle(title: nullable NSString) rows(rows: NSArray<id>): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method section(title: nullable NSString) rows(rows: NSArray<id>): not nullable instancetype; public;
+    class method section(title: nullable NSString) rows(rows: NSArray<id>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: nullable NSString) rows(rows: NSArray<id>): not nullable instancetype; public;
-    method addRow(row: not nullable AerisCoreUI.AWFTableSectionRow); public;
+    class constructor withWithTitle(title: nullable NSString) rows(rows: NSArray<id>): instancetype; public;
+    method addRow(row: AerisCoreUI.AWFTableSectionRow); public;
     method addRows(rows: NSArray<id>); public;
     [NonSwiftOnly]
-    method addRowWithTitle(title: not nullable NSString) value(value: nullable id): not nullable AerisCoreUI.AWFTableSectionRow; public;
+    method addRowWithTitle(title: NSString) value(value: nullable id): AerisCoreUI.AWFTableSectionRow; public;
     [Alias]
     [SwiftOnly]
-    method addRow(title: not nullable NSString) value(value: nullable id): not nullable AerisCoreUI.AWFTableSectionRow; public;
+    method addRow(title: NSString) value(value: nullable id): AerisCoreUI.AWFTableSectionRow; public;
     method rowAtIndex(&index: NSUInteger): nullable AerisCoreUI.AWFTableSectionRow; public;
-    method removeRow(row: not nullable AerisCoreUI.AWFTableSectionRow); public;
+    method removeRow(row: AerisCoreUI.AWFTableSectionRow); public;
     method removeRows(rows: NSArray<id>); public;
     method removeAllRows; public;
 
@@ -498,30 +498,30 @@ type
   AerisCoreUI.AWFTableSectionRow = class(AWFAutoCodingObject)
   private
 
-    property title: not nullable NSString; public;
+    property title: NSString; public;
 
     property value: nullable id; public;
 
     property cellIdentifier: nullable NSString; public;
 
     [NonSwiftOnly]
-    class method rowWithTitle(title: not nullable NSString) value(value: nullable id): not nullable instancetype; public;
+    class method rowWithTitle(title: NSString) value(value: nullable id): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method row(title: not nullable NSString) value(value: nullable id): not nullable instancetype; public;
+    class method row(title: NSString) value(value: nullable id): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: not nullable NSString) value(value: nullable id): not nullable instancetype; public;
+    class constructor withWithTitle(title: NSString) value(value: nullable id): instancetype; public;
     [NonSwiftOnly]
-    class method rowWithTitle(title: not nullable NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): not nullable instancetype; public;
+    class method rowWithTitle(title: NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method row(title: not nullable NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): not nullable instancetype; public;
+    class method row(title: NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: not nullable NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): not nullable instancetype; public;
+    class constructor withWithTitle(title: NSString) value(value: nullable id) cellIdentifier(cellIdentifier: nullable NSString): instancetype; public;
 
   end;
 
@@ -557,29 +557,29 @@ type
     property &delegate: nullable AerisCoreUI.IAWFGraphSeriesDelegate; public;
 
     [NonSwiftOnly]
-    class method seriesWithItems(items: NSArray<id>): not nullable instancetype; public;
+    class method seriesWithItems(items: NSArray<id>): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method series(items: NSArray<id>): not nullable instancetype; public;
+    class method series(items: NSArray<id>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithItems(items: NSArray<id>): not nullable instancetype; public;
+    class constructor withWithItems(items: NSArray<id>): instancetype; public;
     [NonSwiftOnly]
-    method addSeriesItem(item: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method addSeriesItem(item: AerisCoreUI.AWFSeriesItem); public;
     [Alias]
     [SwiftOnly]
-    method &add(item: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method &add(item: AerisCoreUI.AWFSeriesItem); public;
     [NonSwiftOnly]
     method addSeriesItems(items: NSArray<id>); public;
     [Alias]
     [SwiftOnly]
     method addItems(items: NSArray<id>); public;
     [NonSwiftOnly]
-    method removeSeriesItem(item: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method removeSeriesItem(item: AerisCoreUI.AWFSeriesItem); public;
     [Alias]
     [SwiftOnly]
-    method &remove(item: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method &remove(item: AerisCoreUI.AWFSeriesItem); public;
     [NonSwiftOnly]
     method loadSeriesDataWithCompletion(completionBlock: method()); public;
     [Alias]
@@ -606,13 +606,13 @@ type
   end;
 
   AerisCoreUI.IAWFGraphSeriesDelegate = interface(INSObject)
-    method graphSeriesDidStartLoading(series: not nullable AerisCoreUI.AWFGraphSeries); public;
-    method graphSeriesDidFinishLoading(series: not nullable AerisCoreUI.AWFGraphSeries); public;
+    method graphSeriesDidStartLoading(series: AerisCoreUI.AWFGraphSeries); public;
+    method graphSeriesDidFinishLoading(series: AerisCoreUI.AWFGraphSeries); public;
     [NonSwiftOnly]
-    method graphSeries(series: not nullable AerisCoreUI.AWFGraphSeries) didFailLoadingWithError(error: not nullable NSError); public;
+    method graphSeries(series: AerisCoreUI.AWFGraphSeries) didFailLoadingWithError(error: NSError); public;
     [Alias]
     [SwiftOnly]
-    method graphSeries(series: not nullable AerisCoreUI.AWFGraphSeries) didFailLoadingWith(error: not nullable NSError); public;
+    method graphSeries(series: AerisCoreUI.AWFGraphSeries) didFailLoadingWith(error: NSError); public;
 
   end;
 
@@ -626,10 +626,10 @@ type
     property &delegate: nullable AerisCoreUI.IAWFGraphRendererDelegate; public;
 
     [NonSwiftOnly]
-    method drawSeriesItem(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method drawSeriesItem(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     [Alias]
     [SwiftOnly]
-    method draw(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method draw(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     method update; public;
     method reset; public;
     [NonSwiftOnly]
@@ -638,22 +638,22 @@ type
     [SwiftOnly]
     method adjust(zoomScale: CGFloat); public;
     [NonSwiftOnly]
-    method hitTest(point: CGPoint) inView(view: not nullable UIView): not nullable CALayer; public;
+    method hitTest(point: CGPoint) inView(view: UIView): CALayer; public;
     [Alias]
     [SwiftOnly]
-    method hitTest(point: CGPoint) &in(view: not nullable UIView): not nullable CALayer; public;
+    method hitTest(point: CGPoint) &in(view: UIView): CALayer; public;
     [NonSwiftOnly]
-    method selectItemAtIndex(&index: NSInteger) inSeriesItem(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method selectItemAtIndex(&index: NSInteger) inSeriesItem(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     [Alias]
     [SwiftOnly]
-    method selectItem(&index: NSInteger) &in(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method selectItem(&index: NSInteger) &in(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     method deselectAllItems; public;
 
   end;
 
   AerisCoreUI.IAWFGraphRendererDelegate = interface(INSObject)
-    method graphRenderer(renderer: not nullable AerisCoreUI.AWFGraphRenderer) didSelectItemForSeries(seriesItem: not nullable AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
-    method graphRenderer(renderer: not nullable AerisCoreUI.AWFGraphRenderer) didDeselectItemForSeries(seriesItem: not nullable AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
+    method graphRenderer(renderer: AerisCoreUI.AWFGraphRenderer) didSelectItemForSeries(seriesItem: AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
+    method graphRenderer(renderer: AerisCoreUI.AWFGraphRenderer) didDeselectItemForSeries(seriesItem: AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
 
   end;
 
@@ -662,11 +662,11 @@ type
 
     property series: nullable AerisCoreUI.AWFGraphSeries; public;
 
-    property xAxis: not nullable AerisCoreUI.AWFGraphAxis; public;
+    property xAxis: AerisCoreUI.AWFGraphAxis; public;
 
     property xAxisRange: AerisCoreUI.AWFGraphSeriesRange; public;
 
-    property yAxis: not nullable AerisCoreUI.AWFGraphAxis; public;
+    property yAxis: AerisCoreUI.AWFGraphAxis; public;
 
     property yAxisRange: AerisCoreUI.AWFGraphSeriesRange; public;
 
@@ -674,9 +674,9 @@ type
 
     property seriesInnerEdgeInsets: UIEdgeInsets; public;
 
-    property calloutView: not nullable AerisCoreUI.AWFGraphCalloutView; public;
+    property calloutView: AerisCoreUI.AWFGraphCalloutView; public;
 
-    property constrainedViewForCallout: not nullable UIView; public;
+    property constrainedViewForCallout: UIView; public;
 
     property zoomEnabled: BOOL; public;
 
@@ -688,20 +688,20 @@ type
     method resetGraph; public;
     method showLoading(loading: BOOL); public;
     [NonSwiftOnly]
-    method containerViewForSeries: not nullable UIView; public;
+    method containerViewForSeries: UIView; public;
     [Alias]
     [SwiftOnly]
-    method containerView: not nullable UIView; public;
+    method containerView: UIView; public;
     [NonSwiftOnly]
-    method containerViewForAxis: not nullable UIView; public;
+    method containerViewForAxis: UIView; public;
     [Alias]
     [SwiftOnly]
-    method containerView: not nullable UIView; public;
+    method containerView: UIView; public;
     [NonSwiftOnly]
-    method containerViewForStaticAxis: not nullable UIView; public;
+    method containerViewForStaticAxis: UIView; public;
     [Alias]
     [SwiftOnly]
-    method containerView: not nullable UIView; public;
+    method containerView: UIView; public;
     [NonSwiftOnly]
     method seriesItemsForRendererType(rendererType: AerisCoreUI.AWFGraphRendererType): NSArray<id>; public;
     [Alias]
@@ -739,16 +739,16 @@ type
     method domain: AerisCoreUI.AWFGraphSeriesDomain; public;
     method visibleDomain: AerisCoreUI.AWFGraphSeriesDomain; public;
     [NonSwiftOnly]
-    method selectItemAtIndex(&index: NSInteger) inSeriesItem(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method selectItemAtIndex(&index: NSInteger) inSeriesItem(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     [Alias]
     [SwiftOnly]
-    method selectItem(&index: NSInteger) &in(seriesItem: not nullable AerisCoreUI.AWFSeriesItem); public;
+    method selectItem(&index: NSInteger) &in(seriesItem: AerisCoreUI.AWFSeriesItem); public;
     method deselectAllItems; public;
-    property XAxis:: not nullable id; public;
+    property XAxis:: id; public;
 
     property XAxisRange:: AerisCoreUI.AWFGraphSeriesRange; public;
 
-    property YAxis:: not nullable id; public;
+    property YAxis:: id; public;
 
     property YAxisRange:: AerisCoreUI.AWFGraphSeriesRange; public;
 
@@ -756,16 +756,16 @@ type
   end;
 
   AerisCoreUI.IAWFGraphViewDelegate = interface(INSObject)
-    method graphViewDidStartLoading(graphView: not nullable AerisCoreUI.AWFGraphView); public;
-    method graphViewDidFinishLoading(graphView: not nullable AerisCoreUI.AWFGraphView); public;
+    method graphViewDidStartLoading(graphView: AerisCoreUI.AWFGraphView); public;
+    method graphViewDidFinishLoading(graphView: AerisCoreUI.AWFGraphView); public;
     [NonSwiftOnly]
-    method graphView(graphView: not nullable AerisCoreUI.AWFGraphView) didFailLoadingWithError(error: not nullable NSError); public;
+    method graphView(graphView: AerisCoreUI.AWFGraphView) didFailLoadingWithError(error: NSError); public;
     [Alias]
     [SwiftOnly]
-    method graphView(graphView: not nullable AerisCoreUI.AWFGraphView) didFailLoadingWith(error: not nullable NSError); public;
-    method graphView(graphView: not nullable AerisCoreUI.AWFGraphView) didSelectItemForSeries(seriesItem: not nullable AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
-    method graphView(graphView: not nullable AerisCoreUI.AWFGraphView) didDeselectItemForSeries(seriesItem: not nullable AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
-    method graphView(graphView: not nullable AerisCoreUI.AWFGraphView) didPanToValueOnXAxis(xValue: CGFloat); public;
+    method graphView(graphView: AerisCoreUI.AWFGraphView) didFailLoadingWith(error: NSError); public;
+    method graphView(graphView: AerisCoreUI.AWFGraphView) didSelectItemForSeries(seriesItem: AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
+    method graphView(graphView: AerisCoreUI.AWFGraphView) didDeselectItemForSeries(seriesItem: AerisCoreUI.AWFSeriesItem) atIndex(&index: NSInteger); public;
+    method graphView(graphView: AerisCoreUI.AWFGraphView) didPanToValueOnXAxis(xValue: CGFloat); public;
 
   end;
 
@@ -776,15 +776,15 @@ type
   AerisCoreUI.AWFSeriesItem = class(NSObject, INSCopying)
   private
 
-    property title: not nullable NSString; public;
+    property title: NSString; public;
 
-    property identifier: not nullable NSString; public;
+    property identifier: NSString; public;
 
     property data: NSArray<id>; public;
 
-    property xAxisPropertyName: not nullable NSString; public;
+    property xAxisPropertyName: NSString; public;
 
-    property yAxisPropertyName: not nullable NSString; public;
+    property yAxisPropertyName: NSString; public;
 
     property interval: CGFloat; public;
 
@@ -823,7 +823,7 @@ type
     [SwiftOnly]
     method closestPoint(value: CGFloat) &for(axis: AerisCoreUI.AWFGraphAxisType): nullable AerisCoreUI.AWFSeriesPoint; public;
     method setValueFormatter(formatter: method(value: CGFloat): NSString); public;
-    method formatValue(value: CGFloat): not nullable NSString; public;
+    method formatValue(value: CGFloat): NSString; public;
     method containsData: BOOL; public;
     property fill: nullable UIColor; public;
 
@@ -831,9 +831,9 @@ type
 
     property valueFormatter: method(value: CGFloat): NSString; public;
 
-    property XAxisPropertyName:: not nullable NSString; public;
+    property XAxisPropertyName:: NSString; public;
 
-    property YAxisPropertyName:: not nullable NSString; public;
+    property YAxisPropertyName:: NSString; public;
 
 
   end;
@@ -845,16 +845,16 @@ type
 
     property y: CGFloat; public;
 
-    class method point: not nullable instancetype; public;
+    class method point: instancetype; public;
     [NonSwiftOnly]
-    class method pointWithX(x: CGFloat) y(y: CGFloat): not nullable instancetype; public;
+    class method pointWithX(x: CGFloat) y(y: CGFloat): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method point(x: CGFloat) y(y: CGFloat): not nullable instancetype; public;
+    class method point(x: CGFloat) y(y: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithX(x: CGFloat) y(y: CGFloat): not nullable instancetype; public;
+    class constructor withWithX(x: CGFloat) y(y: CGFloat): instancetype; public;
 
   end;
 
@@ -890,7 +890,7 @@ type
   AerisCoreUI.AWFGraphAxis = class(NSObject)
   private
 
-    property view: not nullable UIView; public;
+    property view: UIView; public;
 
     property gridView: nullable UIView; public;
 
@@ -936,7 +936,7 @@ type
   AerisCoreUI.AWFGraphTimeAxis = class(AerisCoreUI.AWFGraphAxis)
   private
 
-    property timeZone: not nullable NSTimeZone; public;
+    property timeZone: NSTimeZone; public;
 
 
   end;
@@ -944,22 +944,22 @@ type
   AerisCoreUI.AWFGraphTimeUnit = class(NSObject)
   private
 
-    property name: not nullable NSString; public;
+    property name: NSString; public;
 
     property interval: NSTimeInterval; public;
 
-    class method &unit: not nullable instancetype; public;
+    class method &unit: instancetype; public;
     [NonSwiftOnly]
-    class method unitWithName(name: not nullable NSString) interval(interval: NSTimeInterval): not nullable instancetype; public;
+    class method unitWithName(name: NSString) interval(interval: NSTimeInterval): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method &unit(name: not nullable NSString) interval(interval: NSTimeInterval): not nullable instancetype; public;
+    class method &unit(name: NSString) interval(interval: NSTimeInterval): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithName(name: not nullable NSString) interval(interval: NSTimeInterval): not nullable instancetype; public;
+    class constructor withWithName(name: NSString) interval(interval: NSTimeInterval): instancetype; public;
     method setFormatter(formatter: method(date: NSDate): NSString); public;
-    method formattedDate(date: not nullable NSDate): nullable NSString; public;
+    method formattedDate(date: NSDate): nullable NSString; public;
     property formatter: method(date: NSDate): NSString; public;
 
 
@@ -987,10 +987,10 @@ type
     [SwiftOnly]
     method update(title: nullable NSString) items(items: NSArray<id>); public;
     [NonSwiftOnly]
-    method presentFromPoint(point: CGPoint) constrainedToView(constrainedView: not nullable UIView); public;
+    method presentFromPoint(point: CGPoint) constrainedToView(constrainedView: UIView); public;
     [Alias]
     [SwiftOnly]
-    method present(point: CGPoint) constrainedTo(constrainedView: not nullable UIView); public;
+    method present(point: CGPoint) constrainedTo(constrainedView: UIView); public;
     method dismiss(animated: BOOL); public;
 
   end;
@@ -998,7 +998,7 @@ type
   AerisCoreUI.AerisCoreUICategory = extension class(CALayer)
   private
 
-    method awf_addAnimation(animation: not nullable CAAnimation) forKey(key: nullable NSString); public;
+    method awf_addAnimation(animation: CAAnimation) forKey(key: nullable NSString); public;
 
   end;
 
@@ -1006,35 +1006,35 @@ type
   private
 
     [NonSwiftOnly]
-    class method awf_animationWithKeyPath(keyPath: not nullable NSString) fromDouble(fromValue: Double) toDouble(toValue: Double) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationWithKeyPath(keyPath: NSString) fromDouble(fromValue: Double) toDouble(toValue: Double) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(keyPath: not nullable NSString) &from(fromValue: Double) &to(toValue: Double) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(keyPath: NSString) &from(fromValue: Double) &to(toValue: Double) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [NonSwiftOnly]
-    class method awf_animationFromPoint(fromValue: CGPoint) toPoint(toValue: CGPoint) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationFromPoint(fromValue: CGPoint) toPoint(toValue: CGPoint) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(fromValue: CGPoint) &to(toValue: CGPoint) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(fromValue: CGPoint) &to(toValue: CGPoint) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [NonSwiftOnly]
-    class method awf_animationFromSize(fromValue: CGSize) toSize(toValue: CGSize) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationFromSize(fromValue: CGSize) toSize(toValue: CGSize) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(fromValue: CGSize) &to(toValue: CGSize) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(fromValue: CGSize) &to(toValue: CGSize) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [NonSwiftOnly]
-    class method awf_animationFromRect(fromValue: CGRect) toRect(toValue: CGRect) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationFromRect(fromValue: CGRect) toRect(toValue: CGRect) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(fromValue: CGRect) &to(toValue: CGRect) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(fromValue: CGRect) &to(toValue: CGRect) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [NonSwiftOnly]
-    class method awf_animationFromColor(fromValue: not nullable UIColor) toColor(toValue: not nullable UIColor) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationFromColor(fromValue: UIColor) toColor(toValue: UIColor) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(fromValue: not nullable UIColor) &to(toValue: not nullable UIColor) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(fromValue: UIColor) &to(toValue: UIColor) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [NonSwiftOnly]
-    class method awf_animationFromTransform(fromValue: CATransform3D) toTransform(toValue: CATransform3D) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animationFromTransform(fromValue: CATransform3D) toTransform(toValue: CATransform3D) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_animation(fromValue: CATransform3D) &to(toValue: CATransform3D) easing(easing: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_animation(fromValue: CATransform3D) &to(toValue: CATransform3D) easing(easing: AerisCoreUI.AWFEasing): instancetype; public;
 
   end;
 
@@ -1042,10 +1042,10 @@ type
   private
 
     [NonSwiftOnly]
-    class method awf_functionWithEasing(easingFunction: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_functionWithEasing(easingFunction: AerisCoreUI.AWFEasing): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_function(easingFunction: AerisCoreUI.AWFEasing): not nullable instancetype; public;
+    class method awf_function(easingFunction: AerisCoreUI.AWFEasing): instancetype; public;
 
   end;
 
@@ -1080,25 +1080,25 @@ type
     [SwiftOnly]
     method awf_affineTransform: CGAffineTransform; public;
     [NonSwiftOnly]
-    class method awf_valueWithRect(rect: CGRect): not nullable NSValue; public;
+    class method awf_valueWithRect(rect: CGRect): NSValue; public;
     [Alias]
     [SwiftOnly]
-    class method awf_value(rect: CGRect): not nullable NSValue; public;
+    class method awf_value(rect: CGRect): NSValue; public;
     [NonSwiftOnly]
-    class method awf_valueWithSize(size: CGSize): not nullable NSValue; public;
+    class method awf_valueWithSize(size: CGSize): NSValue; public;
     [Alias]
     [SwiftOnly]
-    class method awf_value(size: CGSize): not nullable NSValue; public;
+    class method awf_value(size: CGSize): NSValue; public;
     [NonSwiftOnly]
-    class method awf_valueWithPoint(point: CGPoint): not nullable NSValue; public;
+    class method awf_valueWithPoint(point: CGPoint): NSValue; public;
     [Alias]
     [SwiftOnly]
-    class method awf_value(point: CGPoint): not nullable NSValue; public;
+    class method awf_value(point: CGPoint): NSValue; public;
     [NonSwiftOnly]
-    class method awf_valueWithAffineTransform(transform: CGAffineTransform): not nullable NSValue; public;
+    class method awf_valueWithAffineTransform(transform: CGAffineTransform): NSValue; public;
     [Alias]
     [SwiftOnly]
-    class method awf_value(transform: CGAffineTransform): not nullable NSValue; public;
+    class method awf_value(transform: CGAffineTransform): NSValue; public;
     method awf_type: AerisCoreUI.AWFValueType; public;
 
   end;
@@ -1112,15 +1112,15 @@ type
     [SwiftOnly]
     class method awf_pointsForArrow(startPoint: CGPoint) &to(endPoint: CGPoint) tailWidth(tailWidth: CGFloat) headWidth(headWidth: CGFloat) headLength(headLength: CGFloat) points(points: ^CGPoint) count(count: NSUInteger); public;
     [NonSwiftOnly]
-    class method awf_bezierPathWithArrowFromPoint(startPoint: CGPoint) toPoint(endPoint: CGPoint) tailWidth(tailWidth: CGFloat) headWidth(headWidth: CGFloat) headLength(headLength: CGFloat): not nullable instancetype; public;
+    class method awf_bezierPathWithArrowFromPoint(startPoint: CGPoint) toPoint(endPoint: CGPoint) tailWidth(tailWidth: CGFloat) headWidth(headWidth: CGFloat) headLength(headLength: CGFloat): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_bezierPathWithArrow(startPoint: CGPoint) &to(endPoint: CGPoint) tailWidth(tailWidth: CGFloat) headWidth(headWidth: CGFloat) headLength(headLength: CGFloat): not nullable instancetype; public;
+    class method awf_bezierPathWithArrow(startPoint: CGPoint) &to(endPoint: CGPoint) tailWidth(tailWidth: CGFloat) headWidth(headWidth: CGFloat) headLength(headLength: CGFloat): instancetype; public;
     [NonSwiftOnly]
-    method awf_smoothedPathWithGranularity(granularity: NSInteger): not nullable UIBezierPath; public;
+    method awf_smoothedPathWithGranularity(granularity: NSInteger): UIBezierPath; public;
     [Alias]
     [SwiftOnly]
-    method awf_smoothedPath(granularity: NSInteger): not nullable UIBezierPath; public;
+    method awf_smoothedPath(granularity: NSInteger): UIBezierPath; public;
 
   end;
 
@@ -1128,41 +1128,41 @@ type
   private
 
     [NonSwiftOnly]
-    class method awf_colorWithRed(red: CGFloat) green(green: CGFloat) blue(blue: CGFloat) alpha(alpha: CGFloat): not nullable UIColor; public;
+    class method awf_colorWithRed(red: CGFloat) green(green: CGFloat) blue(blue: CGFloat) alpha(alpha: CGFloat): UIColor; public;
     [Alias]
     [SwiftOnly]
-    class method awf_color(red: CGFloat) green(green: CGFloat) blue(blue: CGFloat) alpha(alpha: CGFloat): not nullable UIColor; public;
+    class method awf_color(red: CGFloat) green(green: CGFloat) blue(blue: CGFloat) alpha(alpha: CGFloat): UIColor; public;
     [NonSwiftOnly]
-    class method awf_colorWithRGB(rgb: not nullable NSString): not nullable UIColor; public;
+    class method awf_colorWithRGB(rgb: NSString): UIColor; public;
     [Alias]
     [SwiftOnly]
-    class method awf_color(rgb: not nullable NSString): not nullable UIColor; public;
+    class method awf_color(rgb: NSString): UIColor; public;
     [NonSwiftOnly]
-    class method awf_colorWithHue(hue: CGFloat) saturation(saturation: CGFloat) brightness(brightness: CGFloat) alpha(alpha: CGFloat): not nullable UIColor; public;
+    class method awf_colorWithHue(hue: CGFloat) saturation(saturation: CGFloat) brightness(brightness: CGFloat) alpha(alpha: CGFloat): UIColor; public;
     [Alias]
     [SwiftOnly]
-    class method awf_color(hue: CGFloat) saturation(saturation: CGFloat) brightness(brightness: CGFloat) alpha(alpha: CGFloat): not nullable UIColor; public;
+    class method awf_color(hue: CGFloat) saturation(saturation: CGFloat) brightness(brightness: CGFloat) alpha(alpha: CGFloat): UIColor; public;
     [NonSwiftOnly]
-    class method awf_colorWithHSL(hsl: not nullable NSString): not nullable UIColor; public;
+    class method awf_colorWithHSL(hsl: NSString): UIColor; public;
     [Alias]
     [SwiftOnly]
-    class method awf_color(hsl: not nullable NSString): not nullable UIColor; public;
+    class method awf_color(hsl: NSString): UIColor; public;
     [NonSwiftOnly]
-    method awf_isEqualToColor(otherColor: not nullable UIColor): BOOL; public;
+    method awf_isEqualToColor(otherColor: UIColor): BOOL; public;
     [Alias]
     [SwiftOnly]
-    method awf_isEqual(otherColor: not nullable UIColor): BOOL; public;
-    method awf_adjustAlpha(alpha: CGFloat): not nullable UIColor; public;
+    method awf_isEqual(otherColor: UIColor): BOOL; public;
+    method awf_adjustAlpha(alpha: CGFloat): UIColor; public;
     [NonSwiftOnly]
-    method awf_interpolatedToColor(toColor: not nullable UIColor) position(position: CGFloat): not nullable UIColor; public;
+    method awf_interpolatedToColor(toColor: UIColor) position(position: CGFloat): UIColor; public;
     [Alias]
     [SwiftOnly]
-    method awf_interpolated(toColor: not nullable UIColor) position(position: CGFloat): not nullable UIColor; public;
+    method awf_interpolated(toColor: UIColor) position(position: CGFloat): UIColor; public;
     [NonSwiftOnly]
-    class method awf_colorWithHex(hex: not nullable NSString): not nullable UIColor; public;
+    class method awf_colorWithHex(hex: NSString): UIColor; public;
     [Alias]
     [SwiftOnly]
-    class method awf_color(hex: not nullable NSString): not nullable UIColor; public;
+    class method awf_color(hex: NSString): UIColor; public;
     method awf_hexValue: nullable NSString; public;
     [NonSwiftOnly]
     method awf_hexValueWithAlpha(includeAlpha: BOOL): nullable NSString; public;
@@ -1170,7 +1170,7 @@ type
     [SwiftOnly]
     method awf_hexValue(includeAlpha: BOOL): nullable NSString; public;
     method awf_adjustBrightness(amount: CGFloat): nullable UIColor; public;
-    method awf_grayscale: not nullable UIColor; public;
+    method awf_grayscale: UIColor; public;
     method awf_isLightColor: BOOL; public;
     method awf_red: CGFloat; public;
     method awf_green: CGFloat; public;
@@ -1200,8 +1200,8 @@ type
   AerisCoreUI.UIDevice_AerisCoreUICategory = extension class(UIDevice)
   private
 
-    method awf_modelIdentifier: not nullable NSString; public;
-    method awf_modelName: not nullable NSString; public;
+    method awf_modelIdentifier: NSString; public;
+    method awf_modelName: NSString; public;
     method awf_devicePlatform: AerisCoreUI.AWFDevicePlatform; public;
     method awf_deviceFamily: AerisCoreUI.AWFDeviceFamily; public;
     method awf_isMoreRecentThanPlatform(otherPlatform: AerisCoreUI.AWFDevicePlatform): BOOL; public;
@@ -1212,15 +1212,15 @@ type
   private
 
     [NonSwiftOnly]
-    method awf_sizeNeededForString(string: not nullable NSString) maxWidth(maxWidth: CGFloat): CGSize; public;
+    method awf_sizeNeededForString(string: NSString) maxWidth(maxWidth: CGFloat): CGSize; public;
     [Alias]
     [SwiftOnly]
-    method awf_sizeNeeded(string: not nullable NSString) maxWidth(maxWidth: CGFloat): CGSize; public;
+    method awf_sizeNeeded(string: NSString) maxWidth(maxWidth: CGFloat): CGSize; public;
     [NonSwiftOnly]
-    method awf_sizeNeededForString(string: not nullable NSString) maxWidth(maxWidth: CGFloat) lineBreakMode(lineBreakMode: NSLineBreakMode): CGSize; public;
+    method awf_sizeNeededForString(string: NSString) maxWidth(maxWidth: CGFloat) lineBreakMode(lineBreakMode: NSLineBreakMode): CGSize; public;
     [Alias]
     [SwiftOnly]
-    method awf_sizeNeeded(string: not nullable NSString) maxWidth(maxWidth: CGFloat) lineBreakMode(lineBreakMode: NSLineBreakMode): CGSize; public;
+    method awf_sizeNeeded(string: NSString) maxWidth(maxWidth: CGFloat) lineBreakMode(lineBreakMode: NSLineBreakMode): CGSize; public;
     [NonSwiftOnly]
     class method awf_fontScaleForContentSize(contentSize: UIContentSizeCategory) fontSize(fontSize: CGFloat): CGFloat; public;
     [Alias]
@@ -1234,7 +1234,7 @@ type
   AerisCoreUI.UIImage_AerisCoreUICategory = extension class(UIImage)
   private
 
-    class method awf_uncachedImageNamed(name: not nullable NSString): nullable UIImage; public;
+    class method awf_uncachedImageNamed(name: NSString): nullable UIImage; public;
     [NonSwiftOnly]
     method awf_imageScaledToSize(destinationSize: CGSize): nullable UIImage; public;
     [Alias]
@@ -1242,10 +1242,10 @@ type
     method awf_imageScaled(destinationSize: CGSize): nullable UIImage; public;
     method awf_desaturatedImage: nullable UIImage; public;
     [NonSwiftOnly]
-    method awf_imageTintedWithColor(tintColor: not nullable UIColor): nullable UIImage; public;
+    method awf_imageTintedWithColor(tintColor: UIColor): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    method awf_imageTinted(tintColor: not nullable UIColor): nullable UIImage; public;
+    method awf_imageTinted(tintColor: UIColor): nullable UIImage; public;
     method awf_averageColor: nullable UIColor; public;
     [NonSwiftOnly]
     class method awf_imageWithSize(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
@@ -1253,37 +1253,37 @@ type
     [SwiftOnly]
     class method awf_image(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
     [NonSwiftOnly]
-    class method awf_imageWithIdentifier(identifier: not nullable NSString) size(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
+    class method awf_imageWithIdentifier(identifier: NSString) size(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    class method awf_image(identifier: not nullable NSString) size(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
+    class method awf_image(identifier: NSString) size(size: CGSize) drawing(drawingBlock: method()): nullable UIImage; public;
     [NonSwiftOnly]
-    class method awf_imageWithIdentifier(identifier: not nullable NSString): nullable UIImage; public;
+    class method awf_imageWithIdentifier(identifier: NSString): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    class method awf_image(identifier: not nullable NSString): nullable UIImage; public;
-    class method awf_cacheImage(image: not nullable UIImage) withIdentifier(identifier: not nullable NSString); public;
+    class method awf_image(identifier: NSString): nullable UIImage; public;
+    class method awf_cacheImage(image: UIImage) withIdentifier(identifier: NSString); public;
     [NonSwiftOnly]
-    class method awf_removeImageWithIdentifier(identifier: not nullable NSString); public;
+    class method awf_removeImageWithIdentifier(identifier: NSString); public;
     [Alias]
     [SwiftOnly]
-    class method awf_removeImage(identifier: not nullable NSString); public;
+    class method awf_removeImage(identifier: NSString); public;
     class method awf_removeAllImages; public;
     [NonSwiftOnly]
-    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) size(size: CGSize) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) size(size: CGSize) color(color: UIColor): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    class method awf_icon(icon: AerisCoreUI.AWFIcon) size(size: CGSize) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_icon(icon: AerisCoreUI.AWFIcon) size(size: CGSize) color(color: UIColor): nullable UIImage; public;
     [NonSwiftOnly]
-    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) width(width: CGFloat) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) width(width: CGFloat) color(color: UIColor): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    class method awf_icon(icon: AerisCoreUI.AWFIcon) width(width: CGFloat) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_icon(icon: AerisCoreUI.AWFIcon) width(width: CGFloat) color(color: UIColor): nullable UIImage; public;
     [NonSwiftOnly]
-    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) height(height: CGFloat) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_iconWithType(icon: AerisCoreUI.AWFIcon) height(height: CGFloat) color(color: UIColor): nullable UIImage; public;
     [Alias]
     [SwiftOnly]
-    class method awf_icon(icon: AerisCoreUI.AWFIcon) height(height: CGFloat) color(color: not nullable UIColor): nullable UIImage; public;
+    class method awf_icon(icon: AerisCoreUI.AWFIcon) height(height: CGFloat) color(color: UIColor): nullable UIImage; public;
 
   end;
 
@@ -1291,25 +1291,25 @@ type
   private
 
     [NonSwiftOnly]
-    method awf_constraintsByCenteringInView(view: not nullable UIView): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByCenteringInView(view: UIView): NSArray<NSLayoutConstraint>; public;
     [Alias]
     [SwiftOnly]
-    method awf_constraintsByCentering(view: not nullable UIView): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByCentering(view: UIView): NSArray<NSLayoutConstraint>; public;
     [NonSwiftOnly]
-    method awf_constraintsByPinningToEdgesOfView(view: not nullable UIView): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdgesOfView(view: UIView): NSArray<NSLayoutConstraint>; public;
     [Alias]
     [SwiftOnly]
-    method awf_constraintsByPinningToEdges(view: not nullable UIView): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdges(view: UIView): NSArray<NSLayoutConstraint>; public;
     [NonSwiftOnly]
-    method awf_constraintsByPinningToEdgesOfView(view: not nullable UIView) inset(inset: CGFloat): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdgesOfView(view: UIView) inset(inset: CGFloat): NSArray<NSLayoutConstraint>; public;
     [Alias]
     [SwiftOnly]
-    method awf_constraintsByPinningToEdges(view: not nullable UIView) inset(inset: CGFloat): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdges(view: UIView) inset(inset: CGFloat): NSArray<NSLayoutConstraint>; public;
     [NonSwiftOnly]
-    method awf_constraintsByPinningToEdgesOfView(view: not nullable UIView) insets(insets: UIEdgeInsets): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdgesOfView(view: UIView) insets(insets: UIEdgeInsets): NSArray<NSLayoutConstraint>; public;
     [Alias]
     [SwiftOnly]
-    method awf_constraintsByPinningToEdges(view: not nullable UIView) insets(insets: UIEdgeInsets): NSArray<NSLayoutConstraint>; public;
+    method awf_constraintsByPinningToEdges(view: UIView) insets(insets: UIEdgeInsets): NSArray<NSLayoutConstraint>; public;
     [NonSwiftOnly]
     method awf_constraintsBySettingDimensionsToSize(size: CGSize): NSArray<NSLayoutConstraint>; public;
     [Alias]
@@ -1324,15 +1324,15 @@ type
   private
 
     [NonSwiftOnly]
-    method awf_topSafeAreaLayoutGuideWithFallback: not nullable NSLayoutYAxisAnchor; public;
+    method awf_topSafeAreaLayoutGuideWithFallback: NSLayoutYAxisAnchor; public;
     [Alias]
     [SwiftOnly]
-    method awf_topSafeAreaLayoutGuide: not nullable NSLayoutYAxisAnchor; public;
+    method awf_topSafeAreaLayoutGuide: NSLayoutYAxisAnchor; public;
     [NonSwiftOnly]
-    method awf_bottomSafeAreaLayoutGuideWithFallback: not nullable NSLayoutYAxisAnchor; public;
+    method awf_bottomSafeAreaLayoutGuideWithFallback: NSLayoutYAxisAnchor; public;
     [Alias]
     [SwiftOnly]
-    method awf_bottomSafeAreaLayoutGuide: not nullable NSLayoutYAxisAnchor; public;
+    method awf_bottomSafeAreaLayoutGuide: NSLayoutYAxisAnchor; public;
     method awf_isModal: BOOL; public;
 
   end;

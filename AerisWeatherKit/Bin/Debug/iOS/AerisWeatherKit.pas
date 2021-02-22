@@ -12,8 +12,8 @@ type
   AerisWeatherKit.__Global = class
   private
 
-    class var AerisWeatherDidFinishStartup: not nullable NSString; public;
-    class var AWFApiPathPrefix: not nullable NSString; public;
+    class var AerisWeatherDidFinishStartup: NSString; public;
+    class var AWFApiPathPrefix: NSString; public;
     class var AWFWeatherRequestActionClosest: AWFWeatherRequestAction; public;
     class var AWFWeatherRequestActionWithin: AWFWeatherRequestAction; public;
     class var AWFWeatherRequestActionSearch: AWFWeatherRequestAction; public;
@@ -46,9 +46,9 @@ type
     class var AWFWeatherResponseKeyResponse: AWFWeatherResponseKey; public;
     class var AWFWeatherResponseKeyRequest: AWFWeatherResponseKey; public;
     class var AWFWeatherResponseKeyBatchResponse: AWFWeatherResponseKey; public;
-    class var AWFWeatherValidTimeFormatString: not nullable NSString; public;
-    class var AWFWeatherValidTimeWithOffsetString: not nullable NSString; public;
-    class var AWFWeatherErrorDomain: not nullable NSString; public;
+    class var AWFWeatherValidTimeFormatString: NSString; public;
+    class var AWFWeatherValidTimeWithOffsetString: NSString; public;
+    class var AWFWeatherErrorDomain: NSString; public;
     class var AWFWeatherErrorCodeInvalidClient: AWFWeatherErrorCode; public;
     class var AWFWeatherErrorCodeInsufficientScope: AWFWeatherErrorCode; public;
     class var AWFWeatherErrorCodeUnauthorizedNamespace: AWFWeatherErrorCode; public;
@@ -484,36 +484,36 @@ type
 
     property debugMode: BOOL; public;
 
-    property version: not nullable NSString; public;
+    property version: NSString; public;
 
     [NonSwiftOnly]
-    class method startWithApiKey(apiKey: not nullable NSString) secret(secretKey: not nullable NSString); public;
+    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString); public;
     [Alias]
     [SwiftOnly]
-    class method start(apiKey: not nullable NSString) secret(secretKey: not nullable NSString); public;
+    class method start(apiKey: NSString) secret(secretKey: NSString); public;
     [NonSwiftOnly]
-    class method startWithApiKey(apiKey: not nullable NSString) secret(secretKey: not nullable NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
+    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
     [Alias]
     [SwiftOnly]
-    class method start(apiKey: not nullable NSString) secret(secretKey: not nullable NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
-    class method sharedInstance: not nullable instancetype; public;
+    class method start(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
+    class method sharedInstance: instancetype; public;
     class method isReady: BOOL; public;
     class method validateAccessKeys; public;
     [NonSwiftOnly]
-    method urlPathByAddingAccessKeys(urlPath: not nullable NSString): not nullable NSString; public;
+    method urlPathByAddingAccessKeys(urlPath: NSString): NSString; public;
     [Alias]
     [SwiftOnly]
-    method urlPath(urlPath: not nullable NSString): not nullable NSString; public;
+    method urlPath(urlPath: NSString): NSString; public;
     [NonSwiftOnly]
     method parametersByAddingAccessKeys(&params: NSDictionary<id,id>): NSDictionary<id,id>; public;
     [Alias]
     [SwiftOnly]
     method parameters(&params: NSDictionary<id,id>): NSDictionary<id,id>; public;
-    method init: not nullable instancetype; public;
-    method &new: not nullable instancetype; public;
-    class property apiServerPath: not nullable NSString; public;
+    method init: instancetype; public;
+    method &new: instancetype; public;
+    class property apiServerPath: NSString; public;
 
-    class property ampServerPath: not nullable NSString; public;
+    class property ampServerPath: NSString; public;
 
 
   end;
@@ -522,12 +522,12 @@ type
   private
 
     [NonSwiftOnly]
-    method initWithDictionary(dictionary: NSDictionary<id,id>): not nullable instancetype; public;
+    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(dictionary: NSDictionary<id,id>): not nullable instancetype; public;
-    method canAccessEndpoint(endpoint: not nullable NSString): BOOL; public;
+    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
+    method canAccessEndpoint(endpoint: NSString): BOOL; public;
 
   end;
 
@@ -535,17 +535,17 @@ type
   private
 
     [NonSwiftOnly]
-    method initWithDictionary(dictionary: NSDictionary<id,id>): not nullable instancetype; public;
+    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(dictionary: NSDictionary<id,id>): not nullable instancetype; public;
+    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
     method hasAccess: BOOL; public;
     [NonSwiftOnly]
-    method hasAccessToLayer(layerType: not nullable NSString): BOOL; public;
+    method hasAccessToLayer(layerType: NSString): BOOL; public;
     [Alias]
     [SwiftOnly]
-    method hasAccess(layerType: not nullable NSString): BOOL; public;
+    method hasAccess(layerType: NSString): BOOL; public;
     [NonSwiftOnly]
     method hasAccessToBlendModes: BOOL; public;
     [Alias]
@@ -566,21 +566,21 @@ type
   AerisWeatherKit.AWFAerisAccount = class(NSObject)
   private
 
-    property apiKey: not nullable NSString; public;
+    property apiKey: NSString; public;
 
-    property secretKey: not nullable NSString; public;
+    property secretKey: NSString; public;
 
     property apiPermissions: nullable AerisWeatherKit.AWFApiPermissions; public;
 
     property mapPermissions: nullable AerisWeatherKit.AWFMapPermissions; public;
 
     [NonSwiftOnly]
-    method initWithApiKey(apiKey: not nullable NSString) secret(secretKey: not nullable NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): not nullable instancetype; public;
+    method initWithApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withApiKey(apiKey: not nullable NSString) secret(secretKey: not nullable NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): not nullable instancetype; public;
-    method init: not nullable instancetype; public;
+    class constructor withApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype; public;
+    method init: instancetype; public;
 
   end;
 
@@ -604,8 +604,8 @@ type
   AerisWeatherKit.AWFWeatherApiClient = class(AWFApiClient)
   private
 
-    class method apiServerPath: not nullable NSString; public;
-    class method ampServerPath: not nullable NSString; public;
+    class method apiServerPath: NSString; public;
+    class method ampServerPath: NSString; public;
 
   end;
 
@@ -631,37 +631,37 @@ type
     property modelObject: nullable AerisWeatherKit.AWFWeatherObject; public;
 
     [NonSwiftOnly]
-    method initWithArrayOfCoordinates(coordinates: NSArray<NSValue>): not nullable instancetype; public;
+    method initWithArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfCoordinates(coordinates: NSArray<NSValue>): not nullable instancetype; public;
+    class constructor withArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype; public;
     [NonSwiftOnly]
-    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): not nullable instancetype; public;
+    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): not nullable instancetype; public;
+    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype; public;
     [NonSwiftOnly]
-    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): not nullable instancetype; public;
+    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): not nullable instancetype; public;
+    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype; public;
     [NonSwiftOnly]
-    method initWithPolygonString(polygonString: not nullable NSString): not nullable instancetype; public;
+    method initWithPolygonString(polygonString: NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPolygonString(polygonString: not nullable NSString): not nullable instancetype; public;
+    class constructor withPolygonString(polygonString: NSString): instancetype; public;
     method addCoordinate(coordinate: CLLocationCoordinate2D); public;
     method insertCoordinate(coordinate: CLLocationCoordinate2D) atIndex(&index: NSUInteger); public;
     method removeAllCoordinates; public;
     [NonSwiftOnly]
-    method polygonAsString: not nullable NSString; public;
+    method polygonAsString: NSString; public;
     [Alias]
     [SwiftOnly]
-    method polygon: not nullable NSString; public;
+    method polygon: NSString; public;
     method containsCoordinate(coord: CLLocationCoordinate2D): BOOL; public;
     [NonSwiftOnly]
     class method polygonsFromGeoJSON(geoJSON: NSDictionary<id,id>): NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
@@ -692,35 +692,35 @@ type
 
     property center: CLLocationCoordinate2D; public;
 
-    class method coordinateBounds: not nullable instancetype; public;
+    class method coordinateBounds: instancetype; public;
     [NonSwiftOnly]
-    class method coordinateBoundsWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): not nullable instancetype; public;
+    class method coordinateBoundsWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method coordinateBounds(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): not nullable instancetype; public;
+    class method coordinateBounds(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): not nullable instancetype; public;
+    class constructor withWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
     [NonSwiftOnly]
-    method initWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): not nullable instancetype; public;
+    method initWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): not nullable instancetype; public;
+    class constructor withNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
     [NonSwiftOnly]
-    method initWithNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): not nullable instancetype; public;
+    method initWithNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): not nullable instancetype; public;
+    class constructor withNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype; public;
     [NonSwiftOnly]
-    method boundsAsString: not nullable NSString; public;
+    method boundsAsString: NSString; public;
     [Alias]
     [SwiftOnly]
-    method bounds: not nullable NSString; public;
-    method intersects(bounds: not nullable AerisWeatherKit.AWFCoordinateBounds): BOOL; public;
-    method extend(bounds: not nullable AerisWeatherKit.AWFCoordinateBounds); public;
+    method bounds: NSString; public;
+    method intersects(bounds: AerisWeatherKit.AWFCoordinateBounds): BOOL; public;
+    method extend(bounds: AerisWeatherKit.AWFCoordinateBounds); public;
 
   end;
 
@@ -731,10 +731,10 @@ type
 
     method identifier: nullable NSString; public;
     [NonSwiftOnly]
-    class method remotePropertyNameMappedToPropertyName(propertyName: not nullable NSString): nullable NSString; public;
+    class method remotePropertyNameMappedToPropertyName(propertyName: NSString): nullable NSString; public;
     [Alias]
     [SwiftOnly]
-    class method remotePropertyNameMapped(propertyName: not nullable NSString): nullable NSString; public;
+    class method remotePropertyNameMapped(propertyName: NSString): nullable NSString; public;
 
   end;
 
@@ -794,23 +794,23 @@ type
     property population: CGFloat; public;
 
     [NonSwiftOnly]
-    method initWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): not nullable instancetype; public;
+    method initWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): not nullable instancetype; public;
+    class constructor withCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    method initWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): not nullable instancetype; public;
+    method initWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLatitude(latitude: CGFloat) longitude(longitude: CGFloat): not nullable instancetype; public;
+    class constructor withLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
     [NonSwiftOnly]
-    method initWithZipcode(zipcode: not nullable NSString): not nullable instancetype; public;
+    method initWithZipcode(zipcode: not nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withZipcode(zipcode: not nullable NSString): not nullable instancetype; public;
+    class constructor withZipcode(zipcode: not nullable NSString): instancetype; public;
     [NonSwiftOnly]
     method stringForQuery: nullable NSString; public;
     [Alias]
@@ -827,31 +827,31 @@ type
     [Alias]
     [SwiftOnly]
     method isEqualToPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL; public;
-    class method placeWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): not nullable instancetype; public;
+    class method placeWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): not nullable instancetype; public;
-    class method placeWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): not nullable instancetype; public;
+    class constructor withWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
+    class method placeWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): not nullable instancetype; public;
-    class method placeWithCoordinate(coordinate: CLLocationCoordinate2D): not nullable instancetype; public;
+    class constructor withWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
+    class method placeWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCoordinate(coordinate: CLLocationCoordinate2D): not nullable instancetype; public;
-    class method placeWithZipcode(zipcode: not nullable NSString): not nullable instancetype; public;
+    class constructor withWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
+    class method placeWithZipcode(zipcode: not nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithZipcode(zipcode: not nullable NSString): not nullable instancetype; public;
-    class method placeFromString(string: not nullable NSString): not nullable instancetype; public;
+    class constructor withWithZipcode(zipcode: not nullable NSString): instancetype; public;
+    class method placeFromString(string: not nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromString(string: not nullable NSString): not nullable instancetype; public;
+    class constructor withFromString(string: not nullable NSString): instancetype; public;
     [NonSwiftOnly]
     class method getCurrentLocationWithCompletion(completionBlock: method(place: AerisWeatherKit.AWFPlace; error: NSError)); public;
     [Alias]
@@ -920,76 +920,76 @@ type
     property format: nullable NSString; public;
 
     [NonSwiftOnly]
-    class method optionsFromDictionary(dictionary: NSDictionary<NSString,id>): not nullable instancetype; public;
+    class method optionsFromDictionary(dictionary: NSDictionary<NSString,id>): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method options(dictionary: NSDictionary<NSString,id>): not nullable instancetype; public;
+    class method options(dictionary: NSDictionary<NSString,id>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFrom(dictionary: NSDictionary<NSString,id>): not nullable instancetype; public;
+    class constructor withFrom(dictionary: NSDictionary<NSString,id>): instancetype; public;
     [NonSwiftOnly]
-    class method optionsFromQueryString(queryString: nullable NSString): not nullable instancetype; public;
+    class method optionsFromQueryString(queryString: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method options(queryString: nullable NSString): not nullable instancetype; public;
+    class method options(queryString: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromQueryString(queryString: nullable NSString): not nullable instancetype; public;
+    class constructor withFromQueryString(queryString: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    class method optionsFromURLPath(URLPath: nullable NSString): not nullable instancetype; public;
+    class method optionsFromURLPath(URLPath: nullable NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method options(URLPath: nullable NSString): not nullable instancetype; public;
+    class method options(URLPath: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromURLPath(URLPath: nullable NSString): not nullable instancetype; public;
+    class constructor withFromURLPath(URLPath: nullable NSString): instancetype; public;
     [NonSwiftOnly]
     method optionsAsDictionary: NSDictionary<NSString,id>; public;
     [Alias]
     [SwiftOnly]
     method options: NSDictionary<NSString,id>; public;
     [NonSwiftOnly]
-    method optionsAsQueryString: not nullable NSString; public;
+    method optionsAsQueryString: NSString; public;
     [Alias]
     [SwiftOnly]
-    method options: not nullable NSString; public;
+    method options: NSString; public;
     [NonSwiftOnly]
-    method optionsAsQueryStringIgnoringPlace: not nullable NSString; public;
+    method optionsAsQueryStringIgnoringPlace: NSString; public;
     [Alias]
     [SwiftOnly]
-    method options: not nullable NSString; public;
+    method options: NSString; public;
     method addFilter(filter: AWFRequestFilter); public;
     method removeFilter(filter: AWFRequestFilter); public;
     method removeAllFilters; public;
     [NonSwiftOnly]
-    method addQuery(query: not nullable AerisWeatherKit.AWFRequestQuery); public;
+    method addQuery(query: AerisWeatherKit.AWFRequestQuery); public;
     [Alias]
     [SwiftOnly]
-    method &add(query: not nullable AerisWeatherKit.AWFRequestQuery); public;
+    method &add(query: AerisWeatherKit.AWFRequestQuery); public;
     [NonSwiftOnly]
-    method removeQuery(query: not nullable AerisWeatherKit.AWFRequestQuery); public;
+    method removeQuery(query: AerisWeatherKit.AWFRequestQuery); public;
     [Alias]
     [SwiftOnly]
-    method &remove(query: not nullable AerisWeatherKit.AWFRequestQuery); public;
+    method &remove(query: AerisWeatherKit.AWFRequestQuery); public;
     method removeAllQueries; public;
     [NonSwiftOnly]
-    method isEqualToRequestOptions(options: not nullable AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
+    method isEqualToRequestOptions(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
     [Alias]
     [SwiftOnly]
-    method isEqual(options: not nullable AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
+    method isEqual(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
     [NonSwiftOnly]
-    method applyOptions(otherOptions: not nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method applyOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions); public;
     [Alias]
     [SwiftOnly]
-    method apply(otherOptions: not nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method apply(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions); public;
     [NonSwiftOnly]
-    method optionsByApplyingOptions(otherOptions: not nullable AerisWeatherKit.AWFWeatherRequestOptions): not nullable AerisWeatherKit.AWFWeatherRequestOptions; public;
+    method optionsByApplyingOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions; public;
     [Alias]
     [SwiftOnly]
-    method applying(otherOptions: not nullable AerisWeatherKit.AWFWeatherRequestOptions): not nullable AerisWeatherKit.AWFWeatherRequestOptions; public;
+    method applying(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions; public;
     property &from: nullable NSDate; public;
 
     property &to: nullable NSDate; public;
@@ -1000,30 +1000,30 @@ type
   AerisWeatherKit.AWFRequestQuery = class(NSObject)
   private
 
-    property propertyName: not nullable NSString; public;
+    property propertyName: NSString; public;
 
-    property value: not nullable id; public;
+    property value: id; public;
 
     property requestOperator: AerisWeatherKit.AWFRequestOperator; public;
 
     [NonSwiftOnly]
-    class method queryForProperty(propertyName: not nullable NSString) withValue(value: not nullable id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): not nullable instancetype; public;
+    class method queryForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method query(propertyName: not nullable NSString) withValue(value: not nullable id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): not nullable instancetype; public;
+    class method query(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withForProperty(propertyName: not nullable NSString) withValue(value: not nullable id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): not nullable instancetype; public;
-    class method &new: not nullable instancetype; public;
+    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
+    class method &new: instancetype; public;
     [NonSwiftOnly]
-    method initForProperty(propertyName: not nullable NSString) withValue(value: not nullable id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): not nullable instancetype; public;
+    method initForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withForProperty(propertyName: not nullable NSString) withValue(value: not nullable id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): not nullable instancetype; public;
-    method init: not nullable instancetype; public;
-    method stringRepresentation: not nullable NSString; public;
+    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
+    method init: instancetype; public;
+    method stringRepresentation: NSString; public;
 
   end;
 
@@ -1058,13 +1058,13 @@ type
 
     property results: AWFWeatherEndpointArrayResultType; public;
 
-    property error: not nullable NSError; public;
+    property error: NSError; public;
 
-    class method resultWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): not nullable instancetype; public;
+    class method resultWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): not nullable instancetype; public;
+    class constructor withWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype; public;
 
   end;
 
@@ -1075,39 +1075,39 @@ type
 
     property isLoading: BOOL; public;
 
-    class method sharedService: not nullable instancetype; public;
+    class method sharedService: instancetype; public;
     [NonSwiftOnly]
-    method initWithClient(client: not nullable AerisWeatherKit.AWFWeatherApiClient): not nullable instancetype; public;
+    method initWithClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withClient(client: not nullable AerisWeatherKit.AWFWeatherApiClient): not nullable instancetype; public;
+    class constructor withClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype; public;
     [NonSwiftOnly]
-    method initWithPath(path: not nullable NSString) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    method initWithPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPath(path: not nullable NSString) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    class constructor withPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
     [NonSwiftOnly]
-    method getForPlace(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method get(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getForPlace(place: not nullable AerisWeatherKit.AWFPlace) fromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) fromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method get(place: not nullable AerisWeatherKit.AWFPlace) &from(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) &from(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getForPlace(place: not nullable AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method get(place: not nullable AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getClosestToPlace(place: not nullable AerisWeatherKit.AWFPlace) radius(radius: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getClosestToPlace(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method closest(place: not nullable AerisWeatherKit.AWFPlace) radius(radius: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method closest(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
     method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
@@ -1129,30 +1129,30 @@ type
     [SwiftOnly]
     method within(centerCoordinate: CLLocationCoordinate2D) radius(radius: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getWithinBounds(bounds: not nullable AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithinBounds(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method within(bounds: not nullable AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method within(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getWithinPolygon(polygon: not nullable AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithinPolygon(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method within(polygon: not nullable AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method within(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getContainingPlace(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getContainingPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method containing(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method containing(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getPlacesAffectedByObject(object: not nullable AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getPlacesAffectedByObject(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method placesAffectedBy(object: not nullable AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method placesAffectedBy(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method getPlacesAffectedByObjectWithIdentifier(identifier: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getPlacesAffectedByObjectWithIdentifier(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method placesAffectedBy(identifier: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method placesAffectedBy(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     method search(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
 
   end;
@@ -1241,11 +1241,11 @@ type
   AerisWeatherKit.AWFAdvisoryBreakpoint = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property &type: not nullable NSString; public;
+    property &type: NSString; public;
 
     property path: NSArray<AWFGeoPolygonCoordValue>; public;
 
-    property polyline: not nullable AerisWeatherKit.AWFGeoPolygon; public;
+    property polyline: AerisWeatherKit.AWFGeoPolygon; public;
 
 
   end;
@@ -1268,7 +1268,7 @@ type
   AerisWeatherKit.AWFBatchRequestOptions = class(AerisWeatherKit.AWFWeatherRequestOptions)
   private
 
-    property requestsUrlPath: not nullable NSString; public;
+    property requestsUrlPath: NSString; public;
 
 
   end;
@@ -1280,55 +1280,55 @@ type
 
     property endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>; public;
 
-    property URLPath: not nullable NSString; public;
+    property URLPath: NSString; public;
 
     [NonSwiftOnly]
-    method initWithEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): not nullable instancetype; public;
+    method initWithEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): not nullable instancetype; public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint); public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString); public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method removeEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint); public;
+    class constructor withEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype; public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString); public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method removeEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
     [NonSwiftOnly]
-    method removeEndpointForKey(key: not nullable NSString); public;
+    method removeEndpointForKey(key: NSString); public;
     [Alias]
     [SwiftOnly]
-    method removeEndpoint(key: not nullable NSString); public;
+    method removeEndpoint(key: NSString); public;
     method removeAllEndpoints; public;
     [NonSwiftOnly]
-    method setPlaceForAllEndpoints(place: not nullable AerisWeatherKit.AWFPlace); public;
+    method setPlaceForAllEndpoints(place: AerisWeatherKit.AWFPlace); public;
     [Alias]
     [SwiftOnly]
-    method setPlace(place: not nullable AerisWeatherKit.AWFPlace); public;
+    method setPlace(place: AerisWeatherKit.AWFPlace); public;
     [NonSwiftOnly]
-    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): not nullable AWFRequest; public;
+    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): not nullable AWFRequest; public;
+    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
     [NonSwiftOnly]
-    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): not nullable AWFRequest; public;
+    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): not nullable AWFRequest; public;
+    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
     [NonSwiftOnly]
-    method resultsForEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method resultsForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
     [Alias]
     [SwiftOnly]
-    method results(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method results(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
     [NonSwiftOnly]
-    method resultsForEndpointWithKey(key: not nullable NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method resultsForEndpointWithKey(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
     [Alias]
     [SwiftOnly]
-    method resultsForEndpoint(key: not nullable NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
-    method endpointForKey(key: not nullable NSString): nullable AerisWeatherKit.AWFWeatherEndpoint; public;
-    method URLPathForEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint) appendQueryString(queryString: BOOL): nullable NSString; public;
-    property placeForAllEndpoints: not nullable AerisWeatherKit.AWFPlace; public;
+    method resultsForEndpoint(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method endpointForKey(key: NSString): nullable AerisWeatherKit.AWFWeatherEndpoint; public;
+    method URLPathForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) appendQueryString(queryString: BOOL): nullable NSString; public;
+    property placeForAllEndpoints: AerisWeatherKit.AWFPlace; public;
 
 
   end;
@@ -1696,12 +1696,12 @@ type
   private
 
     [NonSwiftOnly]
-    method initWithIndexType(indexType: AWFIndexDataType): not nullable instancetype; public;
+    method initWithIndexType(indexType: AWFIndexDataType): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withIndexType(indexType: AWFIndexDataType): not nullable instancetype; public;
-    method init: not nullable instancetype; public;
+    class constructor withIndexType(indexType: AWFIndexDataType): instancetype; public;
+    method init: instancetype; public;
 
   end;
 
@@ -1976,17 +1976,17 @@ type
 
     property icon: nullable NSString; public;
 
-    property skyCoverPercentage: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property skyCoverPercentage: AerisWeatherKit.AWFRangeSummary; public;
 
-    property tempC: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property tempC: AerisWeatherKit.AWFRangeSummary; public;
 
-    property tempF: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property tempF: AerisWeatherKit.AWFRangeSummary; public;
 
-    property dewpointC: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property dewpointC: AerisWeatherKit.AWFRangeSummary; public;
 
-    property dewpointF: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property dewpointF: AerisWeatherKit.AWFRangeSummary; public;
 
-    property humidity: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property humidity: AerisWeatherKit.AWFRangeSummary; public;
 
     property precipIN: CGFloat; public;
 
@@ -1994,11 +1994,11 @@ type
 
     property precipCount: NSInteger; public;
 
-    property windSpeedKTS: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property windSpeedKTS: AerisWeatherKit.AWFRangeSummary; public;
 
-    property windSpeedMPH: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property windSpeedMPH: AerisWeatherKit.AWFRangeSummary; public;
 
-    property windSpeedKMH: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property windSpeedKMH: AerisWeatherKit.AWFRangeSummary; public;
 
     property windGustKTS: CGFloat; public;
 
@@ -2006,15 +2006,15 @@ type
 
     property windGustKMH: CGFloat; public;
 
-    property pressureMB: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property pressureMB: AerisWeatherKit.AWFRangeSummary; public;
 
-    property pressureIN: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property pressureIN: AerisWeatherKit.AWFRangeSummary; public;
 
-    property visibilityKM: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property visibilityKM: AerisWeatherKit.AWFRangeSummary; public;
 
-    property visibilityMI: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property visibilityMI: AerisWeatherKit.AWFRangeSummary; public;
 
-    property solarRadiationKM2: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property solarRadiationKM2: AerisWeatherKit.AWFRangeSummary; public;
 
 
   end;
@@ -2058,42 +2058,42 @@ type
   AerisWeatherKit.AWFPlaces = class(AerisWeatherKit.AWFWeatherEndpoint)
   private
 
-    method getPlace(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method searchUsingName(name: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingName(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method search(name: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method searchUsingZipcode(zipcode: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingZipcode(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method search(zipcode: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method searchUsingICAO(icao: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingICAO(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method search(icao: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method searchUsingNameStartingWith(startsWith: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingNameStartingWith(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method searchUsingNameStarting(startsWith: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingNameStarting(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    method searchUsingString(placeString: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingString(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
     [SwiftOnly]
-    method search(placeString: not nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
-    class method countryCodesForNameString(value: not nullable NSString): NSArray<NSString>; public;
+    class method countryCodesForNameString(value: NSString): NSArray<NSString>; public;
     [Alias]
     [SwiftOnly]
-    class method countryCodes(value: not nullable NSString): NSArray<NSString>; public;
+    class method countryCodes(value: NSString): NSArray<NSString>; public;
     [NonSwiftOnly]
-    class method stateCodesForNameString(value: not nullable NSString): NSArray<NSString>; public;
+    class method stateCodesForNameString(value: NSString): NSArray<NSString>; public;
     [Alias]
     [SwiftOnly]
-    class method stateCodes(value: not nullable NSString): NSArray<NSString>; public;
+    class method stateCodes(value: NSString): NSArray<NSString>; public;
 
   end;
 
@@ -2180,7 +2180,7 @@ type
 
     property stationId: nullable NSString; public;
 
-    property timestamp: not nullable NSDate; public;
+    property timestamp: NSDate; public;
 
     property obs: nullable AerisWeatherKit.AWFRiverObservation; public;
 
@@ -2244,9 +2244,9 @@ type
   AerisWeatherKit.AWFRiverGauge = class(AerisWeatherKit.AWFGeographicObject)
   private
 
-    property stationId: not nullable NSString; public;
+    property stationId: NSString; public;
 
-    property waterbody: not nullable NSString; public;
+    property waterbody: NSString; public;
 
     property categories: NSArray<AerisWeatherKit.AWFRiverCategory>; public;
 
@@ -2264,7 +2264,7 @@ type
   AerisWeatherKit.AWFRiverRecord = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property timestamp: not nullable NSDate; public;
+    property timestamp: NSDate; public;
 
     property heightFT: CGFloat; public;
 
@@ -2280,7 +2280,7 @@ type
 
     property heightM: CGFloat; public;
 
-    property text: not nullable NSString; public;
+    property text: NSString; public;
 
 
   end;
@@ -2667,7 +2667,7 @@ type
 
     method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     method getFrom(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-    method getForPlace(place: not nullable AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [NonSwiftOnly]
     method searchUsingYear(year: NSUInteger) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
     [Alias]
@@ -2892,7 +2892,7 @@ type
   AerisWeatherKit.AWFStormThreat = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property dbz: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property dbz: AerisWeatherKit.AWFRangeSummary; public;
 
     property directionFrom: nullable NSString; public;
 
@@ -2904,15 +2904,15 @@ type
 
     property span: CGFloat; public;
 
-    property distanceKM: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property distanceKM: AerisWeatherKit.AWFRangeSummary; public;
 
-    property distanceMI: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property distanceMI: AerisWeatherKit.AWFRangeSummary; public;
 
-    property speedKTS: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property speedKTS: AerisWeatherKit.AWFRangeSummary; public;
 
-    property speedMPH: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property speedMPH: AerisWeatherKit.AWFRangeSummary; public;
 
-    property speedKMH: not nullable AerisWeatherKit.AWFRangeSummary; public;
+    property speedKMH: AerisWeatherKit.AWFRangeSummary; public;
 
     property approaching: CGFloat; public;
 
@@ -2954,9 +2954,9 @@ type
   AerisWeatherKit.AWFTropicalCyclone = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property systemId: not nullable NSString; public;
+    property systemId: NSString; public;
 
-    property profile: not nullable AerisWeatherKit.AWFTropicalCycloneProfile; public;
+    property profile: AerisWeatherKit.AWFTropicalCycloneProfile; public;
 
     property position: nullable AerisWeatherKit.AWFTropicalCyclonePosition; public;
 
@@ -2968,7 +2968,7 @@ type
 
     property advisoryBreakpoints: NSArray<AerisWeatherKit.AWFAdvisoryBreakpoint>; public;
 
-    property timeZone: not nullable NSTimeZone; public;
+    property timeZone: NSTimeZone; public;
 
 
   end;
@@ -2976,9 +2976,9 @@ type
   AerisWeatherKit.AWFTropicalCycloneProfile = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property cyclone: not nullable AerisWeatherKit.AWFTropicalCyclone; public;
+    property cyclone: AerisWeatherKit.AWFTropicalCyclone; public;
 
-    property name: not nullable NSString; public;
+    property name: NSString; public;
 
     property year: NSUInteger; public;
 
@@ -2992,9 +2992,9 @@ type
 
     property isActive: BOOL; public;
 
-    property lifespanStart: not nullable NSDate; public;
+    property lifespanStart: NSDate; public;
 
-    property lifespanEnd: not nullable NSDate; public;
+    property lifespanEnd: NSDate; public;
 
     property maxStormType: AWFTropicalStormType; public;
 
@@ -3024,9 +3024,9 @@ type
   AerisWeatherKit.AWFTropicalCyclonePosition = class(AerisWeatherKit.AWFWeatherObject)
   private
 
-    property cyclone: not nullable AerisWeatherKit.AWFTropicalCyclone; public;
+    property cyclone: AerisWeatherKit.AWFTropicalCyclone; public;
 
-    property advisoryId: not nullable NSString; public;
+    property advisoryId: NSString; public;
 
     property isCurrent: BOOL; public;
 
@@ -3038,15 +3038,15 @@ type
 
     property category: AWFTropicalStormType; public;
 
-    property name: not nullable NSString; public;
+    property name: NSString; public;
 
-    property shortName: not nullable NSString; public;
+    property shortName: NSString; public;
 
     property basin: AWFTropicalBasin; public;
 
     property movingDirection: CGFloat; public;
 
-    property movingDirectionENG: not nullable NSString; public;
+    property movingDirectionENG: NSString; public;
 
     property movingSpeedKTS: CGFloat; public;
 
@@ -3137,18 +3137,18 @@ type
     property timeZone: nullable NSTimeZone; public;
 
     [NonSwiftOnly]
-    method setEndpointForAllSeriesItems(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint); public;
+    method setEndpointForAllSeriesItems(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
     [Alias]
     [SwiftOnly]
-    method setEndpoint(endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint); public;
+    method setEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
     [NonSwiftOnly]
-    method setPlaceForAllSeriesItemEndpoints(place: not nullable AerisWeatherKit.AWFPlace); public;
+    method setPlaceForAllSeriesItemEndpoints(place: AerisWeatherKit.AWFPlace); public;
     [Alias]
     [SwiftOnly]
-    method setPlace(place: not nullable AerisWeatherKit.AWFPlace); public;
-    property endpointForAllSeriesItems: not nullable AerisWeatherKit.AWFWeatherEndpoint; public;
+    method setPlace(place: AerisWeatherKit.AWFPlace); public;
+    property endpointForAllSeriesItems: AerisWeatherKit.AWFWeatherEndpoint; public;
 
-    property placeForAllSeriesItemEndpoints: not nullable AerisWeatherKit.AWFPlace; public;
+    property placeForAllSeriesItemEndpoints: AerisWeatherKit.AWFPlace; public;
 
 
   end;
@@ -3156,7 +3156,7 @@ type
   AerisWeatherKit.AWFWeatherSeriesItem = class
   private
 
-    property endpoint: not nullable AerisWeatherKit.AWFWeatherEndpoint; public;
+    property endpoint: AerisWeatherKit.AWFWeatherEndpoint; public;
 
 
   end;

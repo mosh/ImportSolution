@@ -27,16 +27,16 @@ type
     class var AWFRequestMethodPut: AWFRequestMethod; public;
     class var AWFRequestMethodPatch: AWFRequestMethod; public;
     class var AWFRequestMethodDelete: AWFRequestMethod; public;
-    class var AWFNetworkErrorDomain: not nullable NSString; public;
-    class var AWFApiParamKeyClientKey: not nullable NSString; public;
-    class var AWFApiParamKeyClientSecret: not nullable NSString; public;
-    class var AWFOAuth2ErrorDomain: not nullable NSString; public;
-    class var kAWFOAuthCodeGrantType: not nullable NSString; public;
-    class var kAWFOAuthClientCredentialsGrantType: not nullable NSString; public;
-    class var kAWFOAuthPasswordCredentialsGrantType: not nullable NSString; public;
-    class var kAWFOAuthRefreshGrantType: not nullable NSString; public;
-    class var AWFResourcePathKey: not nullable NSString; public;
-    class var AWFResourceMethodKey: not nullable NSString; public;
+    class var AWFNetworkErrorDomain: NSString; public;
+    class var AWFApiParamKeyClientKey: NSString; public;
+    class var AWFApiParamKeyClientSecret: NSString; public;
+    class var AWFOAuth2ErrorDomain: NSString; public;
+    class var kAWFOAuthCodeGrantType: NSString; public;
+    class var kAWFOAuthClientCredentialsGrantType: NSString; public;
+    class var kAWFOAuthPasswordCredentialsGrantType: NSString; public;
+    class var kAWFOAuthRefreshGrantType: NSString; public;
+    class var AWFResourcePathKey: NSString; public;
+    class var AWFResourceMethodKey: NSString; public;
     class var AWFApiResponseKeySuccess: NSString; public;
     class var AWFApiResponseKeyError: NSString; public;
     class var AWFApiResponseKeyErrorCode: NSString; public;
@@ -287,7 +287,7 @@ type
 
     property completionDelay: NSTimeInterval; public;
 
-    class method sharedManager: not nullable instancetype; public;
+    class method sharedManager: instancetype; public;
     method incrementActivityCount; public;
     method decrementActivityCount; public;
     [NonSwiftOnly]
@@ -308,29 +308,29 @@ type
     property observer: nullable id; public;
 
     [NonSwiftOnly]
-    class method controllerWithObserver(observer: nullable id): not nullable instancetype; public;
+    class method controllerWithObserver(observer: nullable id): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method controller(observer: nullable id): not nullable instancetype; public;
+    class method controller(observer: nullable id): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithObserver(observer: nullable id): not nullable instancetype; public;
+    class constructor withWithObserver(observer: nullable id): instancetype; public;
     [NonSwiftOnly]
-    method initWithObserver(observer: nullable id): not nullable instancetype; public;
+    method initWithObserver(observer: nullable id): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withObserver(observer: nullable id): not nullable instancetype; public;
-    method init: not nullable instancetype; public;
-    class method &new: not nullable instancetype; public;
-    method observe(object: nullable id) keyPath(keyPath: not nullable NSString) options(options: NSKeyValueObservingOptions) &block(&block: method(observer: id; object: id; change: NSDictionary<NSString,id>)); public;
-    method observe(object: nullable id) keyPath(keyPath: not nullable NSString) options(options: NSKeyValueObservingOptions) action(action: SEL); public;
-    method observe(object: nullable id) keyPath(keyPath: not nullable NSString) options(options: NSKeyValueObservingOptions) context(context: ^Void); public;
+    class constructor withObserver(observer: nullable id): instancetype; public;
+    method init: instancetype; public;
+    class method &new: instancetype; public;
+    method observe(object: nullable id) keyPath(keyPath: NSString) options(options: NSKeyValueObservingOptions) &block(&block: method(observer: id; object: id; change: NSDictionary<NSString,id>)); public;
+    method observe(object: nullable id) keyPath(keyPath: NSString) options(options: NSKeyValueObservingOptions) action(action: SEL); public;
+    method observe(object: nullable id) keyPath(keyPath: NSString) options(options: NSKeyValueObservingOptions) context(context: ^Void); public;
     method observe(object: nullable id) keyPaths(keyPaths: NSArray<NSString>) options(options: NSKeyValueObservingOptions) &block(&block: method(observer: id; object: id; change: NSDictionary<NSString,id>)); public;
     method observe(object: nullable id) keyPaths(keyPaths: NSArray<NSString>) options(options: NSKeyValueObservingOptions) action(action: SEL); public;
     method observe(object: nullable id) keyPaths(keyPaths: NSArray<NSString>) options(options: NSKeyValueObservingOptions) context(context: ^Void); public;
-    method unobserve(object: nullable id) keyPath(keyPath: not nullable NSString); public;
+    method unobserve(object: nullable id) keyPath(keyPath: NSString); public;
     method unobserve(object: nullable id); public;
     method unobserveAll; public;
 
@@ -374,25 +374,25 @@ type
   private
 
     [NonSwiftOnly]
-    method delegateForTask(task: not nullable NSURLSessionTask): not nullable AerisCore.AWFURLSessionTaskDelegate; public;
+    method delegateForTask(task: NSURLSessionTask): AerisCore.AWFURLSessionTaskDelegate; public;
     [Alias]
     [SwiftOnly]
-    method &delegate(task: not nullable NSURLSessionTask): not nullable AerisCore.AWFURLSessionTaskDelegate; public;
+    method &delegate(task: NSURLSessionTask): AerisCore.AWFURLSessionTaskDelegate; public;
     [NonSwiftOnly]
-    method setDelegate(&delegate: not nullable AerisCore.AWFURLSessionTaskDelegate) forTask(task: not nullable NSURLSessionTask); public;
+    method setDelegate(&delegate: AerisCore.AWFURLSessionTaskDelegate) forTask(task: NSURLSessionTask); public;
     [Alias]
     [SwiftOnly]
-    method setDelegate(&delegate: not nullable AerisCore.AWFURLSessionTaskDelegate) &for(task: not nullable NSURLSessionTask); public;
+    method setDelegate(&delegate: AerisCore.AWFURLSessionTaskDelegate) &for(task: NSURLSessionTask); public;
     [NonSwiftOnly]
-    method requestForTask(task: not nullable NSURLSessionTask): not nullable AerisCore.AWFRequest; public;
+    method requestForTask(task: NSURLSessionTask): AerisCore.AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method request(task: not nullable NSURLSessionTask): not nullable AerisCore.AWFRequest; public;
+    method request(task: NSURLSessionTask): AerisCore.AWFRequest; public;
     [NonSwiftOnly]
-    method setRequest(request: not nullable AerisCore.AWFRequest) forTask(task: not nullable NSURLSessionTask); public;
+    method setRequest(request: AerisCore.AWFRequest) forTask(task: NSURLSessionTask); public;
     [Alias]
     [SwiftOnly]
-    method setRequest(request: not nullable AerisCore.AWFRequest) &for(task: not nullable NSURLSessionTask); public;
+    method setRequest(request: AerisCore.AWFRequest) &for(task: NSURLSessionTask); public;
 
   end;
 
@@ -403,9 +403,9 @@ type
 
     property value: Value; public;
 
-    property error: not nullable NSError; public;
+    property error: NSError; public;
 
-    class method &result: not nullable instancetype; public;
+    class method &result: instancetype; public;
 
   end;
 
@@ -415,11 +415,11 @@ type
     property serializeResponse: method(request: NSURLRequest; response: NSHTTPURLResponse; data: NSData; error: NSError): AerisCore.AWFResponseResult; public;
 
     [NonSwiftOnly]
-    method initWithSerializeResponseBlock(serializeResponse: method(request: NSURLRequest; response: NSHTTPURLResponse; data: NSData; error: NSError): AerisCore.AWFResponseResult): not nullable instancetype; public;
+    method initWithSerializeResponseBlock(serializeResponse: method(request: NSURLRequest; response: NSHTTPURLResponse; data: NSData; error: NSError): AerisCore.AWFResponseResult): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withSerializeResponseBlock(serializeResponse: method(request: NSURLRequest; response: NSHTTPURLResponse; data: NSData; error: NSError): AerisCore.AWFResponseResult): not nullable instancetype; public;
+    class constructor withSerializeResponseBlock(serializeResponse: method(request: NSURLRequest; response: NSHTTPURLResponse; data: NSData; error: NSError): AerisCore.AWFResponseResult): instancetype; public;
 
   end;
 
@@ -432,24 +432,24 @@ type
   AerisCore.AWFRequest = class(NSObject)
   private
 
-    property &delegate: not nullable AerisCore.AWFURLSessionTaskDelegate; public;
+    property &delegate: AerisCore.AWFURLSessionTaskDelegate; public;
 
-    property task: not nullable NSURLSessionTask; public;
+    property task: NSURLSessionTask; public;
 
-    property session: not nullable NSURLSession; public;
+    property session: NSURLSession; public;
 
     property request: nullable NSURLRequest; public;
 
     property response: nullable NSHTTPURLResponse; public;
 
-    property progress: not nullable NSProgress; public;
+    property progress: NSProgress; public;
 
     [NonSwiftOnly]
-    method initWithSession(session: not nullable NSURLSession) task(task: not nullable NSURLSessionTask): not nullable instancetype; public;
+    method initWithSession(session: NSURLSession) task(task: NSURLSessionTask): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withSession(session: not nullable NSURLSession) task(task: not nullable NSURLSessionTask): not nullable instancetype; public;
+    class constructor withSession(session: NSURLSession) task(task: NSURLSessionTask): instancetype; public;
     method resume; public;
     method suspend; public;
     method cancel; public;
@@ -468,45 +468,45 @@ type
   AerisCore.AWFURLSessionManager = class(NSObject)
   private
 
-    property session: not nullable NSURLSession; public;
+    property session: NSURLSession; public;
 
-    property &delegate: not nullable AerisCore.AWFURLSessionManagerDelegate; public;
+    property &delegate: AerisCore.AWFURLSessionManagerDelegate; public;
 
     property startsRequestsImmediately: BOOL; public;
 
-    class method sharedManager: not nullable instancetype; public;
+    class method sharedManager: instancetype; public;
     [NonSwiftOnly]
-    method initWithConfiguration(configuration: not nullable NSURLSessionConfiguration): not nullable instancetype; public;
+    method initWithConfiguration(configuration: NSURLSessionConfiguration): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withConfiguration(configuration: not nullable NSURLSessionConfiguration): not nullable instancetype; public;
+    class constructor withConfiguration(configuration: NSURLSessionConfiguration): instancetype; public;
     [NonSwiftOnly]
-    method initWithConfiguration(configuration: not nullable NSURLSessionConfiguration) &delegate(&delegate: nullable AerisCore.AWFURLSessionManagerDelegate): not nullable instancetype; public;
+    method initWithConfiguration(configuration: NSURLSessionConfiguration) &delegate(&delegate: nullable AerisCore.AWFURLSessionManagerDelegate): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withConfiguration(configuration: not nullable NSURLSessionConfiguration) &delegate(&delegate: nullable AerisCore.AWFURLSessionManagerDelegate): not nullable instancetype; public;
+    class constructor withConfiguration(configuration: NSURLSessionConfiguration) &delegate(&delegate: nullable AerisCore.AWFURLSessionManagerDelegate): instancetype; public;
     [NonSwiftOnly]
-    method requestWithMethod(&method: AWFRequestMethod) URLString(URLString: not nullable NSString) parameters(parameters: nullable id): not nullable AerisCore.AWFRequest; public;
+    method requestWithMethod(&method: AWFRequestMethod) URLString(URLString: NSString) parameters(parameters: nullable id): AerisCore.AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method request(&method: AWFRequestMethod) urlString(URLString: not nullable NSString) parameters(parameters: nullable id): not nullable AerisCore.AWFRequest; public;
+    method request(&method: AWFRequestMethod) urlString(URLString: NSString) parameters(parameters: nullable id): AerisCore.AWFRequest; public;
     [NonSwiftOnly]
-    method requestWithMethod(&method: AWFRequestMethod) URLString(URLString: not nullable NSString) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) headers(headers: NSDictionary<NSString,NSString>): not nullable AerisCore.AWFRequest; public;
+    method requestWithMethod(&method: AWFRequestMethod) URLString(URLString: NSString) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) headers(headers: NSDictionary<NSString,NSString>): AerisCore.AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method request(&method: AWFRequestMethod) urlString(URLString: not nullable NSString) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) headers(headers: NSDictionary<NSString,NSString>): not nullable AerisCore.AWFRequest; public;
+    method request(&method: AWFRequestMethod) urlString(URLString: NSString) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) headers(headers: NSDictionary<NSString,NSString>): AerisCore.AWFRequest; public;
     [NonSwiftOnly]
-    method requestWithURLRequest(URLRequest: not nullable NSURLRequest) parameters(parameters: nullable id): not nullable AerisCore.AWFRequest; public;
+    method requestWithURLRequest(URLRequest: NSURLRequest) parameters(parameters: nullable id): AerisCore.AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method request(URLRequest: not nullable NSURLRequest) parameters(parameters: nullable id): not nullable AerisCore.AWFRequest; public;
+    method request(URLRequest: NSURLRequest) parameters(parameters: nullable id): AerisCore.AWFRequest; public;
     [NonSwiftOnly]
-    method requestWithURLRequest(URLRequest: not nullable NSURLRequest) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding): not nullable AerisCore.AWFRequest; public;
+    method requestWithURLRequest(URLRequest: NSURLRequest) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding): AerisCore.AWFRequest; public;
     [Alias]
     [SwiftOnly]
-    method request(URLRequest: not nullable NSURLRequest) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding): not nullable AerisCore.AWFRequest; public;
+    method request(URLRequest: NSURLRequest) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding): AerisCore.AWFRequest; public;
 
   end;
 
@@ -515,11 +515,11 @@ type
   AerisCore.AWFURLSessionTaskDelegate = class(NSObject, INSURLSessionTaskDelegate)
   private
 
-    property task: not nullable NSURLSessionTask; public;
+    property task: NSURLSessionTask; public;
 
-    property queue: not nullable NSOperationQueue; public;
+    property queue: NSOperationQueue; public;
 
-    property progress: not nullable NSProgress; public;
+    property progress: NSProgress; public;
 
     property data: nullable NSData; public;
 
@@ -538,18 +538,18 @@ type
     property taskDidComplete: method(session: NSURLSession; task: NSURLSessionTask; error: NSError); public;
 
     [NonSwiftOnly]
-    method initWithTask(task: not nullable NSURLSessionTask): not nullable instancetype; public;
+    method initWithTask(task: NSURLSessionTask): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withTask(task: not nullable NSURLSessionTask): not nullable instancetype; public;
+    class constructor withTask(task: NSURLSessionTask): instancetype; public;
 
   end;
 
   AerisCore.AWFURLSessionDataTaskDelegate = class(AerisCore.AWFURLSessionTaskDelegate, INSURLSessionDataDelegate)
   private
 
-    property task: not nullable NSURLSessionDataTask; public;
+    property task: NSURLSessionDataTask; public;
 
     property dataProgress: method(fractionCompleted: Double; bytesRecieved: int64_t; totalBytesReceived: int64_t; totalBytesExpectedToReceive: int64_t); public;
 
@@ -588,11 +588,11 @@ type
     property metrics: nullable AerisCore.AWFRequestMetrics; public;
 
     [NonSwiftOnly]
-    method initWithRequest(request: nullable NSURLRequest) response(response: nullable NSHTTPURLResponse) data(data: nullable NSData) &result(&result: AerisCore.AWFResponseResult<id>) error(error: not nullable NSError) metrics(metrics: not nullable AerisCore.AWFRequestMetrics): not nullable instancetype; public;
+    method initWithRequest(request: nullable NSURLRequest) response(response: nullable NSHTTPURLResponse) data(data: nullable NSData) &result(&result: AerisCore.AWFResponseResult<id>) error(error: NSError) metrics(metrics: AerisCore.AWFRequestMetrics): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withRequest(request: nullable NSURLRequest) response(response: nullable NSHTTPURLResponse) data(data: nullable NSData) &result(&result: AerisCore.AWFResponseResult<id>) error(error: not nullable NSError) metrics(metrics: not nullable AerisCore.AWFRequestMetrics): not nullable instancetype; public;
+    class constructor withRequest(request: nullable NSURLRequest) response(response: nullable NSHTTPURLResponse) data(data: nullable NSData) &result(&result: AerisCore.AWFResponseResult<id>) error(error: NSError) metrics(metrics: AerisCore.AWFRequestMetrics): instancetype; public;
 
   end;
 
@@ -635,50 +635,50 @@ type
 
     property clientSecret: nullable NSString; public;
 
-    property responseClass: not nullable &Class; public;
+    property responseClass: &Class; public;
 
     property mapper: nullable AerisCore.AWFPropertyMapper; public;
 
-    class method sharedClient: not nullable instancetype; public;
+    class method sharedClient: instancetype; public;
     [NonSwiftOnly]
-    class method configureWithClientID(clientID: not nullable NSString) secret(clientSecret: not nullable NSString); public;
+    class method configureWithClientID(clientID: NSString) secret(clientSecret: NSString); public;
     [Alias]
     [SwiftOnly]
-    class method configure(clientID: not nullable NSString) secret(clientSecret: not nullable NSString); public;
+    class method configure(clientID: NSString) secret(clientSecret: NSString); public;
     [NonSwiftOnly]
-    class method configureWithClientID(clientID: not nullable NSString) secret(clientSecret: not nullable NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
+    class method configureWithClientID(clientID: NSString) secret(clientSecret: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
     [Alias]
     [SwiftOnly]
-    class method configure(clientID: not nullable NSString) secret(clientSecret: not nullable NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
-    class method serverPath: not nullable NSString; public;
+    class method configure(clientID: NSString) secret(clientSecret: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
+    class method serverPath: NSString; public;
     [NonSwiftOnly]
-    method initWithBaseURL(url: nullable NSURL): not nullable instancetype; public;
+    method initWithBaseURL(url: nullable NSURL): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBaseURL(url: nullable NSURL): not nullable instancetype; public;
+    class constructor withBaseURL(url: nullable NSURL): instancetype; public;
     [NonSwiftOnly]
-    method initWithBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: not nullable NSURLSessionConfiguration): not nullable instancetype; public;
+    method initWithBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: NSURLSessionConfiguration): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: not nullable NSURLSessionConfiguration): not nullable instancetype; public;
+    class constructor withBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: NSURLSessionConfiguration): instancetype; public;
     [NonSwiftOnly]
-    method initWithBaseURL(url: nullable NSURL) clientID(clientID: nullable NSString) secret(secret: nullable NSString): not nullable instancetype; public;
+    method initWithBaseURL(url: nullable NSURL) clientID(clientID: nullable NSString) secret(secret: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBaseURL(url: nullable NSURL) clientID(clientID: nullable NSString) secret(secret: nullable NSString): not nullable instancetype; public;
+    class constructor withBaseURL(url: nullable NSURL) clientID(clientID: nullable NSString) secret(secret: nullable NSString): instancetype; public;
     [NonSwiftOnly]
-    method initWithBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: not nullable NSURLSessionConfiguration) clientID(clientID: nullable NSString) secret(secret: nullable NSString): not nullable instancetype; public;
+    method initWithBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: NSURLSessionConfiguration) clientID(clientID: nullable NSString) secret(secret: nullable NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: not nullable NSURLSessionConfiguration) clientID(clientID: nullable NSString) secret(secret: nullable NSString): not nullable instancetype; public;
-    method request(URLString: not nullable NSString) &method(&method: AWFRequestMethod) parameters(parameters: nullable id) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): not nullable AerisCore.AWFRequest; public;
-    method request(URLString: not nullable NSString) &method(&method: AWFRequestMethod) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): not nullable AerisCore.AWFRequest; public;
-    method request(URLString: not nullable NSString) &method(&method: AWFRequestMethod) expirationInterval(expirationInterval: NSTimeInterval) parameters(parameters: nullable id) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): not nullable AerisCore.AWFRequest; public;
-    method request(URLString: not nullable NSString) &method(&method: AWFRequestMethod) expirationInterval(expirationInterval: NSTimeInterval) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): not nullable AerisCore.AWFRequest; public;
+    class constructor withBaseURL(url: nullable NSURL) sessionConfiguration(sessionConfiguration: NSURLSessionConfiguration) clientID(clientID: nullable NSString) secret(secret: nullable NSString): instancetype; public;
+    method request(URLString: NSString) &method(&method: AWFRequestMethod) parameters(parameters: nullable id) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): AerisCore.AWFRequest; public;
+    method request(URLString: NSString) &method(&method: AWFRequestMethod) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): AerisCore.AWFRequest; public;
+    method request(URLString: NSString) &method(&method: AWFRequestMethod) expirationInterval(expirationInterval: NSTimeInterval) parameters(parameters: nullable id) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): AerisCore.AWFRequest; public;
+    method request(URLString: NSString) &method(&method: AWFRequestMethod) expirationInterval(expirationInterval: NSTimeInterval) parameters(parameters: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) completion(completionBlock: method(response: AerisCore.AWFApiResponse)): AerisCore.AWFRequest; public;
     method setupMappings; public;
 
   end;
@@ -686,53 +686,53 @@ type
   AerisCore.AWFOAuthCredential = class(NSObject, INSCoding)
   private
 
-    property accessToken: not nullable NSString; public;
+    property accessToken: NSString; public;
 
-    property tokenType: not nullable NSString; public;
+    property tokenType: NSString; public;
 
-    property refreshToken: not nullable NSString; public;
+    property refreshToken: NSString; public;
 
     property expired: BOOL; public;
 
     [NonSwiftOnly]
-    class method credentialWithOAuthToken(token: not nullable NSString) tokenType(&type: not nullable NSString): not nullable instancetype; public;
+    class method credentialWithOAuthToken(token: NSString) tokenType(&type: NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method credential(token: not nullable NSString) tokenType(&type: not nullable NSString): not nullable instancetype; public;
+    class method credential(token: NSString) tokenType(&type: NSString): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withOAuthToken(token: not nullable NSString) tokenType(&type: not nullable NSString): not nullable instancetype; public;
+    class constructor withOAuthToken(token: NSString) tokenType(&type: NSString): instancetype; public;
     [NonSwiftOnly]
-    method initWithOAuthToken(token: not nullable NSString) tokenType(&type: not nullable NSString): not nullable id; public;
+    method initWithOAuthToken(token: NSString) tokenType(&type: NSString): id; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withOAuthToken(token: not nullable NSString) tokenType(&type: not nullable NSString): not nullable id; public;
-    method setRefreshToken(refreshToken: not nullable NSString); public;
-    method setExpiration(expiration: not nullable NSDate); public;
-    method setRefreshToken(refreshToken: not nullable NSString) expiration(expiration: not nullable NSDate); public;
+    class constructor withOAuthToken(token: NSString) tokenType(&type: NSString): id; public;
+    method setRefreshToken(refreshToken: NSString); public;
+    method setExpiration(expiration: NSDate); public;
+    method setRefreshToken(refreshToken: NSString) expiration(expiration: NSDate); public;
     [NonSwiftOnly]
-    class method storeCredential(credential: not nullable AerisCore.AWFOAuthCredential) withIdentifier(identifier: not nullable NSString): BOOL; public;
+    class method storeCredential(credential: AerisCore.AWFOAuthCredential) withIdentifier(identifier: NSString): BOOL; public;
     [Alias]
     [SwiftOnly]
-    class method store(credential: not nullable AerisCore.AWFOAuthCredential) withIdentifier(identifier: not nullable NSString): BOOL; public;
+    class method store(credential: AerisCore.AWFOAuthCredential) withIdentifier(identifier: NSString): BOOL; public;
     [NonSwiftOnly]
-    class method storeCredential(credential: not nullable AerisCore.AWFOAuthCredential) withIdentifier(identifier: not nullable NSString) withAccessibility(securityAccessibility: not nullable id): BOOL; public;
+    class method storeCredential(credential: AerisCore.AWFOAuthCredential) withIdentifier(identifier: NSString) withAccessibility(securityAccessibility: id): BOOL; public;
     [Alias]
     [SwiftOnly]
-    class method store(credential: not nullable AerisCore.AWFOAuthCredential) withIdentifier(identifier: not nullable NSString) withAccessibility(securityAccessibility: not nullable id): BOOL; public;
+    class method store(credential: AerisCore.AWFOAuthCredential) withIdentifier(identifier: NSString) withAccessibility(securityAccessibility: id): BOOL; public;
     [NonSwiftOnly]
-    class method retrieveCredentialWithIdentifier(identifier: not nullable NSString): nullable AerisCore.AWFOAuthCredential; public;
+    class method retrieveCredentialWithIdentifier(identifier: NSString): nullable AerisCore.AWFOAuthCredential; public;
     [Alias]
     [SwiftOnly]
-    class method retrieveCredential(identifier: not nullable NSString): nullable AerisCore.AWFOAuthCredential; public;
+    class method retrieveCredential(identifier: NSString): nullable AerisCore.AWFOAuthCredential; public;
     [NonSwiftOnly]
-    class method deleteCredentialWithIdentifier(identifier: not nullable NSString): BOOL; public;
+    class method deleteCredentialWithIdentifier(identifier: NSString): BOOL; public;
     [Alias]
     [SwiftOnly]
-    class method delete(identifier: not nullable NSString): BOOL; public;
-    property expiration: not nullable NSDate; public;
+    class method delete(identifier: NSString): BOOL; public;
+    property expiration: NSDate; public;
 
 
   end;
@@ -742,51 +742,51 @@ type
   AerisCore.AWFOAuthApiClient = class(AerisCore.AWFApiClient)
   private
 
-    property serviceProviderIdentifier: not nullable NSString; public;
+    property serviceProviderIdentifier: NSString; public;
 
-    property oauthCredential: not nullable AerisCore.AWFOAuthCredential; public;
+    property oauthCredential: AerisCore.AWFOAuthCredential; public;
 
     property sendsDataAsHttpBody: BOOL; public;
 
     property useHTTPBasicAuthentication: BOOL; public;
 
-    class method authenticationPath: not nullable NSString; public;
+    class method authenticationPath: NSString; public;
     class method publicResources: NSArray<id>; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithURLString(URLString: not nullable NSString) username(username: not nullable NSString) password(password: not nullable NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithURLString(URLString: NSString) username(username: NSString) password(password: NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(URLString: not nullable NSString) username(username: not nullable NSString) password(password: not nullable NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(URLString: NSString) username(username: NSString) password(password: NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithURLString(URLString: not nullable NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithURLString(URLString: NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(URLString: not nullable NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(URLString: NSString) scope(scope: nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithURLString(URLString: not nullable NSString) refreshToken(refreshToken: not nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithURLString(URLString: NSString) refreshToken(refreshToken: NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(URLString: not nullable NSString) refreshToken(refreshToken: not nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(URLString: NSString) refreshToken(refreshToken: NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithURLString(URLString: not nullable NSString) code(code: not nullable NSString) redirectURI(uri: not nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithURLString(URLString: NSString) code(code: NSString) redirectURI(uri: NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(URLString: not nullable NSString) code(code: not nullable NSString) redirectURI(uri: not nullable NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(URLString: NSString) code(code: NSString) redirectURI(uri: NSString) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithURLString(URLString: not nullable NSString) parameters(parameters: NSDictionary<id,id>) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithURLString(URLString: NSString) parameters(parameters: NSDictionary<id,id>) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(URLString: not nullable NSString) parameters(parameters: NSDictionary<id,id>) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(URLString: NSString) parameters(parameters: NSDictionary<id,id>) success(success: method(credential: AerisCore.AWFOAuthCredential)) failure(failure: method(error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method authenticateUsingOAuthWithUsername(username: not nullable NSString) password(password: not nullable NSString) completion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuthWithUsername(username: NSString) password(password: NSString) completion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method authenticateUsingOAuth(username: not nullable NSString) password(password: not nullable NSString) completion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): not nullable NSURLSessionTask; public;
+    method authenticateUsingOAuth(username: NSString) password(password: NSString) completion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
-    method refreshAccessTokenWithCompletion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): not nullable NSURLSessionTask; public;
+    method refreshAccessTokenWithCompletion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): NSURLSessionTask; public;
     [Alias]
     [SwiftOnly]
-    method refreshAccessToken(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): not nullable NSURLSessionTask; public;
+    method refreshAccessToken(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)): NSURLSessionTask; public;
     [NonSwiftOnly]
     method unauthenticateWithCompletion(completionBlock: method(credential: AerisCore.AWFOAuthCredential; error: NSError)); public;
     [Alias]
@@ -801,17 +801,17 @@ type
 
     property value: Value; public;
 
-    property error: not nullable NSError; public;
+    property error: NSError; public;
 
     [NonSwiftOnly]
-    class method resultWithValue(value: Value) error(error: nullable NSError): not nullable instancetype; public;
+    class method resultWithValue(value: Value) error(error: nullable NSError): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method &result(value: Value) error(error: nullable NSError): not nullable instancetype; public;
+    class method &result(value: Value) error(error: nullable NSError): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithValue(value: Value) error(error: nullable NSError): not nullable instancetype; public;
+    class constructor withWithValue(value: Value) error(error: nullable NSError): instancetype; public;
 
   end;
 
@@ -824,24 +824,24 @@ type
   AerisCore.AWFApiEndpoint = class(NSObject)
   private
 
-    property path: not nullable NSString; public;
+    property path: NSString; public;
 
-    property client: not nullable AerisCore.AWFApiClient; public;
+    property client: AerisCore.AWFApiClient; public;
 
-    property objectClass: not nullable &Class; public;
+    property objectClass: &Class; public;
 
     [NonSwiftOnly]
-    method initWithPath(path: not nullable NSString) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    method initWithPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPath(path: not nullable NSString) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    class constructor withPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
     [NonSwiftOnly]
-    method initWithPath(path: not nullable NSString) client(client: not nullable AerisCore.AWFApiClient) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    method initWithPath(path: NSString) client(client: AerisCore.AWFApiClient) objectClass(objectClass: &Class): instancetype; public;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPath(path: not nullable NSString) client(client: not nullable AerisCore.AWFApiClient) objectClass(objectClass: not nullable &Class): not nullable instancetype; public;
+    class constructor withPath(path: NSString) client(client: AerisCore.AWFApiClient) objectClass(objectClass: &Class): instancetype; public;
     [NonSwiftOnly]
     method getWithOptions(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
@@ -853,57 +853,57 @@ type
     [SwiftOnly]
     method get(options: nullable id) expires(expirationInterval: NSTimeInterval) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method getFromResource(resource: not nullable NSString) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method getFromResource(resource: NSString) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method get(resource: not nullable NSString) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method get(resource: NSString) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method getFromResource(resource: not nullable NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method getFromResource(resource: NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method get(resource: not nullable NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method get(resource: NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method getFromResource(resource: not nullable NSString) options(options: nullable id) mappingClass(mappingClass: not nullable &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method getFromResource(resource: NSString) options(options: nullable id) mappingClass(mappingClass: &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method get(resource: not nullable NSString) options(options: nullable id) mappingClass(mappingClass: not nullable &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method get(resource: NSString) options(options: nullable id) mappingClass(mappingClass: &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method getFromResource(resource: not nullable NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) mappingClass(mappingClass: not nullable &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method getFromResource(resource: NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) mappingClass(mappingClass: &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method get(resource: not nullable NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) mappingClass(mappingClass: not nullable &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method get(resource: NSString) options(options: nullable id) expires(expirationInterval: NSTimeInterval) mappingClass(mappingClass: &Class) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method getForId(objectId: not nullable id) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method getForId(objectId: id) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method get(objectId: not nullable id) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method get(objectId: id) options(options: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     method cancel; public;
     method reset; public;
     [NonSwiftOnly]
-    method performRequestForResource(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequestForResource(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method performRequest(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequest(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method performRequestForResource(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequestForResource(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method performRequest(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequest(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method performRequestForResource(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequestForResource(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method performRequest(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequest(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method performRequestForResource(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequestForResource(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [Alias]
     [SwiftOnly]
-    method performRequest(resource: not nullable NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: not nullable &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
+    method performRequest(resource: NSString) &method(httpMethod: AWFRequestMethod) options(options: nullable id) expires(expires: NSTimeInterval) encoding(encoding: AerisCore.AWFParameterEncoding) mappingClass(mappingClass: &Class) sourceObject(sourceObject: nullable id) completion(completionBlock: method(&result: AerisCore.AWFApiEndpointResult<id>)); public;
     [NonSwiftOnly]
-    method filterEncodedObject(encodedObject: NSDictionary<id,id>) ofClass(klass: not nullable &Class) forMethod(&method: AWFRequestMethod): NSDictionary<id,id>; public;
+    method filterEncodedObject(encodedObject: NSDictionary<id,id>) ofClass(klass: &Class) forMethod(&method: AWFRequestMethod): NSDictionary<id,id>; public;
     [Alias]
     [SwiftOnly]
-    method filterEncodedObject(encodedObject: NSDictionary<id,id>) &of(klass: not nullable &Class) &for(&method: AWFRequestMethod): NSDictionary<id,id>; public;
+    method filterEncodedObject(encodedObject: NSDictionary<id,id>) &of(klass: &Class) &for(&method: AWFRequestMethod): NSDictionary<id,id>; public;
     [NonSwiftOnly]
     method defaultEncodingForMethod(&method: AWFRequestMethod): AerisCore.AWFParameterEncoding; public;
     [Alias]
@@ -963,23 +963,23 @@ type
   private
 
     [NonSwiftOnly]
-    class method awf_objectWithContentsOfFile(path: not nullable NSString): not nullable instancetype; public;
+    class method awf_objectWithContentsOfFile(path: NSString): instancetype; public;
     [Alias]
     [SwiftOnly]
-    class method awf_objectWithContents(path: not nullable NSString): not nullable instancetype; public;
+    class method awf_objectWithContents(path: NSString): instancetype; public;
     class method awf_codableProperties: NSDictionary<id,id>; public;
     [NonSwiftOnly]
-    method awf_setWithCoder(aDecoder: not nullable NSCoder); public;
+    method awf_setWithCoder(aDecoder: NSCoder); public;
     [Alias]
     [SwiftOnly]
-    method awf_set(aDecoder: not nullable NSCoder); public;
+    method awf_set(aDecoder: NSCoder); public;
     method awf_codableProperties: NSDictionary<id,id>; public;
     method awf_dictionaryRepresentation: NSDictionary<id,id>; public;
     [NonSwiftOnly]
-    method awf_writeToFile(filePath: not nullable NSString) atomically(useAuxiliaryFile: BOOL): BOOL; public;
+    method awf_writeToFile(filePath: NSString) atomically(useAuxiliaryFile: BOOL): BOOL; public;
     [Alias]
     [SwiftOnly]
-    method awf_write(filePath: not nullable NSString) atomically(useAuxiliaryFile: BOOL): BOOL; public;
+    method awf_write(filePath: NSString) atomically(useAuxiliaryFile: BOOL): BOOL; public;
 
   end;
 
