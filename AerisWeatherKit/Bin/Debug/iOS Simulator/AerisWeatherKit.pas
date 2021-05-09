@@ -2,7 +2,7 @@ namespace AerisWeatherKit;
 
 // Import of AerisWeatherKit (1.0)
 // Frameworks: AerisWeatherKit
-// Targets: x86_64
+// Targets: arm64
 // Dep fx:Foundation, rtl, UIKit, CoreGraphics, CoreLocation, MapKit, AerisCore
 // Dep libs:
 // Platform: iOS

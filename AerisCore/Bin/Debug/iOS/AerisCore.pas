@@ -156,6 +156,7 @@ type
   AerisCore.IAWFExpirable = interface(INSObject)
     property expires: NSDate read write; public;
 
+
   end;
 
   AerisCore.AWFCachedContent = class(NSObject, AerisCore.IAWFExpirable, INSCopying, INSCoding)

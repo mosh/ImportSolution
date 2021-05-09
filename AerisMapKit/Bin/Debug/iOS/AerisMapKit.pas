@@ -595,13 +595,18 @@ type
   AerisMapKit.IAWFDataRepresentable = interface(INSObject)
     property modelObject: nullable AWFWeatherObject read write; public;
 
+
   end;
 
   AerisMapKit.IAWFAnnotation = interface(AerisMapKit.IAWFDataRepresentable)
     property title: nullable NSString read write; public;
+
     property subtitle: nullable NSString read write; public;
+
     property coordinate: CLLocationCoordinate2D read write; public;
+
     property belongsToTimelineAnimation: BOOL read write; public;
+
     [NonSwiftOnly]
     method initWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
     [InitFromClassFactoryMethod]
@@ -1002,18 +1007,31 @@ type
 
   AerisMapKit.IAWFMapStrategy = interface(INSObject)
     property strategyType: AerisMapKit.AWFMapStrategyType read write; public;
+
     property mapView: UIView read write; public;
+
     property config: AerisMapKit.AWFWeatherMapConfig read write; public;
+
     property overlayFactory: AerisMapKit.IAWFMapOverlayFactory read write; public;
+
     property callout: AerisMapKit.AWFMapCallout read write; public;
+
     property overlays: NSArray<id> read write; public;
+
     property annotations: NSArray<id> read write; public;
+
     property coordinateBounds: AerisMapKit.AWFMapCoordinateBounds read write; public;
+
     property centerCoordinate: CLLocationCoordinate2D read write; public;
+
     property zoomLevel: NSInteger read write; public;
+
     property animationContainerView: id read write; public;
+
     property &delegate: nullable AerisMapKit.IAWFMapStrategyDelegate read write; public;
+
     property mapViewDelegate: nullable id read write; public;
+
     [NonSwiftOnly]
     method initWithWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype; public;
     [InitFromClassFactoryMethod]
@@ -1078,6 +1096,7 @@ type
     [SwiftOnly]
     method forwardTouch(touchPoint: CGPoint) &in(view: UIView); public;
     property center: CLLocationCoordinate2D read write; public;
+
 
   end;
 
@@ -1297,7 +1316,9 @@ type
 
   AerisMapKit.IAWFAnimatableOverlay = interface(IMKOverlay, AerisMapKit.IAWFAnimationDataSource)
     property animation: AerisMapKit.AWFAnimation read write; public;
+
     property maximumIntervalsForAnimation: NSInteger read write; public;
+
 
   end;
 
@@ -1335,6 +1356,7 @@ type
 
   AerisMapKit.IAWFStylable = interface(INSObject)
     property style: id read write; public;
+
 
   end;
 
@@ -1644,7 +1666,9 @@ type
 
   AerisMapKit.IAWFTimeDependent = interface(INSObject)
     property date: NSDate read write; public;
+
     property offset: NSString read write; public;
+
     [NonSwiftOnly]
     method updateForDateClosestToDate(date: NSDate) updatingOffset(updateOffset: BOOL); public;
     [Alias]
@@ -1916,8 +1940,11 @@ type
 
   AerisMapKit.IAWFStyledMapItem = interface(AerisMapKit.IAWFStylable)
     property identifier: NSString read write; public;
+
     property modelObject: AWFWeatherObject read write; public;
+
     property layerType: AWFMapLayer read write; public;
+
     [NonSwiftOnly]
     method initWithWeatherObject(object: AWFWeatherObject): instancetype; public;
     [InitFromClassFactoryMethod]
@@ -2260,6 +2287,7 @@ type
 
   AerisMapKit.IAWFAnnotationView = interface(INSObject)
     property annotation: AerisMapKit.IAWFAnnotation read write; public;
+
     [NonSwiftOnly]
     method initWithAnnotation(annotation: AerisMapKit.IAWFAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: AerisMapKit.AWFAnnotationStyle): instancetype; public;
     [InitFromClassFactoryMethod]
@@ -2274,7 +2302,9 @@ type
 
   AerisMapKit.IAWFPolygon = interface(AerisMapKit.IAWFDataRepresentable)
     property centroid: CLLocationCoordinate2D read write; public;
+
     property area: CGFloat read write; public;
+
     [NonSwiftOnly]
     class method polygonWithGeographicObject(object: AWFGeographicObject): instancetype; public;
     [Alias]
@@ -2344,8 +2374,11 @@ type
 
   AerisMapKit.IAWFOverlayStylable = interface(INSObject)
     property overlay: AerisMapKit.AWFMapItemStyle read write; public;
+
     property polygons: AerisMapKit.AWFMapItemStyle read write; public;
+
     property polylines: AerisMapKit.AWFMapItemStyle read write; public;
+
 
   end;
 
@@ -2470,6 +2503,7 @@ type
 
   AerisMapKit.IAWFDataRepresentableStyleProvider = interface(INSObject)
     property styleProvider: AerisMapKit.AWFDataRepresentableStyle read write; public;
+
 
   end;
 
@@ -2732,6 +2766,7 @@ type
 
   AerisMapKit.IAWFLegendRenderer = interface(INSObject)
     property style: AerisMapKit.AWFLegendStyle read write; public;
+
     [NonSwiftOnly]
     method initWithConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype; public;
     [InitFromClassFactoryMethod]
@@ -3222,6 +3257,7 @@ type
 
   AerisMapKit.IAWFDataLoading = interface
     property isLoading: BOOL read write; public;
+
     [NonSwiftOnly]
     method loadForCoordinate(coord: CLLocationCoordinate2D); public;
     [Alias]
@@ -3229,6 +3265,7 @@ type
     method load(coord: CLLocationCoordinate2D); public;
     method setCompletionBlock(completionBlock: method()); public;
     property completionBlock: method() read write; public;
+
 
   end;
 
@@ -3255,7 +3292,9 @@ type
 
   AerisMapKit.IAWFMapArrow = interface
     property coordinate: CLLocationCoordinate2D read write; public;
+
     property bounds: AWFCoordinateBounds read write; public;
+
     [NonSwiftOnly]
     class method arrowWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
     [Alias]
@@ -3466,12 +3505,16 @@ type
   AerisMapKit.IAWFOverlayProvider = interface(INSObject)
     property overlay: id read write; public;
 
+
   end;
 
   AerisMapKit.IAWFMKTileProvider = interface(INSObject)
     property overlay: IMKOverlay read write; public;
+
     property overlayLevel: MKOverlayLevel read write; public;
+
     property alpha: CGFloat read write; public;
+
 
   end;
 
