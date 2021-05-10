@@ -2,7 +2,7 @@ namespace AerisCoreUI;
 
 // Import of AerisCoreUI (1.0)
 // Frameworks: AerisCoreUI
-// Targets: x86_64
+// Targets: arm64
 // Dep fx:rtl, AerisCore, UIKit, QuartzCore, Foundation, CoreGraphics, CoreFoundation
 // Dep libs:
 // Platform: iOS

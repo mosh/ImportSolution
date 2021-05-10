@@ -2,7 +2,7 @@ namespace AerisCore;
 
 // Import of AerisCore (1.0)
 // Frameworks: AerisCore
-// Targets: x86_64
+// Targets: arm64
 // Dep fx:rtl, Foundation, UIKit, CoreGraphics, CoreLocation, CoreFoundation
 // Dep libs:
 // Platform: iOS
@@ -155,6 +155,7 @@ type
 
   AerisCore.IAWFExpirable = interface(INSObject)
     property expires: NSDate read write; public;
+
 
   end;
 
