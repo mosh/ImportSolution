@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/ALView+PureLayout.h</key>
 		<data>
-		4MQaUAe5dS0FRDoaBmWLN7iebis=
+		PfAnIOKq4Itz6kd1EgGTBqrnAQY=
 		</data>
 		<key>Headers/NSArray+PureLayout.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Headers/PureLayoutDefines.h</key>
 		<data>
-		aVz7dQle14n1gJlBk5nwwpkX0bc=
+		/EMmmmBVf2gfOkjw2EG/doN7wWc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+5AYmp1DPGXxIzfBRq41NtkOxio=
+		TY58+LG7ooWraXfzg5xkWYf9kR8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4MQaUAe5dS0FRDoaBmWLN7iebis=
+			PfAnIOKq4Itz6kd1EgGTBqrnAQY=
 			</data>
 			<key>hash2</key>
 			<data>
-			kdVfH2Aq3X6nUwIi7wXB6ShyaU4rfrR8Ta6Di716uiU=
+			m4hOYTftCC58b0KGTA3cZ0VQhNrIvOD47d3NZsplNUc=
 			</data>
 		</dict>
 		<key>Headers/NSArray+PureLayout.h</key>
@@ -87,11 +87,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aVz7dQle14n1gJlBk5nwwpkX0bc=
+			/EMmmmBVf2gfOkjw2EG/doN7wWc=
 			</data>
 			<key>hash2</key>
 			<data>
-			dWlt0UYeRQm10xVG9ZVjmxfLeRtsMsGIls/HLyi+LV4=
+			vVh2n0KVzEXTo0FHXdcsnx0kwyjUxwUbqp53Xs8cLFI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -119,7 +119,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -150,24 +150,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -203,13 +191,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>
