@@ -24,7 +24,7 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <None Include="PureLayout\PureLayout.xcframework" />
+    <ImportFramework Include="PureLayout\PureLayout.xcframework" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
