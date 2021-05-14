@@ -18,6 +18,15 @@
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>.\Bin\Debug</OutputPath>
+    <Optimize>False</Optimize>
+    <GenerateDebugInfo>True</GenerateDebugInfo>
+    <ConditionalDefines>DEBUG;TRACE</ConditionalDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>.\Bin\Release</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="UIKit" />
     <Reference Include="Foundation" />

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{3ea6b98c-332b-4242-99f0-1cced696ae02}</ProjectGuid>
+    <ProjectGuid>{3EA6B98C-332B-4242-99F0-1CCED696AE02}</ProjectGuid>
     <OutputType>Import</OutputType>
     <AssemblyName>AppAuth</AssemblyName>
     <ImportCodeGen>Oxygene</ImportCodeGen>
   </PropertyGroup>
-<PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
@@ -18,15 +18,13 @@
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
   </PropertyGroup>
-    <ItemGroup>
+  <ItemGroup>
     <Reference Include="UIKit" />
     <Reference Include="Foundation" />
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="AppAuth\iOS\AppAuth.framework">
-      <Private>True</Private>
-    </ImportFramework>
+    <ImportFramework Include="AppAuth\AppAuth.xcframework" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
