@@ -24,7 +24,9 @@
     <Reference Include="rtl" />
     <Reference Include="CoreFoundation" />
     <Reference Include="CoreGraphics" />
-    <ImportFramework Include="AppAuth\AppAuth.xcframework" />
+    <ImportFramework Include="AppAuth\AppAuth.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
