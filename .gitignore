@@ -331,3 +331,4 @@ ASALocalRun/
 
 #remove just the bin directory import solution is building into
 Bin/*
+Awesome/BIn
