@@ -1,0 +1,6 @@
+framework module LGPlusButtonsViewFramework {
+  umbrella header "LGPlusButtonsViewFramework.h"
+
+  export *
+  module * { export * }
+}
