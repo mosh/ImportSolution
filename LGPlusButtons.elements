@@ -22,5 +22,10 @@
   <ItemGroup>
     <Reference Include="#" />
   </ItemGroup>
+  <ItemGroup>
+    <ImportFramework Include="LGPlusButtons\LGPlusButtonsViewFramework.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
