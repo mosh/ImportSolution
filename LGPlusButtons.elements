@@ -23,7 +23,7 @@
     <Reference Include="#" />
   </ItemGroup>
   <ItemGroup>
-    <ImportFramework Include="LGPlusButtons\LGPlusButtonsViewFramework.xcframework">
+    <ImportFramework Include="LGPlusButtons\LGPlusButtons.xcframework">
       <Private>True</Private>
     </ImportFramework>
   </ItemGroup>

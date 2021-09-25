@@ -6,7 +6,7 @@
     <RootNamespace>LGPlusButtonsViewFramework</RootNamespace>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Mode>Toffee</Mode>
-    <SDK>macOS</SDK>
+    <SDK>iOS</SDK>
     <DefaultUses>RemObjects.Elements.RTL</DefaultUses>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
