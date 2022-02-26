@@ -19,7 +19,7 @@
 #import <Foundation/Foundation.h>
 #import <Realm/RLMConstants.h>
 
-@class RLMRealmConfiguration, RLMRealm, RLMObject, RLMSchema, RLMMigration, RLMNotificationToken, RLMThreadSafeReference, RLMAsyncOpenTask;
+@class RLMRealmConfiguration, RLMRealm, RLMObject, RLMSchema, RLMMigration, RLMNotificationToken, RLMThreadSafeReference, RLMAsyncOpenTask, RLMSyncSubscriptionSet;
 
 /**
  A callback block for opening Realms asynchronously.
@@ -563,8 +563,7 @@ typedef void (^RLMNotificationBlock)(RLMNotification notification, RLMRealm *rea
  and a new read transaction is implicitly begun the next time data is read from the Realm.
 
  Calling this method multiple times in a row without reading any data from the
- Realm, or before ever reading any data from the Realm, is a no-op. This method
- may not be called on a read-only Realm.
+ Realm, or before ever reading any data from the Realm, is a no-op.
  */
 - (void)invalidate;
 
@@ -695,6 +694,17 @@ NS_REFINED_FOR_SWIFT;
  @see `deleteObject:`
  */
 - (void)deleteAllObjects;
+
+#pragma mark - Sync Subscriptions
+
+/**
+ Represents the active subscriptions for this realm, which can be used to add/remove/update
+ and search flexible sync subscriptions.
+ Getting the subscriptions from a local or partition-based configured realm will thrown an exception.
+
+ @warning This feature is currently in beta and its API is subject to change.
+ */
+@property (nonatomic, readonly, nonnull) RLMSyncSubscriptionSet *subscriptions;
 
 
 #pragma mark - Migrations
