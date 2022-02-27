@@ -20,18 +20,18 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
   <ItemGroup>
-    <ImportFramework Include="..\Aeris\AerisCoreUI.framework">
-      <Private>True</Private>
-    </ImportFramework>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="rtl" />
     <Reference Include="Foundation" />
-    <ProjectReference Include="AerisCore">
+    <ProjectReference Include="..\AerisCore\AerisCore.elements">
       <HintPath>..\AerisCore\Bin\Debug\iOS\AerisCore.fx</HintPath>
       <Project>{5C9A09D9-D358-4B33-AC1F-CE6A8BB78CA2}</Project>
       <ProjectFile>..\AerisCore\AerisCore.elements</ProjectFile>
     </ProjectReference>
     <Reference Include="UIKit" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImportFramework Include="AerisCoreUI.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
 </Project>

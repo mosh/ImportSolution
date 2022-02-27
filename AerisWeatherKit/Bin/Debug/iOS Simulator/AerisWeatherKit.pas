@@ -3,585 +3,563 @@ namespace AerisWeatherKit;
 // Import of AerisWeatherKit (1.0)
 // Frameworks: AerisWeatherKit
 // Targets: arm64
-// Dep fx:Foundation, rtl, UIKit, CoreGraphics, CoreLocation, MapKit, AerisCore
-// Dep libs:
+// Dependent fx:Foundation, rtl, UIKit, CoreGraphics, CoreLocation, MapKit, AerisCore, AerisCoreUI
+// Dependent libraries:
 // Platform: iOS
 // 
 
 type
   AerisWeatherKit.__Global = class
-  private
-
-    class var AerisWeatherDidFinishStartup: NSString; public;
-    class var AWFApiPathPrefix: NSString; public;
-    class var AWFWeatherRequestActionClosest: AWFWeatherRequestAction; public;
-    class var AWFWeatherRequestActionWithin: AWFWeatherRequestAction; public;
-    class var AWFWeatherRequestActionSearch: AWFWeatherRequestAction; public;
-    class var AWFWeatherRequestActionAffects: AWFWeatherRequestAction; public;
-    class var AWFWeatherRequestActionContains: AWFWeatherRequestAction; public;
-    class var AWFWeatherParamKeyClientKey: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyClientSecret: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyPlace: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyFilter: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyFields: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyRadius: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyQuery: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyLimit: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeySkip: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeySort: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyDateFrom: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyDateTo: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyObject: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyPeriodLimit: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyPeriodSkip: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyPeriodSort: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyFormat: AWFWeatherParamKey; public;
-    class var AWFWeatherParamKeyRequests: AWFWeatherParamKey; public;
-    class var AWFWeatherOutputFormatDefault: AWFWeatherOutputFormat; public;
-    class var AWFWeatherOutputFormatGeoJSON: AWFWeatherOutputFormat; public;
-    class var AWFWeatherResponseKeySuccess: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyError: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyErrorCode: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyErrorDescription: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyResponse: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyRequest: AWFWeatherResponseKey; public;
-    class var AWFWeatherResponseKeyBatchResponse: AWFWeatherResponseKey; public;
-    class var AWFWeatherValidTimeFormatString: NSString; public;
-    class var AWFWeatherValidTimeWithOffsetString: NSString; public;
-    class var AWFWeatherErrorDomain: NSString; public;
-    class var AWFWeatherErrorCodeInvalidClient: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInsufficientScope: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeUnauthorizedNamespace: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidPlace: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidCoordinateBounds: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidId: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidPolygon: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidRequest: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeInvalidResponse: AWFWeatherErrorCode; public;
-    class var AWFWeatherErrorCodeObjectNotExists: AWFWeatherErrorCode; public;
-    class var AWFUnitCelsius: AWFUnit; public;
-    class var AWFUnitFahrenheit: AWFUnit; public;
-    class var AWFUnitKilometers: AWFUnit; public;
-    class var AWFUnitMeters: AWFUnit; public;
-    class var AWFUnitCentimeters: AWFUnit; public;
-    class var AWFUnitMillimeters: AWFUnit; public;
-    class var AWFUnitMiles: AWFUnit; public;
-    class var AWFUnitFeet: AWFUnit; public;
-    class var AWFUnitInches: AWFUnit; public;
-    class var AWFUnitKilometersPerHour: AWFUnit; public;
-    class var AWFUnitMilesPerHour: AWFUnit; public;
-    class var AWFUnitMetersPerSecond: AWFUnit; public;
-    class var AWFUnitKnots: AWFUnit; public;
-    class var AWFUnitPercent: AWFUnit; public;
-    class var AWFUnitMillibars: AWFUnit; public;
-    class var AWFUnitMilligramsPerCubicMeters: AWFUnit; public;
-    class var AWFUnitDbz: AWFUnit; public;
-    class method AWFUnitIsMetric(&unit: AWFUnit): BOOL; public;
-    class method AWFConvertFtoC(value: CGFloat): CGFloat; public;
-    class method AWFConvertCtoF(value: CGFloat): CGFloat; public;
-    class method AWFConvertMPHtoKMH(value: CGFloat): CGFloat; public;
-    class method AWFConvertKMHtoMPH(value: CGFloat): CGFloat; public;
-    class method AWFConvertMPHtoKTS(value: CGFloat): CGFloat; public;
-    class method AWFConvertKMHtoKTS(value: CGFloat): CGFloat; public;
-    class method AWFConvertKTStoMPH(value: CGFloat): CGFloat; public;
-    class method AWFConvertKTStoKMH(value: CGFloat): CGFloat; public;
-    class method AWFConvertMItoKM(value: CGFloat): CGFloat; public;
-    class method AWFConvertKMtoMI(value: CGFloat): CGFloat; public;
-    class method AWFConvertINtoCM(value: CGFloat): CGFloat; public;
-    class method AWFConvertCMtoIN(value: CGFloat): CGFloat; public;
-    class method AWFConvertINtoMB(value: CGFloat): CGFloat; public;
-    class method AWFConvertMBtoIN(value: CGFloat): CGFloat; public;
-    class method AWFConvert(value: CGFloat; &from: AWFUnit; &to: AWFUnit): CGFloat; public;
-    class method AWFIsNonEmptyString(object: id): BOOL; public;
-    class method AWFIsEmpty(object: id): BOOL; public;
-    class method AWFIsValidPlaceString(object: id): BOOL; public;
-    class method AWFIsValidZipcodeString(object: id): BOOL; public;
-    class method AWFIsValidCoordinateString(object: id): BOOL; public;
-    class method AWFCLLocationCoordinate2DIsEmpty(coordinate: CLLocationCoordinate2D): BOOL; public;
-    class method AWFUnitForWeatherDataType(&type: AerisWeatherKit.AWFWeatherDataType; metric: BOOL): NSString; public;
-    class method AWFUnitForMeasurement(&type: AerisWeatherKit.AWFMeasurement; metric: BOOL): AWFUnit; public;
-    class var AWFForecastModelTypeAeris: AWFForecastModelType; public;
-    class var AWFForecastModelTypeNDFD: AWFForecastModelType; public;
-    class var AWFForecastModelTypeHRRR: AWFForecastModelType; public;
-    class var AWFForecastModelTypeHRRRSub: AWFForecastModelType; public;
-    class var AWFForecastModelTypeNAM: AWFForecastModelType; public;
-    class var AWFForecastModelTypeGFS: AWFForecastModelType; public;
-    class var AWFForecastModelTypeGFSMOS: AWFForecastModelType; public;
-    class var AWFForecastModelTypeGEFS: AWFForecastModelType; public;
-    class var AWFAdvisoryFilterAll: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterCounty: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterWarning: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterWatch: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterAdvisory: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterOutlook: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterStatement: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterSevere: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterFlood: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterTropical: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterWinter: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterMarine: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterNonPrecip: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterForecast: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterWind: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterFire: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterTsunami: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFilterSynopsis: AWFAdvisoryFilter; public;
-    class var AWFAdvisoryFieldType: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldWeatherZone: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldState: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldSignificance: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldPriority: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldName: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldCountry: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldDateIssued: AWFAdvisoryField; public;
-    class var AWFAdvisoryFieldDateExpires: AWFAdvisoryField; public;
-    class var AWFAirQualityFilterChina: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterIndia: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterPM2P5: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterPM10: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterNO2: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterCO: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterSO2: AWFAirQualityFilter; public;
-    class var AWFAirQualityFilterO3: AWFAirQualityFilter; public;
-    class var AWFCountryFieldName: AWFCountryField; public;
-    class var AWFCountryFieldAltName: AWFCountryField; public;
-    class var AWFCountryFieldISO: AWFCountryField; public;
-    class var AWFCountryFieldISO3: AWFCountryField; public;
-    class var AWFCountryFieldPopulation: AWFCountryField; public;
-    class var AWFCountryFieldArea: AWFCountryField; public;
-    class var AWFConvectiveOutlookFilterCategorical: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterProbability: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterAllHazards: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterAll: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterTornado: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterSignificantTornado: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterAllTornado: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterHail: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterSignificantHail: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterAllHail: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterWind: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterSignificantWind: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterAllWind: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterGeneral: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterMarginal: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterSlight: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterEnhanced: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterModerate: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterHigh: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay1: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay2: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay3: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay4: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay5: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay6: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay7: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFilterDay8: AWFConvectiveOutlookFilter; public;
-    class var AWFConvectiveOutlookFieldId: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldCategory: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldRiskType: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldRiskName: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldRiskCode: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldDay: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldStartDate: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldEndDate: AWFConvectiveOutlookField; public;
-    class var AWFConvectiveOutlookFieldIssuedDate: AWFConvectiveOutlookField; public;
-    class var AWFDroughtIndexFilterAll: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFilterAbnormallyDry: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFilterModerateDrought: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFilterSevereDrought: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFilterExtremeDrought: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFilterExceptionalDrought: AWFDroughtIndexFilter; public;
-    class var AWFDroughtIndexFieldId: AWFDroughtIndexField; public;
-    class var AWFDroughtIndexFieldType: AWFDroughtIndexField; public;
-    class var AWFDroughtIndexFieldName: AWFDroughtIndexField; public;
-    class var AWFDroughtIndexFieldCode: AWFDroughtIndexField; public;
-    class var AWFEarthquakeFilterMini: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterMinor: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterLight: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterModerate: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterStrong: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterMajor: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterGreat: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFilterShallow: AWFEarthquakeFilter; public;
-    class var AWFEarthquakeFieldId: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldDateTime: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldMagnitude: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldDepth: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldName: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldState: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldCountry: AWFEarthquakeField; public;
-    class var AWFEarthquakeFieldRegion: AWFEarthquakeField; public;
-    class var AWFFireFilterLarge: AWFFireFilter; public;
-    class var AWFFireFilterCritical: AWFFireFilter; public;
-    class var AWFFireFilterModis: AWFFireFilter; public;
-    class var AWFFireFieldId: AWFFireField; public;
-    class var AWFFireFieldDateTime: AWFFireField; public;
-    class var AWFFireFieldType: AWFFireField; public;
-    class var AWFFireFieldConfidence: AWFFireField; public;
-    class var AWFFireFieldArea: AWFFireField; public;
-    class var AWFFireFieldName: AWFFireField; public;
-    class var AWFFireFieldState: AWFFireField; public;
-    class var AWFFireFieldCountry: AWFFireField; public;
-    class var AWFFireFieldStationSource: AWFFireField; public;
-    class var AWFFireFieldSatelliteSource: AWFFireField; public;
-    class var AWFFireOutlookFilterFireWeather: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDryLightning: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterAll: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterElevated: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterCritical: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterExtreme: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterIsolatedDryStorms: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterScatteredDryStorms: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay1: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay2: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay3: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay4: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay5: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay6: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay7: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFilterDay8: AWFFireOutlookFilter; public;
-    class var AWFFireOutlookFieldId: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldCategory: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldDay: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldRiskType: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldRiskName: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldRiskCode: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldRangeStart: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldRangeEnd: AWFFireOutlookField; public;
-    class var AWFFireOutlookFieldTimestamp: AWFFireOutlookField; public;
-    class var AWFForecastFilterDay: AWFForecastFilter; public;
-    class var AWFForecastFilterDayNight: AWFForecastFilter; public;
-    class var AWFForecastFilter1Hour: AWFForecastFilter; public;
-    class var AWFForecastFilter3Hour: AWFForecastFilter; public;
-    class var AWFForecastFilter6Hour: AWFForecastFilter; public;
-    class var AWFForecastFilter12Hour: AWFForecastFilter; public;
-    class var AWFIndexFilterDay: AWFIndexFilter; public;
-    class var AWFIndexFilterDayNight: AWFIndexFilter; public;
-    class var AWFIndexFilterAllStations: AWFIndexFilter; public;
-    class var AWFIndexDataTypeArthritis: AWFIndexDataType; public;
-    class var AWFIndexDataTypeColdFlu: AWFIndexDataType; public;
-    class var AWFIndexDataTypeMigraine: AWFIndexDataType; public;
-    class var AWFIndexDataTypeSinus: AWFIndexDataType; public;
-    class var AWFIndexDataTypeOutdoors: AWFIndexDataType; public;
-    class var AWFIndexDataTypeGolf: AWFIndexDataType; public;
-    class var AWFIndexDataTypeBiking: AWFIndexDataType; public;
-    class var AWFIndexDataTypeSwimming: AWFIndexDataType; public;
-    class var AWFIndexDataTypeCampfires: AWFIndexDataType; public;
-    class var AWFIndexDataTypeBees: AWFIndexDataType; public;
-    class var AWFLightningStrikeFilterAll: AWFLightningStrikeFilter; public;
-    class var AWFLightningStrikeFilterCloudToGround: AWFLightningStrikeFilter; public;
-    class var AWFLightningStrikeFilterCloudToCloud: AWFLightningStrikeFilter; public;
-    class var AWFLightningStrikeFieldDateTime: AWFLightningStrikeField; public;
-    class var AWFMoonPhaseFilterNew: AWFMoonPhaseFilter; public;
-    class var AWFMoonPhaseFilterFirst: AWFMoonPhaseFilter; public;
-    class var AWFMoonPhaseFilterFull: AWFMoonPhaseFilter; public;
-    class var AWFMoonPhaseFilterThird: AWFMoonPhaseFilter; public;
-    class var AWFMoonPhaseFieldDateTime: AWFMoonPhaseField; public;
-    class var AWFMoonPhaseFieldCode: AWFMoonPhaseField; public;
-    class var AWFMoonPhaseFieldType: AWFMoonPhaseField; public;
-    class var AWFNormalFilterDaily: AWFNormalFilter; public;
-    class var AWFNormalFilterMonthly: AWFNormalFilter; public;
-    class var AWFNormalFilterYearly: AWFNormalFilter; public;
-    class var AWFNormalFilterHasTemp: AWFNormalFilter; public;
-    class var AWFNormalFilterHasPrecip: AWFNormalFilter; public;
-    class var AWFNormalFilterHasSnow: AWFNormalFilter; public;
-    class var AWFNormalFieldStationId: AWFNormalField; public;
-    class var AWFNormalFieldName: AWFNormalField; public;
-    class var AWFNormalFieldState: AWFNormalField; public;
-    class var AWFNormalFieldCountry: AWFNormalField; public;
-    class var AWFNormalFieldMonth: AWFNormalField; public;
-    class var AWFNormalFieldDay: AWFNormalField; public;
-    class var AWFNormalFieldMonthDay: AWFNormalField; public;
-    class var AWFNormalFieldMaxTemp: AWFNormalField; public;
-    class var AWFNormalFieldMinTemp: AWFNormalField; public;
-    class var AWFNormalFieldAverageTemp: AWFNormalField; public;
-    class var AWFNormalFieldHeatingDegreeDays: AWFNormalField; public;
-    class var AWFNormalFieldCoolingDegreeDays: AWFNormalField; public;
-    class var AWFNormalFieldMonthlyPrecip: AWFNormalField; public;
-    class var AWFNormalFieldYearlyPrecip: AWFNormalField; public;
-    class var AWFNormalFieldMonthlySnow: AWFNormalField; public;
-    class var AWFNormalFieldYearlySnow: AWFNormalField; public;
-    class var AWFObservationFilterAll: AWFObservationFilter; public;
-    class var AWFObservationFilterMetar: AWFObservationFilter; public;
-    class var AWFObservationFilterMesonet: AWFObservationFilter; public;
-    class var AWFObservationFilterPWS: AWFObservationFilter; public;
-    class var AWFObservationFilterOfficial: AWFObservationFilter; public;
-    class var AWFObservationFilterHasPrecip: AWFObservationFilter; public;
-    class var AWFObservationFieldStationId: AWFObservationField; public;
-    class var AWFObservationFieldDateTime: AWFObservationField; public;
-    class var AWFObservationFieldName: AWFObservationField; public;
-    class var AWFObservationFieldState: AWFObservationField; public;
-    class var AWFObservationFieldCountry: AWFObservationField; public;
-    class var AWFObservationFieldElevation: AWFObservationField; public;
-    class var AWFObservationFieldTemp: AWFObservationField; public;
-    class var AWFObservationFieldDewPoint: AWFObservationField; public;
-    class var AWFObservationFieldHumidity: AWFObservationField; public;
-    class var AWFObservationFieldWind: AWFObservationField; public;
-    class var AWFObservationFieldWindDirection: AWFObservationField; public;
-    class var AWFObservationFieldWindGust: AWFObservationField; public;
-    class var AWFObservationFieldPressure: AWFObservationField; public;
-    class var AWFObservationFieldPrecip: AWFObservationField; public;
-    class var AWFObservationDataTypeRecent: AWFObservationDataType; public;
-    class var AWFObservationDataTypeArchive: AWFObservationDataType; public;
-    class var AWFObservationDataTypeSummary: AWFObservationDataType; public;
-    class var AWFPlaceFilterAirport: AWFPlaceFilter; public;
-    class var AWFPlaceFilterAmusement: AWFPlaceFilter; public;
-    class var AWFPlaceFilterBridge: AWFPlaceFilter; public;
-    class var AWFPlaceFilterCamp: AWFPlaceFilter; public;
-    class var AWFPlaceFilterChurch: AWFPlaceFilter; public;
-    class var AWFPlaceFilterCounty: AWFPlaceFilter; public;
-    class var AWFPlaceFilterDivision: AWFPlaceFilter; public;
-    class var AWFPlaceFilterFeature: AWFPlaceFilter; public;
-    class var AWFPlaceFilterFort: AWFPlaceFilter; public;
-    class var AWFPlaceFilterGolf: AWFPlaceFilter; public;
-    class var AWFPlaceFilterLake: AWFPlaceFilter; public;
-    class var AWFPlaceFilterNeighborhood: AWFPlaceFilter; public;
-    class var AWFPlaceFilterParish: AWFPlaceFilter; public;
-    class var AWFPlaceFilterPark: AWFPlaceFilter; public;
-    class var AWFPlaceFilterPOI: AWFPlaceFilter; public;
-    class var AWFPlaceFilterPort: AWFPlaceFilter; public;
-    class var AWFPlaceFilterPopulatedPlace: AWFPlaceFilter; public;
-    class var AWFPlaceFilterReserve: AWFPlaceFilter; public;
-    class var AWFPlaceFilterSchool: AWFPlaceFilter; public;
-    class var AWFPlaceFilterStadium: AWFPlaceFilter; public;
-    class var AWFPlaceFilterTemple: AWFPlaceFilter; public;
-    class var AWFPlaceFilterTrail: AWFPlaceFilter; public;
-    class var AWFPlaceFilterTunnel: AWFPlaceFilter; public;
-    class var AWFPlaceFilterUniversity: AWFPlaceFilter; public;
-    class var AWFPlaceFilterWorship: AWFPlaceFilter; public;
-    class var AWFPlaceFieldName: AWFPlaceField; public;
-    class var AWFPlaceFieldAltName: AWFPlaceField; public;
-    class var AWFPlaceFieldState: AWFPlaceField; public;
-    class var AWFPlaceFieldCountry: AWFPlaceField; public;
-    class var AWFPlaceFieldPopulation: AWFPlaceField; public;
-    class var AWFRecordFilterPrecip: AWFRecordFilter; public;
-    class var AWFRecordFilterSnow: AWFRecordFilter; public;
-    class var AWFRecordFilterMaxTemp: AWFRecordFilter; public;
-    class var AWFRecordFilterMinTemp: AWFRecordFilter; public;
-    class var AWFRecordFilterLowMaxTemp: AWFRecordFilter; public;
-    class var AWFRecordFilterHighMinTemp: AWFRecordFilter; public;
-    class var AWFRecordFilterPrecipTrace: AWFRecordFilter; public;
-    class var AWFRecordFilterPrecipNoTrace: AWFRecordFilter; public;
-    class var AWFRecordFilterTied: AWFRecordFilter; public;
-    class var AWFRecordFilterNotTied: AWFRecordFilter; public;
-    class var AWFRecordFieldDay: AWFRecordField; public;
-    class var AWFRecordFieldMonth: AWFRecordField; public;
-    class var AWFRecordFieldYear: AWFRecordField; public;
-    class var AWFRecordFieldType: AWFRecordField; public;
-    class var AWFRecordFieldEvent: AWFRecordField; public;
-    class var AWFRecordFieldCode: AWFRecordField; public;
-    class var AWFRecordFieldValue: AWFRecordField; public;
-    class var AWFRecordFieldTrace: AWFRecordField; public;
-    class var AWFRecordFieldTied: AWFRecordField; public;
-    class var AWFRecordFieldPreviousValue: AWFRecordField; public;
-    class var AWFRecordFieldPreviousYear: AWFRecordField; public;
-    class var AWFRecordFieldCity: AWFRecordField; public;
-    class var AWFRecordFieldState: AWFRecordField; public;
-    class var AWFRecordFieldCountry: AWFRecordField; public;
-    class var AWFRiverStatusOutOfService: AWFRiverStatus; public;
-    class var AWFRiverStatusOldData: AWFRiverStatus; public;
-    class var AWFRiverStatusNotDefined: AWFRiverStatus; public;
-    class var AWFRiverStatusLowWater: AWFRiverStatus; public;
-    class var AWFRiverStatusNoFlood: AWFRiverStatus; public;
-    class var AWFRiverStatusAction: AWFRiverStatus; public;
-    class var AWFRiverStatusMinorFlood: AWFRiverStatus; public;
-    class var AWFRiverStatusModerateFlood: AWFRiverStatus; public;
-    class var AWFRiverStatusMajorFlood: AWFRiverStatus; public;
-    class var AWFStormCellFilterHail: AWFStormCellFilter; public;
-    class var AWFStormCellFilterRotating: AWFStormCellFilter; public;
-    class var AWFStormCellFilterTornadic: AWFStormCellFilter; public;
-    class var AWFStormCellFieldDateTime: AWFStormCellField; public;
-    class var AWFStormCellFieldHail: AWFStormCellField; public;
-    class var AWFStormCellFieldSevereHail: AWFStormCellField; public;
-    class var AWFStormCellFieldHailSize: AWFStormCellField; public;
-    class var AWFStormCellFieldTVS: AWFStormCellField; public;
-    class var AWFStormCellFieldRotation: AWFStormCellField; public;
-    class var AWFStormCellFieldCity: AWFStormCellField; public;
-    class var AWFStormCellFieldState: AWFStormCellField; public;
-    class var AWFStormCellFieldCountry: AWFStormCellField; public;
-    class var AWFStormReportFilterAvalanche: AWFStormReportFilter; public;
-    class var AWFStormReportFilterBlizzard: AWFStormReportFilter; public;
-    class var AWFStormReportFilterFire: AWFStormReportFilter; public;
-    class var AWFStormReportFilterFlood: AWFStormReportFilter; public;
-    class var AWFStormReportFilterFog: AWFStormReportFilter; public;
-    class var AWFStormReportFilterIce: AWFStormReportFilter; public;
-    class var AWFStormReportFilterHail: AWFStormReportFilter; public;
-    class var AWFStormReportFilterLightning: AWFStormReportFilter; public;
-    class var AWFStormReportFilterRain: AWFStormReportFilter; public;
-    class var AWFStormReportFilterSnow: AWFStormReportFilter; public;
-    class var AWFStormReportFilterTides: AWFStormReportFilter; public;
-    class var AWFStormReportFilterTornado: AWFStormReportFilter; public;
-    class var AWFStormReportFilterWind: AWFStormReportFilter; public;
-    class var AWFStormReportFieldDateTime: AWFStormReportField; public;
-    class var AWFStormReportFieldCode: AWFStormReportField; public;
-    class var AWFStormReportFieldType: AWFStormReportField; public;
-    class var AWFStormReportFieldWFO: AWFStormReportField; public;
-    class var AWFStormReportFieldDetail: AWFStormReportField; public;
-    class var AWFStormReportFieldCity: AWFStormReportField; public;
-    class var AWFStormReportFieldState: AWFStormReportField; public;
-    class var AWFStormReportFieldCountry: AWFStormReportField; public;
-    class var AWFSunMoonFilterSun: AWFSunMoonFilter; public;
-    class var AWFSunMoonFilterTwilight: AWFSunMoonFilter; public;
-    class var AWFSunMoonFilterMoon: AWFSunMoonFilter; public;
-    class var AWFSunMoonFilterMoonPhase: AWFSunMoonFilter; public;
-    class var AWFTideFilterHigh: AWFTideFilter; public;
-    class var AWFTideFilterLow: AWFTideFilter; public;
-    class var AWFTideFilterHighLow: AWFTideFilter; public;
-    class var AWFTideFieldStationId: AWFTideField; public;
-    class var AWFTideFieldDateTime: AWFTideField; public;
-    class var AWFTideFieldType: AWFTideField; public;
-    class var AWFTideFieldHeightFT: AWFTideField; public;
-    class var AWFTideFieldHeightM: AWFTideField; public;
-    class var AWFTideFieldCity: AWFTideField; public;
-    class var AWFTideFieldState: AWFTideField; public;
-    class var AWFTideFieldCountry: AWFTideField; public;
-    class var AWFTropicalCycloneFilterActive: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterNotActive: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterAtlantic: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterEastPacific: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterCentralPacific: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterWestPacific: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterPacific: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterIndian: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterSouthern: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterPosition: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterTrack: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterForecast: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterGeo: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalCycloneFilterTest: AWFTropicalCycloneFilter; public;
-    class var AWFTropicalBasinAtlantic: AWFTropicalBasin; public;
-    class var AWFTropicalBasinEastPacific: AWFTropicalBasin; public;
-    class var AWFTropicalBasinCentralPacific: AWFTropicalBasin; public;
-    class var AWFTropicalBasinWestPacific: AWFTropicalBasin; public;
-    class var AWFTropicalBasinIndian: AWFTropicalBasin; public;
-    class var AWFTropicalBasinSouthernHemisphere: AWFTropicalBasin; public;
-    class var AWFTropicalStormTypeLow: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeDepression: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeStorm: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricane: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricaneCat1: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricaneCat2: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricaneCat3: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricaneCat4: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeHurricaneCat5: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeTyphoon: AWFTropicalStormType; public;
-    class var AWFTropicalStormTypeSuperTyphoon: AWFTropicalStormType; public;
-
+  public
+    class var AerisWeatherDidFinishStartup: NSString;
+    class var AWFApiPathPrefix: NSString;
+    class var AWFWeatherRequestActionClosest: AWFWeatherRequestAction;
+    class var AWFWeatherRequestActionWithin: AWFWeatherRequestAction;
+    class var AWFWeatherRequestActionSearch: AWFWeatherRequestAction;
+    class var AWFWeatherRequestActionAffects: AWFWeatherRequestAction;
+    class var AWFWeatherRequestActionContains: AWFWeatherRequestAction;
+    class var AWFWeatherRequestActionAll: AWFWeatherRequestAction;
+    class var AWFWeatherParamKeyClientKey: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyClientSecret: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyPlace: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyFilter: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyFields: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyRadius: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyQuery: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyLimit: AWFWeatherParamKey;
+    class var AWFWeatherParamKeySkip: AWFWeatherParamKey;
+    class var AWFWeatherParamKeySort: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyLanguage: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyDateFrom: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyDateTo: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyObject: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyPeriodLimit: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyPeriodSkip: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyPeriodSort: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyFormat: AWFWeatherParamKey;
+    class var AWFWeatherParamKeyRequests: AWFWeatherParamKey;
+    class var AWFWeatherOutputFormatDefault: AWFWeatherOutputFormat;
+    class var AWFWeatherOutputFormatGeoJSON: AWFWeatherOutputFormat;
+    class var AWFWeatherResponseKeySuccess: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyError: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyErrorCode: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyErrorDescription: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyResponse: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyRequest: AWFWeatherResponseKey;
+    class var AWFWeatherResponseKeyBatchResponse: AWFWeatherResponseKey;
+    class var AWFWeatherValidTimeFormatString: NSString;
+    class var AWFWeatherValidTimeWithOffsetString: NSString;
+    class var AWFWeatherErrorDomain: NSString;
+    class var AWFWeatherErrorCodeInvalidClient: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInsufficientScope: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeUnauthorizedNamespace: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidPlace: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidCoordinateBounds: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidId: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidPolygon: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidRequest: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeInvalidResponse: AWFWeatherErrorCode;
+    class var AWFWeatherErrorCodeObjectNotExists: AWFWeatherErrorCode;
+    class var AWFUnitCelsius: AWFUnit;
+    class var AWFUnitFahrenheit: AWFUnit;
+    class var AWFUnitKilometers: AWFUnit;
+    class var AWFUnitMeters: AWFUnit;
+    class var AWFUnitCentimeters: AWFUnit;
+    class var AWFUnitMillimeters: AWFUnit;
+    class var AWFUnitMiles: AWFUnit;
+    class var AWFUnitFeet: AWFUnit;
+    class var AWFUnitInches: AWFUnit;
+    class var AWFUnitKilometersPerHour: AWFUnit;
+    class var AWFUnitMilesPerHour: AWFUnit;
+    class var AWFUnitMetersPerSecond: AWFUnit;
+    class var AWFUnitKnots: AWFUnit;
+    class var AWFUnitPercent: AWFUnit;
+    class var AWFUnitMillibars: AWFUnit;
+    class var AWFUnitMilligramsPerCubicMeters: AWFUnit;
+    class var AWFUnitDbz: AWFUnit;
+    class method AWFUnitIsMetric(&unit: AWFUnit): BOOL;
+    class method AWFConvertFtoC(value: CGFloat): CGFloat;
+    class method AWFConvertCtoF(value: CGFloat): CGFloat;
+    class method AWFConvertMPHtoKMH(value: CGFloat): CGFloat;
+    class method AWFConvertKMHtoMPH(value: CGFloat): CGFloat;
+    class method AWFConvertMPHtoKTS(value: CGFloat): CGFloat;
+    class method AWFConvertKMHtoKTS(value: CGFloat): CGFloat;
+    class method AWFConvertKTStoMPH(value: CGFloat): CGFloat;
+    class method AWFConvertKTStoKMH(value: CGFloat): CGFloat;
+    class method AWFConvertMItoKM(value: CGFloat): CGFloat;
+    class method AWFConvertKMtoMI(value: CGFloat): CGFloat;
+    class method AWFConvertINtoCM(value: CGFloat): CGFloat;
+    class method AWFConvertCMtoIN(value: CGFloat): CGFloat;
+    class method AWFConvertINtoMB(value: CGFloat): CGFloat;
+    class method AWFConvertMBtoIN(value: CGFloat): CGFloat;
+    class method AWFConvert(value: CGFloat; &from: AWFUnit; &to: AWFUnit): CGFloat;
+    class method AWFIsEmpty(object: id): BOOL;
+    class method AWFIsValidPlaceString(object: id): BOOL;
+    class method AWFIsValidZipcodeString(object: id): BOOL;
+    class method AWFIsValidCoordinateString(object: id): BOOL;
+    class method AWFCLLocationCoordinate2DIsEmpty(coordinate: CLLocationCoordinate2D): BOOL;
+    class method AWFUnitForWeatherDataType(&type: AerisWeatherKit.AWFWeatherDataType; metric: BOOL): NSString;
+    class method AWFUnitForMeasurement(&type: AerisWeatherKit.AWFMeasurement; metric: BOOL): AWFUnit;
+    class var AWFForecastModelTypeAeris: AWFForecastModelType;
+    class var AWFForecastModelTypeNDFD: AWFForecastModelType;
+    class var AWFForecastModelTypeHRRR: AWFForecastModelType;
+    class var AWFForecastModelTypeHRRRSub: AWFForecastModelType;
+    class var AWFForecastModelTypeNAM: AWFForecastModelType;
+    class var AWFForecastModelTypeGFS: AWFForecastModelType;
+    class var AWFForecastModelTypeGFSMOS: AWFForecastModelType;
+    class var AWFForecastModelTypeGEFS: AWFForecastModelType;
+    class var AWFAdvisoryFilterAll: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterCounty: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterWarning: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterWatch: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterAdvisory: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterOutlook: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterStatement: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterSevere: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterFlood: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterTropical: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterWinter: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterMarine: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterNonPrecip: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterForecast: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterWind: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterFire: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterTsunami: AWFAdvisoryFilter;
+    class var AWFAdvisoryFilterSynopsis: AWFAdvisoryFilter;
+    class var AWFAdvisoryFieldType: AWFAdvisoryField;
+    class var AWFAdvisoryFieldWeatherZone: AWFAdvisoryField;
+    class var AWFAdvisoryFieldState: AWFAdvisoryField;
+    class var AWFAdvisoryFieldSignificance: AWFAdvisoryField;
+    class var AWFAdvisoryFieldPriority: AWFAdvisoryField;
+    class var AWFAdvisoryFieldName: AWFAdvisoryField;
+    class var AWFAdvisoryFieldCountry: AWFAdvisoryField;
+    class var AWFAdvisoryFieldDateIssued: AWFAdvisoryField;
+    class var AWFAdvisoryFieldDateExpires: AWFAdvisoryField;
+    class var AWFAirQualityFilterChina: AWFAirQualityFilter;
+    class var AWFAirQualityFilterIndia: AWFAirQualityFilter;
+    class var AWFAirQualityFilterPM2P5: AWFAirQualityFilter;
+    class var AWFAirQualityFilterPM10: AWFAirQualityFilter;
+    class var AWFAirQualityFilterNO2: AWFAirQualityFilter;
+    class var AWFAirQualityFilterCO: AWFAirQualityFilter;
+    class var AWFAirQualityFilterSO2: AWFAirQualityFilter;
+    class var AWFAirQualityFilterO3: AWFAirQualityFilter;
+    class var AWFConvectiveOutlookFilterCategorical: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterProbability: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterAllHazards: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterAll: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterTornado: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterSignificantTornado: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterAllTornado: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterHail: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterSignificantHail: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterAllHail: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterWind: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterSignificantWind: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterAllWind: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterGeneral: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterMarginal: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterSlight: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterEnhanced: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterModerate: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterHigh: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay1: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay2: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay3: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay4: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay5: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay6: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay7: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFilterDay8: AWFConvectiveOutlookFilter;
+    class var AWFConvectiveOutlookFieldId: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldCategory: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldRiskType: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldRiskName: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldRiskCode: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldDay: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldStartDate: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldEndDate: AWFConvectiveOutlookField;
+    class var AWFConvectiveOutlookFieldIssuedDate: AWFConvectiveOutlookField;
+    class var AWFCountryFieldName: AWFCountryField;
+    class var AWFCountryFieldAltName: AWFCountryField;
+    class var AWFCountryFieldISO: AWFCountryField;
+    class var AWFCountryFieldISO3: AWFCountryField;
+    class var AWFCountryFieldPopulation: AWFCountryField;
+    class var AWFCountryFieldArea: AWFCountryField;
+    class var AWFDroughtIndexFilterAll: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFilterAbnormallyDry: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFilterModerateDrought: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFilterSevereDrought: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFilterExtremeDrought: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFilterExceptionalDrought: AWFDroughtIndexFilter;
+    class var AWFDroughtIndexFieldId: AWFDroughtIndexField;
+    class var AWFDroughtIndexFieldType: AWFDroughtIndexField;
+    class var AWFDroughtIndexFieldName: AWFDroughtIndexField;
+    class var AWFDroughtIndexFieldCode: AWFDroughtIndexField;
+    class var AWFEarthquakeFilterMini: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterMinor: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterLight: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterModerate: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterStrong: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterMajor: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterGreat: AWFEarthquakeFilter;
+    class var AWFEarthquakeFilterShallow: AWFEarthquakeFilter;
+    class var AWFEarthquakeFieldId: AWFEarthquakeField;
+    class var AWFEarthquakeFieldDateTime: AWFEarthquakeField;
+    class var AWFEarthquakeFieldMagnitude: AWFEarthquakeField;
+    class var AWFEarthquakeFieldDepth: AWFEarthquakeField;
+    class var AWFEarthquakeFieldName: AWFEarthquakeField;
+    class var AWFEarthquakeFieldState: AWFEarthquakeField;
+    class var AWFEarthquakeFieldCountry: AWFEarthquakeField;
+    class var AWFEarthquakeFieldRegion: AWFEarthquakeField;
+    class var AWFFireFilterLarge: AWFFireFilter;
+    class var AWFFireFilterCritical: AWFFireFilter;
+    class var AWFFireFilterModis: AWFFireFilter;
+    class var AWFFireFieldId: AWFFireField;
+    class var AWFFireFieldDateTime: AWFFireField;
+    class var AWFFireFieldType: AWFFireField;
+    class var AWFFireFieldConfidence: AWFFireField;
+    class var AWFFireFieldArea: AWFFireField;
+    class var AWFFireFieldName: AWFFireField;
+    class var AWFFireFieldState: AWFFireField;
+    class var AWFFireFieldCountry: AWFFireField;
+    class var AWFFireFieldStationSource: AWFFireField;
+    class var AWFFireFieldSatelliteSource: AWFFireField;
+    class var AWFFireOutlookFilterFireWeather: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDryLightning: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterAll: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterElevated: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterCritical: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterExtreme: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterIsolatedDryStorms: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterScatteredDryStorms: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay1: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay2: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay3: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay4: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay5: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay6: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay7: AWFFireOutlookFilter;
+    class var AWFFireOutlookFilterDay8: AWFFireOutlookFilter;
+    class var AWFFireOutlookFieldId: AWFFireOutlookField;
+    class var AWFFireOutlookFieldCategory: AWFFireOutlookField;
+    class var AWFFireOutlookFieldDay: AWFFireOutlookField;
+    class var AWFFireOutlookFieldRiskType: AWFFireOutlookField;
+    class var AWFFireOutlookFieldRiskName: AWFFireOutlookField;
+    class var AWFFireOutlookFieldRiskCode: AWFFireOutlookField;
+    class var AWFFireOutlookFieldRangeStart: AWFFireOutlookField;
+    class var AWFFireOutlookFieldRangeEnd: AWFFireOutlookField;
+    class var AWFFireOutlookFieldTimestamp: AWFFireOutlookField;
+    class var AWFForecastFilterDay: AWFForecastFilter;
+    class var AWFForecastFilterDayNight: AWFForecastFilter;
+    class var AWFForecastFilter1Hour: AWFForecastFilter;
+    class var AWFForecastFilter3Hour: AWFForecastFilter;
+    class var AWFForecastFilter6Hour: AWFForecastFilter;
+    class var AWFForecastFilter12Hour: AWFForecastFilter;
+    class var AWFIndexFilterDay: AWFIndexFilter;
+    class var AWFIndexFilterDayNight: AWFIndexFilter;
+    class var AWFIndexFilterAllStations: AWFIndexFilter;
+    class var AWFIndexDataTypeArthritis: AWFIndexDataType;
+    class var AWFIndexDataTypeColdFlu: AWFIndexDataType;
+    class var AWFIndexDataTypeMigraine: AWFIndexDataType;
+    class var AWFIndexDataTypeSinus: AWFIndexDataType;
+    class var AWFIndexDataTypeOutdoors: AWFIndexDataType;
+    class var AWFIndexDataTypeGolf: AWFIndexDataType;
+    class var AWFIndexDataTypeBiking: AWFIndexDataType;
+    class var AWFIndexDataTypeSwimming: AWFIndexDataType;
+    class var AWFIndexDataTypeCampfires: AWFIndexDataType;
+    class var AWFIndexDataTypeBees: AWFIndexDataType;
+    class var AWFLightningStrikeFilterAll: AWFLightningStrikeFilter;
+    class var AWFLightningStrikeFilterCloudToGround: AWFLightningStrikeFilter;
+    class var AWFLightningStrikeFilterCloudToCloud: AWFLightningStrikeFilter;
+    class var AWFLightningStrikeFieldDateTime: AWFLightningStrikeField;
+    class var AWFMoonPhaseFilterNew: AWFMoonPhaseFilter;
+    class var AWFMoonPhaseFilterFirst: AWFMoonPhaseFilter;
+    class var AWFMoonPhaseFilterFull: AWFMoonPhaseFilter;
+    class var AWFMoonPhaseFilterThird: AWFMoonPhaseFilter;
+    class var AWFMoonPhaseFieldDateTime: AWFMoonPhaseField;
+    class var AWFMoonPhaseFieldCode: AWFMoonPhaseField;
+    class var AWFMoonPhaseFieldType: AWFMoonPhaseField;
+    class var AWFNormalFilterDaily: AWFNormalFilter;
+    class var AWFNormalFilterMonthly: AWFNormalFilter;
+    class var AWFNormalFilterYearly: AWFNormalFilter;
+    class var AWFNormalFilterHasTemp: AWFNormalFilter;
+    class var AWFNormalFilterHasPrecip: AWFNormalFilter;
+    class var AWFNormalFilterHasSnow: AWFNormalFilter;
+    class var AWFNormalFieldStationId: AWFNormalField;
+    class var AWFNormalFieldName: AWFNormalField;
+    class var AWFNormalFieldState: AWFNormalField;
+    class var AWFNormalFieldCountry: AWFNormalField;
+    class var AWFNormalFieldMonth: AWFNormalField;
+    class var AWFNormalFieldDay: AWFNormalField;
+    class var AWFNormalFieldMonthDay: AWFNormalField;
+    class var AWFNormalFieldMaxTemp: AWFNormalField;
+    class var AWFNormalFieldMinTemp: AWFNormalField;
+    class var AWFNormalFieldAverageTemp: AWFNormalField;
+    class var AWFNormalFieldHeatingDegreeDays: AWFNormalField;
+    class var AWFNormalFieldCoolingDegreeDays: AWFNormalField;
+    class var AWFNormalFieldMonthlyPrecip: AWFNormalField;
+    class var AWFNormalFieldYearlyPrecip: AWFNormalField;
+    class var AWFNormalFieldMonthlySnow: AWFNormalField;
+    class var AWFNormalFieldYearlySnow: AWFNormalField;
+    class var AWFObservationFilterAll: AWFObservationFilter;
+    class var AWFObservationFilterMetar: AWFObservationFilter;
+    class var AWFObservationFilterMesonet: AWFObservationFilter;
+    class var AWFObservationFilterPWS: AWFObservationFilter;
+    class var AWFObservationFilterOfficial: AWFObservationFilter;
+    class var AWFObservationFilterHasPrecip: AWFObservationFilter;
+    class var AWFObservationFieldStationId: AWFObservationField;
+    class var AWFObservationFieldDateTime: AWFObservationField;
+    class var AWFObservationFieldName: AWFObservationField;
+    class var AWFObservationFieldState: AWFObservationField;
+    class var AWFObservationFieldCountry: AWFObservationField;
+    class var AWFObservationFieldElevation: AWFObservationField;
+    class var AWFObservationFieldTemp: AWFObservationField;
+    class var AWFObservationFieldDewPoint: AWFObservationField;
+    class var AWFObservationFieldHumidity: AWFObservationField;
+    class var AWFObservationFieldWind: AWFObservationField;
+    class var AWFObservationFieldWindDirection: AWFObservationField;
+    class var AWFObservationFieldWindGust: AWFObservationField;
+    class var AWFObservationFieldPressure: AWFObservationField;
+    class var AWFObservationFieldPrecip: AWFObservationField;
+    class var AWFObservationDataTypeRecent: AWFObservationDataType;
+    class var AWFObservationDataTypeArchive: AWFObservationDataType;
+    class var AWFObservationDataTypeSummary: AWFObservationDataType;
+    class var AWFPlaceFilterAirport: AWFPlaceFilter;
+    class var AWFPlaceFilterAmusement: AWFPlaceFilter;
+    class var AWFPlaceFilterBridge: AWFPlaceFilter;
+    class var AWFPlaceFilterCamp: AWFPlaceFilter;
+    class var AWFPlaceFilterChurch: AWFPlaceFilter;
+    class var AWFPlaceFilterCounty: AWFPlaceFilter;
+    class var AWFPlaceFilterDivision: AWFPlaceFilter;
+    class var AWFPlaceFilterFeature: AWFPlaceFilter;
+    class var AWFPlaceFilterFort: AWFPlaceFilter;
+    class var AWFPlaceFilterGolf: AWFPlaceFilter;
+    class var AWFPlaceFilterLake: AWFPlaceFilter;
+    class var AWFPlaceFilterNeighborhood: AWFPlaceFilter;
+    class var AWFPlaceFilterParish: AWFPlaceFilter;
+    class var AWFPlaceFilterPark: AWFPlaceFilter;
+    class var AWFPlaceFilterPOI: AWFPlaceFilter;
+    class var AWFPlaceFilterPort: AWFPlaceFilter;
+    class var AWFPlaceFilterPopulatedPlace: AWFPlaceFilter;
+    class var AWFPlaceFilterReserve: AWFPlaceFilter;
+    class var AWFPlaceFilterSchool: AWFPlaceFilter;
+    class var AWFPlaceFilterStadium: AWFPlaceFilter;
+    class var AWFPlaceFilterTemple: AWFPlaceFilter;
+    class var AWFPlaceFilterTrail: AWFPlaceFilter;
+    class var AWFPlaceFilterTunnel: AWFPlaceFilter;
+    class var AWFPlaceFilterUniversity: AWFPlaceFilter;
+    class var AWFPlaceFilterWorship: AWFPlaceFilter;
+    class var AWFPlaceFieldName: AWFPlaceField;
+    class var AWFPlaceFieldAltName: AWFPlaceField;
+    class var AWFPlaceFieldState: AWFPlaceField;
+    class var AWFPlaceFieldCountry: AWFPlaceField;
+    class var AWFPlaceFieldPopulation: AWFPlaceField;
+    class var AWFRecordFilterPrecip: AWFRecordFilter;
+    class var AWFRecordFilterSnow: AWFRecordFilter;
+    class var AWFRecordFilterMaxTemp: AWFRecordFilter;
+    class var AWFRecordFilterMinTemp: AWFRecordFilter;
+    class var AWFRecordFilterLowMaxTemp: AWFRecordFilter;
+    class var AWFRecordFilterHighMinTemp: AWFRecordFilter;
+    class var AWFRecordFilterPrecipTrace: AWFRecordFilter;
+    class var AWFRecordFilterPrecipNoTrace: AWFRecordFilter;
+    class var AWFRecordFilterTied: AWFRecordFilter;
+    class var AWFRecordFilterNotTied: AWFRecordFilter;
+    class var AWFRecordFieldDay: AWFRecordField;
+    class var AWFRecordFieldMonth: AWFRecordField;
+    class var AWFRecordFieldYear: AWFRecordField;
+    class var AWFRecordFieldType: AWFRecordField;
+    class var AWFRecordFieldEvent: AWFRecordField;
+    class var AWFRecordFieldCode: AWFRecordField;
+    class var AWFRecordFieldValue: AWFRecordField;
+    class var AWFRecordFieldTrace: AWFRecordField;
+    class var AWFRecordFieldTied: AWFRecordField;
+    class var AWFRecordFieldPreviousValue: AWFRecordField;
+    class var AWFRecordFieldPreviousYear: AWFRecordField;
+    class var AWFRecordFieldCity: AWFRecordField;
+    class var AWFRecordFieldState: AWFRecordField;
+    class var AWFRecordFieldCountry: AWFRecordField;
+    class var AWFRiverStatusOutOfService: AWFRiverStatus;
+    class var AWFRiverStatusOldData: AWFRiverStatus;
+    class var AWFRiverStatusNotDefined: AWFRiverStatus;
+    class var AWFRiverStatusLowWater: AWFRiverStatus;
+    class var AWFRiverStatusNoFlood: AWFRiverStatus;
+    class var AWFRiverStatusAction: AWFRiverStatus;
+    class var AWFRiverStatusMinorFlood: AWFRiverStatus;
+    class var AWFRiverStatusModerateFlood: AWFRiverStatus;
+    class var AWFRiverStatusMajorFlood: AWFRiverStatus;
+    class var AWFStormCellFilterHail: AWFStormCellFilter;
+    class var AWFStormCellFilterRotating: AWFStormCellFilter;
+    class var AWFStormCellFilterTornadic: AWFStormCellFilter;
+    class var AWFStormCellFieldDateTime: AWFStormCellField;
+    class var AWFStormCellFieldHail: AWFStormCellField;
+    class var AWFStormCellFieldSevereHail: AWFStormCellField;
+    class var AWFStormCellFieldHailSize: AWFStormCellField;
+    class var AWFStormCellFieldTVS: AWFStormCellField;
+    class var AWFStormCellFieldRotation: AWFStormCellField;
+    class var AWFStormCellFieldCity: AWFStormCellField;
+    class var AWFStormCellFieldState: AWFStormCellField;
+    class var AWFStormCellFieldCountry: AWFStormCellField;
+    class var AWFStormReportFilterAvalanche: AWFStormReportFilter;
+    class var AWFStormReportFilterBlizzard: AWFStormReportFilter;
+    class var AWFStormReportFilterFire: AWFStormReportFilter;
+    class var AWFStormReportFilterFlood: AWFStormReportFilter;
+    class var AWFStormReportFilterFog: AWFStormReportFilter;
+    class var AWFStormReportFilterIce: AWFStormReportFilter;
+    class var AWFStormReportFilterHail: AWFStormReportFilter;
+    class var AWFStormReportFilterLightning: AWFStormReportFilter;
+    class var AWFStormReportFilterRain: AWFStormReportFilter;
+    class var AWFStormReportFilterSnow: AWFStormReportFilter;
+    class var AWFStormReportFilterTides: AWFStormReportFilter;
+    class var AWFStormReportFilterTornado: AWFStormReportFilter;
+    class var AWFStormReportFilterWind: AWFStormReportFilter;
+    class var AWFStormReportFieldDateTime: AWFStormReportField;
+    class var AWFStormReportFieldCode: AWFStormReportField;
+    class var AWFStormReportFieldType: AWFStormReportField;
+    class var AWFStormReportFieldWFO: AWFStormReportField;
+    class var AWFStormReportFieldDetail: AWFStormReportField;
+    class var AWFStormReportFieldCity: AWFStormReportField;
+    class var AWFStormReportFieldState: AWFStormReportField;
+    class var AWFStormReportFieldCountry: AWFStormReportField;
+    class var AWFSunMoonFilterSun: AWFSunMoonFilter;
+    class var AWFSunMoonFilterTwilight: AWFSunMoonFilter;
+    class var AWFSunMoonFilterMoon: AWFSunMoonFilter;
+    class var AWFSunMoonFilterMoonPhase: AWFSunMoonFilter;
+    class var AWFTideFilterHigh: AWFTideFilter;
+    class var AWFTideFilterLow: AWFTideFilter;
+    class var AWFTideFilterHighLow: AWFTideFilter;
+    class var AWFTideFieldStationId: AWFTideField;
+    class var AWFTideFieldDateTime: AWFTideField;
+    class var AWFTideFieldType: AWFTideField;
+    class var AWFTideFieldHeightFT: AWFTideField;
+    class var AWFTideFieldHeightM: AWFTideField;
+    class var AWFTideFieldCity: AWFTideField;
+    class var AWFTideFieldState: AWFTideField;
+    class var AWFTideFieldCountry: AWFTideField;
+    class var AWFTropicalCycloneFilterActive: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterNotActive: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterAtlantic: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterEastPacific: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterCentralPacific: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterWestPacific: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterPacific: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterIndian: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterSouthern: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterPosition: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterTrack: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterForecast: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterGeo: AWFTropicalCycloneFilter;
+    class var AWFTropicalCycloneFilterTest: AWFTropicalCycloneFilter;
+    class var AWFTropicalBasinAtlantic: AWFTropicalBasin;
+    class var AWFTropicalBasinEastPacific: AWFTropicalBasin;
+    class var AWFTropicalBasinCentralPacific: AWFTropicalBasin;
+    class var AWFTropicalBasinWestPacific: AWFTropicalBasin;
+    class var AWFTropicalBasinIndian: AWFTropicalBasin;
+    class var AWFTropicalBasinSouthernHemisphere: AWFTropicalBasin;
+    class var AWFTropicalStormTypeLow: AWFTropicalStormType;
+    class var AWFTropicalStormTypeDepression: AWFTropicalStormType;
+    class var AWFTropicalStormTypeStorm: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricane: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricaneCat1: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricaneCat2: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricaneCat3: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricaneCat4: AWFTropicalStormType;
+    class var AWFTropicalStormTypeHurricaneCat5: AWFTropicalStormType;
+    class var AWFTropicalStormTypeTyphoon: AWFTropicalStormType;
+    class var AWFTropicalStormTypeSuperTyphoon: AWFTropicalStormType;
   end;
 
   AerisWeatherKit.AerisWeather = class(NSObject)
-  private
-
-    property account: nullable AerisWeatherKit.AWFAerisAccount; public;
-
-    property apiKey: nullable NSString; public;
-
-    property secretKey: nullable NSString; public;
-
-    property appIdentifer: nullable NSString; public;
-
-    property appVersion: nullable NSString; public;
-
-    property debugMode: BOOL; public;
-
-    property version: NSString; public;
-
+  public
+    property account: nullable AerisWeatherKit.AWFAerisAccount;
+    property apiKey: nullable NSString;
+    property secretKey: nullable NSString;
+    property appIdentifer: nullable NSString;
+    property appVersion: nullable NSString;
+    property debugMode: BOOL;
+    property version: NSString;
     [NonSwiftOnly]
-    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString); public;
+    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString);
     [Alias]
     [SwiftOnly]
-    class method start(apiKey: NSString) secret(secretKey: NSString); public;
+    class method start(apiKey: NSString) secret(secretKey: NSString);
     [NonSwiftOnly]
-    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
+    class method startWithApiKey(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration);
     [Alias]
     [SwiftOnly]
-    class method start(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration); public;
-    class method sharedInstance: instancetype; public;
-    class method isReady: BOOL; public;
-    class method validateAccessKeys; public;
+    class method start(apiKey: NSString) secret(secretKey: NSString) sessionConfiguration(sessionConfiguration: nullable NSURLSessionConfiguration);
+    class method sharedInstance: instancetype;
+    class method isReady: BOOL;
+    class method validateAccessKeys;
     [NonSwiftOnly]
-    method urlPathByAddingAccessKeys(urlPath: NSString): NSString; public;
+    method urlPathByAddingAccessKeys(urlPath: NSString): NSString;
     [Alias]
     [SwiftOnly]
-    method urlPath(urlPath: NSString): NSString; public;
+    method urlPath(urlPath: NSString): NSString;
     [NonSwiftOnly]
-    method parametersByAddingAccessKeys(&params: NSDictionary<id,id>): NSDictionary<id,id>; public;
+    method parametersByAddingAccessKeys(&params: NSDictionary<id,id>): NSDictionary<id,id>;
     [Alias]
     [SwiftOnly]
-    method parameters(&params: NSDictionary<id,id>): NSDictionary<id,id>; public;
-    method init: instancetype; public;
-    method &new: instancetype; public;
-    class property apiServerPath: NSString; public;
-
-    class property ampServerPath: NSString; public;
-
-
+    method parameters(&params: NSDictionary<id,id>): NSDictionary<id,id>;
+    method init: instancetype;
+    method &new: instancetype;
+    class property apiServerPath: NSString;
+    class property ampServerPath: NSString;
   end;
 
   AerisWeatherKit.AWFApiPermissions = class(NSObject)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
+    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
-    method canAccessEndpoint(endpoint: NSString): BOOL; public;
-
+    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype;
+    method canAccessEndpoint(endpoint: NSString): BOOL;
   end;
 
   AerisWeatherKit.AWFMapPermissions = class(NSObject)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
+    method initWithDictionary(dictionary: NSDictionary<id,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype; public;
-    method hasAccess: BOOL; public;
+    class constructor withDictionary(dictionary: NSDictionary<id,id>): instancetype;
+    method hasAccess: BOOL;
     [NonSwiftOnly]
-    method hasAccessToLayer(layerType: NSString): BOOL; public;
+    method hasAccessToLayer(layerType: NSString): BOOL;
     [Alias]
     [SwiftOnly]
-    method hasAccess(layerType: NSString): BOOL; public;
+    method hasAccess(layerType: NSString): BOOL;
     [NonSwiftOnly]
-    method hasAccessToBlendModes: BOOL; public;
+    method hasAccessToBlendModes: BOOL;
     [Alias]
     [SwiftOnly]
-    method hasAccess: BOOL; public;
+    method hasAccess: BOOL;
     [NonSwiftOnly]
-    method hasAccessToFilters: BOOL; public;
+    method hasAccessToFilters: BOOL;
     [Alias]
     [SwiftOnly]
-    method hasAccess: BOOL; public;
-    method canUseModifiers: BOOL; public;
-    method canUseOpacity: BOOL; public;
-    method maxImageSize: CGSize; public;
-    method maxLayers: NSInteger; public;
-
+    method hasAccess: BOOL;
+    method canUseModifiers: BOOL;
+    method canUseOpacity: BOOL;
+    method maxImageSize: CGSize;
+    method maxLayers: NSInteger;
   end;
 
   AerisWeatherKit.AWFAerisAccount = class(NSObject)
-  private
-
-    property apiKey: NSString; public;
-
-    property secretKey: NSString; public;
-
-    property apiPermissions: nullable AerisWeatherKit.AWFApiPermissions; public;
-
-    property mapPermissions: nullable AerisWeatherKit.AWFMapPermissions; public;
-
+  public
+    property apiKey: NSString;
+    property secretKey: NSString;
+    property apiPermissions: nullable AerisWeatherKit.AWFApiPermissions;
+    property mapPermissions: nullable AerisWeatherKit.AWFMapPermissions;
     [NonSwiftOnly]
-    method initWithApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype; public;
+    method initWithApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype; public;
-    method init: instancetype; public;
-
+    class constructor withApiKey(apiKey: NSString) secret(secretKey: NSString) completion(completionBlock: method(account: AerisWeatherKit.AWFAerisAccount; error: NSError)): instancetype;
+    method init: instancetype;
   end;
 
   AerisWeatherKit.AWFAerisAccountPermissionsCompletionBlock = block(account: AerisWeatherKit.AWFAerisAccount; error: NSError);
@@ -602,262 +580,216 @@ type
   AerisWeatherKit.AWFRequestCompletionBlock = block(operation: NSURLSessionDataTask; response: AerisWeatherKit.AWFWeatherApiResponse; error: NSError);
 
   AerisWeatherKit.AWFWeatherApiClient = class(AWFApiClient)
-  private
-
-    class method apiServerPath: NSString; public;
-    class method ampServerPath: NSString; public;
-
+  public
+    class method apiServerPath: NSString;
+    class method ampServerPath: NSString;
   end;
 
   AWFGeoPolygonCoordValue = NSArray<NSNumber>;
 
   AerisWeatherKit.AWFGeoPolygon = class(NSObject, INSCoding)
-  private
-
-    property coordinates: NSArray<NSValue>; public;
-
-    property coords: ^CLLocationCoordinate2D; public;
-
-    property boundingBox: AWFCoordinateRect; public;
-
-    property centerCoordinate: CLLocationCoordinate2D; public;
-
-    property centroid: CLLocationCoordinate2D; public;
-
-    property area: CGFloat; public;
-
-    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property modelObject: nullable AerisWeatherKit.AWFWeatherObject; public;
-
+  public
+    property coordinates: NSArray<NSValue>;
+    property coords: ^CLLocationCoordinate2D;
+    property boundingBox: AWFCoordinateRect;
+    property centerCoordinate: CLLocationCoordinate2D;
+    property centroid: CLLocationCoordinate2D;
+    property area: CGFloat;
+    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property modelObject: nullable AerisWeatherKit.AWFWeatherObject;
     [NonSwiftOnly]
-    method initWithArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype; public;
+    method initWithArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype; public;
+    class constructor withArrayOfCoordinates(coordinates: NSArray<NSValue>): instancetype;
     [NonSwiftOnly]
-    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype; public;
+    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype; public;
+    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>): instancetype;
     [NonSwiftOnly]
-    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype; public;
+    method initWithArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype; public;
+    class constructor withArrayOfPoints(points: NSArray<AWFGeoPolygonCoordValue>) startingWithLongitude(startsWithLongitude: BOOL): instancetype;
     [NonSwiftOnly]
-    method initWithPolygonString(polygonString: NSString): instancetype; public;
+    method initWithPolygonString(polygonString: NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPolygonString(polygonString: NSString): instancetype; public;
-    method addCoordinate(coordinate: CLLocationCoordinate2D); public;
-    method insertCoordinate(coordinate: CLLocationCoordinate2D) atIndex(&index: NSUInteger); public;
-    method removeAllCoordinates; public;
+    class constructor withPolygonString(polygonString: NSString): instancetype;
+    method addCoordinate(coordinate: CLLocationCoordinate2D);
+    method insertCoordinate(coordinate: CLLocationCoordinate2D) atIndex(&index: NSUInteger);
+    method removeAllCoordinates;
     [NonSwiftOnly]
-    method polygonAsString: NSString; public;
+    method polygonAsString: NSString;
     [Alias]
     [SwiftOnly]
-    method polygon: NSString; public;
-    method containsCoordinate(coord: CLLocationCoordinate2D): BOOL; public;
+    method polygon: NSString;
+    method containsCoordinate(coord: CLLocationCoordinate2D): BOOL;
     [NonSwiftOnly]
-    class method polygonsFromGeoJSON(geoJSON: NSDictionary<id,id>): NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
+    class method polygonsFromGeoJSON(geoJSON: NSDictionary<id,id>): NSArray<AerisWeatherKit.AWFGeoPolygon>;
     [Alias]
     [SwiftOnly]
-    class method polygons(geoJSON: NSDictionary<id,id>): NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
+    class method polygons(geoJSON: NSDictionary<id,id>): NSArray<AerisWeatherKit.AWFGeoPolygon>;
   end;
 
   AerisWeatherKit.AWFCoordinateBounds = class(NSObject)
-  private
-
-    property north: CGFloat; public;
-
-    property south: CGFloat; public;
-
-    property west: CGFloat; public;
-
-    property east: CGFloat; public;
-
-    property northwest: CLLocationCoordinate2D; public;
-
-    property southwest: CLLocationCoordinate2D; public;
-
-    property northeast: CLLocationCoordinate2D; public;
-
-    property southeast: CLLocationCoordinate2D; public;
-
-    property center: CLLocationCoordinate2D; public;
-
-    class method coordinateBounds: instancetype; public;
+  public
+    property north: CGFloat;
+    property south: CGFloat;
+    property west: CGFloat;
+    property east: CGFloat;
+    property northwest: CLLocationCoordinate2D;
+    property southwest: CLLocationCoordinate2D;
+    property northeast: CLLocationCoordinate2D;
+    property southeast: CLLocationCoordinate2D;
+    property center: CLLocationCoordinate2D;
+    class method coordinateBounds: instancetype;
     [NonSwiftOnly]
-    class method coordinateBoundsWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
+    class method coordinateBoundsWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype;
     [Alias]
     [SwiftOnly]
-    class method coordinateBounds(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
+    class method coordinateBounds(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
+    class constructor withWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype;
     [NonSwiftOnly]
-    method initWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
+    method initWithNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype; public;
+    class constructor withNorthwest(northwest: CLLocationCoordinate2D) southeast(southeast: CLLocationCoordinate2D): instancetype;
     [NonSwiftOnly]
-    method initWithNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype; public;
+    method initWithNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype; public;
+    class constructor withNortheast(northeast: CLLocationCoordinate2D) southwest(southwest: CLLocationCoordinate2D): instancetype;
     [NonSwiftOnly]
-    method boundsAsString: NSString; public;
+    method boundsAsString: NSString;
     [Alias]
     [SwiftOnly]
-    method bounds: NSString; public;
-    method intersects(bounds: AerisWeatherKit.AWFCoordinateBounds): BOOL; public;
-    method extend(bounds: AerisWeatherKit.AWFCoordinateBounds); public;
-
+    method bounds: NSString;
+    method intersects(bounds: AerisWeatherKit.AWFCoordinateBounds): BOOL;
+    method extend(bounds: AerisWeatherKit.AWFCoordinateBounds);
   end;
 
   AWFUnit = NSString;
 
   AerisWeatherKit.AWFWeatherObject = class(AWFApiObject)
-  private
-
-    method identifier: nullable NSString; public;
+  public
+    method identifier: nullable NSString;
     [NonSwiftOnly]
-    class method remotePropertyNameMappedToPropertyName(propertyName: NSString): nullable NSString; public;
+    class method remotePropertyNameMappedToPropertyName(propertyName: NSString): nullable NSString;
     [Alias]
     [SwiftOnly]
-    class method remotePropertyNameMapped(propertyName: NSString): nullable NSString; public;
-
+    class method remotePropertyNameMapped(propertyName: NSString): nullable NSString;
+    class method propertyMappings: NSDictionary<id,id>;
   end;
 
   AerisWeatherKit.AWFGeographicObject = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property place: nullable AerisWeatherKit.AWFPlace; public;
-
-    property relativeTo: nullable AerisWeatherKit.AWFRelativeTo; public;
-
-
+  public
+    property place: nullable AerisWeatherKit.AWFPlace;
+    property relativeTo: nullable AerisWeatherKit.AWFRelativeTo;
   end;
 
   AerisWeatherKit.AWFPlaceGeolocateCompletionBlock = block(place: AerisWeatherKit.AWFPlace; error: NSError);
 
   AerisWeatherKit.AWFPlace = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property location: nullable CLLocation; public;
-
-    property name: nullable NSString; public;
-
-    property state: nullable NSString; public;
-
-    property stateFull: nullable NSString; public;
-
-    property country: nullable NSString; public;
-
-    property countryFull: nullable NSString; public;
-
-    property county: nullable NSString; public;
-
-    property formattedNameFull: nullable NSString; public;
-
-    property zipcode: nullable NSString; public;
-
-    property icao: nullable NSString; public;
-
-    property region: nullable NSString; public;
-
-    property regionFull: nullable NSString; public;
-
-    property continent: nullable NSString; public;
-
-    property continentFull: nullable NSString; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property isDst: BOOL; public;
-
-    property elevationM: CGFloat; public;
-
-    property elevationFT: CGFloat; public;
-
-    property population: CGFloat; public;
-
+  public
+    property coordinate: CLLocationCoordinate2D;
+    property location: nullable CLLocation;
+    property name: nullable NSString;
+    property state: nullable NSString;
+    property stateFull: nullable NSString;
+    property country: nullable NSString;
+    property countryFull: nullable NSString;
+    property county: nullable NSString;
+    property formattedNameFull: nullable NSString;
+    property zipcode: nullable NSString;
+    property icao: nullable NSString;
+    property region: nullable NSString;
+    property regionFull: nullable NSString;
+    property continent: nullable NSString;
+    property continentFull: nullable NSString;
+    property timeZone: nullable NSTimeZone;
+    property isDst: BOOL;
+    property elevationM: CGFloat;
+    property elevationFT: CGFloat;
+    property population: CGFloat;
+    property weatherZones: NSArray<NSString>;
+    property fireZones: NSArray<NSString>;
+    property fips: NSArray<NSString>;
+    property countyIds: NSArray<NSString>;
     [NonSwiftOnly]
-    method initWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
+    method initWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
+    class constructor withCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype;
     [NonSwiftOnly]
-    method initWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
+    method initWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
+    class constructor withLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype;
     [NonSwiftOnly]
-    method initWithZipcode(zipcode: not nullable NSString): instancetype; public;
+    method initWithZipcode(zipcode: not nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withZipcode(zipcode: not nullable NSString): instancetype; public;
+    class constructor withZipcode(zipcode: not nullable NSString): instancetype;
     [NonSwiftOnly]
-    method stringForQuery: nullable NSString; public;
+    method stringForQuery: nullable NSString;
     [Alias]
     [SwiftOnly]
-    method string: nullable NSString; public;
+    method string: nullable NSString;
     [NonSwiftOnly]
-    method stringForSearch: nullable NSString; public;
+    method stringForSearch: nullable NSString;
     [Alias]
     [SwiftOnly]
-    method string: nullable NSString; public;
-    method isValid: BOOL; public;
+    method string: nullable NSString;
+    method isValid: BOOL;
     [NonSwiftOnly]
-    method isEqualToPlaceByComparingName(place: not nullable AerisWeatherKit.AWFPlace): BOOL; public;
+    method isEqualToPlaceByComparingName(place: not nullable AerisWeatherKit.AWFPlace): BOOL;
     [Alias]
     [SwiftOnly]
-    method isEqualToPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL; public;
-    class method placeWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
+    method isEqualToPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL;
+    class method placeWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype; public;
-    class method placeWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
+    class constructor withWithCity(city: not nullable NSString) state(state: nullable NSString) country(country: not nullable NSString): instancetype;
+    class method placeWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype; public;
-    class method placeWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
+    class constructor withWithLatitude(latitude: CGFloat) longitude(longitude: CGFloat): instancetype;
+    class method placeWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
-    class method placeWithZipcode(zipcode: not nullable NSString): instancetype; public;
+    class constructor withWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype;
+    class method placeWithZipcode(zipcode: not nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithZipcode(zipcode: not nullable NSString): instancetype; public;
-    class method placeFromString(string: not nullable NSString): instancetype; public;
+    class constructor withWithZipcode(zipcode: not nullable NSString): instancetype;
+    class method placeFromString(string: not nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromString(string: not nullable NSString): instancetype; public;
+    class constructor withFromString(string: not nullable NSString): instancetype;
     [NonSwiftOnly]
-    class method getCurrentLocationWithCompletion(completionBlock: method(place: AerisWeatherKit.AWFPlace; error: NSError)); public;
+    class method getCurrentLocationWithCompletion(completionBlock: method(place: AerisWeatherKit.AWFPlace; error: NSError));
     [Alias]
     [SwiftOnly]
-    class method getCurrentLocation(completionBlock: method(place: AerisWeatherKit.AWFPlace; error: NSError)); public;
-
+    class method getCurrentLocation(completionBlock: method(place: AerisWeatherKit.AWFPlace; error: NSError));
   end;
 
   AWFRequestFilter = NSString;
@@ -869,162 +801,130 @@ type
   AWFApiParameters = NSDictionary<AWFWeatherParamKey,NSObject>;
 
   AerisWeatherKit.AWFWeatherRequestOptions = class(AWFApiRequestOptions)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property place: nullable AerisWeatherKit.AWFPlace; public;
-
-    property bounds: nullable AerisWeatherKit.AWFCoordinateBounds; public;
-
-    property boundsString: nullable NSString; public;
-
-    property limit: NSUInteger; public;
-
-    property &skip: NSUInteger; public;
-
-    property radiusMI: NSUInteger; public;
-
-    property radiusKM: NSUInteger; public;
-
-    property radiusString: nullable NSString; public;
-
-    property queryString: nullable NSString; public;
-
-    property queries: NSArray<AerisWeatherKit.AWFRequestQuery>; public;
-
-    property filterString: nullable NSString; public;
-
-    property filters: NSArray<AWFRequestFilter>; public;
-
-    property fields: nullable NSString; public;
-
-    property sort: nullable NSString; public;
-
-    property fromDate: nullable NSDate; public;
-
-    property fromDateString: nullable NSString; public;
-
-    property toDate: nullable NSDate; public;
-
-    property toDateString: nullable NSString; public;
-
-    property periodLimit: NSUInteger; public;
-
-    property periodSkip: NSUInteger; public;
-
-    property periodSort: nullable NSString; public;
-
-    property action: AWFWeatherRequestAction; public;
-
-    property format: nullable NSString; public;
-
+  public
+    property identifier: nullable NSString;
+    property place: nullable AerisWeatherKit.AWFPlace;
+    property bounds: nullable AerisWeatherKit.AWFCoordinateBounds;
+    property boundsString: nullable NSString;
+    property limit: NSUInteger;
+    property &skip: NSUInteger;
+    property lang: nullable NSString;
+    property radiusMI: NSUInteger;
+    property radiusKM: NSUInteger;
+    property radiusString: nullable NSString;
+    property queryString: nullable NSString;
+    property queries: NSArray<AerisWeatherKit.AWFRequestQuery>;
+    property filterString: nullable NSString;
+    property filters: NSArray<AWFRequestFilter>;
+    property fields: nullable NSString;
+    property sort: nullable NSString;
+    property fromDate: nullable NSDate;
+    property fromDateString: nullable NSString;
+    property toDate: nullable NSDate;
+    property toDateString: nullable NSString;
+    property periodLimit: NSUInteger;
+    property periodSkip: NSUInteger;
+    property periodSort: nullable NSString;
+    property action: AWFWeatherRequestAction;
+    property format: nullable NSString;
     [NonSwiftOnly]
-    class method optionsFromDictionary(dictionary: NSDictionary<NSString,id>): instancetype; public;
+    class method optionsFromDictionary(dictionary: NSDictionary<NSString,id>): instancetype;
     [Alias]
     [SwiftOnly]
-    class method options(dictionary: NSDictionary<NSString,id>): instancetype; public;
+    class method options(dictionary: NSDictionary<NSString,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFrom(dictionary: NSDictionary<NSString,id>): instancetype; public;
+    class constructor withFrom(dictionary: NSDictionary<NSString,id>): instancetype;
     [NonSwiftOnly]
-    class method optionsFromQueryString(queryString: nullable NSString): instancetype; public;
+    class method optionsFromQueryString(queryString: nullable NSString): instancetype;
     [Alias]
     [SwiftOnly]
-    class method options(queryString: nullable NSString): instancetype; public;
+    class method options(queryString: nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromQueryString(queryString: nullable NSString): instancetype; public;
+    class constructor withFromQueryString(queryString: nullable NSString): instancetype;
     [NonSwiftOnly]
-    class method optionsFromURLPath(URLPath: nullable NSString): instancetype; public;
+    class method optionsFromURLPath(URLPath: nullable NSString): instancetype;
     [Alias]
     [SwiftOnly]
-    class method options(URLPath: nullable NSString): instancetype; public;
+    class method options(URLPath: nullable NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFromURLPath(URLPath: nullable NSString): instancetype; public;
+    class constructor withFromURLPath(URLPath: nullable NSString): instancetype;
     [NonSwiftOnly]
-    method optionsAsDictionary: NSDictionary<NSString,id>; public;
+    method optionsAsDictionary: NSDictionary<NSString,id>;
     [Alias]
     [SwiftOnly]
-    method options: NSDictionary<NSString,id>; public;
+    method options: NSDictionary<NSString,id>;
     [NonSwiftOnly]
-    method optionsAsQueryString: NSString; public;
+    method optionsAsQueryString: NSString;
     [Alias]
     [SwiftOnly]
-    method options: NSString; public;
+    method options: NSString;
     [NonSwiftOnly]
-    method optionsAsQueryStringIgnoringPlace: NSString; public;
+    method optionsAsQueryStringIgnoringPlace: NSString;
     [Alias]
     [SwiftOnly]
-    method options: NSString; public;
-    method addFilter(filter: AWFRequestFilter); public;
-    method removeFilter(filter: AWFRequestFilter); public;
-    method removeAllFilters; public;
+    method options: NSString;
+    method addFilter(filter: AWFRequestFilter);
+    method removeFilter(filter: AWFRequestFilter);
+    method removeAllFilters;
     [NonSwiftOnly]
-    method addQuery(query: AerisWeatherKit.AWFRequestQuery); public;
+    method addQuery(query: AerisWeatherKit.AWFRequestQuery);
     [Alias]
     [SwiftOnly]
-    method &add(query: AerisWeatherKit.AWFRequestQuery); public;
+    method &add(query: AerisWeatherKit.AWFRequestQuery);
     [NonSwiftOnly]
-    method removeQuery(query: AerisWeatherKit.AWFRequestQuery); public;
+    method removeQuery(query: AerisWeatherKit.AWFRequestQuery);
     [Alias]
     [SwiftOnly]
-    method &remove(query: AerisWeatherKit.AWFRequestQuery); public;
-    method removeAllQueries; public;
+    method &remove(query: AerisWeatherKit.AWFRequestQuery);
+    method removeAllQueries;
     [NonSwiftOnly]
-    method isEqualToRequestOptions(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
+    method isEqualToRequestOptions(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL;
     [Alias]
     [SwiftOnly]
-    method isEqual(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL; public;
+    method isEqual(options: AerisWeatherKit.AWFWeatherRequestOptions): BOOL;
     [NonSwiftOnly]
-    method applyOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method applyOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions);
     [Alias]
     [SwiftOnly]
-    method apply(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions); public;
+    method apply(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions);
     [NonSwiftOnly]
-    method optionsByApplyingOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions; public;
+    method optionsByApplyingOptions(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions;
     [Alias]
     [SwiftOnly]
-    method applying(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions; public;
-    property &from: nullable NSDate; public;
-
-    property &to: nullable NSDate; public;
-
-
+    method applying(otherOptions: AerisWeatherKit.AWFWeatherRequestOptions): AerisWeatherKit.AWFWeatherRequestOptions;
+    property &from: nullable NSDate;
+    property &to: nullable NSDate;
   end;
 
   AerisWeatherKit.AWFRequestQuery = class(NSObject)
-  private
-
-    property propertyName: NSString; public;
-
-    property value: id; public;
-
-    property requestOperator: AerisWeatherKit.AWFRequestOperator; public;
-
+  public
+    property propertyName: NSString;
+    property value: id;
+    property requestOperator: AerisWeatherKit.AWFRequestOperator;
     [NonSwiftOnly]
-    class method queryForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
+    class method queryForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype;
     [Alias]
     [SwiftOnly]
-    class method query(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
+    class method query(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
-    class method &new: instancetype; public;
+    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype;
+    class method &new: instancetype;
     [NonSwiftOnly]
-    method initForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
+    method initForProperty(propertyName: NSString) withValue(value: id) usingOperator(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype; public;
-    method init: instancetype; public;
-    method stringRepresentation: NSString; public;
-
+    class constructor withForProperty(propertyName: NSString) withValue(value: id) &using(requestOperator: AerisWeatherKit.AWFRequestOperator): instancetype;
+    method init: instancetype;
+    method stringRepresentation: NSString;
   end;
 
   AerisWeatherKit.AWFWeatherDataType = enum ([NonSwiftOnly] AWFWeatherDataTypeNone = 1, [NonSwiftOnly] None = 1, [SwiftOnly] none = 1, [NonSwiftOnly] AWFWeatherDataTypeWeather = 2, [NonSwiftOnly] Weather = 2, [SwiftOnly] weather = 2, [NonSwiftOnly] AWFWeatherDataTypeSkyCover = 3, [NonSwiftOnly] SkyCover = 3, [SwiftOnly] skyCover = 3, [NonSwiftOnly] AWFWeatherDataTypeLight = 4, [NonSwiftOnly] Light = 4, [SwiftOnly] light = 4, [NonSwiftOnly] AWFWeatherDataTypeVisibility = 5, [NonSwiftOnly] Visibility = 5, [SwiftOnly] visibility = 5, [NonSwiftOnly] AWFWeatherDataTypeTemperature = 6, [NonSwiftOnly] Temperature = 6, [SwiftOnly] temperature = 6, [NonSwiftOnly] AWFWeatherDataTypeMaxTemperature = 7, [NonSwiftOnly] MaxTemperature = 7, [SwiftOnly] maxTemperature = 7, [NonSwiftOnly] AWFWeatherDataTypeMinTemperature = 8, [NonSwiftOnly] MinTemperature = 8, [SwiftOnly] minTemperature = 8, [NonSwiftOnly] AWFWeatherDataTypeAverageTemperature = 9, [NonSwiftOnly] AverageTemperature = 9, [SwiftOnly] averageTemperature = 9, [NonSwiftOnly] AWFWeatherDataTypeDewPoint = 10, [NonSwiftOnly] DewPoint = 10, [SwiftOnly] dewPoint = 10, [NonSwiftOnly] AWFWeatherDataTypeHumidity = 11, [NonSwiftOnly] Humidity = 11, [SwiftOnly] humidity = 11, [NonSwiftOnly] AWFWeatherDataTypeWindSpeed = 12, [NonSwiftOnly] WindSpeed = 12, [SwiftOnly] windSpeed = 12, [NonSwiftOnly] AWFWeatherDataTypeWindGust = 13, [NonSwiftOnly] WindGust = 13, [SwiftOnly] windGust = 13, [NonSwiftOnly] AWFWeatherDataTypePressure = 14, [NonSwiftOnly] Pressure = 14, [SwiftOnly] pressure = 14, [NonSwiftOnly] AWFWeatherDataTypePrecipitation = 15, [NonSwiftOnly] Precipitation = 15, [SwiftOnly] precipitation = 15, [NonSwiftOnly] AWFWeatherDataTypeAccumulatedPrecipitation = 16, [NonSwiftOnly] AccumulatedPrecipitation = 16, [SwiftOnly] accumulatedPrecipitation = 16, [NonSwiftOnly] AWFWeatherDataTypeSnowfall = 17, [NonSwiftOnly] Snowfall = 17, [SwiftOnly] snowfall = 17, [NonSwiftOnly] AWFWeatherDataTypeAccumulatedSnowfall = 18, [NonSwiftOnly] AccumulatedSnowfall = 18, [SwiftOnly] accumulatedSnowfall = 18, 
@@ -1035,126 +935,117 @@ type
   AWFForecastModelType = NSString;
 
   AerisWeatherKit.AWFForecastModel = class(NSObject)
-  private
-
-    class method names: NSDictionary<AWFForecastModelType,NSString>; public;
+  public
+    class method names: NSDictionary<AWFForecastModelType,NSString>;
     [NonSwiftOnly]
-    class method intervalForForecastModelType(model: AWFForecastModelType): NSTimeInterval; public;
+    class method intervalForForecastModelType(model: AWFForecastModelType): NSTimeInterval;
     [Alias]
     [SwiftOnly]
-    class method interval(model: AWFForecastModelType): NSTimeInterval; public;
+    class method interval(model: AWFForecastModelType): NSTimeInterval;
     [NonSwiftOnly]
-    class method maxTimeRangeForForecastModelType(model: AWFForecastModelType): NSTimeInterval; public;
+    class method maxTimeRangeForForecastModelType(model: AWFForecastModelType): NSTimeInterval;
     [Alias]
     [SwiftOnly]
-    class method maxTimeRange(model: AWFForecastModelType): NSTimeInterval; public;
-
+    class method maxTimeRange(model: AWFForecastModelType): NSTimeInterval;
   end;
 
   AWFWeatherEndpointArrayResultType = NSArray<AerisWeatherKit.AWFWeatherObject>;
 
   AerisWeatherKit.AWFWeatherEndpointResult = class(NSObject)
-  private
-
-    property results: AWFWeatherEndpointArrayResultType; public;
-
-    property error: NSError; public;
-
-    class method resultWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype; public;
+  public
+    property results: AWFWeatherEndpointArrayResultType;
+    property error: NSError;
+    class method resultWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype; public;
-
+    class constructor withWithValue(value: AWFWeatherEndpointArrayResultType) error(error: nullable NSError): instancetype;
   end;
 
   AerisWeatherKit.AWFWeatherEndpoint = class(AWFApiEndpoint)
-  private
-
-    property options: nullable AerisWeatherKit.AWFWeatherRequestOptions; public;
-
-    property isLoading: BOOL; public;
-
-    class method sharedService: instancetype; public;
+  public
+    property options: nullable AerisWeatherKit.AWFWeatherRequestOptions;
+    property isLoading: BOOL;
+    class method sharedService: instancetype;
     [NonSwiftOnly]
-    method initWithClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype; public;
+    method initWithClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype; public;
+    class constructor withClient(client: AerisWeatherKit.AWFWeatherApiClient): instancetype;
     [NonSwiftOnly]
-    method initWithPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
+    method initWithPath(path: NSString) objectClass(objectClass: &Class): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPath(path: NSString) objectClass(objectClass: &Class): instancetype; public;
+    class constructor withPath(path: NSString) objectClass(objectClass: &Class): instancetype;
+    method getForId(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getForPlace(place: AerisWeatherKit.AWFPlace) fromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) fromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(place: AerisWeatherKit.AWFPlace) &from(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) &from(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getForPlace(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getForPlace(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(place: AerisWeatherKit.AWFPlace) &from(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getClosestToPlace(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getClosestToPlace(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method closest(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method closest(place: AerisWeatherKit.AWFPlace) radius(radius: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getFromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getFromDate(fromDate: nullable NSDate) toDate(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(fromDate: nullable NSDate) &to(toDate: nullable NSDate) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getFrom(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getFrom(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method get(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method get(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getWithinCircleAtCoordinate(centerCoordinate: CLLocationCoordinate2D) radius(radius: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithinCircleAtCoordinate(centerCoordinate: CLLocationCoordinate2D) radius(radius: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method within(centerCoordinate: CLLocationCoordinate2D) radius(radius: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method within(centerCoordinate: CLLocationCoordinate2D) radius(radius: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getWithinBounds(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithinBounds(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method within(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method within(bounds: AerisWeatherKit.AWFCoordinateBounds) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getWithinPolygon(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getWithinPolygon(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method within(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method within(polygon: AerisWeatherKit.AWFGeoPolygon) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getContainingPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getContainingPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method containing(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method containing(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getPlacesAffectedByObject(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getPlacesAffectedByObject(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method placesAffectedBy(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method placesAffectedBy(object: AWFApiObject) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method getPlacesAffectedByObjectWithIdentifier(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method getPlacesAffectedByObjectWithIdentifier(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method placesAffectedBy(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-    method search(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-
+    method placesAffectedBy(identifier: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
+    method search(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
   end;
 
   AerisWeatherKit.AWFWeatherEndpointCompletionBlock = block(&result: AerisWeatherKit.AWFWeatherEndpointResult);
@@ -1164,90 +1055,69 @@ type
   AerisWeatherKit.AWFActivityQuality = enum ([NonSwiftOnly] AWFActivityQualityUnknown = 1, [NonSwiftOnly] Unknown = 1, [SwiftOnly] unknown = 1, [NonSwiftOnly] AWFActivityQualityBad = 2, [NonSwiftOnly] Bad = 2, [SwiftOnly] bad = 2, [NonSwiftOnly] AWFActivityQualityPoor = 3, [NonSwiftOnly] Poor = 3, [SwiftOnly] poor = 3, [NonSwiftOnly] AWFActivityQualityGood = 4, [NonSwiftOnly] Good = 4, [SwiftOnly] good = 4, [NonSwiftOnly] AWFActivityQualityExcellent = 5, [NonSwiftOnly] Excellent = 5, [SwiftOnly] excellent = 5, [NonSwiftOnly] AWFActivityQualityBest = 6, [NonSwiftOnly] Best = 6, [SwiftOnly] best = 6);
 
   AerisWeatherKit.AWFActivity = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property activityType: AerisWeatherKit.AWFActivityType; public;
-
-    property activityTypeENG: nullable NSString; public;
-
-    property current: nullable AerisWeatherKit.AWFActivityPeriod; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFActivityPeriod>; public;
-
+  public
+    property activityType: AerisWeatherKit.AWFActivityType;
+    property activityTypeENG: nullable NSString;
+    property current: nullable AerisWeatherKit.AWFActivityPeriod;
+    property periods: NSArray<AerisWeatherKit.AWFActivityPeriod>;
     [NonSwiftOnly]
-    class method filterStringForActivityType(activityType: AerisWeatherKit.AWFActivityType): nullable NSString; public;
+    class method filterStringForActivityType(activityType: AerisWeatherKit.AWFActivityType): nullable NSString;
     [Alias]
     [SwiftOnly]
-    class method filterString(activityType: AerisWeatherKit.AWFActivityType): nullable NSString; public;
-
+    class method filterString(activityType: AerisWeatherKit.AWFActivityType): nullable NSString;
   end;
 
   AerisWeatherKit.AWFActivityPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property quality: AerisWeatherKit.AWFActivityQuality; public;
-
-    property qualityIndex: NSInteger; public;
-
-    property qualityENG: nullable NSString; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property quality: AerisWeatherKit.AWFActivityQuality;
+    property qualityIndex: NSInteger;
+    property qualityENG: nullable NSString;
   end;
 
   AerisWeatherKit.AWFActivities = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFAdvisory = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property &type: nullable NSString; public;
-
-    property name: nullable NSString; public;
-
-    property zone: nullable NSString; public;
-
-    property body: nullable NSString; public;
-
-    property bodyFull: nullable NSString; public;
-
-    property issued: nullable NSDate; public;
-
-    property begins: nullable NSDate; public;
-
-    property expires: nullable NSDate; public;
-
-    property added: nullable NSDate; public;
-
-    property polygon: nullable NSString; public;
-
-    property geoPolygon: nullable AerisWeatherKit.AWFGeoPolygon; public;
-
+  public
+    property dataSource: nullable NSString;
+    property &type: nullable NSString;
+    property name: nullable NSString;
+    property zone: nullable NSString;
+    property body: nullable NSString;
+    property bodyFull: nullable NSString;
+    property color: nullable UIColor;
+    property category: nullable NSString;
+    property isEmergency: BOOL;
+    property issued: nullable NSDate;
+    property begins: nullable NSDate;
+    property expires: nullable NSDate;
+    property added: nullable NSDate;
+    property updated: nullable NSDate;
+    property includedCounties: NSArray<NSString>;
+    property includedFipsCodes: NSArray<NSString>;
+    property includedWeatherZones: NSArray<NSString>;
+    property includedZipCodes: NSArray<NSNumber>;
+    property polygon: nullable NSString;
+    property geoPolygon: nullable AerisWeatherKit.AWFGeoPolygon;
     [NonSwiftOnly]
-    class method colorMappingsForTypes: NSDictionary<NSString,UIColor>; public;
+    class method colorMappingsForTypes: NSDictionary<NSString,UIColor>;
     [Alias]
     [SwiftOnly]
-    class method colorMappings: NSDictionary<NSString,UIColor>; public;
-    class method namesByType: NSDictionary<NSString,NSString>; public;
+    class method colorMappings: NSDictionary<NSString,UIColor>;
+    class method namesByType: NSDictionary<NSString,NSString>;
     [NonSwiftOnly]
-    class method colorForAdvisoryWithType(&type: not nullable NSString): nullable UIColor; public;
+    class method colorForAdvisoryWithType(&type: not nullable NSString): nullable UIColor;
     [Alias]
     [SwiftOnly]
-    class method colorForAdvisory(&type: not nullable NSString): nullable UIColor; public;
-
+    class method colorForAdvisory(&type: not nullable NSString): nullable UIColor;
   end;
 
   AerisWeatherKit.AWFAdvisoryBreakpoint = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property &type: NSString; public;
-
-    property path: NSArray<AWFGeoPolygonCoordValue>; public;
-
-    property polyline: AerisWeatherKit.AWFGeoPolygon; public;
-
-
+  public
+    property &type: NSString;
+    property path: NSArray<AWFGeoPolygonCoordValue>;
+    property polyline: AerisWeatherKit.AWFGeoPolygon;
   end;
 
   AWFAdvisoryFilter = NSString;
@@ -1255,6 +1125,12 @@ type
   AWFAdvisoryField = NSString;
 
   AerisWeatherKit.AWFAdvisories = class(AerisWeatherKit.AWFWeatherEndpoint)
+  end;
+
+  AerisWeatherKit.AWFAdvisorySummaries = class(AerisWeatherKit.AWFWeatherEndpoint)
+  end;
+
+  AerisWeatherKit.AWFAirports = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AWFAirQualityFilter = NSString;
@@ -1266,136 +1142,86 @@ type
   end;
 
   AerisWeatherKit.AWFBatchRequestOptions = class(AerisWeatherKit.AWFWeatherRequestOptions)
-  private
-
-    property requestsUrlPath: NSString; public;
-
-
+  public
+    property requestsUrlPath: NSString;
   end;
 
   AerisWeatherKit.AWFBatchRequestCompletionBlock = block(request: AerisWeatherKit.AWFBatchRequest; error: NSError);
 
   AerisWeatherKit.AWFBatchRequest = class(NSObject)
-  private
-
-    property endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>; public;
-
-    property URLPath: NSString; public;
-
+  public
+    property endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>;
+    property URLPath: NSString;
     [NonSwiftOnly]
-    method initWithEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype; public;
+    method initWithEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype; public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString); public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions); public;
-    method removeEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
+    class constructor withEndpoints(endpoints: NSArray<AerisWeatherKit.AWFWeatherEndpoint>): instancetype;
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint);
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions);
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString);
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions);
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions);
+    method addEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) action(action: nullable NSString) forKey(key: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions);
+    method removeEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint);
     [NonSwiftOnly]
-    method removeEndpointForKey(key: NSString); public;
+    method removeEndpointForKey(key: NSString);
     [Alias]
     [SwiftOnly]
-    method removeEndpoint(key: NSString); public;
-    method removeAllEndpoints; public;
+    method removeEndpoint(key: NSString);
+    method removeAllEndpoints;
     [NonSwiftOnly]
-    method setPlaceForAllEndpoints(place: AerisWeatherKit.AWFPlace); public;
+    method setPlaceForAllEndpoints(place: AerisWeatherKit.AWFPlace);
     [Alias]
     [SwiftOnly]
-    method setPlace(place: AerisWeatherKit.AWFPlace); public;
+    method setPlace(place: AerisWeatherKit.AWFPlace);
     [NonSwiftOnly]
-    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
+    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest;
     [Alias]
     [SwiftOnly]
-    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
+    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest;
     [NonSwiftOnly]
-    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
+    method getWithOptions(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest;
     [Alias]
     [SwiftOnly]
-    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest; public;
+    method get(options: nullable AerisWeatherKit.AWFBatchRequestOptions) expiration(expirationInterval: NSTimeInterval) completion(completionBlock: method(request: AerisWeatherKit.AWFBatchRequest; error: NSError)): AWFRequest;
     [NonSwiftOnly]
-    method resultsForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method resultsForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>;
     [Alias]
     [SwiftOnly]
-    method results(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method results(endpoint: AerisWeatherKit.AWFWeatherEndpoint): NSArray<AerisWeatherKit.AWFWeatherObject>;
     [NonSwiftOnly]
-    method resultsForEndpointWithKey(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
+    method resultsForEndpointWithKey(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>;
     [Alias]
     [SwiftOnly]
-    method resultsForEndpoint(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>; public;
-    method endpointForKey(key: NSString): nullable AerisWeatherKit.AWFWeatherEndpoint; public;
-    method URLPathForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) appendQueryString(queryString: BOOL): nullable NSString; public;
-    property placeForAllEndpoints: AerisWeatherKit.AWFPlace; public;
-
-
+    method resultsForEndpoint(key: NSString): NSArray<AerisWeatherKit.AWFWeatherObject>;
+    method endpointForKey(key: NSString): nullable AerisWeatherKit.AWFWeatherEndpoint;
+    method URLPathForEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint) appendQueryString(queryString: BOOL): nullable NSString;
+    property placeForAllEndpoints: AerisWeatherKit.AWFPlace;
   end;
 
-  AerisWeatherKit.AWFCountry = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property name: nullable NSString; public;
-
-    property iso: nullable NSString; public;
-
-    property iso3: nullable NSString; public;
-
-    property isoId: nullable NSString; public;
-
-    property fips: nullable NSString; public;
-
-    property continent: nullable NSString; public;
-
-    property capital: nullable NSString; public;
-
-    property areaKM: CGFloat; public;
-
-    property areaMI: CGFloat; public;
-
-    property population: CGFloat; public;
-
-    property neighbors: NSArray<NSString>; public;
-
-
+  AerisWeatherKit.AWFConditions = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
-  AWFCountryField = NSString;
-
-  AerisWeatherKit.AWFCountries = class(AerisWeatherKit.AWFWeatherEndpoint)
+  AerisWeatherKit.AWFConditionsSummaries = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFConvectiveOutlook = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property outlookId: nullable NSString; public;
-
-    property product: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property dayIndex: NSInteger; public;
-
-    property riskType: nullable NSString; public;
-
-    property riskName: nullable NSString; public;
-
-    property riskCode: NSInteger; public;
-
-    property startDate: nullable NSDate; public;
-
-    property endDate: nullable NSDate; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property risk: nullable NSString; public;
-
-
+  public
+    property outlookId: nullable NSString;
+    property product: nullable NSString;
+    property category: nullable NSString;
+    property dayIndex: NSInteger;
+    property riskType: nullable NSString;
+    property riskName: nullable NSString;
+    property riskCode: NSInteger;
+    property startDate: nullable NSDate;
+    property endDate: nullable NSDate;
+    property timestamp: nullable NSDate;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property risk: nullable NSString;
   end;
 
   AWFConvectiveOutlookFilter = NSString;
@@ -1405,34 +1231,40 @@ type
   AerisWeatherKit.AWFConvectiveOutlooks = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
+  AerisWeatherKit.AWFCountry = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property name: nullable NSString;
+    property iso: nullable NSString;
+    property iso3: nullable NSString;
+    property isoId: nullable NSString;
+    property fips: nullable NSString;
+    property continent: nullable NSString;
+    property capital: nullable NSString;
+    property areaKM: CGFloat;
+    property areaMI: CGFloat;
+    property population: CGFloat;
+    property neighbors: NSArray<NSString>;
+  end;
+
+  AWFCountryField = NSString;
+
+  AerisWeatherKit.AWFCountries = class(AerisWeatherKit.AWFWeatherEndpoint)
+  end;
+
   AerisWeatherKit.AWFDroughtIndex = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property indexId: nullable NSString; public;
-
-    property product: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property riskType: nullable NSString; public;
-
-    property riskName: nullable NSString; public;
-
-    property riskCode: NSInteger; public;
-
-    property startDate: nullable NSDate; public;
-
-    property endDate: nullable NSDate; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property risk: nullable NSString; public;
-
-
+  public
+    property indexId: nullable NSString;
+    property product: nullable NSString;
+    property category: nullable NSString;
+    property riskType: nullable NSString;
+    property riskName: nullable NSString;
+    property riskCode: NSInteger;
+    property startDate: nullable NSDate;
+    property endDate: nullable NSDate;
+    property timestamp: nullable NSDate;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property risk: nullable NSString;
   end;
 
   AWFDroughtIndexFilter = NSString;
@@ -1443,23 +1275,15 @@ type
   end;
 
   AerisWeatherKit.AWFEarthquake = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property region: nullable NSString; public;
-
-    property quakeId: nullable NSString; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property magnitude: CGFloat; public;
-
-    property &type: nullable NSString; public;
-
-    property depthKM: CGFloat; public;
-
-    property depthMI: CGFloat; public;
-
-
+  public
+    property region: nullable NSString;
+    property quakeId: nullable NSString;
+    property timestamp: nullable NSDate;
+    property updatedAt: nullable NSDate;
+    property magnitude: CGFloat;
+    property &type: nullable NSString;
+    property depthKM: CGFloat;
+    property depthMI: CGFloat;
   end;
 
   AWFEarthquakeFilter = NSString;
@@ -1470,49 +1294,32 @@ type
   end;
 
   AerisWeatherKit.AWFFire = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property fireId: nullable NSString; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property &type: nullable NSString; public;
-
-    property name: nullable NSString; public;
-
-    property location: nullable NSString; public;
-
-    property startDate: nullable NSDate; public;
-
-    property confidence: CGFloat; public;
-
-    property areaKM: CGFloat; public;
-
-    property areaMI: CGFloat; public;
-
-    property areaAC: CGFloat; public;
-
-    property percentContained: CGFloat; public;
-
-    property satelliteWidthKM: CGFloat; public;
-
-    property satelliteWidthMI: CGFloat; public;
-
-    property satelliteHeightKM: CGFloat; public;
-
-    property satelliteHeightMI: CGFloat; public;
-
-    property satelliteTempK: CGFloat; public;
-
-    property satelliteTempC: CGFloat; public;
-
-    property satelliteTempF: CGFloat; public;
-
-    property satelliteSource: nullable NSString; public;
-
-    property satelliteCode: nullable NSString; public;
-
-
+  public
+    property fireId: nullable NSString;
+    property timestamp: nullable NSDate;
+    property &type: nullable NSString;
+    property name: nullable NSString;
+    property location: nullable NSString;
+    property cause: nullable NSString;
+    property fuels: nullable NSString;
+    property terrain: nullable NSString;
+    property startDate: nullable NSDate;
+    property confidence: CGFloat;
+    property areaKM: CGFloat;
+    property areaMI: CGFloat;
+    property areaAC: CGFloat;
+    property percentContained: CGFloat;
+    property expectedContained: nullable NSDate;
+    property perimeter: nullable AerisWeatherKit.AWFFirePerimeter;
+    property satelliteWidthKM: CGFloat;
+    property satelliteWidthMI: CGFloat;
+    property satelliteHeightKM: CGFloat;
+    property satelliteHeightMI: CGFloat;
+    property satelliteTempK: CGFloat;
+    property satelliteTempC: CGFloat;
+    property satelliteTempF: CGFloat;
+    property satelliteSource: nullable NSString;
+    property satelliteCode: nullable NSString;
   end;
 
   AWFFireFilter = NSString;
@@ -1523,35 +1330,20 @@ type
   end;
 
   AerisWeatherKit.AWFFireOutlook = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property outlookId: nullable NSString; public;
-
-    property product: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property dayIndex: NSInteger; public;
-
-    property riskType: nullable NSString; public;
-
-    property riskName: nullable NSString; public;
-
-    property riskCode: NSInteger; public;
-
-    property startDate: nullable NSDate; public;
-
-    property endDate: nullable NSDate; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property risk: nullable NSString; public;
-
-
+  public
+    property outlookId: nullable NSString;
+    property product: nullable NSString;
+    property category: nullable NSString;
+    property dayIndex: NSInteger;
+    property riskType: nullable NSString;
+    property riskName: nullable NSString;
+    property riskCode: NSInteger;
+    property startDate: nullable NSDate;
+    property endDate: nullable NSDate;
+    property timestamp: nullable NSDate;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property interiorPolygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property risk: nullable NSString;
   end;
 
   AWFFireOutlookFilter = NSString;
@@ -1564,123 +1356,111 @@ type
   AWFForecastWeatherCodedItem = NSDictionary<NSString,id>;
 
   AerisWeatherKit.AWFForecast = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property periods: NSArray<AerisWeatherKit.AWFForecastPeriod>; public;
-
-
+  public
+    property periods: NSArray<AerisWeatherKit.AWFForecastPeriod>;
   end;
 
   AerisWeatherKit.AWFForecastPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property weather: nullable NSString; public;
-
-    property weatherCoded: nullable NSString; public;
-
-    property weatherFull: nullable NSString; public;
-
-    property weatherFullCoded: NSArray<AWFForecastWeatherCodedItem>; public;
-
-    property cloudsCoded: nullable NSString; public;
-
-    property skyCoverPercentage: CGFloat; public;
-
-    property icon: nullable NSString; public;
-
-    property maxTempF: CGFloat; public;
-
-    property maxTempC: CGFloat; public;
-
-    property minTempF: CGFloat; public;
-
-    property minTempC: CGFloat; public;
-
-    property tempF: CGFloat; public;
-
-    property tempC: CGFloat; public;
-
-    property avgTempF: CGFloat; public;
-
-    property avgTempC: CGFloat; public;
-
-    property feelslikeF: CGFloat; public;
-
-    property feelslikeC: CGFloat; public;
-
-    property dewpointF: CGFloat; public;
-
-    property dewpointC: CGFloat; public;
-
-    property humidity: CGFloat; public;
-
-    property pop: CGFloat; public;
-
-    property precipIN: CGFloat; public;
-
-    property precipMM: CGFloat; public;
-
-    property snowIN: CGFloat; public;
-
-    property snowCM: CGFloat; public;
-
-    property windSpeedKTS: CGFloat; public;
-
-    property windSpeedMPH: CGFloat; public;
-
-    property windSpeedKMH: CGFloat; public;
-
-    property windGustKTS: CGFloat; public;
-
-    property windGustMPH: CGFloat; public;
-
-    property windGustKMH: CGFloat; public;
-
-    property windSpeedMaxKTS: CGFloat; public;
-
-    property windSpeedMaxMPH: CGFloat; public;
-
-    property windSpeedMaxKMH: CGFloat; public;
-
-    property windSpeedMinKTS: CGFloat; public;
-
-    property windSpeedMinMPH: CGFloat; public;
-
-    property windSpeedMinKMH: CGFloat; public;
-
-    property windSpeedRangeMPH: nullable NSString; public;
-
-    property windSpeedRangeKMH: nullable NSString; public;
-
-    property windSpeedRangeKTS: nullable NSString; public;
-
-    property windDirection: nullable NSString; public;
-
-    property windDirectionDEG: CGFloat; public;
-
-    property windDirMin: nullable NSString; public;
-
-    property windDirMinDEG: CGFloat; public;
-
-    property windDirMax: nullable NSString; public;
-
-    property windDirMaxDEG: CGFloat; public;
-
-    property pressureIN: CGFloat; public;
-
-    property pressureMB: CGFloat; public;
-
-    property sunrise: nullable NSDate; public;
-
-    property sunset: nullable NSDate; public;
-
-    property isDay: BOOL; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property weather: nullable NSString;
+    property weatherCoded: nullable NSString;
+    property weatherFull: nullable NSString;
+    property weatherFullCoded: NSArray<AWFForecastWeatherCodedItem>;
+    property cloudsCoded: nullable NSString;
+    property skyCoverPercentage: CGFloat;
+    property icon: nullable NSString;
+    property tempF: CGFloat;
+    property tempC: CGFloat;
+    property tempMinF: CGFloat;
+    property tempMinC: CGFloat;
+    property tempMaxF: CGFloat;
+    property tempMaxC: CGFloat;
+    property tempAvgF: CGFloat;
+    property tempAvgC: CGFloat;
+    property feelslikeF: CGFloat;
+    property feelslikeC: CGFloat;
+    property feelslikeMinF: CGFloat;
+    property feelslikeMinC: CGFloat;
+    property feelslikeMaxF: CGFloat;
+    property feelslikeMaxC: CGFloat;
+    property feelslikeAvgF: CGFloat;
+    property feelslikeAvgC: CGFloat;
+    property dewpointF: CGFloat;
+    property dewpointC: CGFloat;
+    property dewpointMinF: CGFloat;
+    property dewpointMinC: CGFloat;
+    property dewpointMaxF: CGFloat;
+    property dewpointMaxC: CGFloat;
+    property dewpointAvgF: CGFloat;
+    property dewpointAvgC: CGFloat;
+    property humidity: CGFloat;
+    property humidityMin: CGFloat;
+    property humidityMax: CGFloat;
+    property pop: CGFloat;
+    property uvIndex: CGFloat;
+    property precipIN: CGFloat;
+    property precipMM: CGFloat;
+    property iceAccumulationMM: CGFloat;
+    property iceAccumulationIN: CGFloat;
+    property snowIN: CGFloat;
+    property snowCM: CGFloat;
+    property windSpeedKTS: CGFloat;
+    property windSpeedMPH: CGFloat;
+    property windSpeedKMH: CGFloat;
+    property windSpeedMinKTS: CGFloat;
+    property windSpeedMinMPH: CGFloat;
+    property windSpeedMinKMH: CGFloat;
+    property windSpeedMaxKTS: CGFloat;
+    property windSpeedMaxMPH: CGFloat;
+    property windSpeedMaxKMH: CGFloat;
+    property windSpeedRangeMPH: nullable NSString;
+    property windSpeedRangeKMH: nullable NSString;
+    property windSpeedRangeKTS: nullable NSString;
+    property windGustKTS: CGFloat;
+    property windGustMPH: CGFloat;
+    property windGustKMH: CGFloat;
+    property windDirection: nullable NSString;
+    property windDirectionDEG: CGFloat;
+    property windDirMin: nullable NSString;
+    property windDirMinDEG: CGFloat;
+    property windDirMax: nullable NSString;
+    property windDirMaxDEG: CGFloat;
+    property windDir80m: nullable NSString;
+    property windDir80mDEG: CGFloat;
+    property windDirMin80m: nullable NSString;
+    property windDirMin80mDEG: CGFloat;
+    property windDirMax80m: nullable NSString;
+    property windDirMax80mDEG: CGFloat;
+    property windSpeed80mKTS: CGFloat;
+    property windSpeed80mMPH: CGFloat;
+    property windSpeed80mKMH: CGFloat;
+    property windSpeedMin80mKTS: CGFloat;
+    property windSpeedMin80mMPH: CGFloat;
+    property windSpeedMin80mKMH: CGFloat;
+    property windSpeedMax80mKTS: CGFloat;
+    property windSpeedMax80mMPH: CGFloat;
+    property windSpeedMax80mKMH: CGFloat;
+    property windGust80mKTS: CGFloat;
+    property windGust80mMPH: CGFloat;
+    property windGust80mKMH: CGFloat;
+    property pressureIN: CGFloat;
+    property pressureMB: CGFloat;
+    property visibilityKM: CGFloat;
+    property visibilityMI: CGFloat;
+    property solarRadiationWM2: CGFloat;
+    property solarRadiationMinWM2: CGFloat;
+    property solarRadiationMaxWM2: CGFloat;
+    property sunrise: nullable NSDate;
+    property sunset: nullable NSDate;
+    property isDay: BOOL;
+    property maxTempF: CGFloat;
+    property maxTempC: CGFloat;
+    property minTempF: CGFloat;
+    property minTempC: CGFloat;
+    property avgTempF: CGFloat;
+    property avgTempC: CGFloat;
   end;
 
   AWFForecastFilter = NSString;
@@ -1693,28 +1473,21 @@ type
   AWFIndexDataType = NSString;
 
   AerisWeatherKit.AWFIndices = class(AerisWeatherKit.AWFWeatherEndpoint)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithIndexType(indexType: AWFIndexDataType): instancetype; public;
+    method initWithIndexType(indexType: AWFIndexDataType): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withIndexType(indexType: AWFIndexDataType): instancetype; public;
-    method init: instancetype; public;
-
+    class constructor withIndexType(indexType: AWFIndexDataType): instancetype;
+    method init: instancetype;
   end;
 
   AerisWeatherKit.AWFLightningStrike = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property pulseType: nullable NSString; public;
-
-    property peakAmperage: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property pulseType: nullable NSString;
+    property peakAmperage: CGFloat;
   end;
 
   AWFLightningStrikeFilter = NSString;
@@ -1725,17 +1498,11 @@ type
   end;
 
   AerisWeatherKit.AWFMoonPhase = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property code: NSInteger; public;
-
-    property name: nullable NSString; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property code: NSInteger;
+    property name: nullable NSString;
   end;
 
   AWFMoonPhaseFilter = NSString;
@@ -1746,77 +1513,43 @@ type
   end;
 
   AerisWeatherKit.AWFNormal = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFNormalPeriod>; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property periods: NSArray<AerisWeatherKit.AWFNormalPeriod>;
   end;
 
   AerisWeatherKit.AWFNormalPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property &type: nullable NSString; public;
-
-    property month: NSInteger; public;
-
-    property date: NSInteger; public;
-
-    property tempMaxF: CGFloat; public;
-
-    property tempMaxC: CGFloat; public;
-
-    property tempMinF: CGFloat; public;
-
-    property tempMinC: CGFloat; public;
-
-    property tempAvgF: CGFloat; public;
-
-    property tempAvgC: CGFloat; public;
-
-    property precipMonthToDateIN: CGFloat; public;
-
-    property precipMonthToDateMM: CGFloat; public;
-
-    property precipYearToDateIN: CGFloat; public;
-
-    property precipYearToDateMM: CGFloat; public;
-
-    property snowMonthToDateIN: CGFloat; public;
-
-    property snowMonthToDateCM: CGFloat; public;
-
-    property snowYearToDateIN: CGFloat; public;
-
-    property snowYearToDateCM: CGFloat; public;
-
-    property heatingDegreeDays: CGFloat; public;
-
-    property coolingDegreeDays: CGFloat; public;
-
-
+  public
+    property &type: nullable NSString;
+    property month: NSInteger;
+    property date: NSInteger;
+    property tempMaxF: CGFloat;
+    property tempMaxC: CGFloat;
+    property tempMinF: CGFloat;
+    property tempMinC: CGFloat;
+    property tempAvgF: CGFloat;
+    property tempAvgC: CGFloat;
+    property precipMonthToDateIN: CGFloat;
+    property precipMonthToDateMM: CGFloat;
+    property precipYearToDateIN: CGFloat;
+    property precipYearToDateMM: CGFloat;
+    property snowMonthToDateIN: CGFloat;
+    property snowMonthToDateCM: CGFloat;
+    property snowYearToDateIN: CGFloat;
+    property snowYearToDateCM: CGFloat;
+    property heatingDegreeDays: CGFloat;
+    property coolingDegreeDays: CGFloat;
   end;
 
   AerisWeatherKit.AWFNormalStation = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property elevationFT: CGFloat; public;
-
-    property elevationM: CGFloat; public;
-
-    property wmoId: nullable NSString; public;
-
-    property hasTemp: BOOL; public;
-
-    property hasPrecip: BOOL; public;
-
-    property hasSnow: BOOL; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property elevationFT: CGFloat;
+    property elevationM: CGFloat;
+    property wmoId: nullable NSString;
+    property hasTemp: BOOL;
+    property hasPrecip: BOOL;
+    property hasSnow: BOOL;
   end;
 
   AWFNormalFilter = NSString;
@@ -1832,191 +1565,109 @@ type
   AWFObservationWeatherCodedItem = NSDictionary<NSString,id>;
 
   AerisWeatherKit.AWFObservation = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property weather: nullable NSString; public;
-
-    property weatherCoded: nullable NSString; public;
-
-    property weatherFull: nullable NSString; public;
-
-    property weatherFullCoded: nullable NSString; public;
-
-    property icon: nullable NSString; public;
-
-    property cloudsCoded: nullable NSString; public;
-
-    property skyCoverPercentage: CGFloat; public;
-
-    property lightPercentage: CGFloat; public;
-
-    property solarRadiationWM2: CGFloat; public;
-
-    property tempF: CGFloat; public;
-
-    property tempC: CGFloat; public;
-
-    property feelslikeF: CGFloat; public;
-
-    property feelslikeC: CGFloat; public;
-
-    property windchillF: CGFloat; public;
-
-    property windchillC: CGFloat; public;
-
-    property heatindexF: CGFloat; public;
-
-    property heatindexC: CGFloat; public;
-
-    property dewpointF: CGFloat; public;
-
-    property dewpointC: CGFloat; public;
-
-    property humidity: CGFloat; public;
-
-    property windSpeedKTS: CGFloat; public;
-
-    property windSpeedMPH: CGFloat; public;
-
-    property windSpeedKMH: CGFloat; public;
-
-    property windDirection: nullable NSString; public;
-
-    property windDirectionDEG: CGFloat; public;
-
-    property windGustKTS: CGFloat; public;
-
-    property windGustMPH: CGFloat; public;
-
-    property windGustKMH: CGFloat; public;
-
-    property pressureIN: CGFloat; public;
-
-    property pressureMB: CGFloat; public;
-
-    property stationPressureIN: CGFloat; public;
-
-    property stationPressureMB: CGFloat; public;
-
-    property altimeterIN: CGFloat; public;
-
-    property altimeterMB: CGFloat; public;
-
-    property visibilityKM: CGFloat; public;
-
-    property visibilityMI: CGFloat; public;
-
-    property precipIN: CGFloat; public;
-
-    property precipMM: CGFloat; public;
-
-    property snowDepthIN: CGFloat; public;
-
-    property snowDepthCM: CGFloat; public;
-
-    property flightRule: nullable NSString; public;
-
-    property raw: nullable NSString; public;
-
-    property sunrise: nullable NSDate; public;
-
-    property sunset: nullable NSDate; public;
-
-    property isDay: BOOL; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property timestamp: nullable NSDate;
+    property weather: nullable NSString;
+    property weatherCoded: nullable NSString;
+    property weatherFull: nullable NSString;
+    property weatherFullCoded: nullable NSString;
+    property icon: nullable NSString;
+    property cloudsCoded: nullable NSString;
+    property skyCoverPercentage: CGFloat;
+    property lightPercentage: CGFloat;
+    property solarRadiationWM2: CGFloat;
+    property tempF: CGFloat;
+    property tempC: CGFloat;
+    property feelslikeF: CGFloat;
+    property feelslikeC: CGFloat;
+    property windchillF: CGFloat;
+    property windchillC: CGFloat;
+    property heatindexF: CGFloat;
+    property heatindexC: CGFloat;
+    property dewpointF: CGFloat;
+    property dewpointC: CGFloat;
+    property humidity: CGFloat;
+    property windSpeedKTS: CGFloat;
+    property windSpeedMPH: CGFloat;
+    property windSpeedKMH: CGFloat;
+    property windDirection: nullable NSString;
+    property windDirectionDEG: CGFloat;
+    property windGustKTS: CGFloat;
+    property windGustMPH: CGFloat;
+    property windGustKMH: CGFloat;
+    property pressureIN: CGFloat;
+    property pressureMB: CGFloat;
+    property stationPressureIN: CGFloat;
+    property stationPressureMB: CGFloat;
+    property altimeterIN: CGFloat;
+    property altimeterMB: CGFloat;
+    property visibilityKM: CGFloat;
+    property visibilityMI: CGFloat;
+    property precipIN: CGFloat;
+    property precipMM: CGFloat;
+    property snowDepthIN: CGFloat;
+    property snowDepthCM: CGFloat;
+    property flightRule: nullable NSString;
+    property raw: nullable NSString;
+    property sunrise: nullable NSDate;
+    property sunset: nullable NSDate;
+    property isDay: BOOL;
+    property trustFactor: NSInteger;
+    property QCCode: NSInteger;
+    property QCCode:: NSInteger;
   end;
 
   AerisWeatherKit.AWFObservationArchive = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFObservation>; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property periods: NSArray<AerisWeatherKit.AWFObservation>;
   end;
 
   AerisWeatherKit.AWFObservationSummary = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFObservationSummaryPeriod>; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property periods: NSArray<AerisWeatherKit.AWFObservationSummaryPeriod>;
   end;
 
   AerisWeatherKit.AWFObservationSummaryPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property rangeStartDate: nullable NSDate; public;
-
-    property rangeEndDate: nullable NSDate; public;
-
-    property weather: nullable NSString; public;
-
-    property weatherCoded: nullable NSString; public;
-
-    property weatherFull: nullable NSString; public;
-
-    property weatherFullCoded: NSArray<AWFObservationWeatherCodedItem>; public;
-
-    property weatherCount: NSInteger; public;
-
-    property cloudsCoded: NSArray<NSString>; public;
-
-    property icon: nullable NSString; public;
-
-    property skyCoverPercentage: AerisWeatherKit.AWFRangeSummary; public;
-
-    property tempC: AerisWeatherKit.AWFRangeSummary; public;
-
-    property tempF: AerisWeatherKit.AWFRangeSummary; public;
-
-    property dewpointC: AerisWeatherKit.AWFRangeSummary; public;
-
-    property dewpointF: AerisWeatherKit.AWFRangeSummary; public;
-
-    property humidity: AerisWeatherKit.AWFRangeSummary; public;
-
-    property precipIN: CGFloat; public;
-
-    property precipMM: CGFloat; public;
-
-    property precipCount: NSInteger; public;
-
-    property windSpeedKTS: AerisWeatherKit.AWFRangeSummary; public;
-
-    property windSpeedMPH: AerisWeatherKit.AWFRangeSummary; public;
-
-    property windSpeedKMH: AerisWeatherKit.AWFRangeSummary; public;
-
-    property windGustKTS: CGFloat; public;
-
-    property windGustMPH: CGFloat; public;
-
-    property windGustKMH: CGFloat; public;
-
-    property pressureMB: AerisWeatherKit.AWFRangeSummary; public;
-
-    property pressureIN: AerisWeatherKit.AWFRangeSummary; public;
-
-    property visibilityKM: AerisWeatherKit.AWFRangeSummary; public;
-
-    property visibilityMI: AerisWeatherKit.AWFRangeSummary; public;
-
-    property solarRadiationKM2: AerisWeatherKit.AWFRangeSummary; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property range: AerisWeatherKit.AWFRangeSummary;
+    property weather: nullable NSString;
+    property weatherCoded: nullable NSString;
+    property weatherFull: nullable NSString;
+    property weatherFullCoded: NSArray<AWFObservationWeatherCodedItem>;
+    property weatherCount: NSInteger;
+    property cloudsCoded: NSArray<NSString>;
+    property icon: nullable NSString;
+    property skyCoverPercentage: AerisWeatherKit.AWFRangeSummary;
+    property tempC: AerisWeatherKit.AWFRangeSummary;
+    property tempF: AerisWeatherKit.AWFRangeSummary;
+    property dewpointC: AerisWeatherKit.AWFRangeSummary;
+    property dewpointF: AerisWeatherKit.AWFRangeSummary;
+    property humidity: AerisWeatherKit.AWFRangeSummary;
+    property precipIN: AerisWeatherKit.AWFPrecipRangeSummary;
+    property precipMM: AerisWeatherKit.AWFPrecipRangeSummary;
+    property hasPrecipTrace: BOOL;
+    property precipTraceCount: CGFloat;
+    property windSpeedKTS: AerisWeatherKit.AWFWindRangeSummary;
+    property windSpeedMPH: AerisWeatherKit.AWFWindRangeSummary;
+    property windSpeedKMH: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustKTS: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustMPH: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustKMH: AerisWeatherKit.AWFWindRangeSummary;
+    property pressureMB: AerisWeatherKit.AWFRangeSummary;
+    property pressureIN: AerisWeatherKit.AWFRangeSummary;
+    property stationPressureMB: AerisWeatherKit.AWFRangeSummary;
+    property stationPressureIN: AerisWeatherKit.AWFRangeSummary;
+    property altimeterMB: AerisWeatherKit.AWFRangeSummary;
+    property altimeterIN: AerisWeatherKit.AWFRangeSummary;
+    property visibilityKM: AerisWeatherKit.AWFRangeSummary;
+    property visibilityMI: AerisWeatherKit.AWFRangeSummary;
+    property solarRadiationWM2: AerisWeatherKit.AWFRangeSummary;
+    property trustFactor: AerisWeatherKit.AWFRangeSummary;
   end;
 
   AWFObservationFilter = NSString;
@@ -2035,17 +1686,11 @@ type
   end;
 
   AerisWeatherKit.AWFPhrase = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property phrase: nullable NSString; public;
-
-    property phraseMET: nullable NSString; public;
-
-    property shortPhrase: nullable NSString; public;
-
-    property shortPhraseMET: nullable NSString; public;
-
-
+  public
+    property phrase: nullable NSString;
+    property phraseMET: nullable NSString;
+    property shortPhrase: nullable NSString;
+    property shortPhraseMET: nullable NSString;
   end;
 
   AerisWeatherKit.AWFPhrases = class(AerisWeatherKit.AWFWeatherEndpoint)
@@ -2056,114 +1701,81 @@ type
   AWFPlaceField = NSString;
 
   AerisWeatherKit.AWFPlaces = class(AerisWeatherKit.AWFWeatherEndpoint)
-  private
-
-    method getPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+  public
+    method getPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingName(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingName(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method search(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(name: NSString) state(state: nullable NSString) country(country: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingZipcode(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingZipcode(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method search(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(zipcode: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingICAO(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingICAO(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method search(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(icao: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingNameStartingWith(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingNameStartingWith(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method searchUsingNameStarting(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingNameStarting(startsWith: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingString(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingString(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method search(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method search(placeString: NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    class method countryCodesForNameString(value: NSString): NSArray<NSString>; public;
+    class method countryCodesForNameString(value: NSString): NSArray<NSString>;
     [Alias]
     [SwiftOnly]
-    class method countryCodes(value: NSString): NSArray<NSString>; public;
+    class method countryCodes(value: NSString): NSArray<NSString>;
     [NonSwiftOnly]
-    class method stateCodesForNameString(value: NSString): NSArray<NSString>; public;
+    class method stateCodesForNameString(value: NSString): NSArray<NSString>;
     [Alias]
     [SwiftOnly]
-    class method stateCodes(value: NSString): NSArray<NSString>; public;
-
-  end;
-
-  AerisWeatherKit.AWFAirports = class(AerisWeatherKit.AWFWeatherEndpoint)
+    class method stateCodes(value: NSString): NSArray<NSString>;
   end;
 
   AerisWeatherKit.AWFPostalCodes = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFPrecipitationEstimate = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property periods: NSArray<AerisWeatherKit.AWFPrecipitationPeriod>; public;
-
-
+  public
+    property periods: NSArray<AerisWeatherKit.AWFPrecipitationPeriod>;
   end;
 
   AerisWeatherKit.AWFPrecipitationEstimates = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFRecord = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property &type: nullable NSString; public;
-
-    property code: CGFloat; public;
-
-    property stationId: nullable NSString; public;
-
-    property stationType: nullable NSString; public;
-
-    property stationName: nullable NSString; public;
-
-    property name: nullable NSString; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property value: nullable NSString; public;
-
-    property snowIN: CGFloat; public;
-
-    property snowCM: CGFloat; public;
-
-    property rainIN: CGFloat; public;
-
-    property rainMM: CGFloat; public;
-
-    property tempF: CGFloat; public;
-
-    property tempC: CGFloat; public;
-
-    property previousTimestamp: nullable NSDate; public;
-
-    property previousValue: nullable NSString; public;
-
-    property previousSnowIN: CGFloat; public;
-
-    property previousSnowCM: CGFloat; public;
-
-    property previousRainIN: CGFloat; public;
-
-    property previousRainMM: CGFloat; public;
-
-    property previousTempF: CGFloat; public;
-
-    property previousTempC: CGFloat; public;
-
-    property isTied: BOOL; public;
-
-
+  public
+    property &type: nullable NSString;
+    property code: CGFloat;
+    property stationId: nullable NSString;
+    property stationType: nullable NSString;
+    property stationName: nullable NSString;
+    property name: nullable NSString;
+    property timestamp: nullable NSDate;
+    property value: nullable NSString;
+    property snowIN: CGFloat;
+    property snowCM: CGFloat;
+    property rainIN: CGFloat;
+    property rainMM: CGFloat;
+    property tempF: CGFloat;
+    property tempC: CGFloat;
+    property previousTimestamp: nullable NSDate;
+    property previousValue: nullable NSString;
+    property previousSnowIN: CGFloat;
+    property previousSnowCM: CGFloat;
+    property previousRainIN: CGFloat;
+    property previousRainMM: CGFloat;
+    property previousTempF: CGFloat;
+    property previousTempC: CGFloat;
+    property isTied: BOOL;
   end;
 
   AWFRecordFilter = NSString;
@@ -2176,113 +1788,64 @@ type
   AWFRiverStatus = NSString;
 
   AerisWeatherKit.AWFRiver = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property timestamp: NSDate; public;
-
-    property obs: nullable AerisWeatherKit.AWFRiverObservation; public;
-
-    property secondaryObs: nullable AerisWeatherKit.AWFRiverObservation; public;
-
-    property status: nullable NSString; public;
-
-    property statusCode: CGFloat; public;
-
-    property impacts: nullable NSString; public;
-
-    property waterbody: nullable NSString; public;
-
-    property categories: NSArray<AerisWeatherKit.AWFRiverCategory>; public;
-
-    property hasImpacts: BOOL; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property timestamp: NSDate;
+    property obs: nullable AerisWeatherKit.AWFRiverObservation;
+    property secondaryObs: nullable AerisWeatherKit.AWFRiverObservation;
+    property status: nullable NSString;
+    property statusCode: CGFloat;
+    property impacts: nullable NSString;
+    property waterbody: nullable NSString;
+    property categories: NSArray<AerisWeatherKit.AWFRiverCategory>;
+    property hasImpacts: BOOL;
   end;
 
   AerisWeatherKit.AWFRiverObservation = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property heightFT: CGFloat; public;
-
-    property heightM: CGFloat; public;
-
-    property flowCFS: CGFloat; public;
-
-    property flowCMS: CGFloat; public;
-
-
+  public
+    property heightFT: CGFloat;
+    property heightM: CGFloat;
+    property flowCFS: CGFloat;
+    property flowCMS: CGFloat;
   end;
 
   AerisWeatherKit.AWFRiverCategory = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property actionFT: CGFloat; public;
-
-    property actionM: CGFloat; public;
-
-    property floodFT: CGFloat; public;
-
-    property floodM: CGFloat; public;
-
-    property moderateFT: CGFloat; public;
-
-    property moderateM: CGFloat; public;
-
-    property majorFT: CGFloat; public;
-
-    property majorM: CGFloat; public;
-
-    property lowThresholdFT: CGFloat; public;
-
-    property lowThresholdM: CGFloat; public;
-
-
+  public
+    property actionFT: CGFloat;
+    property actionM: CGFloat;
+    property floodFT: CGFloat;
+    property floodM: CGFloat;
+    property moderateFT: CGFloat;
+    property moderateM: CGFloat;
+    property majorFT: CGFloat;
+    property majorM: CGFloat;
+    property lowThresholdFT: CGFloat;
+    property lowThresholdM: CGFloat;
   end;
 
   AerisWeatherKit.AWFRiverGauge = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: NSString; public;
-
-    property waterbody: NSString; public;
-
-    property categories: NSArray<AerisWeatherKit.AWFRiverCategory>; public;
-
-    property impacts: NSArray<AerisWeatherKit.AWFRiverImpact>; public;
-
-    property historicCrests: NSArray<AerisWeatherKit.AWFRiverRecord>; public;
-
-    property recentCrests: NSArray<AerisWeatherKit.AWFRiverRecord>; public;
-
-    property lowWaterRecords: NSArray<AerisWeatherKit.AWFRiverRecord>; public;
-
-
+  public
+    property stationId: NSString;
+    property waterbody: NSString;
+    property categories: NSArray<AerisWeatherKit.AWFRiverCategory>;
+    property impacts: NSArray<AerisWeatherKit.AWFRiverImpact>;
+    property historicCrests: NSArray<AerisWeatherKit.AWFRiverRecord>;
+    property recentCrests: NSArray<AerisWeatherKit.AWFRiverRecord>;
+    property lowWaterRecords: NSArray<AerisWeatherKit.AWFRiverRecord>;
   end;
 
   AerisWeatherKit.AWFRiverRecord = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: NSDate; public;
-
-    property heightFT: CGFloat; public;
-
-    property heightM: CGFloat; public;
-
-
+  public
+    property timestamp: NSDate;
+    property heightFT: CGFloat;
+    property heightM: CGFloat;
   end;
 
   AerisWeatherKit.AWFRiverImpact = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property heightFT: CGFloat; public;
-
-    property heightM: CGFloat; public;
-
-    property text: NSString; public;
-
-
+  public
+    property heightFT: CGFloat;
+    property heightM: CGFloat;
+    property text: NSString;
   end;
 
   AerisWeatherKit.AWFRivers = class(AerisWeatherKit.AWFWeatherEndpoint)
@@ -2292,125 +1855,68 @@ type
   end;
 
   AerisWeatherKit.AWFStormCell = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property location: nullable NSString; public;
-
-    property code: nullable NSString; public;
-
-    property radarId: nullable NSString; public;
-
-    property cellId: nullable NSString; public;
-
-    property tvs: CGFloat; public;
-
-    property mda: CGFloat; public;
-
-    property vil: CGFloat; public;
-
-    property maxDbz: CGFloat; public;
-
-    property topFT: CGFloat; public;
-
-    property height: CGFloat; public;
-
-    property hailSevereProbability: CGFloat; public;
-
-    property hailProbability: CGFloat; public;
-
-    property hailMaxSizeIN: CGFloat; public;
-
-    property distanceKM: CGFloat; public;
-
-    property distanceMI: CGFloat; public;
-
-    property bearingDEG: CGFloat; public;
-
-    property bearing: nullable NSString; public;
-
-    property movingDirection: nullable NSString; public;
-
-    property movingDirectionDEG: CGFloat; public;
-
-    property movingSpeedKTS: CGFloat; public;
-
-    property movingSpeedMPH: CGFloat; public;
-
-    property movingSpeedKMH: CGFloat; public;
-
-    property forecast: NSArray<AerisWeatherKit.AWFStormCellForecast>; public;
-
-    property forecastConeWide: NSArray<AWFGeoPolygonCoordValue>; public;
-
-    property forecastConeNarrow: NSArray<AWFGeoPolygonCoordValue>; public;
-
-    method affectsPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL; public;
-    method isMovingTowardPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL; public;
-
+  public
+    property timestamp: nullable NSDate;
+    property location: nullable NSString;
+    property code: nullable NSString;
+    property radarId: nullable NSString;
+    property cellId: nullable NSString;
+    property tvs: CGFloat;
+    property mda: CGFloat;
+    property vil: CGFloat;
+    property maxDbz: CGFloat;
+    property topFT: CGFloat;
+    property height: CGFloat;
+    property hailSevereProbability: CGFloat;
+    property hailProbability: CGFloat;
+    property hailMaxSizeIN: CGFloat;
+    property distanceKM: CGFloat;
+    property distanceMI: CGFloat;
+    property bearingDEG: CGFloat;
+    property bearing: nullable NSString;
+    property movingDirection: nullable NSString;
+    property movingDirectionDEG: CGFloat;
+    property movingSpeedKTS: CGFloat;
+    property movingSpeedMPH: CGFloat;
+    property movingSpeedKMH: CGFloat;
+    property forecast: NSArray<AerisWeatherKit.AWFStormCellForecast>;
+    property forecastConeWide: NSArray<AWFGeoPolygonCoordValue>;
+    property forecastConeNarrow: NSArray<AWFGeoPolygonCoordValue>;
+    method affectsPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL;
+    method isMovingTowardPlace(place: not nullable AerisWeatherKit.AWFPlace): BOOL;
   end;
 
   AerisWeatherKit.AWFStormCellForecast = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property degree: CGFloat; public;
-
-    property distance: CGFloat; public;
-
-    property timestamp: nullable NSDate; public;
-
-
+  public
+    property coordinate: CLLocationCoordinate2D;
+    property degree: CGFloat;
+    property distance: CGFloat;
+    property timestamp: nullable NSDate;
   end;
 
   AerisWeatherKit.AWFStormCellSummary = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property rangeStartDate: nullable NSDate; public;
-
-    property rangeEndDate: nullable NSDate; public;
-
-    property totalCells: NSInteger; public;
-
-    property states: NSArray<NSString>; public;
-
-    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property tvs: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property mda: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property mdaThreatCount: NSInteger; public;
-
-    property vil: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property maxDbz: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property topFT: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property topM: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property hailProbability: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property hailProbabilityThreatCount: NSInteger; public;
-
-    property severeHailProbability: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property severeHailProbabilityThreatCount: NSInteger; public;
-
-    property hailMaxSizeIN: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property hailMaxSizeCM: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property movingSpeedKTS: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property movingSpeedMPH: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property movingSpeedKMH: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-
+  public
+    property rangeStartDate: nullable NSDate;
+    property rangeEndDate: nullable NSDate;
+    property totalCells: NSInteger;
+    property states: NSArray<NSString>;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property tvs: nullable AerisWeatherKit.AWFRangeSummary;
+    property mda: nullable AerisWeatherKit.AWFRangeSummary;
+    property mdaThreatCount: NSInteger;
+    property vil: nullable AerisWeatherKit.AWFRangeSummary;
+    property maxDbz: nullable AerisWeatherKit.AWFRangeSummary;
+    property topFT: nullable AerisWeatherKit.AWFRangeSummary;
+    property topM: nullable AerisWeatherKit.AWFRangeSummary;
+    property hailProbability: nullable AerisWeatherKit.AWFRangeSummary;
+    property hailProbabilityThreatCount: NSInteger;
+    property severeHailProbability: nullable AerisWeatherKit.AWFRangeSummary;
+    property severeHailProbabilityThreatCount: NSInteger;
+    property hailMaxSizeIN: nullable AerisWeatherKit.AWFRangeSummary;
+    property hailMaxSizeCM: nullable AerisWeatherKit.AWFRangeSummary;
+    property movingSpeedKTS: nullable AerisWeatherKit.AWFRangeSummary;
+    property movingSpeedMPH: nullable AerisWeatherKit.AWFRangeSummary;
+    property movingSpeedKMH: nullable AerisWeatherKit.AWFRangeSummary;
   end;
 
   AWFStormCellFilter = NSString;
@@ -2424,95 +1930,52 @@ type
   end;
 
   AerisWeatherKit.AWFStormReport = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property code: nullable NSString; public;
-
-    property &type: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property name: nullable NSString; public;
-
-    property reporter: nullable NSString; public;
-
-    property comments: nullable NSString; public;
-
-    property wfo: nullable NSString; public;
-
-    property value: CGFloat; public;
-
-    property windSpeedMPH: CGFloat; public;
-
-    property windSpeedKMH: CGFloat; public;
-
-    property windSpeedKTS: CGFloat; public;
-
-    property rainIN: CGFloat; public;
-
-    property rainMM: CGFloat; public;
-
-    property snowIN: CGFloat; public;
-
-    property snowCM: CGFloat; public;
-
-    property hailIN: CGFloat; public;
-
-    property hailMM: CGFloat; public;
-
-    property sleetIN: CGFloat; public;
-
-    property sleetCM: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property code: nullable NSString;
+    property &type: nullable NSString;
+    property category: nullable NSString;
+    property name: nullable NSString;
+    property reporter: nullable NSString;
+    property comments: nullable NSString;
+    property wfo: nullable NSString;
+    property value: CGFloat;
+    property windSpeedMPH: CGFloat;
+    property windSpeedKMH: CGFloat;
+    property windSpeedKTS: CGFloat;
+    property rainIN: CGFloat;
+    property rainMM: CGFloat;
+    property snowIN: CGFloat;
+    property snowCM: CGFloat;
+    property hailIN: CGFloat;
+    property hailMM: CGFloat;
+    property sleetIN: CGFloat;
+    property sleetCM: CGFloat;
   end;
 
   AerisWeatherKit.AWFStormReportSummary = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property rangeStartDate: nullable NSDate; public;
-
-    property rangeEndDate: nullable NSDate; public;
-
-    property totalReports: NSInteger; public;
-
-    property states: NSArray<NSString>; public;
-
-    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>; public;
-
-    property types: NSArray<AerisWeatherKit.AWFStormReportSummaryType>; public;
-
-
+  public
+    property rangeStartDate: nullable NSDate;
+    property rangeEndDate: nullable NSDate;
+    property totalReports: NSInteger;
+    property states: NSArray<NSString>;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
+    property types: NSArray<AerisWeatherKit.AWFStormReportSummaryType>;
   end;
 
   AerisWeatherKit.AWFStormReportSummaryType = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property rangeStartDate: nullable NSDate; public;
-
-    property rangeEndDate: nullable NSDate; public;
-
-    property totalReports: NSInteger; public;
-
-    property states: NSArray<NSString>; public;
-
-    property code: nullable NSString; public;
-
-    property valueKTS: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property valueMPH: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property valueKMH: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property valueMM: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property valueCM: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-    property valueIN: nullable AerisWeatherKit.AWFRangeSummary; public;
-
-
+  public
+    property rangeStartDate: nullable NSDate;
+    property rangeEndDate: nullable NSDate;
+    property totalReports: NSInteger;
+    property states: NSArray<NSString>;
+    property code: nullable NSString;
+    property valueKTS: nullable AerisWeatherKit.AWFRangeSummary;
+    property valueMPH: nullable AerisWeatherKit.AWFRangeSummary;
+    property valueKMH: nullable AerisWeatherKit.AWFRangeSummary;
+    property valueMM: nullable AerisWeatherKit.AWFRangeSummary;
+    property valueCM: nullable AerisWeatherKit.AWFRangeSummary;
+    property valueIN: nullable AerisWeatherKit.AWFRangeSummary;
   end;
 
   AWFStormReportFilter = NSString;
@@ -2526,51 +1989,28 @@ type
   end;
 
   AerisWeatherKit.AWFSunMoonPeriod = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property sunrise: nullable NSDate; public;
-
-    property sunset: nullable NSDate; public;
-
-    property sunTransit: nullable NSDate; public;
-
-    property twilightCivilBegin: nullable NSDate; public;
-
-    property twilightCivilEnd: nullable NSDate; public;
-
-    property twilightNauticalBegin: nullable NSDate; public;
-
-    property twilightNauticalEnd: nullable NSDate; public;
-
-    property twilightAstronomicalBegin: nullable NSDate; public;
-
-    property twilightAstronomicalEnd: nullable NSDate; public;
-
-    property midnightSun: BOOL; public;
-
-    property polarNight: BOOL; public;
-
-    property moonrise: nullable NSDate; public;
-
-    property moonset: nullable NSDate; public;
-
-    property moonTransit: nullable NSDate; public;
-
-    property moonUnderfoot: nullable NSDate; public;
-
-    property moonPhasePercentage: CGFloat; public;
-
-    property moonPhaseName: nullable NSString; public;
-
-    property moonIllumination: CGFloat; public;
-
-    property moonAge: CGFloat; public;
-
-    property moonAngle: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property sunrise: nullable NSDate;
+    property sunset: nullable NSDate;
+    property sunTransit: nullable NSDate;
+    property twilightCivilBegin: nullable NSDate;
+    property twilightCivilEnd: nullable NSDate;
+    property twilightNauticalBegin: nullable NSDate;
+    property twilightNauticalEnd: nullable NSDate;
+    property twilightAstronomicalBegin: nullable NSDate;
+    property twilightAstronomicalEnd: nullable NSDate;
+    property midnightSun: BOOL;
+    property polarNight: BOOL;
+    property moonrise: nullable NSDate;
+    property moonset: nullable NSDate;
+    property moonTransit: nullable NSDate;
+    property moonUnderfoot: nullable NSDate;
+    property moonPhasePercentage: CGFloat;
+    property moonPhaseName: nullable NSString;
+    property moonIllumination: CGFloat;
+    property moonAge: CGFloat;
+    property moonAngle: CGFloat;
   end;
 
   AWFSunMoonFilter = NSString;
@@ -2579,72 +2019,44 @@ type
   end;
 
   AerisWeatherKit.AWFThreat = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property periods: NSArray<AerisWeatherKit.AWFThreatPeriod>; public;
-
-
+  public
+    property periods: NSArray<AerisWeatherKit.AWFThreatPeriod>;
   end;
 
   AerisWeatherKit.AWFThreatPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property stormThreat: nullable AerisWeatherKit.AWFStormThreat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property stormThreat: nullable AerisWeatherKit.AWFStormThreat;
   end;
 
   AerisWeatherKit.AWFThreats = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFTide = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFTidePeriod>; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property periods: NSArray<AerisWeatherKit.AWFTidePeriod>;
   end;
 
   AerisWeatherKit.AWFTidePeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property &type: nullable NSString; public;
-
-    property heightFT: CGFloat; public;
-
-    property heightM: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property &type: nullable NSString;
+    property heightFT: CGFloat;
+    property heightM: CGFloat;
   end;
 
   AerisWeatherKit.AWFTideStation = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property latitude: CGFloat; public;
-
-    property longitude: CGFloat; public;
-
-    property city: nullable NSString; public;
-
-    property state: nullable NSString; public;
-
-    property country: nullable NSString; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property &type: CGFloat; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property latitude: CGFloat;
+    property longitude: CGFloat;
+    property city: nullable NSString;
+    property state: nullable NSString;
+    property country: nullable NSString;
+    property timeZone: nullable NSTimeZone;
+    property &type: CGFloat;
   end;
 
   AWFTideFilter = NSString;
@@ -2663,288 +2075,301 @@ type
   end;
 
   AerisWeatherKit.AWFTropicalCyclonesArchive = class(AerisWeatherKit.AWFWeatherEndpoint)
-  private
-
-    method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-    method getFrom(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+  public
+    method getWithOptions(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
+    method getFrom(fromString: nullable NSString) &to(toString: nullable NSString) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
+    method getForPlace(place: AerisWeatherKit.AWFPlace) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [NonSwiftOnly]
-    method searchUsingYear(year: NSUInteger) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
+    method searchUsingYear(year: NSUInteger) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
     [Alias]
     [SwiftOnly]
-    method search(year: NSUInteger) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult)); public;
-
+    method search(year: NSUInteger) options(options: nullable AerisWeatherKit.AWFWeatherRequestOptions) completion(completionBlock: method(&result: AerisWeatherKit.AWFWeatherEndpointResult));
   end;
 
   AerisWeatherKit.AWFVenueType = enum ([NonSwiftOnly] AWFVenueTypeUnknown = 1, [NonSwiftOnly] Unknown = 1, [SwiftOnly] unknown = 1, [NonSwiftOnly] AWFVenueTypeGas = 2, [NonSwiftOnly] Gas = 2, [SwiftOnly] gas = 2, [NonSwiftOnly] AWFVenueTypeLodging = 3, [NonSwiftOnly] Lodging = 3, [SwiftOnly] lodging = 3, [NonSwiftOnly] AWFVenueTypeFood = 4, [NonSwiftOnly] Food = 4, [SwiftOnly] food = 4, [NonSwiftOnly] AWFVenueTypeMedical = 5, [NonSwiftOnly] Medical = 5, [SwiftOnly] medical = 5, [NonSwiftOnly] AWFVenueTypeEmergencyRoom = 6, [NonSwiftOnly] EmergencyRoom = 6, [SwiftOnly] emergencyRoom = 6);
 
   AerisWeatherKit.AWFVenue = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property code: nullable NSString; public;
-
-    property &type: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property source: nullable NSString; public;
-
-    property name: nullable NSString; public;
-
-    property address: nullable NSString; public;
-
-    property phone: nullable NSString; public;
-
-    property website: nullable NSString; public;
-
-    property adPath: nullable NSString; public;
-
-    property iconPath: nullable NSString; public;
-
-    property markerPath: nullable NSString; public;
-
-    property isFoursquareVenue: BOOL; public;
-
+  public
+    property code: nullable NSString;
+    property &type: nullable NSString;
+    property category: nullable NSString;
+    property source: nullable NSString;
+    property name: nullable NSString;
+    property address: nullable NSString;
+    property phone: nullable NSString;
+    property website: nullable NSString;
+    property adPath: nullable NSString;
+    property iconPath: nullable NSString;
+    property markerPath: nullable NSString;
+    property isFoursquareVenue: BOOL;
     [NonSwiftOnly]
-    class method filterStringForVenueType(venueType: AerisWeatherKit.AWFVenueType): nullable NSString; public;
+    class method filterStringForVenueType(venueType: AerisWeatherKit.AWFVenueType): nullable NSString;
     [Alias]
     [SwiftOnly]
-    class method filterString(venueType: AerisWeatherKit.AWFVenueType): nullable NSString; public;
-
+    class method filterString(venueType: AerisWeatherKit.AWFVenueType): nullable NSString;
   end;
 
   AerisWeatherKit.AWFVenues = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
   AerisWeatherKit.AWFSnowDepth = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property periods: NSArray<AerisWeatherKit.AWFSnowDepthPeriod>; public;
-
-
+  public
+    property periods: NSArray<AerisWeatherKit.AWFSnowDepthPeriod>;
   end;
 
   AerisWeatherKit.AWFSnowDepthPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property depthIN: CGFloat; public;
-
-    property depthCM: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property depthIN: CGFloat;
+    property depthCM: CGFloat;
   end;
 
   AerisWeatherKit.AWFSnowDepths = class(AerisWeatherKit.AWFWeatherEndpoint)
   end;
 
+  AerisWeatherKit.AWFAdvisorySummary = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property count: NSUInteger;
+    property countries: NSArray<NSString>;
+    property states: NSArray<NSString>;
+    property typeCodes: NSArray<NSString>;
+    property types: NSArray<AerisWeatherKit.AWFAdvisoryType>;
+  end;
+
+  AerisWeatherKit.AWFAdvisoryType = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property count: NSUInteger;
+    property &type: nullable NSString;
+    property code: nullable NSString;
+    property color: nullable NSString;
+    property priority: NSUInteger;
+    property countries: NSArray<NSString>;
+    property states: NSArray<NSString>;
+    property zones: NSArray<NSString>;
+  end;
+
+  AerisWeatherKit.AWFAirport = class(AerisWeatherKit.AWFPlace)
+  public
+    property airportId: nullable NSString;
+    property city: nullable NSString;
+    property iataCode: nullable NSString;
+    property localId: nullable NSString;
+    property typeCode: nullable NSString;
+    property &type: nullable NSString;
+  end;
+
   AerisWeatherKit.AWFAirQualityReport = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property stationId: nullable NSString; public;
-
-    property periods: NSArray<AerisWeatherKit.AWFAirQualityPeriod>; public;
-
-    property sources: NSArray<AerisWeatherKit.AWFAirQualitySource>; public;
-
-    property stations: NSArray<NSString>; public;
-
-
+  public
+    property stationId: nullable NSString;
+    property periods: NSArray<AerisWeatherKit.AWFAirQualityPeriod>;
+    property sources: NSArray<AerisWeatherKit.AWFAirQualitySource>;
+    property stations: NSArray<NSString>;
   end;
 
   AerisWeatherKit.AWFAirQualityPeriod = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property category: nullable NSString; public;
-
-    property color: nullable NSString; public;
-
-    property aqi: CGFloat; public;
-
-    property dominant: nullable NSString; public;
-
-    property pollutants: NSArray<AerisWeatherKit.AWFAirPollutant>; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property category: nullable NSString;
+    property color: nullable NSString;
+    property aqi: CGFloat;
+    property dominant: nullable NSString;
+    property pollutants: NSArray<AerisWeatherKit.AWFAirPollutant>;
   end;
 
   AerisWeatherKit.AWFAirPollutant = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property name: nullable NSString; public;
-
-    property category: nullable NSString; public;
-
-    property &type: nullable NSString; public;
-
-    property color: nullable NSString; public;
-
-    property aqi: CGFloat; public;
-
-    property valuePPB: CGFloat; public;
-
-    property valueUGM3: CGFloat; public;
-
-
+  public
+    property name: nullable NSString;
+    property category: nullable NSString;
+    property &type: nullable NSString;
+    property color: nullable NSString;
+    property aqi: CGFloat;
+    property valuePPB: CGFloat;
+    property valueUGM3: CGFloat;
   end;
 
   AerisWeatherKit.AWFAirQualitySource = class(AerisWeatherKit.AWFWeatherObject)
-  private
+  public
+    property name: nullable NSString;
+  end;
 
-    property name: nullable NSString; public;
+  AerisWeatherKit.AWFCondition = class(AerisWeatherKit.AWFGeographicObject)
+  public
+    property periods: NSArray<AerisWeatherKit.AWFConditionPeriod>;
+  end;
 
+  AerisWeatherKit.AWFConditionPeriod = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property weather: nullable NSString;
+    property weatherCoded: nullable NSString;
+    property weatherFull: nullable NSString;
+    property weatherFullCoded: nullable NSString;
+    property icon: nullable NSString;
+    property cloudsCoded: nullable NSString;
+    property skyCoverPercentage: CGFloat;
+    property tempF: CGFloat;
+    property tempC: CGFloat;
+    property feelslikeF: CGFloat;
+    property feelslikeC: CGFloat;
+    property dewpointF: CGFloat;
+    property dewpointC: CGFloat;
+    property humidity: CGFloat;
+    property windDirection: nullable NSString;
+    property windDirectionDEG: CGFloat;
+    property windSpeedKTS: CGFloat;
+    property windSpeedMPH: CGFloat;
+    property windSpeedKMH: CGFloat;
+    property windGustKTS: CGFloat;
+    property windGustMPH: CGFloat;
+    property windGustKMH: CGFloat;
+    property pressureIN: CGFloat;
+    property pressureMB: CGFloat;
+    property visibilityKM: CGFloat;
+    property visibilityMI: CGFloat;
+    property precipIN: CGFloat;
+    property precipMM: CGFloat;
+    property precipRateIN: CGFloat;
+    property precipRateMM: CGFloat;
+    property snowIN: CGFloat;
+    property snowCM: CGFloat;
+    property snowRateIN: CGFloat;
+    property snowRateCM: CGFloat;
+    property uvIndex: CGFloat;
+    property solarRadiationWM2: CGFloat;
+    property isDay: BOOL;
+  end;
 
+  AWFConditionWeatherCodedItem = NSDictionary<NSString,id>;
+
+  AerisWeatherKit.AWFConditionSummary = class(AerisWeatherKit.AWFGeographicObject)
+  public
+    property periods: NSArray<AerisWeatherKit.AWFConditionSummaryPeriod>;
+  end;
+
+  AerisWeatherKit.AWFConditionSummaryPeriod = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property range: AerisWeatherKit.AWFRangeSummary;
+    property weather: nullable NSString;
+    property weatherCoded: nullable NSString;
+    property weatherFull: nullable NSString;
+    property weatherFullCoded: NSArray<AWFConditionWeatherCodedItem>;
+    property weatherCount: NSInteger;
+    property cloudsCoded: NSArray<NSString>;
+    property icon: nullable NSString;
+    property skyCoverPercentage: AerisWeatherKit.AWFRangeSummary;
+    property tempC: AerisWeatherKit.AWFRangeSummary;
+    property tempF: AerisWeatherKit.AWFRangeSummary;
+    property feelslikeC: AerisWeatherKit.AWFRangeSummary;
+    property feelslikeF: AerisWeatherKit.AWFRangeSummary;
+    property dewpointC: AerisWeatherKit.AWFRangeSummary;
+    property dewpointF: AerisWeatherKit.AWFRangeSummary;
+    property humidity: AerisWeatherKit.AWFRangeSummary;
+    property windSpeedKTS: AerisWeatherKit.AWFWindRangeSummary;
+    property windSpeedMPH: AerisWeatherKit.AWFWindRangeSummary;
+    property windSpeedKMH: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustKTS: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustMPH: AerisWeatherKit.AWFWindRangeSummary;
+    property windGustKMH: AerisWeatherKit.AWFWindRangeSummary;
+    property pressureMB: AerisWeatherKit.AWFRangeSummary;
+    property pressureIN: AerisWeatherKit.AWFRangeSummary;
+    property visibilityKM: AerisWeatherKit.AWFRangeSummary;
+    property visibilityMI: AerisWeatherKit.AWFRangeSummary;
+    property precipIN: AerisWeatherKit.AWFPrecipRangeSummary;
+    property precipMM: AerisWeatherKit.AWFPrecipRangeSummary;
+    property snowIN: AerisWeatherKit.AWFPrecipRangeSummary;
+    property snowCM: AerisWeatherKit.AWFPrecipRangeSummary;
+    property solarRadiationWM2: AerisWeatherKit.AWFRangeSummary;
+    property uvi: AerisWeatherKit.AWFRangeSummary;
+  end;
+
+  AerisWeatherKit.AWFFirePerimeter = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property startedAt: nullable NSDate;
+    property updatedAt: nullable NSDate;
+    property areaKM: CGFloat;
+    property areaMI: CGFloat;
+    property areaAC: CGFloat;
+    property polygons: NSArray<AerisWeatherKit.AWFGeoPolygon>;
   end;
 
   AerisWeatherKit.AWFIndex = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property &type: AWFIndexDataType; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property &index: NSInteger; public;
-
-    property indexString: nullable NSString; public;
-
-
+  public
+    property &type: AWFIndexDataType;
+    property timestamp: nullable NSDate;
+    property &index: NSInteger;
+    property indexString: nullable NSString;
   end;
 
   AerisWeatherKit.AWFIndexPeriod = class(AerisWeatherKit.AWFGeographicObject)
-  private
+  public
+    property current: nullable AerisWeatherKit.AWFIndex;
+    property forecast: NSArray<AerisWeatherKit.AWFIndex>;
+    property rangeMin: CGFloat;
+    property rangeMax: CGFloat;
+    property &type: AWFIndexDataType;
+    property isReverse: BOOL;
+  end;
 
-    property current: nullable AerisWeatherKit.AWFIndex; public;
-
-    property forecast: NSArray<AerisWeatherKit.AWFIndex>; public;
-
-    property rangeMin: CGFloat; public;
-
-    property rangeMax: CGFloat; public;
-
-    property &type: AWFIndexDataType; public;
-
-    property isReverse: BOOL; public;
-
-
+  AerisWeatherKit.AWFPostalCode = class(AerisWeatherKit.AWFPlace)
+  public
+    property isActive: BOOL;
   end;
 
   AerisWeatherKit.AWFPrecipitationPeriod = class(AerisWeatherKit.AWFGeographicObject)
-  private
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-    property dailyIN: CGFloat; public;
-
-    property dailyMM: CGFloat; public;
-
-    property monthlyIN: CGFloat; public;
-
-    property monthlyMM: CGFloat; public;
-
-    property yearlyIN: CGFloat; public;
-
-    property yearlyMM: CGFloat; public;
-
-
-  end;
-
-  AerisWeatherKit.AWFRangeSummary = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property count: NSInteger; public;
-
-    property min: CGFloat; public;
-
-    property max: CGFloat; public;
-
-    property average: CGFloat; public;
-
-
+  public
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
+    property dailyIN: CGFloat;
+    property dailyMM: CGFloat;
+    property monthlyIN: CGFloat;
+    property monthlyMM: CGFloat;
+    property yearlyIN: CGFloat;
+    property yearlyMM: CGFloat;
   end;
 
   AerisWeatherKit.AWFRelativeTo = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property bearing: CGFloat; public;
-
-    property bearingENG: nullable NSString; public;
-
-    property distanceKM: CGFloat; public;
-
-    property distanceMI: CGFloat; public;
-
-    property latitude: CGFloat; public;
-
-    property longitude: CGFloat; public;
-
-
+  public
+    property bearing: CGFloat;
+    property bearingENG: nullable NSString;
+    property distanceKM: CGFloat;
+    property distanceMI: CGFloat;
+    property latitude: CGFloat;
+    property longitude: CGFloat;
   end;
 
   AerisWeatherKit.AWFStormThreat = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property dbz: AerisWeatherKit.AWFRangeSummary; public;
-
-    property directionFrom: nullable NSString; public;
-
-    property directionFromDEG: CGFloat; public;
-
-    property directionTo: nullable NSString; public;
-
-    property directionToDEG: CGFloat; public;
-
-    property span: CGFloat; public;
-
-    property distanceKM: AerisWeatherKit.AWFRangeSummary; public;
-
-    property distanceMI: AerisWeatherKit.AWFRangeSummary; public;
-
-    property speedKTS: AerisWeatherKit.AWFRangeSummary; public;
-
-    property speedMPH: AerisWeatherKit.AWFRangeSummary; public;
-
-    property speedKMH: AerisWeatherKit.AWFRangeSummary; public;
-
-    property approaching: CGFloat; public;
-
-    property rotation: CGFloat; public;
-
-    property tornadic: CGFloat; public;
-
-    property hailSevereProbability: CGFloat; public;
-
-    property hailProbability: CGFloat; public;
-
-    property hailMaxSizeIN: CGFloat; public;
-
-    property lightningCountNearby: NSInteger; public;
-
-    property lightningCountApproaching: NSInteger; public;
-
-    property isApproaching: BOOL; public;
-
-    property hasLightning: BOOL; public;
-
-    property hasHail: BOOL; public;
-
-    property hasRotation: BOOL; public;
-
-    property isTornadic: BOOL; public;
-
-    property phraseShort: nullable NSString; public;
-
-    property phraseLong: nullable NSString; public;
-
-
+  public
+    property dbz: AerisWeatherKit.AWFRangeSummary;
+    property directionFrom: nullable NSString;
+    property directionFromDEG: CGFloat;
+    property directionTo: nullable NSString;
+    property directionToDEG: CGFloat;
+    property span: CGFloat;
+    property distanceKM: AerisWeatherKit.AWFRangeSummary;
+    property distanceMI: AerisWeatherKit.AWFRangeSummary;
+    property speedKTS: AerisWeatherKit.AWFRangeSummary;
+    property speedMPH: AerisWeatherKit.AWFRangeSummary;
+    property speedKMH: AerisWeatherKit.AWFRangeSummary;
+    property approaching: CGFloat;
+    property rotation: CGFloat;
+    property tornadic: CGFloat;
+    property hailSevereProbability: CGFloat;
+    property hailProbability: CGFloat;
+    property hailMaxSizeIN: CGFloat;
+    property lightningCountNearby: NSInteger;
+    property lightningCountApproaching: NSInteger;
+    property isApproaching: BOOL;
+    property hasLightning: BOOL;
+    property hasHail: BOOL;
+    property hasRotation: BOOL;
+    property isTornadic: BOOL;
+    property phraseShort: nullable NSString;
+    property phraseLong: nullable NSString;
   end;
 
   AWFTropicalBasin = NSString;
@@ -2952,222 +2377,145 @@ type
   AWFTropicalStormType = NSString;
 
   AerisWeatherKit.AWFTropicalCyclone = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property systemId: NSString; public;
-
-    property profile: AerisWeatherKit.AWFTropicalCycloneProfile; public;
-
-    property position: nullable AerisWeatherKit.AWFTropicalCyclonePosition; public;
-
-    property track: NSArray<AerisWeatherKit.AWFTropicalCyclonePosition>; public;
-
-    property forecast: NSArray<AerisWeatherKit.AWFTropicalCyclonePosition>; public;
-
-    property forecastErrorCone: NSArray<AWFGeoPolygonCoordValue>; public;
-
-    property advisoryBreakpoints: NSArray<AerisWeatherKit.AWFAdvisoryBreakpoint>; public;
-
-    property timeZone: NSTimeZone; public;
-
-
+  public
+    property systemId: NSString;
+    property profile: AerisWeatherKit.AWFTropicalCycloneProfile;
+    property position: nullable AerisWeatherKit.AWFTropicalCyclonePosition;
+    property track: NSArray<AerisWeatherKit.AWFTropicalCyclonePosition>;
+    property forecast: NSArray<AerisWeatherKit.AWFTropicalCyclonePosition>;
+    property forecastErrorCone: NSArray<AWFGeoPolygonCoordValue>;
+    property advisoryBreakpoints: NSArray<AerisWeatherKit.AWFAdvisoryBreakpoint>;
+    property timeZone: NSTimeZone;
   end;
 
   AerisWeatherKit.AWFTropicalCycloneProfile = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property cyclone: AerisWeatherKit.AWFTropicalCyclone; public;
-
-    property name: NSString; public;
-
-    property year: NSUInteger; public;
-
-    property basinOrigin: AWFTropicalBasin; public;
-
-    property basinCurrent: AWFTropicalBasin; public;
-
-    property basins: NSArray<AWFTropicalBasin>; public;
-
-    property &event: NSUInteger; public;
-
-    property isActive: BOOL; public;
-
-    property lifespanStart: NSDate; public;
-
-    property lifespanEnd: NSDate; public;
-
-    property maxStormType: AWFTropicalStormType; public;
-
-    property maxStormCategory: AWFTropicalStormType; public;
-
-    property maxWindSpeedKTS: CGFloat; public;
-
-    property maxWindSpeedKMH: CGFloat; public;
-
-    property maxWindSpeedMPH: CGFloat; public;
-
-    property maxWindSpeedDate: nullable NSDate; public;
-
-    property minPressureMB: CGFloat; public;
-
-    property minPressureIN: CGFloat; public;
-
-    property minPressureDate: nullable NSDate; public;
-
-    property bounds: nullable AerisWeatherKit.AWFCoordinateBounds; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-
+  public
+    property cyclone: AerisWeatherKit.AWFTropicalCyclone;
+    property name: NSString;
+    property year: NSUInteger;
+    property basinOrigin: AWFTropicalBasin;
+    property basinCurrent: AWFTropicalBasin;
+    property basins: NSArray<AWFTropicalBasin>;
+    property &event: NSUInteger;
+    property isActive: BOOL;
+    property lifespanStart: NSDate;
+    property lifespanEnd: NSDate;
+    property maxStormType: AWFTropicalStormType;
+    property maxStormCategory: AWFTropicalStormType;
+    property maxWindSpeedKTS: CGFloat;
+    property maxWindSpeedKMH: CGFloat;
+    property maxWindSpeedMPH: CGFloat;
+    property maxWindSpeedDate: nullable NSDate;
+    property minPressureMB: CGFloat;
+    property minPressureIN: CGFloat;
+    property minPressureDate: nullable NSDate;
+    property bounds: nullable AerisWeatherKit.AWFCoordinateBounds;
+    property timeZone: nullable NSTimeZone;
   end;
 
   AerisWeatherKit.AWFTropicalCyclonePosition = class(AerisWeatherKit.AWFWeatherObject)
-  private
-
-    property cyclone: AerisWeatherKit.AWFTropicalCyclone; public;
-
-    property advisoryId: NSString; public;
-
-    property isCurrent: BOOL; public;
-
-    property isForecast: BOOL; public;
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property stormType: AWFTropicalStormType; public;
-
-    property category: AWFTropicalStormType; public;
-
-    property name: NSString; public;
-
-    property shortName: NSString; public;
-
-    property basin: AWFTropicalBasin; public;
-
-    property movingDirection: CGFloat; public;
-
-    property movingDirectionENG: NSString; public;
-
-    property movingSpeedKTS: CGFloat; public;
-
-    property movingSpeedKMH: CGFloat; public;
-
-    property movingSpeedMPH: CGFloat; public;
-
-    property windSpeedKTS: CGFloat; public;
-
-    property windSpeedKMH: CGFloat; public;
-
-    property windSpeedMPH: CGFloat; public;
-
-    property windGustKTS: CGFloat; public;
-
-    property windGustKMH: CGFloat; public;
-
-    property windGustMPH: CGFloat; public;
-
-    property pressureMB: CGFloat; public;
-
-    property pressureIN: CGFloat; public;
-
-    property timestamp: nullable NSDate; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
-
+  public
+    property cyclone: AerisWeatherKit.AWFTropicalCyclone;
+    property advisoryId: NSString;
+    property isCurrent: BOOL;
+    property isForecast: BOOL;
+    property coordinate: CLLocationCoordinate2D;
+    property stormType: AWFTropicalStormType;
+    property category: AWFTropicalStormType;
+    property name: NSString;
+    property shortName: NSString;
+    property basin: AWFTropicalBasin;
+    property movingDirection: CGFloat;
+    property movingDirectionENG: NSString;
+    property movingSpeedKTS: CGFloat;
+    property movingSpeedKMH: CGFloat;
+    property movingSpeedMPH: CGFloat;
+    property windSpeedKTS: CGFloat;
+    property windSpeedKMH: CGFloat;
+    property windSpeedMPH: CGFloat;
+    property windGustKTS: CGFloat;
+    property windGustKMH: CGFloat;
+    property windGustMPH: CGFloat;
+    property pressureMB: CGFloat;
+    property pressureIN: CGFloat;
+    property timestamp: nullable NSDate;
+    property timeZone: nullable NSTimeZone;
   end;
 
-  AerisCoreUI.AWFArcEdge = enum ([NonSwiftOnly] AWFArcEdgeInner = 1, [NonSwiftOnly] Inner = 1, [SwiftOnly] inner = 1, [NonSwiftOnly] AWFArcEdgeOuter = 2, [NonSwiftOnly] Outer = 2, [SwiftOnly] outer = 2);
-
-  AerisCoreUI.AWFArcSide = enum ([NonSwiftOnly] AWFArcSideStart = 1, [NonSwiftOnly] Start = 1, [SwiftOnly] start = 1, [NonSwiftOnly] AWFArcSideEnd = 2, [NonSwiftOnly] &End = 2, [SwiftOnly] &end = 2);
-
-  AerisCoreUI.AWFEdgeSwipeGestureRecognizerSide = enum ([NonSwiftOnly] AWFEdgeSwipeGestureRecognizerSideLeft = 1, [NonSwiftOnly] Left = 1, [SwiftOnly] left = 1, [NonSwiftOnly] AWFEdgeSwipeGestureRecognizerSideRight = 2, [NonSwiftOnly] Right = 2, [SwiftOnly] right = 2, [NonSwiftOnly] AWFEdgeSwipeGestureRecognizerSideTop = 3, [NonSwiftOnly] Top = 3, [SwiftOnly] top = 3, [NonSwiftOnly] AWFEdgeSwipeGestureRecognizerSideBottom = 4, [NonSwiftOnly] Bottom = 4, [SwiftOnly] bottom = 4);
-
-  AerisCoreUI.AWFTooltipArrowDirection = enum ([NonSwiftOnly] AWFTooltipArrowDirectionUp = 2, [NonSwiftOnly] Up = 2, [SwiftOnly] up = 2, [NonSwiftOnly] AWFTooltipArrowDirectionDown = 3, [NonSwiftOnly] Down = 3, [SwiftOnly] down = 3, [NonSwiftOnly] AWFTooltipArrowDirectionLeft = 5, [NonSwiftOnly] Left = 5, [SwiftOnly] left = 5, [NonSwiftOnly] AWFTooltipArrowDirectionRight = 9, [NonSwiftOnly] Right = 9, [SwiftOnly] right = 9, [NonSwiftOnly] AWFTooltipArrowDirectionHorizontal = 13, [NonSwiftOnly] Horizontal = 13, [SwiftOnly] horizontal = 13, [NonSwiftOnly] AWFTooltipArrowDirectionVertical = 4, [NonSwiftOnly] Vertical = 4, [SwiftOnly] vertical = 4, [NonSwiftOnly] AWFTooltipArrowDirectionAny = 16, [NonSwiftOnly] Any = 16, [SwiftOnly] any = 16);
-
-  AerisCoreUI.AWFTooltipAnimationType = enum ([NonSwiftOnly] AWFTooltipAnimationTypeFade = 1, [NonSwiftOnly] Fade = 1, [SwiftOnly] fade = 1);
-
-  AerisCoreUI.AWFEasing = enum ([NonSwiftOnly] AWFEasingLinear = 1, [NonSwiftOnly] Linear = 1, [SwiftOnly] linear = 1, [NonSwiftOnly] AWFEasingIn = 2, [NonSwiftOnly] &In = 2, [SwiftOnly] &in = 2, [NonSwiftOnly] AWFEasingOut = 3, [NonSwiftOnly] &Out = 3, [SwiftOnly] &out = 3, [NonSwiftOnly] AWFEasingInOut = 4, [NonSwiftOnly] InOut = 4, [SwiftOnly] inOut = 4, [NonSwiftOnly] AWFEasingInQuad = 5, [NonSwiftOnly] InQuad = 5, [SwiftOnly] inQuad = 5, [NonSwiftOnly] AWFEasingOutQuad = 6, [NonSwiftOnly] OutQuad = 6, [SwiftOnly] outQuad = 6, [NonSwiftOnly] AWFEasingInOutQuad = 7, [NonSwiftOnly] InOutQuad = 7, [SwiftOnly] inOutQuad = 7, [NonSwiftOnly] AWFEasingInCubic = 8, [NonSwiftOnly] InCubic = 8, [SwiftOnly] inCubic = 8, [NonSwiftOnly] AWFEasingOutCubic = 9, [NonSwiftOnly] OutCubic = 9, [SwiftOnly] outCubic = 9, [NonSwiftOnly] AWFEasingInOutCubic = 10, [NonSwiftOnly] InOutCubic = 10, [SwiftOnly] inOutCubic = 10, [NonSwiftOnly] AWFEasingInQuartic = 11, [NonSwiftOnly] InQuartic = 11, [SwiftOnly] inQuartic = 11, [NonSwiftOnly] AWFEasingOutQuartic = 12, [NonSwiftOnly] OutQuartic = 12, [SwiftOnly] outQuartic = 12, [NonSwiftOnly] AWFEasingInOutQuartic = 13, [NonSwiftOnly] InOutQuartic = 13, [SwiftOnly] inOutQuartic = 13, [NonSwiftOnly] AWFEasingInQuintic = 14, [NonSwiftOnly] InQuintic = 14, [SwiftOnly] inQuintic = 14, [NonSwiftOnly] AWFEasingOutQuintic = 15, [NonSwiftOnly] OutQuintic = 15, [SwiftOnly] outQuintic = 15, [NonSwiftOnly] AWFEasingInOutQuintic = 16, [NonSwiftOnly] InOutQuintic = 16, [SwiftOnly] inOutQuintic = 16, [NonSwiftOnly] AWFEasingInSine = 17, [NonSwiftOnly] InSine = 17, [SwiftOnly] inSine = 17, [NonSwiftOnly] AWFEasingOutSine = 18, [NonSwiftOnly] OutSine = 18, [SwiftOnly] outSine = 18, [NonSwiftOnly] AWFEasingInOutSine = 19, [NonSwiftOnly] InOutSine = 19, [SwiftOnly] inOutSine = 19, [NonSwiftOnly] AWFEasingInExponential = 20, [NonSwiftOnly] InExponential = 20, [SwiftOnly] inExponential = 20, [NonSwiftOnly] AWFEasingOutExponential = 21, [NonSwiftOnly] OutExponential = 21, [SwiftOnly] outExponential = 21, [NonSwiftOnly] AWFEasingInOutExponential = 22, 
-[NonSwiftOnly] InOutExponential = 22, [SwiftOnly] inOutExponential = 22, [NonSwiftOnly] AWFEasingInCircular = 23, [NonSwiftOnly] InCircular = 23, [SwiftOnly] inCircular = 23, [NonSwiftOnly] AWFEasingOutCircular = 24, [NonSwiftOnly] OutCircular = 24, [SwiftOnly] outCircular = 24, [NonSwiftOnly] AWFEasingInOutCircular = 25, [NonSwiftOnly] InOutCircular = 25, [SwiftOnly] inOutCircular = 25, [NonSwiftOnly] AWFEasingInElastic = 26, [NonSwiftOnly] InElastic = 26, [SwiftOnly] inElastic = 26, [NonSwiftOnly] AWFEasingOutElastic = 27, [NonSwiftOnly] OutElastic = 27, [SwiftOnly] outElastic = 27, [NonSwiftOnly] AWFEasingInOutElastic = 28, [NonSwiftOnly] InOutElastic = 28, [SwiftOnly] inOutElastic = 28, [NonSwiftOnly] AWFEasingInBack = 29, [NonSwiftOnly] InBack = 29, [SwiftOnly] inBack = 29, [NonSwiftOnly] AWFEasingOutBack = 30, [NonSwiftOnly] OutBack = 30, [SwiftOnly] outBack = 30, [NonSwiftOnly] AWFEasingInOutBack = 31, [NonSwiftOnly] InOutBack = 31, [SwiftOnly] inOutBack = 31, [NonSwiftOnly] AWFEasingInBounce = 32, [NonSwiftOnly] InBounce = 32, [SwiftOnly] inBounce = 32, [NonSwiftOnly] AWFEasingOutBounce = 33, [NonSwiftOnly] OutBounce = 33, [SwiftOnly] outBounce = 33, [NonSwiftOnly] AWFEasingInOutBounce = 34, [NonSwiftOnly] InOutBounce = 34, [SwiftOnly] inOutBounce = 34, [NonSwiftOnly] AWFEasingSwiftOut = 35, [NonSwiftOnly] SwiftOut = 35, [SwiftOnly] swiftOut = 35);
-
-  AerisCoreUI.AWFGraphSeriesRange = record
-  private
-
-    var min: CGFloat; public;
-    var max: CGFloat; public;
-
-  end;
-
-  AerisCoreUI.AWFGraphSeriesDomain = record
-  private
-
-    var xMin: CGFloat; public;
-    var xMax: CGFloat; public;
-    var yMin: CGFloat; public;
-    var yMax: CGFloat; public;
-
-  end;
-
-  AerisCoreUI.AWFGraphAxisType = enum (AWFGraphAxisTypeX = 1, X = 1, AWFGraphAxisTypeY = 2, Y = 2);
-
-  AerisCoreUI.AWFGraphRendererType = enum ([NonSwiftOnly] AWFGraphRendererTypeLine = 1, [NonSwiftOnly] Line = 1, [SwiftOnly] line = 1, [NonSwiftOnly] AWFGraphRendererTypeBar = 2, [NonSwiftOnly] Bar = 2, [SwiftOnly] bar = 2);
-
-  AerisCoreUI.AWFSeriesModifier = enum ([NonSwiftOnly] AWFSeriesModifierNone = 1, [NonSwiftOnly] None = 1, [SwiftOnly] none = 1, [NonSwiftOnly] AWFSeriesModifierSum = 2, [NonSwiftOnly] Sum = 2, [SwiftOnly] sum = 2);
-
-  AerisCoreUI.AWFGraphAxisOrientation = enum ([NonSwiftOnly] AWFGraphAxisOrientationLeft = 1, [NonSwiftOnly] Left = 1, [SwiftOnly] left = 1, [NonSwiftOnly] AWFGraphAxisOrientationRight = 2, [NonSwiftOnly] Right = 2, [SwiftOnly] right = 2, [NonSwiftOnly] AWFGraphAxisOrientationBottom = 3, [NonSwiftOnly] Bottom = 3, [SwiftOnly] bottom = 3, [NonSwiftOnly] AWFGraphAxisOrientationTop = 4, [NonSwiftOnly] Top = 4, [SwiftOnly] top = 4);
-
-  AerisCoreUI.AWFGraphCalloutArrowDirection = enum ([NonSwiftOnly] AWFGraphCalloutArrowDirectionUp = 2, [NonSwiftOnly] Up = 2, [SwiftOnly] up = 2, [NonSwiftOnly] AWFGraphCalloutArrowDirectionDown = 3, [NonSwiftOnly] Down = 3, [SwiftOnly] down = 3, [NonSwiftOnly] AWFGraphCalloutArrowDirectionLeft = 5, [NonSwiftOnly] Left = 5, [SwiftOnly] left = 5, [NonSwiftOnly] AWFGraphCalloutArrowDirectionRight = 9, [NonSwiftOnly] Right = 9, [SwiftOnly] right = 9, [NonSwiftOnly] AWFGraphCalloutArrowDirectionHorizontal = 13, [NonSwiftOnly] Horizontal = 13, [SwiftOnly] horizontal = 13, [NonSwiftOnly] AWFGraphCalloutArrowDirectionVertical = 4, [NonSwiftOnly] Vertical = 4, [SwiftOnly] vertical = 4);
-
-  AerisCoreUI.AWFValueType = enum ([NonSwiftOnly] AWFValueTypeNumber = 1, [NonSwiftOnly] Number = 1, [SwiftOnly] number = 1, [NonSwiftOnly] AWFValueTypePoint = 2, [NonSwiftOnly] Point = 2, [SwiftOnly] point = 2, [NonSwiftOnly] AWFValueTypeSize = 3, [NonSwiftOnly] Size = 3, [SwiftOnly] size = 3, [NonSwiftOnly] AWFValueTypeRect = 4, [NonSwiftOnly] Rect = 4, [SwiftOnly] rect = 4, [NonSwiftOnly] AWFValueTypeAffineTransform = 5, [NonSwiftOnly] AffineTransform = 5, [SwiftOnly] affineTransform = 5, [NonSwiftOnly] AWFValueTypeTransform3D = 6, [NonSwiftOnly] Transform3D = 6, [SwiftOnly] transform3D = 6, [NonSwiftOnly] AWFValueTypeUnknown = 7, [NonSwiftOnly] Unknown = 7, [SwiftOnly] unknown = 7);
-
-  AerisCoreUI.AWFDevicePlatform = enum ([NonSwiftOnly] AWFDevicePlatformUnknown = 1, [NonSwiftOnly] PlatformUnknown = 1, [SwiftOnly] platformUnknown = 1, [NonSwiftOnly] AWFDevicePlatformIPhone1G = 2, [NonSwiftOnly] PlatformIPhone1G = 2, [SwiftOnly] platformIPhone1G = 2, [NonSwiftOnly] AWFDevicePlatformIPhone3G = 3, [NonSwiftOnly] PlatformIPhone3G = 3, [SwiftOnly] platformIPhone3G = 3, [NonSwiftOnly] AWFDevicePlatformIPhone3GS = 4, [NonSwiftOnly] PlatformIPhone3GS = 4, [SwiftOnly] platformIPhone3GS = 4, [NonSwiftOnly] AWFDevicePlatformIPhone4 = 5, [NonSwiftOnly] PlatformIPhone4 = 5, [SwiftOnly] platformIPhone4 = 5, [NonSwiftOnly] AWFDevicePlatformIPhone4S = 6, [NonSwiftOnly] PlatformIPhone4S = 6, [SwiftOnly] platformIPhone4S = 6, [NonSwiftOnly] AWFDevicePlatformIPhone5 = 7, [NonSwiftOnly] PlatformIPhone5 = 7, [SwiftOnly] platformIPhone5 = 7, [NonSwiftOnly] AWFDevicePlatformIPhone5S = 8, [NonSwiftOnly] PlatformIPhone5S = 8, [SwiftOnly] platformIPhone5S = 8, [NonSwiftOnly] AWFDevicePlatformIPhone5C = 9, [NonSwiftOnly] PlatformIPhone5C = 9, [SwiftOnly] platformIPhone5C = 9, [NonSwiftOnly] AWFDevicePlatformIPhone6 = 10, [NonSwiftOnly] PlatformIPhone6 = 10, [SwiftOnly] platformIPhone6 = 10, [NonSwiftOnly] AWFDevicePlatformIPhone6Plus = 11, [NonSwiftOnly] PlatformIPhone6Plus = 11, [SwiftOnly] platformIPhone6Plus = 11, [NonSwiftOnly] AWFDevicePlatformIPhone6S = 12, [NonSwiftOnly] PlatformIPhone6S = 12, [SwiftOnly] platformIPhone6S = 12, [NonSwiftOnly] AWFDevicePlatformIPhone6SPlus = 13, [NonSwiftOnly] PlatformIPhone6SPlus = 13, [SwiftOnly] platformIPhone6SPlus = 13, [NonSwiftOnly] AWFDevicePlatformIPad1 = 14, [NonSwiftOnly] PlatformIPad1 = 14, [SwiftOnly] platformIPad1 = 14, [NonSwiftOnly] AWFDevicePlatformIPad2 = 15, [NonSwiftOnly] PlatformIPad2 = 15, [SwiftOnly] platformIPad2 = 15, [NonSwiftOnly] AWFDevicePlatformIPad3 = 16, [NonSwiftOnly] PlatformIPad3 = 16, [SwiftOnly] platformIPad3 = 16, [NonSwiftOnly] AWFDevicePlatformIPad4 = 17, [NonSwiftOnly] PlatformIPad4 = 17, [SwiftOnly] platformIPad4 = 17, [NonSwiftOnly] AWFDevicePlatformIPadAir = 18, 
-[NonSwiftOnly] PlatformIPadAir = 18, [SwiftOnly] platformIPadAir = 18, [NonSwiftOnly] AWFDevicePlatformIPadAir2 = 19, [NonSwiftOnly] PlatformIPadAir2 = 19, [SwiftOnly] platformIPadAir2 = 19, [NonSwiftOnly] AWFDevicePlatformIPadPro = 20, [NonSwiftOnly] PlatformIPadPro = 20, [SwiftOnly] platformIPadPro = 20, [NonSwiftOnly] AWFDevicePlatformIPadMini1 = 21, [NonSwiftOnly] PlatformIPadMini1 = 21, [SwiftOnly] platformIPadMini1 = 21, [NonSwiftOnly] AWFDevicePlatformIPadMini2 = 22, [NonSwiftOnly] PlatformIPadMini2 = 22, [SwiftOnly] platformIPadMini2 = 22, [NonSwiftOnly] AWFDevicePlatformIPadMini3 = 23, [NonSwiftOnly] PlatformIPadMini3 = 23, [SwiftOnly] platformIPadMini3 = 23, [NonSwiftOnly] AWFDevicePlatformiPadMini4 = 24, [NonSwiftOnly] PlatformiPadMini4 = 24, [SwiftOnly] platformiPadMini4 = 24, [NonSwiftOnly] AWFDevicePlatformIPod1G = 25, [NonSwiftOnly] PlatformIPod1G = 25, [SwiftOnly] platformIPod1G = 25, [NonSwiftOnly] AWFDevicePlatformIPod2G = 26, [NonSwiftOnly] PlatformIPod2G = 26, [SwiftOnly] platformIPod2G = 26, [NonSwiftOnly] AWFDevicePlatformIPod3G = 27, [NonSwiftOnly] PlatformIPod3G = 27, [SwiftOnly] platformIPod3G = 27, [NonSwiftOnly] AWFDevicePlatformIPod4G = 28, [NonSwiftOnly] PlatformIPod4G = 28, [SwiftOnly] platformIPod4G = 28, [NonSwiftOnly] AWFDevicePlatformIPod5G = 29, [NonSwiftOnly] PlatformIPod5G = 29, [SwiftOnly] platformIPod5G = 29, [NonSwiftOnly] AWFDevicePlatformAppleWatch = 30, [NonSwiftOnly] PlatformAppleWatch = 30, [SwiftOnly] platformAppleWatch = 30, [NonSwiftOnly] AWFDevicePlatformSimulator = 31, [NonSwiftOnly] PlatformSimulator = 31, [SwiftOnly] platformSimulator = 31);
-
-  AerisCoreUI.AWFDeviceFamily = enum ([NonSwiftOnly] AWFDeviceFamilyUnknown = 1, [NonSwiftOnly] FamilyUnknown = 1, [SwiftOnly] familyUnknown = 1, [NonSwiftOnly] AWFDeviceFamilyiPhone = 2, [NonSwiftOnly] FamilyiPhone = 2, [SwiftOnly] familyiPhone = 2, [NonSwiftOnly] AWFDeviceFamilyiPod = 3, [NonSwiftOnly] FamilyiPod = 3, [SwiftOnly] familyiPod = 3, [NonSwiftOnly] AWFDeviceFamilyiPad = 4, [NonSwiftOnly] FamilyiPad = 4, [SwiftOnly] familyiPad = 4, [NonSwiftOnly] AWFDeviceFamilyAppleTV = 5, [NonSwiftOnly] FamilyAppleTV = 5, [SwiftOnly] familyAppleTV = 5, [NonSwiftOnly] AWFDeviceFamilyAppleWatch = 6, [NonSwiftOnly] FamilyAppleWatch = 6, [SwiftOnly] familyAppleWatch = 6);
-
-  AerisCoreUI.AWFIcon = enum ([NonSwiftOnly] AWFIconPlay = 1, [NonSwiftOnly] Play = 1, [SwiftOnly] play = 1, [NonSwiftOnly] AWFIconStop = 2, [NonSwiftOnly] Stop = 2, [SwiftOnly] stop = 2);
-
-  AerisWeatherKit.AWFWeatherGraphSeries = class
-  private
-
-    property items: NSArray<AerisWeatherKit.AWFWeatherSeriesItem>; public;
-
-    property dataRequestOptions: nullable AerisWeatherKit.AWFBatchRequestOptions; public;
-
-    property timeZone: nullable NSTimeZone; public;
-
+  AerisWeatherKit.AWFRangeSummary = class(AerisWeatherKit.AWFWeatherObject)
+  public
+    property count: NSInteger;
+    property min: CGFloat;
+    property minTimestamp: nullable NSDate;
+    property max: CGFloat;
+    property maxTimestamp: nullable NSDate;
+    property average: CGFloat;
     [NonSwiftOnly]
-    method setEndpointForAllSeriesItems(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
+    method mergeWithSummary(otherSummary: AerisWeatherKit.AWFRangeSummary);
     [Alias]
     [SwiftOnly]
-    method setEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint); public;
+    method merge(otherSummary: AerisWeatherKit.AWFRangeSummary);
+    class method propertyAssignmentMapping: NSArray<NSString>;
+    class method propertyNameAssignmentMapping: NSDictionary<NSString,NSString>;
     [NonSwiftOnly]
-    method setPlaceForAllSeriesItemEndpoints(place: AerisWeatherKit.AWFPlace); public;
+    class method propertyMappingsFromProperty(sourceProperty: NSString) toProperty(targetProperty: NSString): NSDictionary<id,id>;
     [Alias]
     [SwiftOnly]
-    method setPlace(place: AerisWeatherKit.AWFPlace); public;
-    property endpointForAllSeriesItems: AerisWeatherKit.AWFWeatherEndpoint; public;
-
-    property placeForAllSeriesItemEndpoints: AerisWeatherKit.AWFPlace; public;
-
-
+    class method propertyMappings(sourceProperty: NSString) toProperty(targetProperty: NSString): NSDictionary<id,id>;
+    [NonSwiftOnly]
+    class method propertyMappingsFromProperty(sourceProperty: NSString) toProperty(targetProperty: NSString) sourceSuffixes(sourceSuffixes: NSArray<NSString>): NSDictionary<id,id>;
+    [Alias]
+    [SwiftOnly]
+    class method propertyMappings(sourceProperty: NSString) toProperty(targetProperty: NSString) sourceSuffixes(sourceSuffixes: NSArray<NSString>): NSDictionary<id,id>;
+    [NonSwiftOnly]
+    class method propertyMappingsFromProperty(sourceProperty: NSString) toProperty(targetProperty: NSString) sourceSuffixes(sourceSuffixes: NSArray<NSString>) targetSuffixes(targetSuffixes: NSArray<NSString>): NSDictionary<id,id>;
+    [Alias]
+    [SwiftOnly]
+    class method propertyMappings(sourceProperty: NSString) toProperty(targetProperty: NSString) sourceSuffixes(sourceSuffixes: NSArray<NSString>) targetSuffixes(targetSuffixes: NSArray<NSString>): NSDictionary<id,id>;
   end;
 
-  AerisWeatherKit.AWFWeatherSeriesItem = class
-  private
+  AerisWeatherKit.AWFPrecipRangeSummary = class(AerisWeatherKit.AWFRangeSummary)
+  public
+    property total: CGFloat;
+  end;
 
-    property endpoint: AerisWeatherKit.AWFWeatherEndpoint; public;
+  AerisWeatherKit.AWFWindRangeSummary = class(AerisWeatherKit.AWFRangeSummary)
+  public
+    property minDirection: nullable NSString;
+    property minDirectionDEG: CGFloat;
+    property maxDirection: nullable NSString;
+    property maxDirectionDEG: CGFloat;
+  end;
 
+  AerisWeatherKit.AWFWeatherGraphSeries = class(AWFGraphSeries)
+  public
+    property items: NSArray<AerisWeatherKit.AWFWeatherSeriesItem>;
+    property dataRequestOptions: nullable AerisWeatherKit.AWFBatchRequestOptions;
+    property timeZone: nullable NSTimeZone;
+    [NonSwiftOnly]
+    method setEndpointForAllSeriesItems(endpoint: AerisWeatherKit.AWFWeatherEndpoint);
+    [Alias]
+    [SwiftOnly]
+    method setEndpoint(endpoint: AerisWeatherKit.AWFWeatherEndpoint);
+    [NonSwiftOnly]
+    method setPlaceForAllSeriesItemEndpoints(place: AerisWeatherKit.AWFPlace);
+    [Alias]
+    [SwiftOnly]
+    method setPlace(place: AerisWeatherKit.AWFPlace);
+    property endpointForAllSeriesItems: AerisWeatherKit.AWFWeatherEndpoint;
+    property placeForAllSeriesItemEndpoints: AerisWeatherKit.AWFPlace;
+  end;
 
+  AerisWeatherKit.AWFWeatherSeriesItem = class(AWFSeriesItem)
+  public
+    property endpoint: AerisWeatherKit.AWFWeatherEndpoint;
   end;
 
   AerisWeatherKit.AerisWeatherKitCategory = extension class(NSBundle)
-  private
-
-    class method awf_aerisWeatherBundle: NSBundle; public;
-    class method awf_aerisWeatherResourcesBundle: NSBundle; public;
-    class method awf_aerisWeatherStringsBundle: NSBundle; public;
-
+  public
+    class method awf_aerisWeatherBundle: NSBundle;
+    class method awf_aerisWeatherResourcesBundle: NSBundle;
+    class method awf_aerisWeatherStringsBundle: NSBundle;
   end;
 
 end.

@@ -18,31 +18,31 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <ImportFramework Include="..\Aeris\AerisMapKit.framework">
-      <Private>True</Private>
-    </ImportFramework>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
   <ItemGroup>
     <Reference Include="Foundation" />
     <Reference Include="rtl" />
-    <ProjectReference Include="AerisCore">
+    <ProjectReference Include="..\AerisCore\AerisCore.elements">
       <HintPath>..\AerisCore\Bin\Debug\iOS\AerisCore.fx</HintPath>
       <Project>{5C9A09D9-D358-4B33-AC1F-CE6A8BB78CA2}</Project>
       <ProjectFile>..\AerisCore\AerisCore.elements</ProjectFile>
     </ProjectReference>
     <Reference Include="UIKit" />
     <Reference Include="MapKit" />
-    <ProjectReference Include="AerisWeatherKit">
+    <ProjectReference Include="..\AerisWeatherKit\AerisWeatherKit.elements">
       <HintPath>..\AerisWeatherKit\Bin\Debug\iOS\AerisWeatherKit.fx</HintPath>
       <Project>{636F8748-A246-47C7-869D-1C3990B43CB8}</Project>
       <ProjectFile>..\AerisWeatherKit\AerisWeatherKit.elements</ProjectFile>
     </ProjectReference>
-    <ProjectReference Include="AerisCoreUI">
+    <ProjectReference Include="..\AerisCoreUI\AerisCoreUI.elements">
       <HintPath>..\AerisCoreUI\Bin\Debug\iOS\AerisCoreUI.fx</HintPath>
       <Project>{262A90E9-CE2A-463B-99F9-4B5E18704A48}</Project>
       <ProjectFile>..\AerisCoreUI\AerisCoreUI.elements</ProjectFile>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImportFramework Include="AerisMapKit.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
 </Project>

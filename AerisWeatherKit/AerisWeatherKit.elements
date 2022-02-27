@@ -19,7 +19,7 @@
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ImportFramework Include="..\Aeris\AerisWeatherKit.framework">
+    <ImportFramework Include="AerisWeatherKit.xcframework">
       <Private>True</Private>
     </ImportFramework>
   </ItemGroup>
@@ -27,10 +27,15 @@
   <ItemGroup>
     <Reference Include="rtl" />
     <Reference Include="Foundation" />
-    <ProjectReference Include="AerisCore">
+    <ProjectReference Include="..\AerisCore\AerisCore.elements">
       <HintPath>..\AerisCore\Bin\Debug\iOS\AerisCore.fx</HintPath>
       <Project>{5C9A09D9-D358-4B33-AC1F-CE6A8BB78CA2}</Project>
       <ProjectFile>..\AerisCore\AerisCore.elements</ProjectFile>
+    </ProjectReference>
+    <ProjectReference Include="..\AerisCoreUI\AerisCoreUI.elements">
+      <HintPath>..\AerisCoreUI\Bin\Debug\iOS Simulator\AerisCoreUI.fx</HintPath>
+      <Project>{262A90E9-CE2A-463B-99F9-4B5E18704A48}</Project>
+      <ProjectFile>..\AerisCoreUI\AerisCoreUI.elements</ProjectFile>
     </ProjectReference>
   </ItemGroup>
 </Project>

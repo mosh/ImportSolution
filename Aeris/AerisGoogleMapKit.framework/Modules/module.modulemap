@@ -1,6 +1,0 @@
-framework module AerisGoogleMapKit {
-  umbrella header "AerisGoogleMapKit.h"
-
-  export *
-  module * { export * }
-}

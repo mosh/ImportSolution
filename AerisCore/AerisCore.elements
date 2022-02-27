@@ -18,14 +18,14 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <ImportFramework Include="..\Aeris\AerisCore.framework">
-      <Private>True</Private>
-    </ImportFramework>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
   <ItemGroup>
     <Reference Include="Foundation" />
     <Reference Include="rtl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImportFramework Include="AerisCore.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
 </Project>

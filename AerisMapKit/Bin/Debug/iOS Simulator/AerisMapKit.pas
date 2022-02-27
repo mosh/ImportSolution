@@ -3,436 +3,460 @@ namespace AerisMapKit;
 // Import of AerisMapKit (1.0)
 // Frameworks: AerisMapKit
 // Targets: arm64
-// Dep fx:rtl, AerisWeatherKit, Foundation, MapKit, UIKit, AerisCoreUI, CoreLocation, AerisCore, CoreGraphics, QuartzCore
-// Dep libs:
+// Dependent fx:rtl, AerisWeatherKit, Foundation, MapKit, UIKit, AerisCoreUI, CoreLocation, AerisCore, CoreGraphics, QuartzCore
+// Dependent libraries:
 // Platform: iOS
 // 
 
 type
   AerisMapKit.__Global = class
-  private
-
-    class var AerisMapCenteredURL: NSString; public;
-    class var AerisMapBoundingBoxURL: NSString; public;
-    class var AerisMapTileURL: NSString; public;
-    class method AWFMapZoomLevelFromZoomScale(zoomScale: MKZoomScale): NSUInteger; public;
-    class method AWFMapTilePointToCoordinate(point: CGPoint; zoomLevel: NSUInteger): CLLocationCoordinate2D; public;
-    class method AWFMapPointToTilePoint(mapPoint: MKMapPoint; zoomLevel: NSUInteger): CGPoint; public;
-    class method AWFMapTilePointFromCoordinate(coord: CLLocationCoordinate2D; zoomLevel: NSUInteger): CGPoint; public;
-    class var AWFLayerGroupRaster: AWFLayerGroup; public;
-    class var AWFLayerGroupPoint: AWFLayerGroup; public;
-    class var AWFLayerGroupShape: AWFLayerGroup; public;
-    class var AWFLayerGroupFuture: AWFLayerGroup; public;
-    class var AWFLayerGroupText: AWFLayerGroup; public;
-    class var AWFLayerGroupBase: AWFLayerGroup; public;
-    class var AWFLayerGroupOverlay: AWFLayerGroup; public;
-    class var AWFLayerGroupMask: AWFLayerGroup; public;
-    class var kAWFCalloutViewRepositionDelayForUIScrollView: NSTimeInterval; public;
-    class var AWFWeatherMapWillStartAnimating: NSString; public;
-    class var AWFWeatherMapDidStartAnimating: NSString; public;
-    class var AWFWeatherMapDidStopAnimating: NSString; public;
-    class var AWFLayerModifierTypeModel: AWFLayerModifierType; public;
-    class var AWFLayerModifierTypeCategory: AWFLayerModifierType; public;
-    class var AWFLayerModifierTypeTheme: AWFLayerModifierType; public;
-    class var AWFLayerModifierTypeFontSize: AWFLayerModifierType; public;
-    class var AWFMapLayerRadar: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteVisible: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteGeocolor: AWFMapLayer; public;
-    class var AWFMapLayerSatellite: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteInfraredColorUS: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteInfraredColor: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteWaterVapor: AWFMapLayer; public;
-    class var AWFMapLayerSatelliteVisibleTransparent: AWFMapLayer; public;
-    class var AWFMapLayerFutureRadar: AWFMapLayer; public;
-    class var AWFMapLayerFutureSatellite: AWFMapLayer; public;
-    class var AWFMapLayerFutureTemperatures: AWFMapLayer; public;
-    class var AWFMapLayerFuturePrecip: AWFMapLayer; public;
-    class var AWFMapLayerFuturePrecip1Hour: AWFMapLayer; public;
-    class var AWFMapLayerFuturePrecip6Hour: AWFMapLayer; public;
-    class var AWFMapLayerFutureDewPoints: AWFMapLayer; public;
-    class var AWFMapLayerFutureHumidity: AWFMapLayer; public;
-    class var AWFMapLayerFutureWindSpeeds: AWFMapLayer; public;
-    class var AWFMapLayerFutureJetStream: AWFMapLayer; public;
-    class var AWFMapLayerFutureWindGusts: AWFMapLayer; public;
-    class var AWFMapLayerFutureFeelsLike: AWFMapLayer; public;
-    class var AWFMapLayerFutureHeatIndex: AWFMapLayer; public;
-    class var AWFMapLayerFutureWindChill: AWFMapLayer; public;
-    class var AWFMapLayerFutureSnowAccumulation: AWFMapLayer; public;
-    class var AWFMapLayerFutureSnowDepth: AWFMapLayer; public;
-    class var AWFMapLayerFutureIceAccumulation: AWFMapLayer; public;
-    class var AWFMapLayerFutureTemperaturesMax: AWFMapLayer; public;
-    class var AWFMapLayerFutureTemperaturesMin: AWFMapLayer; public;
-    class var AWFMapLayerFutureVisibility: AWFMapLayer; public;
-    class var AWFMapLayerFutureSurfacePressure: AWFMapLayer; public;
-    class var AWFMapLayerFutureSurfacePressureIsobars: AWFMapLayer; public;
-    class var AWFMapLayerFutureRoadConditions: AWFMapLayer; public;
-    class var AWFMapLayerFutureRoadConditionsMidterm: AWFMapLayer; public;
-    class var AWFMapLayerFutureRoadConditionsIndex: AWFMapLayer; public;
-    class var AWFMapLayerFutureRoadConditionsIndexMidterm: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesNames: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesPositions: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesPositionIcons: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesTrackLines: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesTrackPoints: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesTrackPointIcons: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesForecastErrorCones: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesForecastLines: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesForecastPoints: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesForecastPointIcons: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclonesBreakPoints: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikes5Minute: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikes15Minute: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikes5MinuteIcons: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikes15MinuteIcons: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikeDensity: AWFMapLayer; public;
-    class var AWFMapLayerAdvisories: AWFMapLayer; public;
-    class var AWFMapLayerTemperatures: AWFMapLayer; public;
-    class var AWFMapLayerDewPoints: AWFMapLayer; public;
-    class var AWFMapLayerHumidity: AWFMapLayer; public;
-    class var AWFMapLayerWindSpeeds: AWFMapLayer; public;
-    class var AWFMapLayerWindDirection: AWFMapLayer; public;
-    class var AWFMapLayerWindGusts: AWFMapLayer; public;
-    class var AWFMapLayerWindChill: AWFMapLayer; public;
-    class var AWFMapLayerHeatIndex: AWFMapLayer; public;
-    class var AWFMapLayerFeelsLike: AWFMapLayer; public;
-    class var AWFMapLayerPrecip1Hour: AWFMapLayer; public;
-    class var AWFMapLayerPrecip1Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip7Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip14Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip30Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip60Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip90Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecip180Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipMTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipWYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecip: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals1Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals7Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals14Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals30Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals60Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals90Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals180Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormalsMTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormalsYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormalsWYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipNormals: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart1Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart7Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart14Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart30Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart60Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart90Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart180Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartMTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartWYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepart: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent1Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent7Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent14Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent30Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent60Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent90Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent180Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercentMTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercentYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercentWYTD: AWFMapLayer; public;
-    class var AWFMapLayerPrecipDepartPercent: AWFMapLayer; public;
-    class var AWFMapLayerCloudCover: AWFMapLayer; public;
-    class var AWFMapLayerSnowDepth: AWFMapLayer; public;
-    class var AWFMapLayerSnowDepthGlobal: AWFMapLayer; public;
-    class var AWFMapLayerVisibility: AWFMapLayer; public;
-    class var AWFMapLayerFiresDryLightningOutlook: AWFMapLayer; public;
-    class var AWFMapLayerTempOutlook6To10Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipOutlook6To10Day: AWFMapLayer; public;
-    class var AWFMapLayerTempOutlook8To14Day: AWFMapLayer; public;
-    class var AWFMapLayerPrecipOutlook8To14Day: AWFMapLayer; public;
-    class var AWFMapLayerChlorophyll: AWFMapLayer; public;
-    class var AWFMapLayerSeaSurfaceTemps: AWFMapLayer; public;
-    class var AWFMapLayerRoadConditions: AWFMapLayer; public;
-    class var AWFMapLayerBaseFlat: AWFMapLayer; public;
-    class var AWFMapLayerBaseBlueMarble: AWFMapLayer; public;
-    class var AWFMapLayerBaseTerrain: AWFMapLayer; public;
-    class var AWFMapLayerOverlayAdmin: AWFMapLayer; public;
-    class var AWFMapLayerOverlayAdminCities: AWFMapLayer; public;
-    class var AWFMapLayerOverlayStatesOutlines: AWFMapLayer; public;
-    class var AWFMapLayerOverlayStates: AWFMapLayer; public;
-    class var AWFMapLayerOverlayCounties: AWFMapLayer; public;
-    class var AWFMapLayerOverlayInterstates: AWFMapLayer; public;
-    class var AWFMapLayerOverlayRoads: AWFMapLayer; public;
-    class var AWFMapLayerOverlayRivers: AWFMapLayer; public;
-    class var AWFMapLayerMaskLandFlat: AWFMapLayer; public;
-    class var AWFMapLayerMaskLandBlueMarble: AWFMapLayer; public;
-    class var AWFMapLayerMaskLandTerrain: AWFMapLayer; public;
-    class var AWFMapLayerMaskWaterFlat: AWFMapLayer; public;
-    class var AWFMapLayerMaskWaterDepth: AWFMapLayer; public;
-    class var AWFMapLayerMaskLandUSFlat: AWFMapLayer; public;
-    class var AWFMapLayerMaskClipUSFlat: AWFMapLayer; public;
-    class var AWFMapLayerMaskClipUSBlueMarble: AWFMapLayer; public;
-    class var AWFMapLayerMaskClipUSTerrain: AWFMapLayer; public;
-    class var AWFMapLayerAmpConvectiveOutlook: AWFMapLayer; public;
-    class var AWFMapLayerAmpDroughtIndex: AWFMapLayer; public;
-    class var AWFMapLayerAmpFireOutlook: AWFMapLayer; public;
-    class var AWFMapLayerAmpLightningStrikes: AWFMapLayer; public;
-    class var AWFMapLayerAmpStormCells: AWFMapLayer; public;
-    class var AWFMapLayerAmpStormReports: AWFMapLayer; public;
-    class var AWFMapLayerAmpTropicalCyclones: AWFMapLayer; public;
-    class var AWFMapLayerAmpWarnings: AWFMapLayer; public;
-    class var AWFFutureLayerPrefix: NSString; public;
-    class var AWFMapLayerAirQuality: AWFMapLayer; public;
-    class var AWFMapLayerEarthquakes: AWFMapLayer; public;
-    class var AWFMapLayerFires: AWFMapLayer; public;
-    class var AWFMapLayerLightningStrikes: AWFMapLayer; public;
-    class var AWFMapLayerRecords: AWFMapLayer; public;
-    class var AWFMapLayerRivers: AWFMapLayer; public;
-    class var AWFMapLayerStormCells: AWFMapLayer; public;
-    class var AWFMapLayerStormReports: AWFMapLayer; public;
-    class var AWFMapLayerTropicalCyclones: AWFMapLayer; public;
-    class var AWFMapLayerWarnings: AWFMapLayer; public;
-    class var AWFMapLayerConvectiveOutlook: AWFMapLayer; public;
-    class var AWFMapLayerDroughtIndex: AWFMapLayer; public;
-    class var AWFMapLayerFireOutlook: AWFMapLayer; public;
-    class var AWFMapLayerTropicalBreakpoints: AWFMapLayer; public;
-    class var AWFRasterBlendModeNone: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSource: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDest: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSourceOver: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDestOver: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSourceIn: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDestIn: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSourceOut: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDestOut: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSourceAtop: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDestAtop: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModePlus: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeMinus: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeMultiply: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeScreen: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeOverlay: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDarken: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeLighten: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeColorDodge: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeColorBurn: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeHardLight: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSoftLight: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDifference: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeExclusion: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeContrast: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeInvert: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeInvertRGB: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeGrainMerge: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeGrainExtract: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeHue: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeSaturation: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeLinearDodge: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeLinearBurn: AWFRasterBlendMode; public;
-    class var AWFRasterBlendModeDivide: AWFRasterBlendMode; public;
-    class var AWFRasterMaskNone: AWFRasterMask; public;
-    class var AWFRasterMaskLandFlat: AWFRasterMask; public;
-    class var AWFRasterMaskLandBlueMarble: AWFRasterMask; public;
-    class var AWFRasterMaskLandTerrain: AWFRasterMask; public;
-    class var AWFRasterMaskWaterFlat: AWFRasterMask; public;
-    class var AWFRasterMaskWaterDepth: AWFRasterMask; public;
-    class var AWFRasterMaskLandUSFlat: AWFRasterMask; public;
-    class var AWFRasterMaskClipUSFlat: AWFRasterMask; public;
-    class var AWFRasterMaskClipUSBlueMarble: AWFRasterMask; public;
-    class var AWFRasterMaskClipUSTerrain: AWFRasterMask; public;
-    class var AWFRasterMaskRemoveWater: AWFRasterMask; public;
-    class var AWFRasterMaskRemoveLand: AWFRasterMask; public;
-    class var AWFRasterMaskRemoveLandNonUS: AWFRasterMask; public;
-    class method AWFMapLayerForWeatherDataType(weatherDataType: AWFWeatherDataType): AWFMapLayer; public;
-    class method AWFWeatherDataTypeForRasterLayerType(layerType: AWFMapLayer): AWFWeatherDataType; public;
-    class var AWFAirQualityAnnotationTypeGood: AWFAirQualityAnnotationType; public;
-    class var AWFAirQualityAnnotationTypeModerate: AWFAirQualityAnnotationType; public;
-    class var AWFAirQualityAnnotationTypeSensitive: AWFAirQualityAnnotationType; public;
-    class var AWFAirQualityAnnotationTypeUnhealthy: AWFAirQualityAnnotationType; public;
-    class var AWFAirQualityAnnotationTypeVeryUnhealthy: AWFAirQualityAnnotationType; public;
-    class var AWFAirQualityAnnotationTypeHazardous: AWFAirQualityAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeMini: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeMinor: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeLight: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeModerate: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeStrong: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeMajor: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeGreat: AWFEarthquakeAnnotationType; public;
-    class var AWFEarthquakeAnnotationTypeCatastrophic: AWFEarthquakeAnnotationType; public;
-    class var AWFFireAnnotationTypeSmall: AWFFireAnnotationType; public;
-    class var AWFFireAnnotationTypeMedium: AWFFireAnnotationType; public;
-    class var AWFFireAnnotationTypeLarge: AWFFireAnnotationType; public;
-    class var AWFFireAnnotationTypeCritical: AWFFireAnnotationType; public;
-    class var AWFLightningStrikeAnnotationTypeAge15: AWFLightningStrikeAnnotationType; public;
-    class var AWFLightningStrikeAnnotationTypeAge15To30: AWFLightningStrikeAnnotationType; public;
-    class var AWFLightningStrikeAnnotationTypeAge30To45: AWFLightningStrikeAnnotationType; public;
-    class var AWFLightningStrikeAnnotationTypeAge45To60: AWFLightningStrikeAnnotationType; public;
-    class var AWFLightningStrikeAnnotationTypeAge60: AWFLightningStrikeAnnotationType; public;
-    class var AWFRecordAnnotationTypePrecip: AWFRecordAnnotationType; public;
-    class var AWFRecordAnnotationTypeSnow: AWFRecordAnnotationType; public;
-    class var AWFRecordAnnotationTypeMaxTemp: AWFRecordAnnotationType; public;
-    class var AWFRecordAnnotationTypeMinTemp: AWFRecordAnnotationType; public;
-    class var AWFRecordAnnotationTypeHighMinTemp: AWFRecordAnnotationType; public;
-    class var AWFRecordAnnotationTypeLowMaxTemp: AWFRecordAnnotationType; public;
-    class var AWFRiverAnnotationTypeMajor: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeModerate: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeMinor: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeNearFlood: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeNoFlood: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeNotDefined: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeLowWater: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeOldData: AWFRiverAnnotationType; public;
-    class var AWFRiverAnnotationTypeOutOfService: AWFRiverAnnotationType; public;
-    class var AWFStormCellAnnotationTypeGeneral: AWFStormCellAnnotationType; public;
-    class var AWFStormCellAnnotationTypeHail: AWFStormCellAnnotationType; public;
-    class var AWFStormCellAnnotationTypeRotating: AWFStormCellAnnotationType; public;
-    class var AWFStormCellAnnotationTypeTornadic: AWFStormCellAnnotationType; public;
-    class var AWFStormReportAnnotationTypeAvalanche: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeBlizzard: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeFire: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeFlood: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeFog: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeIce: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeHail: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeLightning: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeRain: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeSnow: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeTides: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeTornado: AWFStormReportAnnotationType; public;
-    class var AWFStormReportAnnotationTypeWind: AWFStormReportAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeLow: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeDepression: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeStorm: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeCat1: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeCat2: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeCat3: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeCat4: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeCat5: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeTyphoon: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalCycloneAnnotationTypeSuperTyphoon: AWFTropicalCycloneAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeLow: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeDepression: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeStorm: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeCat1: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeCat2: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeCat3: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeCat4: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeCat5: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeTyphoon: AWFTropicalSystemAnnotationType; public;
-    class var AWFTropicalSystemAnnotationTypeSuperTyphoon: AWFTropicalSystemAnnotationType; public;
-    class var AWFWarningPolygonTypeFlood: AWFWarningPolygonType; public;
-    class var AWFWarningPolygonTypeSevereStorm: AWFWarningPolygonType; public;
-    class var AWFWarningPolygonTypeTornado: AWFWarningPolygonType; public;
-    class method AWFLegendRangeMake(min: CGFloat; max: CGFloat): AerisMapKit.AWFLegendRange; public;
-    class method AWFDataScaleMake(min: CGFloat; max: CGFloat; interval: CGFloat): AerisMapKit.AWFDataScale; public;
-    class var AWFDataScaleZero: AerisMapKit.AWFDataScale; public;
-    class var AWFLegendCode1HourPrecip: AWFLegendCode; public;
-    class var AWFLegendCode1HourRain: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecipDeparturePercent: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecipDeparture: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecipDepartureYear: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecip: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecip180Day: AWFLegendCode; public;
-    class var AWFLegendCodeAccumulatedPrecipYear: AWFLegendCode; public;
-    class var AWFLegendCodeAdvisories: AWFLegendCode; public;
-    class var AWFLegendCodeAirQualityIndex: AWFLegendCode; public;
-    class var AWFLegendCodeChlorophyll: AWFLegendCode; public;
-    class var AWFLegendCodeConvectiveOutlook: AWFLegendCode; public;
-    class var AWFLegendCodeConvectiveHail: AWFLegendCode; public;
-    class var AWFLegendCodeConvectiveTornadic: AWFLegendCode; public;
-    class var AWFLegendCodeConvectiveWind: AWFLegendCode; public;
-    class var AWFLegendCodeDewPoints: AWFLegendCode; public;
-    class var AWFLegendCodeDroughtMonitor: AWFLegendCode; public;
-    class var AWFLegendCodeFireOutlook: AWFLegendCode; public;
-    class var AWFLegendCodeFuturePrecip: AWFLegendCode; public;
-    class var AWFLegendCodeFutureSnow: AWFLegendCode; public;
-    class var AWFLegendCodeHeatIndex: AWFLegendCode; public;
-    class var AWFLegendCodeHeatIndexDeparture: AWFLegendCode; public;
-    class var AWFLegendCodeHumidity: AWFLegendCode; public;
-    class var AWFLegendCodeJetStream: AWFLegendCode; public;
-    class var AWFLegendCodeLightningStrikes15Min: AWFLegendCode; public;
-    class var AWFLegendCodeLightningStrikeDensity: AWFLegendCode; public;
-    class var AWFLegendCodePOP: AWFLegendCode; public;
-    class var AWFLegendCodePrecipOutlook: AWFLegendCode; public;
-    class var AWFLegendCodePressure: AWFLegendCode; public;
-    class var AWFLegendCodeRadar: AWFLegendCode; public;
-    class var AWFLegendCodeRadarIce: AWFLegendCode; public;
-    class var AWFLegendCodeRadarRain: AWFLegendCode; public;
-    class var AWFLegendCodeRadarSnow: AWFLegendCode; public;
-    class var AWFLegendCodeRivers: AWFLegendCode; public;
-    class var AWFLegendCodeRoadConditions: AWFLegendCode; public;
-    class var AWFLegendCodeRoadConditionsIndex: AWFLegendCode; public;
-    class var AWFLegendCodeSatelliteInfrared: AWFLegendCode; public;
-    class var AWFLegendCodeSatelliteWaterVapor: AWFLegendCode; public;
-    class var AWFLegendCodeSnowDepth: AWFLegendCode; public;
-    class var AWFLegendCodeStormCells: AWFLegendCode; public;
-    class var AWFLegendCodeStormReports: AWFLegendCode; public;
-    class var AWFLegendCodeTempOutlook: AWFLegendCode; public;
-    class var AWFLegendCodeTemperatures: AWFLegendCode; public;
-    class var AWFLegendCodeTropical: AWFLegendCode; public;
-    class var AWFLegendCodeTropicalBreakpoints: AWFLegendCode; public;
-    class var AWFLegendCodeTropicalOutlook: AWFLegendCode; public;
-    class var AWFLegendCodeVisibility: AWFLegendCode; public;
-    class var AWFLegendCodeWaveHeights: AWFLegendCode; public;
-    class var AWFLegendCodeWindChill: AWFLegendCode; public;
-    class var AWFLegendCodeWinds: AWFLegendCode; public;
-    class var AWFLegendMetadataLoaded: NSString; public;
-
+  public
+    class var AerisMapCenteredURL: NSString;
+    class var AerisMapBoundingBoxURL: NSString;
+    class var AerisMapTileURL: NSString;
+    class method AWFMapZoomLevelFromZoomScale(zoomScale: MKZoomScale): NSUInteger;
+    class method AWFMapTilePointToCoordinate(point: CGPoint; zoomLevel: NSUInteger): CLLocationCoordinate2D;
+    class method AWFMapPointToTilePoint(mapPoint: MKMapPoint; zoomLevel: NSUInteger): CGPoint;
+    class method AWFMapTilePointFromCoordinate(coord: CLLocationCoordinate2D; zoomLevel: NSUInteger): CGPoint;
+    class method AWFMapWorldTileWidthForZoomLevel(zoomLevel: NSUInteger): NSUInteger;
+    class method AWFMapRectForTilePath(path: MKTileOverlayPath): MKMapRect;
+    class method AWFMapRectForCoordinateBounds(northwest: CLLocationCoordinate2D; southeast: CLLocationCoordinate2D; zoomLevel: NSUInteger): MKMapRect;
+    class method AWFMapTilePathForMapRect(mapRect: MKMapRect; zoomLevel: NSUInteger): MKTileOverlayPath;
+    class method AWFMapTilePathForCoordinate(coordinate: CLLocationCoordinate2D; zoomLevel: NSUInteger): MKTileOverlayPath;
+    class method AWFZoomLevelForZoomScale(zoomScale: MKZoomScale): NSUInteger;
+    class method AWFMapZoomScale(mapView: MKMapView): MKZoomScale;
+    class method AWFMapMercatorTileOriginForMapRect(mapRect: MKMapRect): CGPoint;
+    class method AWFMapTilePathToCoordinate(path: MKTileOverlayPath; zoomLevel: NSUInteger): CLLocationCoordinate2D;
+    class method AWFTopLeftCoordinateForMapRect(mapRect: MKMapRect): CLLocationCoordinate2D;
+    class method AWFBottomRightCoordinateForMapRect(mapRect: MKMapRect): CLLocationCoordinate2D;
+    class method AWFCenterCoordinateForMapRect(mapRect: MKMapRect): CLLocationCoordinate2D;
+    class method AWFSizeForCoordinateBounds(northwest: CLLocationCoordinate2D; southeast: CLLocationCoordinate2D; zoomScale: MKZoomScale): CGSize;
+    class var AWFLayerGroupRaster: AWFLayerGroup;
+    class var AWFLayerGroupPoint: AWFLayerGroup;
+    class var AWFLayerGroupShape: AWFLayerGroup;
+    class var AWFLayerGroupFuture: AWFLayerGroup;
+    class var AWFLayerGroupText: AWFLayerGroup;
+    class var AWFLayerGroupBase: AWFLayerGroup;
+    class var AWFLayerGroupOverlay: AWFLayerGroup;
+    class var AWFLayerGroupMask: AWFLayerGroup;
+    class var kAWFCalloutViewRepositionDelayForUIScrollView: NSTimeInterval;
+    class var AWFWeatherMapWillStartAnimating: NSString;
+    class var AWFWeatherMapDidStartAnimating: NSString;
+    class var AWFWeatherMapDidStopAnimating: NSString;
+    class var AWFMapLayerRadar: AWFMapLayer;
+    class var AWFMapLayerRadarDerived: AWFMapLayer;
+    class var AWFMapLayerSatellite: AWFMapLayer;
+    class var AWFMapLayerSatelliteGeocolor: AWFMapLayer;
+    class var AWFMapLayerSatelliteInfraredColor: AWFMapLayer;
+    class var AWFMapLayerSatelliteInfraredColorUS: AWFMapLayer;
+    class var AWFMapLayerSatelliteVisible: AWFMapLayer;
+    class var AWFMapLayerSatelliteWaterVapor: AWFMapLayer;
+    class var AWFMapLayerFutureDewPoints: AWFMapLayer;
+    class var AWFMapLayerFutureFeelsLike: AWFMapLayer;
+    class var AWFMapLayerFutureHeatIndex: AWFMapLayer;
+    class var AWFMapLayerFutureHumidity: AWFMapLayer;
+    class var AWFMapLayerFutureIce: AWFMapLayer;
+    class var AWFMapLayerFutureJetStream: AWFMapLayer;
+    class var AWFMapLayerFuturePrecip: AWFMapLayer;
+    class var AWFMapLayerFuturePrecip1Hour: AWFMapLayer;
+    class var AWFMapLayerFuturePrecip6Hour: AWFMapLayer;
+    class var AWFMapLayerFutureRadar: AWFMapLayer;
+    class var AWFMapLayerFutureRoadConditions: AWFMapLayer;
+    class var AWFMapLayerFutureRoadConditionsIndex: AWFMapLayer;
+    class var AWFMapLayerFutureRoadConditionsIndexMidterm: AWFMapLayer;
+    class var AWFMapLayerFutureRoadConditionsMidterm: AWFMapLayer;
+    class var AWFMapLayerFutureSatellite: AWFMapLayer;
+    class var AWFMapLayerFutureSnow: AWFMapLayer;
+    class var AWFMapLayerFutureSnow10To1: AWFMapLayer;
+    class var AWFMapLayerFutureSnow1Hour: AWFMapLayer;
+    class var AWFMapLayerFutureSnow1Hour10To1: AWFMapLayer;
+    class var AWFMapLayerFutureSnow1HourKuchera: AWFMapLayer;
+    class var AWFMapLayerFutureSnowDepth: AWFMapLayer;
+    class var AWFMapLayerFutureSnowKuchera: AWFMapLayer;
+    class var AWFMapLayerFutureSurfaceAnalysis: AWFMapLayer;
+    class var AWFMapLayerFutureSurfaceAnalysisFronts: AWFMapLayer;
+    class var AWFMapLayerFutureSurfaceAnalysisPressure: AWFMapLayer;
+    class var AWFMapLayerFutureSurfacePressure: AWFMapLayer;
+    class var AWFMapLayerFutureSurfacePressureIsobars: AWFMapLayer;
+    class var AWFMapLayerFutureTemperatures: AWFMapLayer;
+    class var AWFMapLayerFutureTemperaturesMax: AWFMapLayer;
+    class var AWFMapLayerFutureTemperaturesMin: AWFMapLayer;
+    class var AWFMapLayerFutureVisibility: AWFMapLayer;
+    class var AWFMapLayerFutureWindChill: AWFMapLayer;
+    class var AWFMapLayerFutureWindGusts: AWFMapLayer;
+    class var AWFMapLayerFutureWindSpeeds: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesBreakPoints: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesForecastErrorCones: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesForecastLines: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesForecastPointIcons: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesForecastPoints: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesInvests: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesInvestsNames: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesInvestsPositionIcons: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesInvestsPositions: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesNames: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesPositionIcons: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesPositions: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesTrackLines: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesTrackPointIcons: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclonesTrackPoints: AWFMapLayer;
+    class var AWFMapLayerAdvisories: AWFMapLayer;
+    class var AWFMapLayerFiresObsIcons: AWFMapLayer;
+    class var AWFMapLayerFiresObsPoints: AWFMapLayer;
+    class var AWFMapLayerLightningStrikeDensity: AWFMapLayer;
+    class var AWFMapLayerLightningStrikes15Minute: AWFMapLayer;
+    class var AWFMapLayerLightningStrikes15MinuteIcons: AWFMapLayer;
+    class var AWFMapLayerLightningStrikes5Minute: AWFMapLayer;
+    class var AWFMapLayerLightningStrikes5MinuteIcons: AWFMapLayer;
+    class var AWFMapLayerDewPoints: AWFMapLayer;
+    class var AWFMapLayerFeelsLike: AWFMapLayer;
+    class var AWFMapLayerHeatIndex: AWFMapLayer;
+    class var AWFMapLayerHumidity: AWFMapLayer;
+    class var AWFMapLayerPrecip: AWFMapLayer;
+    class var AWFMapLayerPrecip14Day: AWFMapLayer;
+    class var AWFMapLayerPrecip180Day: AWFMapLayer;
+    class var AWFMapLayerPrecip1Day: AWFMapLayer;
+    class var AWFMapLayerPrecip1Hour: AWFMapLayer;
+    class var AWFMapLayerPrecip30Day: AWFMapLayer;
+    class var AWFMapLayerPrecip60Day: AWFMapLayer;
+    class var AWFMapLayerPrecip7Day: AWFMapLayer;
+    class var AWFMapLayerPrecip90Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart14Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart180Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart1Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart30Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart60Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart7Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepart90Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartMTD: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent14Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent180Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent1Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent30Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent60Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent7Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercent90Day: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercentMTD: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercentWYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartPercentYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartWYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipDepartYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipMTD: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals14Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals180Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals1Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals30Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals60Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals7Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormals90Day: AWFMapLayer;
+    class var AWFMapLayerPrecipNormalsMTD: AWFMapLayer;
+    class var AWFMapLayerPrecipNormalsWYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipNormalsYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipWYTD: AWFMapLayer;
+    class var AWFMapLayerPrecipYTD: AWFMapLayer;
+    class var AWFMapLayerSnowDepth: AWFMapLayer;
+    class var AWFMapLayerSnowDepthGlobal: AWFMapLayer;
+    class var AWFMapLayerSurfaceAnalysis: AWFMapLayer;
+    class var AWFMapLayerSurfaceAnalysisFronts: AWFMapLayer;
+    class var AWFMapLayerSurfaceAnalysisPressure: AWFMapLayer;
+    class var AWFMapLayerTemperatures: AWFMapLayer;
+    class var AWFMapLayerVisibility: AWFMapLayer;
+    class var AWFMapLayerWindChill: AWFMapLayer;
+    class var AWFMapLayerWindDirection: AWFMapLayer;
+    class var AWFMapLayerWindGusts: AWFMapLayer;
+    class var AWFMapLayerWindSpeeds: AWFMapLayer;
+    class var AWFMapLayerFiresDryLightningOutlook: AWFMapLayer;
+    class var AWFMapLayerPrecipOutlook6To10Day: AWFMapLayer;
+    class var AWFMapLayerPrecipOutlook8To14Day: AWFMapLayer;
+    class var AWFMapLayerTempOutlook6To10Day: AWFMapLayer;
+    class var AWFMapLayerTempOutlook8To14Day: AWFMapLayer;
+    class var AWFMapLayerRoadConditions: AWFMapLayer;
+    class var AWFMapLayerRoadConditionsIndex: AWFMapLayer;
+    class var AWFMapLayerBaseBlueMarble: AWFMapLayer;
+    class var AWFMapLayerBaseFlat: AWFMapLayer;
+    class var AWFMapLayerBaseTerrain: AWFMapLayer;
+    class var AWFMapLayerOverlayAdmin: AWFMapLayer;
+    class var AWFMapLayerOverlayAdminCities: AWFMapLayer;
+    class var AWFMapLayerOverlayCounties: AWFMapLayer;
+    class var AWFMapLayerOverlayInterstates: AWFMapLayer;
+    class var AWFMapLayerOverlayRivers: AWFMapLayer;
+    class var AWFMapLayerOverlayRoads: AWFMapLayer;
+    class var AWFMapLayerOverlayStates: AWFMapLayer;
+    class var AWFMapLayerOverlayStatesOutlines: AWFMapLayer;
+    class var AWFMapLayerMaskClipUSBlueMarble: AWFMapLayer;
+    class var AWFMapLayerMaskClipUSFlat: AWFMapLayer;
+    class var AWFMapLayerMaskClipUSTerrain: AWFMapLayer;
+    class var AWFMapLayerMaskLandBlueMarble: AWFMapLayer;
+    class var AWFMapLayerMaskLandFlat: AWFMapLayer;
+    class var AWFMapLayerMaskLandTerrain: AWFMapLayer;
+    class var AWFMapLayerMaskLandUSFlat: AWFMapLayer;
+    class var AWFMapLayerMaskWaterDepth: AWFMapLayer;
+    class var AWFMapLayerMaskWaterFlat: AWFMapLayer;
+    class var AWFMapLayerSeaSurfaceTemps: AWFMapLayer;
+    class var AWFMapLayerAmpConvectiveOutlook: AWFMapLayer;
+    class var AWFMapLayerAmpDroughtIndex: AWFMapLayer;
+    class var AWFMapLayerAmpFireOutlook: AWFMapLayer;
+    class var AWFMapLayerAmpLightningStrikes: AWFMapLayer;
+    class var AWFMapLayerAmpStormCells: AWFMapLayer;
+    class var AWFMapLayerAmpStormReports: AWFMapLayer;
+    class var AWFMapLayerAmpTropicalCyclones: AWFMapLayer;
+    class var AWFMapLayerAmpWarnings: AWFMapLayer;
+    class var AWFFutureLayerPrefix: NSString;
+    class var AWFMapLayerAirQuality: AWFMapLayer;
+    class var AWFMapLayerEarthquakes: AWFMapLayer;
+    class var AWFMapLayerFires: AWFMapLayer;
+    class var AWFMapLayerLightningStrikes: AWFMapLayer;
+    class var AWFMapLayerRecords: AWFMapLayer;
+    class var AWFMapLayerRivers: AWFMapLayer;
+    class var AWFMapLayerStormCells: AWFMapLayer;
+    class var AWFMapLayerStormReports: AWFMapLayer;
+    class var AWFMapLayerTropicalCyclones: AWFMapLayer;
+    class var AWFMapLayerWarnings: AWFMapLayer;
+    class var AWFMapLayerConvectiveOutlook: AWFMapLayer;
+    class var AWFMapLayerDroughtIndex: AWFMapLayer;
+    class var AWFMapLayerFireOutlook: AWFMapLayer;
+    class var AWFMapLayerTropicalBreakpoints: AWFMapLayer;
+    class var AWFTileDidFailLoading: NSString;
+    class var AWFRasterBlendModeNone: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSource: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDest: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSourceOver: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDestOver: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSourceIn: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDestIn: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSourceOut: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDestOut: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSourceAtop: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDestAtop: AWFRasterBlendMode;
+    class var AWFRasterBlendModePlus: AWFRasterBlendMode;
+    class var AWFRasterBlendModeMinus: AWFRasterBlendMode;
+    class var AWFRasterBlendModeMultiply: AWFRasterBlendMode;
+    class var AWFRasterBlendModeScreen: AWFRasterBlendMode;
+    class var AWFRasterBlendModeOverlay: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDarken: AWFRasterBlendMode;
+    class var AWFRasterBlendModeLighten: AWFRasterBlendMode;
+    class var AWFRasterBlendModeColorDodge: AWFRasterBlendMode;
+    class var AWFRasterBlendModeColorBurn: AWFRasterBlendMode;
+    class var AWFRasterBlendModeHardLight: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSoftLight: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDifference: AWFRasterBlendMode;
+    class var AWFRasterBlendModeExclusion: AWFRasterBlendMode;
+    class var AWFRasterBlendModeContrast: AWFRasterBlendMode;
+    class var AWFRasterBlendModeInvert: AWFRasterBlendMode;
+    class var AWFRasterBlendModeInvertRGB: AWFRasterBlendMode;
+    class var AWFRasterBlendModeGrainMerge: AWFRasterBlendMode;
+    class var AWFRasterBlendModeGrainExtract: AWFRasterBlendMode;
+    class var AWFRasterBlendModeHue: AWFRasterBlendMode;
+    class var AWFRasterBlendModeSaturation: AWFRasterBlendMode;
+    class var AWFRasterBlendModeLinearDodge: AWFRasterBlendMode;
+    class var AWFRasterBlendModeLinearBurn: AWFRasterBlendMode;
+    class var AWFRasterBlendModeDivide: AWFRasterBlendMode;
+    class var AWFRasterMaskNone: AWFRasterMask;
+    class var AWFRasterMaskLandFlat: AWFRasterMask;
+    class var AWFRasterMaskLandBlueMarble: AWFRasterMask;
+    class var AWFRasterMaskLandTerrain: AWFRasterMask;
+    class var AWFRasterMaskWaterFlat: AWFRasterMask;
+    class var AWFRasterMaskWaterDepth: AWFRasterMask;
+    class var AWFRasterMaskLandUSFlat: AWFRasterMask;
+    class var AWFRasterMaskClipUSFlat: AWFRasterMask;
+    class var AWFRasterMaskClipUSBlueMarble: AWFRasterMask;
+    class var AWFRasterMaskClipUSTerrain: AWFRasterMask;
+    class var AWFRasterMaskRemoveWater: AWFRasterMask;
+    class var AWFRasterMaskRemoveLand: AWFRasterMask;
+    class var AWFRasterMaskRemoveLandNonUS: AWFRasterMask;
+    class var AWFRasterMapLayerWillChange: NSString;
+    class var AWFRasterMapLayerDidChange: NSString;
+    class method AWFMapLayerForWeatherDataType(weatherDataType: AWFWeatherDataType): AWFMapLayer;
+    class method AWFWeatherDataTypeForRasterLayerType(layerType: AWFMapLayer): AWFWeatherDataType;
+    class var AWFMapURLLayersWillChange: NSString;
+    class var AWFMapURLLayersDidChange: NSString;
+    class var AWFMapURLDateWillChange: NSString;
+    class var AWFMapURLDateDidChange: NSString;
+    class var AWFAirQualityAnnotationTypeGood: AWFAirQualityAnnotationType;
+    class var AWFAirQualityAnnotationTypeModerate: AWFAirQualityAnnotationType;
+    class var AWFAirQualityAnnotationTypeSensitive: AWFAirQualityAnnotationType;
+    class var AWFAirQualityAnnotationTypeUnhealthy: AWFAirQualityAnnotationType;
+    class var AWFAirQualityAnnotationTypeVeryUnhealthy: AWFAirQualityAnnotationType;
+    class var AWFAirQualityAnnotationTypeHazardous: AWFAirQualityAnnotationType;
+    class var AWFEarthquakeAnnotationTypeMini: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeMinor: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeLight: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeModerate: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeStrong: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeMajor: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeGreat: AWFEarthquakeAnnotationType;
+    class var AWFEarthquakeAnnotationTypeCatastrophic: AWFEarthquakeAnnotationType;
+    class var AWFFireAnnotationTypeSmall: AWFFireAnnotationType;
+    class var AWFFireAnnotationTypeMedium: AWFFireAnnotationType;
+    class var AWFFireAnnotationTypeLarge: AWFFireAnnotationType;
+    class var AWFFireAnnotationTypeCritical: AWFFireAnnotationType;
+    class var AWFLightningStrikeAnnotationTypeAge15: AWFLightningStrikeAnnotationType;
+    class var AWFLightningStrikeAnnotationTypeAge15To30: AWFLightningStrikeAnnotationType;
+    class var AWFLightningStrikeAnnotationTypeAge30To45: AWFLightningStrikeAnnotationType;
+    class var AWFLightningStrikeAnnotationTypeAge45To60: AWFLightningStrikeAnnotationType;
+    class var AWFLightningStrikeAnnotationTypeAge60: AWFLightningStrikeAnnotationType;
+    class var AWFRecordAnnotationTypePrecip: AWFRecordAnnotationType;
+    class var AWFRecordAnnotationTypeSnow: AWFRecordAnnotationType;
+    class var AWFRecordAnnotationTypeMaxTemp: AWFRecordAnnotationType;
+    class var AWFRecordAnnotationTypeMinTemp: AWFRecordAnnotationType;
+    class var AWFRecordAnnotationTypeHighMinTemp: AWFRecordAnnotationType;
+    class var AWFRecordAnnotationTypeLowMaxTemp: AWFRecordAnnotationType;
+    class var AWFRiverAnnotationTypeMajor: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeModerate: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeMinor: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeNearFlood: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeNoFlood: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeNotDefined: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeLowWater: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeOldData: AWFRiverAnnotationType;
+    class var AWFRiverAnnotationTypeOutOfService: AWFRiverAnnotationType;
+    class var AWFStormCellAnnotationTypeGeneral: AWFStormCellAnnotationType;
+    class var AWFStormCellAnnotationTypeHail: AWFStormCellAnnotationType;
+    class var AWFStormCellAnnotationTypeRotating: AWFStormCellAnnotationType;
+    class var AWFStormCellAnnotationTypeTornadic: AWFStormCellAnnotationType;
+    class var AWFStormReportAnnotationTypeAvalanche: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeBlizzard: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeFire: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeFlood: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeFog: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeIce: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeHail: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeLightning: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeRain: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeSnow: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeTides: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeTornado: AWFStormReportAnnotationType;
+    class var AWFStormReportAnnotationTypeWind: AWFStormReportAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeLow: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeDepression: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeStorm: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeCat1: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeCat2: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeCat3: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeCat4: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeCat5: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeTyphoon: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalCycloneAnnotationTypeSuperTyphoon: AWFTropicalCycloneAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeLow: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeDepression: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeStorm: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeCat1: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeCat2: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeCat3: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeCat4: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeCat5: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeTyphoon: AWFTropicalSystemAnnotationType;
+    class var AWFTropicalSystemAnnotationTypeSuperTyphoon: AWFTropicalSystemAnnotationType;
+    class var AWFWarningPolygonTypeFlood: AWFWarningPolygonType;
+    class var AWFWarningPolygonTypeSevereStorm: AWFWarningPolygonType;
+    class var AWFWarningPolygonTypeTornado: AWFWarningPolygonType;
+    class var AWFTropicalBreakpointPolygonTypeTropicalStormWatch: AWFTropicalBreakpointPolygonType;
+    class var AWFTropicalBreakpointPolygonTypeTropicalStormWarning: AWFTropicalBreakpointPolygonType;
+    class var AWFTropicalBreakpointPolygonTypeHurricaneWatch: AWFTropicalBreakpointPolygonType;
+    class var AWFTropicalBreakpointPolygonTypeHurricaneWarning: AWFTropicalBreakpointPolygonType;
+    class method AWFLegendRangeMake(min: CGFloat; max: CGFloat): AerisMapKit.AWFLegendRange;
+    class method AWFDataScaleMake(min: CGFloat; max: CGFloat; interval: CGFloat): AerisMapKit.AWFDataScale;
+    class var AWFDataScaleZero: AerisMapKit.AWFDataScale;
+    class var AWFLegendCode1HourPrecip: AWFLegendCode;
+    class var AWFLegendCode1HourRain: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecipDeparturePercent: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecipDeparture: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecipDepartureYear: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecip: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecip180Day: AWFLegendCode;
+    class var AWFLegendCodeAccumulatedPrecipYear: AWFLegendCode;
+    class var AWFLegendCodeAdvisories: AWFLegendCode;
+    class var AWFLegendCodeAirQualityIndex: AWFLegendCode;
+    class var AWFLegendCodeChlorophyll: AWFLegendCode;
+    class var AWFLegendCodeConvectiveOutlook: AWFLegendCode;
+    class var AWFLegendCodeConvectiveHail: AWFLegendCode;
+    class var AWFLegendCodeConvectiveTornadic: AWFLegendCode;
+    class var AWFLegendCodeConvectiveWind: AWFLegendCode;
+    class var AWFLegendCodeDewPoints: AWFLegendCode;
+    class var AWFLegendCodeDroughtMonitor: AWFLegendCode;
+    class var AWFLegendCodeFireOutlook: AWFLegendCode;
+    class var AWFLegendCodeFuturePrecip: AWFLegendCode;
+    class var AWFLegendCodeFutureSnow: AWFLegendCode;
+    class var AWFLegendCodeHeatIndex: AWFLegendCode;
+    class var AWFLegendCodeHeatIndexDeparture: AWFLegendCode;
+    class var AWFLegendCodeHumidity: AWFLegendCode;
+    class var AWFLegendCodeJetStream: AWFLegendCode;
+    class var AWFLegendCodeLightningStrikes15Min: AWFLegendCode;
+    class var AWFLegendCodeLightningStrikeDensity: AWFLegendCode;
+    class var AWFLegendCodePOP: AWFLegendCode;
+    class var AWFLegendCodePrecipOutlook: AWFLegendCode;
+    class var AWFLegendCodePressure: AWFLegendCode;
+    class var AWFLegendCodeRadar: AWFLegendCode;
+    class var AWFLegendCodeRadarIce: AWFLegendCode;
+    class var AWFLegendCodeRadarRain: AWFLegendCode;
+    class var AWFLegendCodeRadarSnow: AWFLegendCode;
+    class var AWFLegendCodeRivers: AWFLegendCode;
+    class var AWFLegendCodeRoadConditions: AWFLegendCode;
+    class var AWFLegendCodeRoadConditionsIndex: AWFLegendCode;
+    class var AWFLegendCodeSatelliteInfrared: AWFLegendCode;
+    class var AWFLegendCodeSatelliteWaterVapor: AWFLegendCode;
+    class var AWFLegendCodeSnowDepth: AWFLegendCode;
+    class var AWFLegendCodeStormCells: AWFLegendCode;
+    class var AWFLegendCodeStormReports: AWFLegendCode;
+    class var AWFLegendCodeTempOutlook: AWFLegendCode;
+    class var AWFLegendCodeTemperatures: AWFLegendCode;
+    class var AWFLegendCodeTropical: AWFLegendCode;
+    class var AWFLegendCodeTropicalBreakpoints: AWFLegendCode;
+    class var AWFLegendCodeTropicalOutlook: AWFLegendCode;
+    class var AWFLegendCodeVisibility: AWFLegendCode;
+    class var AWFLegendCodeWaveHeights: AWFLegendCode;
+    class var AWFLegendCodeWindChill: AWFLegendCode;
+    class var AWFLegendCodeWinds: AWFLegendCode;
+    class var AWFLegendMetadataLoaded: NSString;
+    class var AWFMKTileSourceNeedsRedraw: NSString;
   end;
 
   AerisMapKit.AWFMapCoordinateBounds = class(AWFCoordinateBounds)
-  private
-
-    property region: MKCoordinateRegion; public;
-
-    property zoomLevel: NSUInteger; public;
-
-    property zoomLevelForScreenScale: NSUInteger; public;
-
-    method northwestTile(adjustForRetina: BOOL): CGPoint; public;
-    method southwestTile(adjustForRetina: BOOL): CGPoint; public;
-    method northeastTile(adjustForRetina: BOOL): CGPoint; public;
-    method southeastTile(adjustForRetina: BOOL): CGPoint; public;
-
+  public
+    property region: MKCoordinateRegion;
+    property zoomLevel: NSUInteger;
+    property zoomLevelForScreenScale: NSUInteger;
+    method northwestTile(adjustForRetina: BOOL): CGPoint;
+    method southwestTile(adjustForRetina: BOOL): CGPoint;
+    method northeastTile(adjustForRetina: BOOL): CGPoint;
+    method southeastTile(adjustForRetina: BOOL): CGPoint;
   end;
 
   AWFMapLayer = NSString;
 
   AerisMapKit.AWFOverlayMetadata = class(NSObject)
-  private
-
-    property layerType: AWFMapLayer; public;
-
-    property times: NSArray<NSString>; public;
-
-    property dates: NSArray<NSDate>; public;
-
-    property timeIntervals: NSArray<NSNumber>; public;
-
+  public
+    property layerType: AWFMapLayer;
+    property times: NSArray<NSNumber>;
+    property dates: NSArray<NSDate>;
+    property timeIntervals: NSArray<NSNumber>;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer): id; public;
+    method initWithLayerType(layerType: AWFMapLayer): id;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer): id; public;
-    method getMetadataWithSuccess(success: method(times: NSArray<NSNumber>; dates: NSArray<NSDate>)) failure(failure: method(error: NSError)); public;
-    method latestDate: nullable NSDate; public;
-    method latestTimeString: nullable NSString; public;
+    class constructor withLayerType(layerType: AWFMapLayer): id;
+    method getMetadataWithSuccess(success: method(times: NSArray<NSNumber>; dates: NSArray<NSDate>)) failure(failure: method(error: NSError));
+    method latestDate: nullable NSDate;
+    method latestTimeString: nullable NSString;
     [NonSwiftOnly]
-    method dateClosestToDate(date: NSDate): nullable NSDate; public;
+    method dateClosestToDate(date: NSDate): nullable NSDate;
     [Alias]
     [SwiftOnly]
-    method dateClosest(date: NSDate): nullable NSDate; public;
+    method dateClosest(date: NSDate): nullable NSDate;
     [NonSwiftOnly]
-    method timeStringClosestToDate(date: NSDate): nullable NSString; public;
+    method timeStringClosestToDate(date: NSDate): nullable NSString;
     [Alias]
     [SwiftOnly]
-    method timeStringClosest(date: NSDate): nullable NSString; public;
+    method timeStringClosest(date: NSDate): nullable NSString;
     [NonSwiftOnly]
-    method timeStringForInterval(interval: NSInteger): nullable NSString; public;
+    method timeStringForInterval(interval: NSInteger): nullable NSString;
     [Alias]
     [SwiftOnly]
-    method timeString(interval: NSInteger): nullable NSString; public;
-
+    method timeString(interval: NSInteger): nullable NSString;
   end;
 
   AerisMapKit.AWFMapContentType = enum ([NonSwiftOnly] AWFMapContentTypeRaster = 0, [NonSwiftOnly] Raster = 0, [SwiftOnly] raster = 0, [NonSwiftOnly] AWFMapContentTypeTile = 1, [NonSwiftOnly] Tile = 1, [SwiftOnly] tile = 1, [NonSwiftOnly] AWFMapContentTypePoint = 2, [NonSwiftOnly] Point = 2, [SwiftOnly] point = 2, [NonSwiftOnly] AWFMapContentTypeShape = 3, [NonSwiftOnly] Shape = 3, [SwiftOnly] shape = 3, [NonSwiftOnly] AWFMapContentTypeLabel = 4, [NonSwiftOnly] Label = 4, [SwiftOnly] label = 4);
@@ -440,104 +464,91 @@ type
   AWFLayerGroup = NSString;
 
   AerisMapKit.AWFWeatherLayer = class(NSObject)
-  private
-
-    class method names: NSDictionary<id,id>; public;
+  public
+    class method names: NSDictionary<NSString,NSString>;
     [NonSwiftOnly]
-    class method nameForLayerType(layerType: AWFMapLayer): NSString; public;
+    class method nameForLayerType(layerType: AWFMapLayer): NSString;
     [Alias]
     [SwiftOnly]
-    class method name(layerType: AWFMapLayer): NSString; public;
+    class method name(layerType: AWFMapLayer): NSString;
     [NonSwiftOnly]
-    class method contentTypeForLayerType(layerType: AWFMapLayer): AerisMapKit.AWFMapContentType; public;
+    class method contentTypeForLayerType(layerType: AWFMapLayer): AerisMapKit.AWFMapContentType;
     [Alias]
     [SwiftOnly]
-    class method contentType(layerType: AWFMapLayer): AerisMapKit.AWFMapContentType; public;
+    class method contentType(layerType: AWFMapLayer): AerisMapKit.AWFMapContentType;
     [NonSwiftOnly]
-    class method modifierLayersForLayerType(layerType: AWFMapLayer): NSArray<AWFMapLayer>; public;
+    class method modifierLayersForLayerType(layerType: AWFMapLayer): NSArray<AWFMapLayer>;
     [Alias]
     [SwiftOnly]
-    class method modifierLayers(layerType: AWFMapLayer): NSArray<AWFMapLayer>; public;
+    class method modifierLayers(layerType: AWFMapLayer): NSArray<AWFMapLayer>;
     [NonSwiftOnly]
-    class method layersByGroup: NSDictionary<id,id>; public;
+    class method layersByGroup: NSDictionary<NSString,NSDictionary<id,id>>;
     [Alias]
     [SwiftOnly]
-    class method layers: NSDictionary<id,id>; public;
-    class method isRaster(layerType: AWFMapLayer): BOOL; public;
-    class method isTile(layerType: AWFMapLayer): BOOL; public;
-    class method isPoint(layerType: AWFMapLayer): BOOL; public;
-    class method isShape(layerType: AWFMapLayer): BOOL; public;
-    class method isLabel(layerType: AWFMapLayer): BOOL; public;
-    class method isBase(layerType: AWFMapLayer): BOOL; public;
-    class method isOverlay(layerType: AWFMapLayer): BOOL; public;
-    class method isSurfaceData(layerType: AWFMapLayer): BOOL; public;
-    class method isMask(layerType: AWFMapLayer): BOOL; public;
-    class method isAmp(layerType: AWFMapLayer): BOOL; public;
-    class method isPast(layerType: AWFMapLayer): BOOL; public;
-    class method hasPast(layerType: AWFMapLayer): BOOL; public;
-    class method isFuture(layerType: AWFMapLayer): BOOL; public;
-    class method hasFuture(layerType: AWFMapLayer): BOOL; public;
-    class method hasModifiers(layerType: AWFMapLayer): BOOL; public;
+    class method layers: NSDictionary<NSString,NSDictionary<id,id>>;
+    class method isValidLayer(code: NSString): BOOL;
+    class method isRaster(layerType: AWFMapLayer): BOOL;
+    class method isTile(layerType: AWFMapLayer): BOOL;
+    class method isPoint(layerType: AWFMapLayer): BOOL;
+    class method isShape(layerType: AWFMapLayer): BOOL;
+    class method isLabel(layerType: AWFMapLayer): BOOL;
+    class method isBase(layerType: AWFMapLayer): BOOL;
+    class method isOverlay(layerType: AWFMapLayer): BOOL;
+    class method isSurfaceData(layerType: AWFMapLayer): BOOL;
+    class method isMask(layerType: AWFMapLayer): BOOL;
+    class method isAmp(layerType: AWFMapLayer): BOOL;
+    class method isPast(layerType: AWFMapLayer): BOOL;
+    class method hasPast(layerType: AWFMapLayer): BOOL;
+    class method isFuture(layerType: AWFMapLayer): BOOL;
+    class method hasFuture(layerType: AWFMapLayer): BOOL;
+    class method hasModifiers(layerType: AWFMapLayer): BOOL;
     [NonSwiftOnly]
-    class method futureLayerForLayer(layerType: AWFMapLayer): AWFMapLayer; public;
+    class method futureLayerForLayer(layerType: AWFMapLayer): AWFMapLayer;
     [Alias]
     [SwiftOnly]
-    class method futureLayer(layerType: AWFMapLayer): AWFMapLayer; public;
-    method init: instancetype; public;
-
+    class method futureLayer(layerType: AWFMapLayer): AWFMapLayer;
+    [NonSwiftOnly]
+    class method convertToLayerType(code: NSString): AWFMapLayer;
+    [Alias]
+    [SwiftOnly]
+    class method convert(code: NSString): AWFMapLayer;
+    method init: instancetype;
   end;
 
   AerisMapKit.AWFWeatherMapConfig = class(NSObject)
-  private
-
-    class method config: instancetype; public;
-    property refreshInterval: NSTimeInterval; public;
-
-    property tileOverlayLevel: MKOverlayLevel; public;
-
-    property shouldUseRetinaImagery: BOOL; public;
-
-    property showsStateProvinceLines: BOOL; public;
-
-    property showsCountyLines: BOOL; public;
-
-    property shouldApplyWaterMaskToSurfaceLayers: BOOL; public;
-
-    property shouldReloadDataOnRegionChange: BOOL; public;
-
-    property shouldUseRetinaImageryForAnimation: BOOL; public;
-
-    property distanceRequiredToReloadData: CGFloat; public;
-
-    property animationEnabled: BOOL; public;
-
-    property animationDuration: NSTimeInterval; public;
-
-    property animationEndDelay: NSTimeInterval; public;
-
-    property animationCrossfadeEnabled: BOOL; public;
-
-    property maximumIntervalsForAnimation: NSInteger; public;
-
-    property timelineStartOffsetFromNow: NSTimeInterval; public;
-
-    property timelineEndOffsetFromNow: NSTimeInterval; public;
-
-    property timelineScrubbingEnabled: BOOL; public;
-
-    property showTextDataWhileAnimating: BOOL; public;
-
-    property showsAnnotationDuringLongPress: BOOL; public;
-
-    property showsAnnotationForLongPress: BOOL; public;
-
-    property longPressAnnotationStyle: nullable AerisMapKit.AWFAnnotationStyle; public;
-
-    property mapboxOverlayInsertionLayerIdentifier: nullable NSString; public;
-
-    property mapboxStyleUrl: nullable NSURL; public;
-
-
+  public
+    class method config: instancetype;
+    property refreshInterval: NSTimeInterval;
+    property tileOverlayLevel: MKOverlayLevel;
+    property tileOverlayAlpha: CGFloat;
+    property shouldUseRetinaImagery: BOOL;
+    property shouldUseRetinaImageryForAnimation: BOOL;
+    property showsStateProvinceLines: BOOL;
+    property showsCountyLines: BOOL;
+    property shouldApplyWaterMaskToSurfaceLayers: BOOL;
+    property shouldAlwaysShowPastLayers: BOOL;
+    property shouldAlwaysShowFutureLayers: BOOL;
+    property metric: BOOL;
+    property shouldReloadDataOnRegionChange: BOOL;
+    property distanceRequiredToReloadData: CGFloat;
+    property animationEnabled: BOOL;
+    property animationDuration: NSTimeInterval;
+    property animationEndDelay: NSTimeInterval;
+    property animationCrossfadeEnabled: BOOL;
+    property maximumIntervalsForAnimation: NSInteger;
+    property timelineStartOffsetFromNow: NSTimeInterval;
+    property timelineEndOffsetFromNow: NSTimeInterval;
+    property timelineScrubbingEnabled: BOOL;
+    property showAnimationLoadingProgress: BOOL;
+    property showTextDataWhileAnimating: BOOL;
+    property automaticallyStartAnimationOnLoad: BOOL;
+    property shouldRestartAnimationOnRegionChange: BOOL;
+    property shouldRemoveAnimationDataWhenStopped: BOOL;
+    property showsAnnotationDuringLongPress: BOOL;
+    property showsAnnotationForLongPress: BOOL;
+    property longPressAnnotationStyle: nullable AerisMapKit.AWFAnnotationStyle;
+    property mapboxOverlayInsertionLayerIdentifier: nullable NSString;
+    property mapboxStyleUrl: nullable NSURL;
   end;
 
   AerisMapKit.AWFArrowheadType = enum ([NonSwiftOnly] AWFArrowheadTypeNone = 0, [NonSwiftOnly] None = 0, [SwiftOnly] none = 0, [NonSwiftOnly] AWFArrowheadTypeHead = 1, [NonSwiftOnly] Head = 1, [SwiftOnly] head = 1, [NonSwiftOnly] AWFArrowheadTypeTail = 2, [NonSwiftOnly] Tail = 2, [SwiftOnly] tail = 2);
@@ -546,99 +557,75 @@ type
   end;
 
   AerisMapKit.AWFMapItemStyle = class(NSObject, AerisMapKit.IAWFStyleProvider)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property label: nullable NSString; public;
-
-    property fillColor: nullable UIColor; public;
-
-    property strokeColor: nullable UIColor; public;
-
-    property strokeWidth: CGFloat; public;
-
-    property arrowheadType: AerisMapKit.AWFArrowheadType; public;
-
-    class method defaultStyle: nullable id; public;
-    class method style: instancetype; public;
-    class method labelsByIdentifier: NSDictionary<NSString,NSString>; public;
-    property fill: nullable UIColor; public;
-
-    property stroke: nullable UIColor; public;
-
-
+  public
+    property identifier: nullable NSString;
+    property label: nullable NSString;
+    property fillColor: nullable UIColor;
+    property strokeColor: nullable UIColor;
+    property strokeWidth: CGFloat;
+    property arrowheadType: AerisMapKit.AWFArrowheadType;
+    class method defaultStyle: nullable id;
+    class method style: instancetype;
+    class method labelsByIdentifier: NSDictionary<NSString,NSString>;
+    property fill: nullable UIColor;
+    property stroke: nullable UIColor;
   end;
 
   AerisMapKit.AWFWeatherMapStyle = class(NSObject)
-  private
-
-    property overlays: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>; public;
-
-    property annotations: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>; public;
-
-    property polygons: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>; public;
-
-    property legends: NSDictionary<id,id>; public;
-
+  public
+    property overlays: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>;
+    property annotations: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>;
+    property polygons: NSDictionary<AWFMapLayer,AerisMapKit.IAWFStyleProvider>;
+    property legends: NSDictionary<id,id>;
     [NonSwiftOnly]
-    method styleForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.IAWFStyleProvider; public;
+    method styleForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.IAWFStyleProvider;
     [Alias]
     [SwiftOnly]
-    method style(layerType: AWFMapLayer): nullable AerisMapKit.IAWFStyleProvider; public;
-    method setStyle(style: AerisMapKit.IAWFStyleProvider) forLayerType(layerType: AWFMapLayer); public;
-
+    method style(layerType: AWFMapLayer): nullable AerisMapKit.IAWFStyleProvider;
+    method setStyle(style: AerisMapKit.IAWFStyleProvider) forLayerType(layerType: AWFMapLayer);
   end;
 
   AerisMapKit.AWFDataRepresentableType = enum ([NonSwiftOnly] AWFDataRepresentableTypeOverlay = 0, [NonSwiftOnly] Overlay = 0, [SwiftOnly] overlay = 0, [NonSwiftOnly] AWFDataRepresentableTypeAnnotation = 1, [NonSwiftOnly] Annotation = 1, [SwiftOnly] annotation = 1, [NonSwiftOnly] AWFDataRepresentableTypePolygon = 2, [NonSwiftOnly] Polygon = 2, [SwiftOnly] polygon = 2, [NonSwiftOnly] AWFDataRepresentableTypePolyline = 3, [NonSwiftOnly] Polyline = 3, [SwiftOnly] polyline = 3);
 
   AerisMapKit.IAWFDataRepresentable = interface(INSObject)
-    property modelObject: nullable AWFWeatherObject read write; public;
-
-
+    property modelObject: nullable AWFWeatherObject read write;
   end;
 
   AerisMapKit.IAWFAnnotation = interface(AerisMapKit.IAWFDataRepresentable)
-    property title: nullable NSString read write; public;
-
-    property subtitle: nullable NSString read write; public;
-
-    property coordinate: CLLocationCoordinate2D read write; public;
-
-    property belongsToTimelineAnimation: BOOL read write; public;
-
+    property title: nullable NSString read write;
+    property subtitle: nullable NSString read write;
+    property coordinate: CLLocationCoordinate2D read write;
+    property belongsToTimelineAnimation: BOOL read write;
     [NonSwiftOnly]
-    method initWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
+    method initWithCoordinate(coordinate: CLLocationCoordinate2D): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withCoordinate(coordinate: CLLocationCoordinate2D): instancetype; public;
+    class constructor withCoordinate(coordinate: CLLocationCoordinate2D): instancetype;
     [NonSwiftOnly]
-    method initWithCoordinate(coordinate: CLLocationCoordinate2D) modelObject(object: nullable AWFWeatherObject): instancetype; public;
+    method initWithCoordinate(coordinate: CLLocationCoordinate2D) modelObject(object: nullable AWFWeatherObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withCoordinate(coordinate: CLLocationCoordinate2D) modelObject(object: nullable AWFWeatherObject): instancetype; public;
-
+    class constructor withCoordinate(coordinate: CLLocationCoordinate2D) modelObject(object: nullable AWFWeatherObject): instancetype;
   end;
 
   AerisMapKit.IAWFWeatherMapDataSource = interface(INSObject)
     [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) requestOptionsForLayer(layerType: AWFMapLayer): nullable AWFWeatherRequestOptions; public;
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) requestOptionsForLayer(layerType: AWFMapLayer): nullable AWFWeatherRequestOptions;
     [Alias]
     [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) requestOptionsFor(layerType: AWFMapLayer): nullable AWFWeatherRequestOptions; public;
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) requestOptionsFor(layerType: AWFMapLayer): nullable AWFWeatherRequestOptions;
     [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutViewForAnnotation(annotation: AerisMapKit.IAWFAnnotation): nullable UIView; public;
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutViewForAnnotation(annotation: AerisMapKit.IAWFAnnotation): nullable UIView;
     [Alias]
     [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutViewFor(annotation: AerisMapKit.IAWFAnnotation): nullable UIView; public;
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutViewFor(annotation: AerisMapKit.IAWFAnnotation): nullable UIView;
     [NonSwiftOnly]
-    method weatherMapCalloutContentViewForLongPress(weatherMap: AerisMapKit.AWFWeatherMap): nullable UIView; public;
+    method weatherMapCalloutContentViewForLongPress(weatherMap: AerisMapKit.AWFWeatherMap): nullable UIView;
     [Alias]
     [SwiftOnly]
-    method weatherMapCalloutContentView(weatherMap: AerisMapKit.AWFWeatherMap): nullable UIView; public;
-
+    method weatherMapCalloutContentView(weatherMap: AerisMapKit.AWFWeatherMap): nullable UIView;
   end;
 
   AerisMapKit.AWFCalloutArrowDirection = enum ([NonSwiftOnly] AWFCalloutArrowDirectionUp = 1, [NonSwiftOnly] Up = 1, [SwiftOnly] up = 1, [NonSwiftOnly] AWFCalloutArrowDirectionDown = 2, [NonSwiftOnly] Down = 2, [SwiftOnly] down = 2, [NonSwiftOnly] AWFCalloutArrowDirectionAny = 3, [NonSwiftOnly] Any = 3, [SwiftOnly] any = 3);
@@ -646,358 +633,242 @@ type
   AerisMapKit.AWFCalloutAnimation = enum ([NonSwiftOnly] AWFCalloutAnimationBounce = 0, [NonSwiftOnly] Bounce = 0, [SwiftOnly] bounce = 0, [NonSwiftOnly] AWFCalloutAnimationFade = 1, [NonSwiftOnly] Fade = 1, [SwiftOnly] fade = 1, [NonSwiftOnly] AWFCalloutAnimationStretch = 2, [NonSwiftOnly] Stretch = 2, [SwiftOnly] stretch = 2);
 
   AerisMapKit.AWFCalloutView = class(UIView)
-  private
-
-    property title: NSString; public;
-
-    property subtitle: NSString; public;
-
-    property leftAccessoryView: UIView; public;
-
-    property rightAccessoryView: UIView; public;
-
-    property permittedArrowDirection: AerisMapKit.AWFCalloutArrowDirection; public;
-
-    property currentArrowDirection: AerisMapKit.AWFCalloutArrowDirection; public;
-
-    property constrainedInsets: UIEdgeInsets; public;
-
-    property backgroundView: AerisMapKit.__AWFCalloutBackgroundView; public;
-
-    property &delegate: AerisMapKit.IAWFCalloutViewDelegate; public;
-
-    property titleView: UIView; public;
-
-    property subtitleView: UIView; public;
-
-    property contentView: UIView; public;
-
-    property contentViewInset: UIEdgeInsets; public;
-
-    property calloutOffset: CGPoint; public;
-
-    property presentAnimation: AerisMapKit.AWFCalloutAnimation; public;
-
-    property dismissAnimation: AerisMapKit.AWFCalloutAnimation; public;
-
-    class method platformCalloutView: AerisMapKit.AWFCalloutView; public;
+  public
+    property title: NSString;
+    property subtitle: NSString;
+    property leftAccessoryView: UIView;
+    property rightAccessoryView: UIView;
+    property permittedArrowDirection: AerisMapKit.AWFCalloutArrowDirection;
+    property currentArrowDirection: AerisMapKit.AWFCalloutArrowDirection;
+    property constrainedInsets: UIEdgeInsets;
+    property backgroundView: AerisMapKit.__AWFCalloutBackgroundView;
+    property &delegate: AerisMapKit.IAWFCalloutViewDelegate;
+    property titleView: UIView;
+    property subtitleView: UIView;
+    property contentView: UIView;
+    property contentViewInset: UIEdgeInsets;
+    property calloutOffset: CGPoint;
+    property presentAnimation: AerisMapKit.AWFCalloutAnimation;
+    property dismissAnimation: AerisMapKit.AWFCalloutAnimation;
+    class method platformCalloutView: AerisMapKit.AWFCalloutView;
     [NonSwiftOnly]
-    method presentCalloutFromRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
+    method presentCalloutFromRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method presentCallout(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
+    method presentCallout(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL);
     [NonSwiftOnly]
-    method presentCalloutFromRect(rect: CGRect) inLayer(layer: CALayer) constrainedToLayer(constrainedLayer: CALayer) animated(animated: BOOL); public;
+    method presentCalloutFromRect(rect: CGRect) inLayer(layer: CALayer) constrainedToLayer(constrainedLayer: CALayer) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method presentCallout(rect: CGRect) &in(layer: CALayer) constrainedTo(constrainedLayer: CALayer) animated(animated: BOOL); public;
+    method presentCallout(rect: CGRect) &in(layer: CALayer) constrainedTo(constrainedLayer: CALayer) animated(animated: BOOL);
     [NonSwiftOnly]
-    method moveCalloutToRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView); public;
+    method moveCalloutToRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView);
     [Alias]
     [SwiftOnly]
-    method moveCallout(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView); public;
+    method moveCallout(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView);
     [NonSwiftOnly]
-    method moveCalloutToRect(rect: CGRect) inLayer(layer: CALayer) constrainedToLayer(constrainedLayer: CALayer); public;
+    method moveCalloutToRect(rect: CGRect) inLayer(layer: CALayer) constrainedToLayer(constrainedLayer: CALayer);
     [Alias]
     [SwiftOnly]
-    method moveCallout(rect: CGRect) &in(layer: CALayer) constrainedTo(constrainedLayer: CALayer); public;
-    method dismissCalloutAnimated(animated: BOOL); public;
-    method updateLayoutAnimated(animated: BOOL); public;
+    method moveCallout(rect: CGRect) &in(layer: CALayer) constrainedTo(constrainedLayer: CALayer);
+    method dismissCalloutAnimated(animated: BOOL);
+    method updateLayoutAnimated(animated: BOOL);
     [NonSwiftOnly]
-    method animationWithType(&type: AerisMapKit.AWFCalloutAnimation) presenting(presenting: BOOL): CAAnimation; public;
+    method animationWithType(&type: AerisMapKit.AWFCalloutAnimation) presenting(presenting: BOOL): CAAnimation;
     [Alias]
     [SwiftOnly]
-    method animation(&type: AerisMapKit.AWFCalloutAnimation) presenting(presenting: BOOL): CAAnimation; public;
-    property current: AerisMapKit.AWFCalloutArrowDirection; public;
-
-    property present: AerisMapKit.AWFCalloutAnimation; public;
-
-    property dismiss: AerisMapKit.AWFCalloutAnimation; public;
-
-
+    method animation(&type: AerisMapKit.AWFCalloutAnimation) presenting(presenting: BOOL): CAAnimation;
+    property current: AerisMapKit.AWFCalloutArrowDirection;
+    property present: AerisMapKit.AWFCalloutAnimation;
+    property dismiss: AerisMapKit.AWFCalloutAnimation;
   end;
 
   AerisMapKit.__AWFCalloutBackgroundView = class(UIView)
-  private
-
-    property arrowPoint: CGPoint; public;
-
-    property highlighted: BOOL; public;
-
-    property contentMask: CALayer; public;
-
-
+  public
+    property arrowPoint: CGPoint;
+    property highlighted: BOOL;
+    property contentMask: CALayer;
   end;
 
   AerisMapKit.__AWFCalloutMaskedBackgroundView = class(AerisMapKit.__AWFCalloutBackgroundView)
   end;
 
   AerisMapKit.IAWFCalloutViewDelegate = interface(INSObject)
-    method calloutViewClicked(calloutView: AerisMapKit.AWFCalloutView); public;
+    method calloutViewClicked(calloutView: AerisMapKit.AWFCalloutView);
     [NonSwiftOnly]
-    method calloutView(calloutView: AerisMapKit.AWFCalloutView) delayForRepositionWithSize(offset: CGSize): NSTimeInterval; public;
+    method calloutView(calloutView: AerisMapKit.AWFCalloutView) delayForRepositionWithSize(offset: CGSize): NSTimeInterval;
     [Alias]
     [SwiftOnly]
-    method calloutView(calloutView: AerisMapKit.AWFCalloutView) delayForRepositionWith(offset: CGSize): NSTimeInterval; public;
-    method calloutViewWillAppear(calloutView: AerisMapKit.AWFCalloutView); public;
-    method calloutViewDidAppear(calloutView: AerisMapKit.AWFCalloutView); public;
-    method calloutViewWillDisappear(calloutView: AerisMapKit.AWFCalloutView); public;
-    method calloutViewDidDisappear(calloutView: AerisMapKit.AWFCalloutView); public;
-
-  end;
-
-  AerisMapKit.IAWFWeatherMapDelegate = interface(INSObject)
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willChangeFromBounds(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willChangeFrom(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didChangeToBounds(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didChangeTo(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didAddLayerForType(layerType: AWFMapLayer); public;
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didRemoveLayerForType(layerType: AWFMapLayer); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateTimelineRangeFromDate(fromDate: NSDate) toDate(toDate: NSDate); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateTimelineRangeFrom(fromDate: NSDate) &to(toDate: NSDate); public;
-    method weatherMapDidStartAnimating(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    method weatherMapDidStopAnimating(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    method weatherMapDidResetAnimation(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) animationDidUpdateToDate(date: NSDate); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) animationDidUpdateTo(date: NSDate); public;
-    method weatherMapDidStartLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    method weatherMapDidFinishLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    method weatherMapDidCancelLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateAnimationDataLoadingProgress(totalLoaded: NSInteger) total(total: NSInteger); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didStartLongPressGestureAtCoordinate(coordinate: CLLocationCoordinate2D); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didStartLongPressGestureAt(coordinate: CLLocationCoordinate2D); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didReceiveLongPressGestureAtCoordinate(coordinate: CLLocationCoordinate2D); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didReceiveLongPressGestureAt(coordinate: CLLocationCoordinate2D); public;
-    method weatherMapDidCancelLongPressGesture(weatherMap: AerisMapKit.AWFWeatherMap); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didTapPolygon(polygon: AerisMapKit.IAWFPolygon) atCoordinate(coordinate: CLLocationCoordinate2D); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didTapPolygon(polygon: AerisMapKit.IAWFPolygon) at(coordinate: CLLocationCoordinate2D); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willPresentCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willPresent(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didPresentCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didPresent(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willDismissCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willDismiss(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [NonSwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didDismissCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    [Alias]
-    [SwiftOnly]
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didDismiss(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id); public;
-    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutAccessoryControlTapped(control: UIControl); public;
-
+    method calloutView(calloutView: AerisMapKit.AWFCalloutView) delayForRepositionWith(offset: CGSize): NSTimeInterval;
+    method calloutViewWillAppear(calloutView: AerisMapKit.AWFCalloutView);
+    method calloutViewDidAppear(calloutView: AerisMapKit.AWFCalloutView);
+    method calloutViewWillDisappear(calloutView: AerisMapKit.AWFCalloutView);
+    method calloutViewDidDisappear(calloutView: AerisMapKit.AWFCalloutView);
   end;
 
   AerisMapKit.IAWFMapOverlayFactory = interface(INSObject)
     [NonSwiftOnly]
-    method overlaysFromObjects(objects: NSArray<id>): NSArray<id>; public;
+    method overlaysFromObjects(objects: NSArray<id>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method overlays(objects: NSArray<id>): NSArray<id>; public;
+    method overlays(objects: NSArray<id>): NSArray<id>;
     [NonSwiftOnly]
-    method polygonsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolygon>; public;
+    method polygonsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolygon>;
     [Alias]
     [SwiftOnly]
-    method polygons(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolygon>; public;
+    method polygons(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolygon>;
     [NonSwiftOnly]
-    method polylinesFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolyline>; public;
+    method polylinesFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolyline>;
     [Alias]
     [SwiftOnly]
-    method polylines(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolyline>; public;
+    method polylines(objects: NSArray<AWFGeographicObject>): NSArray<AerisMapKit.IAWFPolyline>;
     [NonSwiftOnly]
-    method polygonsFromGeoPolygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>; public;
+    method polygonsFromGeoPolygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method polygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>; public;
+    method polygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>;
     [NonSwiftOnly]
-    method polylinesFromGeoPolygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>; public;
+    method polylinesFromGeoPolygons(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method polylines(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>; public;
+    method polylines(geoPolygons: NSArray<AWFGeoPolygon>): NSArray<id>;
     [NonSwiftOnly]
-    method combinedOverlayForPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): id; public;
+    method combinedOverlayForPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): id;
     [Alias]
     [SwiftOnly]
-    method combinedOverlay(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): id; public;
+    method combinedOverlay(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): id;
     [NonSwiftOnly]
-    method reducePolygonsToMapPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>): NSArray<id>; public;
+    method reducePolygonsToMapPolygons(polygons: NSArray<id>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method reducePolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>): NSArray<id>; public;
+    method reducePolygons(polygons: NSArray<id>): NSArray<id>;
     [NonSwiftOnly]
-    method tileOverlayWithURLTemplate(URLTemplate: NSString): AerisMapKit.AWFTileSource; public;
+    method tileOverlayWithURLTemplate(URLTemplate: NSString): AerisMapKit.AWFTileSource;
     [Alias]
     [SwiftOnly]
-    method tileOverlay(URLTemplate: NSString): AerisMapKit.AWFTileSource; public;
+    method tileOverlay(URLTemplate: NSString): AerisMapKit.AWFTileSource;
     [NonSwiftOnly]
-    method tileOverlayWithURLTemplate(URLTemplate: NSString) isAmp(isAmp: BOOL): AerisMapKit.AWFTileSource; public;
+    method tileOverlayWithURLTemplate(URLTemplate: NSString) isAmp(isAmp: BOOL): AerisMapKit.AWFTileSource;
     [Alias]
     [SwiftOnly]
-    method tileOverlay(URLTemplate: NSString) isAmp(isAmp: BOOL): AerisMapKit.AWFTileSource; public;
+    method tileOverlay(URLTemplate: NSString) isAmp(isAmp: BOOL): AerisMapKit.AWFTileSource;
     [NonSwiftOnly]
-    method annotationsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<id>; public;
+    method annotationsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method annotations(objects: NSArray<AWFGeographicObject>): NSArray<id>; public;
+    method annotations(objects: NSArray<AWFGeographicObject>): NSArray<id>;
     [NonSwiftOnly]
-    method textAnnotationsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<id>; public;
+    method textAnnotationsFromObjects(objects: NSArray<AWFGeographicObject>): NSArray<id>;
     [Alias]
     [SwiftOnly]
-    method textAnnotations(objects: NSArray<AWFGeographicObject>): NSArray<id>; public;
-
+    method textAnnotations(objects: NSArray<AWFGeographicObject>): NSArray<id>;
   end;
 
   AerisMapKit.AWFMapCalloutInfo = class(NSObject)
-  private
-
-    property title: NSString; public;
-
-    property subtitle: NSString; public;
-
-    property contentView: UIView; public;
-
-    property leftAccessoryView: UIView; public;
-
-    property rightAccessoryView: UIView; public;
-
+  public
+    property title: NSString;
+    property subtitle: NSString;
+    property contentView: UIView;
+    property leftAccessoryView: UIView;
+    property rightAccessoryView: UIView;
     [NonSwiftOnly]
-    method initWithTitle(title: NSString) subtitle(subtitle: NSString): instancetype; public;
+    method initWithTitle(title: NSString) subtitle(subtitle: NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withTitle(title: NSString) subtitle(subtitle: NSString): instancetype; public;
+    class constructor withTitle(title: NSString) subtitle(subtitle: NSString): instancetype;
     [NonSwiftOnly]
-    method initWithContentView(contentView: UIView): instancetype; public;
+    method initWithContentView(contentView: UIView): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withContentView(contentView: UIView): instancetype; public;
-
+    class constructor withContentView(contentView: UIView): instancetype;
   end;
 
   AerisMapKit.AWFMapCallout = class(NSObject)
-  private
-
-    property calloutView: AerisMapKit.AWFCalloutView; public;
-
-    property strategy: AerisMapKit.IAWFMapStrategy; public;
-
-    property dataSource: nullable AerisMapKit.IAWFMapCalloutDataSource; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapCalloutDelegate; public;
-
-    property currentAnnotationForCallout: nullable AerisMapKit.IAWFAnnotation; public;
-
-    property currentCalloutInfo: AerisMapKit.AWFMapCalloutInfo; public;
-
+  public
+    property calloutView: AerisMapKit.AWFCalloutView;
+    property strategy: AerisMapKit.IAWFMapStrategy;
+    property dataSource: nullable AerisMapKit.IAWFMapCalloutDataSource;
+    property &delegate: nullable AerisMapKit.IAWFMapCalloutDelegate;
+    property currentAnnotationForCallout: nullable AerisMapKit.IAWFAnnotation;
+    property currentCalloutInfo: AerisMapKit.AWFMapCalloutInfo;
     [NonSwiftOnly]
-    method initWithMapStrategy(mapStrategy: AerisMapKit.IAWFMapStrategy): instancetype; public;
+    method initWithMapStrategy(mapStrategy: AerisMapKit.IAWFMapStrategy): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapStrategy(mapStrategy: AerisMapKit.IAWFMapStrategy): instancetype; public;
-    method init: instancetype; public;
+    class constructor withMapStrategy(mapStrategy: AerisMapKit.IAWFMapStrategy): instancetype;
+    method init: instancetype;
     [NonSwiftOnly]
-    method showFromAnnotation(annotation: id) withTitle(title: NSString) subtitle(subtitle: nullable NSString); public;
+    method showFromAnnotation(annotation: id) withTitle(title: NSString) subtitle(subtitle: nullable NSString);
     [Alias]
     [SwiftOnly]
-    method show(annotation: id) withTitle(title: NSString) subtitle(subtitle: nullable NSString); public;
+    method show(annotation: id) withTitle(title: NSString) subtitle(subtitle: nullable NSString);
     [NonSwiftOnly]
-    method showFromAnnotation(annotation: id) withContentView(contentView: UIView); public;
+    method showFromAnnotation(annotation: id) withContentView(contentView: UIView);
     [Alias]
     [SwiftOnly]
-    method show(annotation: id) withContentView(contentView: UIView); public;
+    method show(annotation: id) withContentView(contentView: UIView);
     [NonSwiftOnly]
-    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString); public;
+    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString);
     [Alias]
     [SwiftOnly]
-    method show(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString); public;
+    method show(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString);
     [NonSwiftOnly]
-    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView); public;
+    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView);
     [Alias]
     [SwiftOnly]
-    method show(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView); public;
+    method show(coordinate: CLLocationCoordinate2D) withTitle(title: NSString) subtitle(subtitle: nullable NSString) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView);
     [NonSwiftOnly]
-    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView); public;
+    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView);
     [Alias]
     [SwiftOnly]
-    method show(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView); public;
+    method show(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView);
     [NonSwiftOnly]
-    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView); public;
+    method showAtCoordinate(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView);
     [Alias]
     [SwiftOnly]
-    method show(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView); public;
+    method show(coordinate: CLLocationCoordinate2D) withContentView(contentView: UIView) leftAccessoryView(leftAccessoryView: nullable UIView) rightAccessoryView(rightAccessoryView: nullable UIView);
     [NonSwiftOnly]
-    method showFromRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
+    method showFromRect(rect: CGRect) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method show(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
+    method show(rect: CGRect) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL);
     [NonSwiftOnly]
-    method showFromView(fromView: UIView) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL); public;
+    method showFromView(fromView: UIView) inView(view: UIView) constrainedToView(constrainedView: UIView) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method show(fromView: UIView) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL); public;
-    method dismiss(animated: BOOL); public;
-    property current: AerisMapKit.AWFMapCalloutInfo; public;
-
-
+    method show(fromView: UIView) &in(view: UIView) constrainedTo(constrainedView: UIView) animated(animated: BOOL);
+    method dismiss(animated: BOOL);
+    property current: AerisMapKit.AWFMapCalloutInfo;
   end;
 
   AerisMapKit.IAWFMapCalloutDataSource = interface(INSObject)
     [NonSwiftOnly]
-    method annotationForCalloutAtCoordinate(coord: CLLocationCoordinate2D): AerisMapKit.IAWFAnnotation; public;
+    method annotationForCalloutAtCoordinate(coord: CLLocationCoordinate2D): AerisMapKit.IAWFAnnotation;
     [Alias]
     [SwiftOnly]
-    method annotationForCallout(coord: CLLocationCoordinate2D): AerisMapKit.IAWFAnnotation; public;
+    method annotationForCallout(coord: CLLocationCoordinate2D): AerisMapKit.IAWFAnnotation;
     [NonSwiftOnly]
-    method shouldWaitForCalloutDataLoadingToComplete(callout: AerisMapKit.AWFMapCallout): BOOL; public;
+    method shouldWaitForCalloutDataLoadingToComplete(callout: AerisMapKit.AWFMapCallout): BOOL;
     [Alias]
     [SwiftOnly]
-    method shouldWaitForCalloutDataLoading(callout: AerisMapKit.AWFMapCallout): BOOL; public;
-
+    method shouldWaitForCalloutDataLoading(callout: AerisMapKit.AWFMapCallout): BOOL;
   end;
 
   AerisMapKit.IAWFMapCalloutDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method callout(callout: AerisMapKit.AWFMapCallout) didAddAnnotation(annotation: AerisMapKit.IAWFAnnotation) withInfo(info: AerisMapKit.AWFMapCalloutInfo); public;
+    method callout(callout: AerisMapKit.AWFMapCallout) didAddAnnotation(annotation: AerisMapKit.IAWFAnnotation) withInfo(info: AerisMapKit.AWFMapCalloutInfo);
     [Alias]
     [SwiftOnly]
-    method callout(callout: AerisMapKit.AWFMapCallout) didAdd(annotation: AerisMapKit.IAWFAnnotation) &with(info: AerisMapKit.AWFMapCalloutInfo); public;
+    method callout(callout: AerisMapKit.AWFMapCallout) didAdd(annotation: AerisMapKit.IAWFAnnotation) &with(info: AerisMapKit.AWFMapCalloutInfo);
     [NonSwiftOnly]
-    method callout(callout: AerisMapKit.AWFMapCallout) didRemoveAnnotation(annotation: AerisMapKit.IAWFAnnotation); public;
+    method callout(callout: AerisMapKit.AWFMapCallout) didRemoveAnnotation(annotation: AerisMapKit.IAWFAnnotation);
     [Alias]
     [SwiftOnly]
-    method callout(callout: AerisMapKit.AWFMapCallout) didRemove(annotation: AerisMapKit.IAWFAnnotation); public;
-    method calloutView(calloutView: AerisMapKit.AWFCalloutView) accessoryControlWasTapped(sender: id); public;
-
+    method callout(callout: AerisMapKit.AWFMapCallout) didRemove(annotation: AerisMapKit.IAWFAnnotation);
+    method calloutView(calloutView: AerisMapKit.AWFCalloutView) accessoryControlWasTapped(sender: id);
   end;
 
   AerisMapKit.IAWFCalloutAnnotation = interface(AerisMapKit.IAWFAnnotation)
@@ -1006,952 +877,879 @@ type
   AerisMapKit.AWFMapStrategyType = enum ([NonSwiftOnly] AWFMapStrategyTypeApple = 0, [NonSwiftOnly] Apple = 0, [SwiftOnly] apple = 0, [NonSwiftOnly] AWFMapStrategyTypeGoogle = 1, [NonSwiftOnly] Google = 1, [SwiftOnly] google = 1, [NonSwiftOnly] AWFMapStrategyTypeMapBox = 2, [NonSwiftOnly] MapBox = 2, [SwiftOnly] mapBox = 2);
 
   AerisMapKit.IAWFMapStrategy = interface(INSObject)
-    property strategyType: AerisMapKit.AWFMapStrategyType read write; public;
-
-    property mapView: UIView read write; public;
-
-    property config: AerisMapKit.AWFWeatherMapConfig read write; public;
-
-    property overlayFactory: AerisMapKit.IAWFMapOverlayFactory read write; public;
-
-    property callout: AerisMapKit.AWFMapCallout read write; public;
-
-    property overlays: NSArray<id> read write; public;
-
-    property annotations: NSArray<id> read write; public;
-
-    property coordinateBounds: AerisMapKit.AWFMapCoordinateBounds read write; public;
-
-    property centerCoordinate: CLLocationCoordinate2D read write; public;
-
-    property zoomLevel: NSInteger read write; public;
-
-    property animationContainerView: id read write; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapStrategyDelegate read write; public;
-
-    property mapViewDelegate: nullable id read write; public;
-
+    property strategyType: AerisMapKit.AWFMapStrategyType read write;
+    property mapView: UIView read write;
+    property config: AerisMapKit.AWFWeatherMapConfig read write;
+    property overlayFactory: AerisMapKit.IAWFMapOverlayFactory read write;
+    property callout: AerisMapKit.AWFMapCallout read write;
+    property overlays: NSArray<id> read write;
+    property annotations: NSArray<id> read write;
+    property coordinateBounds: AerisMapKit.AWFMapCoordinateBounds read write;
+    property centerCoordinate: CLLocationCoordinate2D read write;
+    property zoomLevel: NSInteger read write;
+    property animationContainerView: id read write;
+    property &delegate: nullable AerisMapKit.IAWFMapStrategyDelegate read write;
     [NonSwiftOnly]
-    method initWithWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype; public;
+    method initWithWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype; public;
-    method addOverlay(overlay: id); public;
-    method addOverlays(overlays: NSArray<id>); public;
-    method insertOverlay(overlay: id) atIndex(&index: NSUInteger); public;
-    method removeOverlay(overlay: id); public;
-    method removeOverlays(overlays: NSArray<id>); public;
+    class constructor withWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype;
+    method addOverlay(overlay: id);
+    method addOverlays(overlays: NSArray<id>);
+    method insertOverlay(overlay: id) atIndex(&index: NSUInteger);
+    method removeOverlay(overlay: id);
+    method removeOverlays(overlays: NSArray<id>);
     [NonSwiftOnly]
-    method indexForOverlay(overlay: id): NSInteger; public;
+    method indexForOverlay(overlay: id): NSInteger;
     [Alias]
     [SwiftOnly]
-    method &index(overlay: id): NSInteger; public;
-    method invalidateOverlay(overlay: id); public;
-    method invalidateOverlays(overlays: NSArray<id>); public;
-    method addAnnotation(annotation: AerisMapKit.IAWFAnnotation); public;
-    method addAnnotations(annotations: NSArray<AerisMapKit.IAWFAnnotation>); public;
-    method removeAnnotation(annotation: AerisMapKit.IAWFAnnotation); public;
-    method removeAnnotations(annotations: NSArray<AerisMapKit.IAWFAnnotation>); public;
-    method selectAnnotation(annotation: AerisMapKit.IAWFAnnotation); public;
-    method selectAnnotation(annotation: AerisMapKit.IAWFAnnotation) animated(animated: BOOL); public;
-    method deselectAnnotation(annotation: AerisMapKit.IAWFAnnotation); public;
-    method deselectAnnotation(annotation: AerisMapKit.IAWFAnnotation) animated(animated: BOOL); public;
-    method deselectCurrentlySelectedAnnotation; public;
+    method &index(overlay: id): NSInteger;
+    method invalidateOverlay(overlay: id);
+    method invalidateOverlays(overlays: NSArray<id>);
+    method addAnnotation(annotation: id);
+    method addAnnotations(annotations: NSArray<id>);
+    method removeAnnotation(annotation: id);
+    method removeAnnotations(annotations: NSArray<id>);
+    method selectAnnotation(annotation: id);
+    method selectAnnotation(annotation: id) animated(animated: BOOL);
+    method deselectAnnotation(annotation: id);
+    method deselectAnnotation(annotation: id) animated(animated: BOOL);
+    method deselectCurrentlySelectedAnnotation;
     [NonSwiftOnly]
-    method showAnnotationForLongPressAtCoordinate(coordinate: CLLocationCoordinate2D); public;
+    method showAnnotationForLongPressAtCoordinate(coordinate: CLLocationCoordinate2D);
     [Alias]
     [SwiftOnly]
-    method showAnnotationForLongPress(coordinate: CLLocationCoordinate2D); public;
+    method showAnnotationForLongPress(coordinate: CLLocationCoordinate2D);
     [NonSwiftOnly]
-    method removeAnnotationForLongPress(animated: BOOL); public;
+    method removeAnnotationForLongPress(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method removeAnnotation(animated: BOOL); public;
+    method removeAnnotation(animated: BOOL);
     [NonSwiftOnly]
-    method setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) animated(animated: BOOL); public;
+    method setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method setCenter(centerCoordinate: CLLocationCoordinate2D) animated(animated: BOOL); public;
+    method setCenter(centerCoordinate: CLLocationCoordinate2D) animated(animated: BOOL);
     [NonSwiftOnly]
-    method setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL); public;
+    method setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method setCenter(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL); public;
+    method setCenter(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL);
     [NonSwiftOnly]
-    method pointForCoordinate(coord: CLLocationCoordinate2D) inView(view: nullable UIView): CGPoint; public;
+    method pointForCoordinate(coord: CLLocationCoordinate2D) inView(view: nullable UIView): CGPoint;
     [Alias]
     [SwiftOnly]
-    method point(coord: CLLocationCoordinate2D) inView(view: nullable UIView): CGPoint; public;
+    method point(coord: CLLocationCoordinate2D) inView(view: nullable UIView): CGPoint;
     [NonSwiftOnly]
-    method coordinateForPoint(point: CGPoint) inView(view: nullable UIView): CLLocationCoordinate2D; public;
+    method coordinateForPoint(point: CGPoint) inView(view: nullable UIView): CLLocationCoordinate2D;
     [Alias]
     [SwiftOnly]
-    method coordinate(point: CGPoint) inView(view: nullable UIView): CLLocationCoordinate2D; public;
-    method isCoordinate(coord: CLLocationCoordinate2D) withinPolygon(polygon: id): BOOL; public;
+    method coordinate(point: CGPoint) inView(view: nullable UIView): CLLocationCoordinate2D;
+    method isCoordinate(coord: CLLocationCoordinate2D) withinPolygon(polygon: id): BOOL;
     [NonSwiftOnly]
-    method forwardTouchAtPoint(touchPoint: CGPoint) inView(view: UIView); public;
+    method forwardTouchAtPoint(touchPoint: CGPoint) inView(view: UIView);
     [Alias]
     [SwiftOnly]
-    method forwardTouch(touchPoint: CGPoint) &in(view: UIView); public;
-    property center: CLLocationCoordinate2D read write; public;
-
-
+    method forwardTouch(touchPoint: CGPoint) &in(view: UIView);
+    [NonSwiftOnly]
+    method defaultAnnotationViewForAnnotation(annotation: id): id;
+    [Alias]
+    [SwiftOnly]
+    method defaultAnnotationView(annotation: id): id;
+    [NonSwiftOnly]
+    method defaultRendererForOverlay(overlay: id): id;
+    [Alias]
+    [SwiftOnly]
+    method defaultRenderer(overlay: id): id;
+    property center: CLLocationCoordinate2D read write;
   end;
 
   AerisMapKit.IAWFMapStrategyDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionWillChangeFromBounds(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionWillChangeFromBounds(bounds: AerisMapKit.AWFMapCoordinateBounds);
     [Alias]
     [SwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionWillChangeFrom(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionWillChangeFrom(bounds: AerisMapKit.AWFMapCoordinateBounds);
     [NonSwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionDidChangeToBounds(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionDidChangeToBounds(bounds: AerisMapKit.AWFMapCoordinateBounds);
     [Alias]
     [SwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionDidChangeTo(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) regionDidChangeTo(bounds: AerisMapKit.AWFMapCoordinateBounds);
     [NonSwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didTapPolygon(polygon: id) atCoordinate(coordinate: CLLocationCoordinate2D); public;
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didTapPolygon(polygon: id) atCoordinate(coordinate: CLLocationCoordinate2D);
     [Alias]
     [SwiftOnly]
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didTapPolygon(polygon: id) at(coordinate: CLLocationCoordinate2D); public;
-    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didAddOverlay(overlay: id); public;
-    method mapStrategyWillDisplayCallout(strategy: AerisMapKit.IAWFMapStrategy); public;
-
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didTapPolygon(polygon: id) at(coordinate: CLLocationCoordinate2D);
+    method mapStrategy(strategy: AerisMapKit.IAWFMapStrategy) didAddOverlay(overlay: id);
+    method mapStrategyWillDisplayCallout(strategy: AerisMapKit.IAWFMapStrategy);
   end;
 
   AerisMapKit.AWFMapContentSource = class(NSObject)
-  private
-
-    property identifier: NSString; public;
-
-    property layerType: AWFMapLayer; public;
-
-    property strategy: nullable AerisMapKit.IAWFMapStrategy; public;
-
-    property visibleBounds: nullable AerisMapKit.AWFMapCoordinateBounds; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapContentDelegate; public;
-
+  public
+    property identifier: NSString;
+    property layerType: AWFMapLayer;
+    property strategy: nullable AerisMapKit.IAWFMapStrategy;
+    property visibleBounds: nullable AerisMapKit.AWFMapCoordinateBounds;
+    property &delegate: nullable AerisMapKit.IAWFMapContentDelegate;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer): instancetype; public;
+    method initWithLayerType(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer): instancetype;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer) mapStrategy(strategy: nullable AerisMapKit.IAWFMapStrategy): instancetype; public;
+    method initWithLayerType(layerType: AWFMapLayer) mapStrategy(strategy: nullable AerisMapKit.IAWFMapStrategy): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer) mapStrategy(strategy: nullable AerisMapKit.IAWFMapStrategy): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer) mapStrategy(strategy: nullable AerisMapKit.IAWFMapStrategy): instancetype;
     [NonSwiftOnly]
-    class method weatherDataTypeForLayerType(layerType: AWFMapLayer): AWFWeatherDataType; public;
+    class method weatherDataTypeForLayerType(layerType: AWFMapLayer): AWFWeatherDataType;
     [Alias]
     [SwiftOnly]
-    class method weatherDataType(layerType: AWFMapLayer): AWFWeatherDataType; public;
-
+    class method weatherDataType(layerType: AWFMapLayer): AWFWeatherDataType;
   end;
 
   AerisMapKit.IAWFMapContentDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method contentSource(source: AerisMapKit.AWFMapContentSource) willRequestDataWithOptions(options: AWFWeatherRequestOptions); public;
+    method contentSource(source: AerisMapKit.AWFMapContentSource) willRequestDataWithOptions(options: AWFWeatherRequestOptions);
     [Alias]
     [SwiftOnly]
-    method contentSource(source: AerisMapKit.AWFMapContentSource) willRequestDataWith(options: AWFWeatherRequestOptions); public;
-    method contentSource(source: AerisMapKit.AWFMapContentSource) willRemoveAnnotations(annotations: NSArray<AerisMapKit.IAWFAnnotation>); public;
-    method contentSource(source: AerisMapKit.AWFMapContentSource) willRemoveOverlays(overlays: NSArray<id>); public;
-    method contentSourceNeedsInvalidating(source: AerisMapKit.AWFMapContentSource); public;
+    method contentSource(source: AerisMapKit.AWFMapContentSource) willRequestDataWith(options: AWFWeatherRequestOptions);
+    method contentSource(source: AerisMapKit.AWFMapContentSource) willRemoveAnnotations(annotations: NSArray<AerisMapKit.IAWFAnnotation>);
+    method contentSource(source: AerisMapKit.AWFMapContentSource) willRemoveOverlays(overlays: NSArray<id>);
+    method contentSourceNeedsInvalidating(source: AerisMapKit.AWFMapContentSource);
+  end;
 
+  AerisMapKit.IAWFWeatherMapDelegate = interface(INSObject)
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willChangeFromBounds(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willChangeFrom(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didChangeToBounds(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didChangeTo(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didAddSource(source: AerisMapKit.AWFMapContentSource);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didAdd(source: AerisMapKit.AWFMapContentSource);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didRemoveSource(source: AerisMapKit.AWFMapContentSource);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didRemove(source: AerisMapKit.AWFMapContentSource);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didAddLayerForType(layerType: AWFMapLayer);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didRemoveLayerForType(layerType: AWFMapLayer);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateTimelineRangeFromDate(fromDate: NSDate) toDate(toDate: NSDate);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateTimelineRangeFrom(fromDate: NSDate) &to(toDate: NSDate);
+    method weatherMapDidStartAnimating(weatherMap: AerisMapKit.AWFWeatherMap);
+    method weatherMapDidStopAnimating(weatherMap: AerisMapKit.AWFWeatherMap);
+    method weatherMapDidResetAnimation(weatherMap: AerisMapKit.AWFWeatherMap);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) animationDidUpdateToDate(date: NSDate);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) animationDidUpdateTo(date: NSDate);
+    method weatherMapDidStartLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didFailToPerformAnimationRequestForData(data: NSDictionary<id,id>) error(error: NSError);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didFailLoadingAnimationData(error: NSError);
+    method weatherMapDidFinishLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap);
+    method weatherMapDidCancelLoadingAnimationData(weatherMap: AerisMapKit.AWFWeatherMap);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didUpdateAnimationDataLoadingProgress(totalLoaded: NSInteger) total(total: NSInteger) error(error: nullable NSError);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didStartLongPressGestureAtCoordinate(coordinate: CLLocationCoordinate2D);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didStartLongPressGestureAt(coordinate: CLLocationCoordinate2D);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didReceiveLongPressGestureAtCoordinate(coordinate: CLLocationCoordinate2D);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didReceiveLongPressGestureAt(coordinate: CLLocationCoordinate2D);
+    method weatherMapDidCancelLongPressGesture(weatherMap: AerisMapKit.AWFWeatherMap);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didTapPolygon(polygon: AerisMapKit.IAWFPolygon) atCoordinate(coordinate: CLLocationCoordinate2D);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didTapPolygon(polygon: AerisMapKit.IAWFPolygon) at(coordinate: CLLocationCoordinate2D);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willPresentCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willPresent(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didPresentCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didPresent(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willDismissCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) willDismiss(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [NonSwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didDismissCalloutView(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    [Alias]
+    [SwiftOnly]
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) didDismiss(calloutView: AerisMapKit.AWFCalloutView) forAnnotation(annotation: id);
+    method weatherMap(weatherMap: AerisMapKit.AWFWeatherMap) calloutAccessoryControlTapped(control: UIControl);
   end;
 
   AerisMapKit.IAWFAnimationDataSource = interface(INSObject)
     [NonSwiftOnly]
-    method modelPropertyToUseForDateAssignment(animation: AerisMapKit.AWFAnimation): NSString; public;
+    method modelPropertyToUseForDateAssignment(animation: AerisMapKit.AWFAnimation): NSString;
     [Alias]
     [SwiftOnly]
-    method modelPropertyToUse(animation: AerisMapKit.AWFAnimation): NSString; public;
+    method modelPropertyToUse(animation: AerisMapKit.AWFAnimation): NSString;
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) shouldLoadDataForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): BOOL; public;
+    method animation(animation: AerisMapKit.AWFAnimation) shouldLoadDataForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): BOOL;
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) shouldLoadDataFor(bounds: AerisMapKit.AWFMapCoordinateBounds): BOOL; public;
+    method animation(animation: AerisMapKit.AWFAnimation) shouldLoadDataFor(bounds: AerisMapKit.AWFMapCoordinateBounds): BOOL;
     [NonSwiftOnly]
-    method cancelLoadingDataForAnimation(animation: AerisMapKit.AWFAnimation); public;
+    method cancelLoadingDataForAnimation(animation: AerisMapKit.AWFAnimation);
     [Alias]
     [SwiftOnly]
-    method cancelLoadingData(animation: AerisMapKit.AWFAnimation); public;
+    method cancelLoadingData(animation: AerisMapKit.AWFAnimation);
     [NonSwiftOnly]
-    method totalRequestsForAnimation(animation: AerisMapKit.AWFAnimation): NSInteger; public;
+    method totalRequestsForAnimation(animation: AerisMapKit.AWFAnimation): NSInteger;
     [Alias]
     [SwiftOnly]
-    method totalRequests(animation: AerisMapKit.AWFAnimation): NSInteger; public;
+    method totalRequests(animation: AerisMapKit.AWFAnimation): NSInteger;
     [NonSwiftOnly]
-    method totalRequestsRemainingForAnimation(animation: AerisMapKit.AWFAnimation): NSInteger; public;
+    method totalRequestsRemainingForAnimation(animation: AerisMapKit.AWFAnimation): NSInteger;
     [Alias]
     [SwiftOnly]
-    method totalRequestsRemaining(animation: AerisMapKit.AWFAnimation): NSInteger; public;
+    method totalRequestsRemaining(animation: AerisMapKit.AWFAnimation): NSInteger;
     [NonSwiftOnly]
-    method invalidateDataForAnimation(animation: AerisMapKit.AWFAnimation); public;
+    method invalidateDataForAnimation(animation: AerisMapKit.AWFAnimation);
     [Alias]
     [SwiftOnly]
-    method invalidateData(animation: AerisMapKit.AWFAnimation); public;
-
+    method invalidateData(animation: AerisMapKit.AWFAnimation);
   end;
 
   AerisMapKit.IAWFAnimationDelegate = interface(INSObject)
+    method animation(animation: AerisMapKit.AWFAnimation) didUpdateStartDate(startDate: NSDate) endDate(endDate: NSDate);
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didStartAtDate(startDate: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didStartAtDate(startDate: NSDate);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didStartAt(startDate: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didStartAt(startDate: NSDate);
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didStopAtDate(stopDate: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didStopAtDate(stopDate: NSDate);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didStopAt(stopDate: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didStopAt(stopDate: NSDate);
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didPauseAtDate(date: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didPauseAtDate(date: NSDate);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didPauseAt(date: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didPauseAt(date: NSDate);
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didUpdateToDate(currentDate: NSDate); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didUpdateToDate(currentDate: NSDate);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didUpdateTo(currentDate: NSDate); public;
-    method animationIsReady(animation: AerisMapKit.AWFAnimation); public;
-    method animationDidRestart(animation: AerisMapKit.AWFAnimation); public;
-    method animationDidStartLoading(animation: AerisMapKit.AWFAnimation) total(total: NSInteger); public;
-    method animation(animation: AerisMapKit.AWFAnimation) didUpdateLoadingProgress(progress: NSInteger) total(total: NSInteger); public;
-    method animationDidFinishLoading(animation: AerisMapKit.AWFAnimation); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didUpdateTo(currentDate: NSDate);
+    method animationIsReady(animation: AerisMapKit.AWFAnimation);
+    method animationDidRestart(animation: AerisMapKit.AWFAnimation);
+    method animationDidStartLoading(animation: AerisMapKit.AWFAnimation) total(total: NSInteger);
+    method animation(animation: AerisMapKit.AWFAnimation) didFailToPerformRequestForData(data: NSDictionary<id,id>) error(error: NSError);
+    method animation(animation: AerisMapKit.AWFAnimation) didUpdateLoadingProgress(progress: NSInteger) total(total: NSInteger) error(error: nullable NSError);
+    method animationDidFinishLoading(animation: AerisMapKit.AWFAnimation);
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didFailLoadingWithError(error: NSError); public;
+    method animation(animation: AerisMapKit.AWFAnimation) didFailLoadingWithError(error: NSError);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFAnimation) didFailLoadingWith(error: NSError); public;
-    method animationDidCancelLoading(animation: AerisMapKit.AWFAnimation) totalCancelledRequests(total: NSInteger); public;
-    method animationDidReset(animation: AerisMapKit.AWFAnimation); public;
-
+    method animation(animation: AerisMapKit.AWFAnimation) didFailLoadingWith(error: NSError);
+    method animationDidCancelLoading(animation: AerisMapKit.AWFAnimation) totalCancelledRequests(total: NSInteger);
+    method animationDidReset(animation: AerisMapKit.AWFAnimation);
   end;
 
   AerisMapKit.AWFAnimation = class(NSObject)
-  private
-
-    property fromTime: nullable NSDate; public;
-
-    property toTime: nullable NSDate; public;
-
-    property duration: CGFloat; public;
-
-    property endDelay: CGFloat; public;
-
-    property repeatCount: NSInteger; public;
-
-    property totalTime: NSTimeInterval; public;
-
-    property currentTime: nullable NSDate; public;
-
-    property containsFutureTime: BOOL; public;
-
-    property timeline: nullable AerisMapKit.AWFAnimationTimeline; public;
-
-    property currentBoundsForData: AerisMapKit.AWFMapCoordinateBounds; public;
-
-    property animating: BOOL; public;
-
-    property loading: BOOL; public;
-
-    property ready: BOOL; public;
-
-    property played: BOOL; public;
-
-    property enabled: BOOL; public;
-
-    property dataSource: nullable AerisMapKit.IAWFAnimationDataSource; public;
-
-    property &delegate: nullable AerisMapKit.IAWFAnimationDelegate; public;
-
+  public
+    property startDate: nullable NSDate;
+    property fromTime: nullable NSDate;
+    property endDate: nullable NSDate;
+    property toTime: nullable NSDate;
+    property duration: CGFloat;
+    property endDelay: CGFloat;
+    property repeatCount: NSInteger;
+    property totalTime: NSTimeInterval;
+    property currentTime: nullable NSDate;
+    property containsFutureTime: BOOL;
+    property timeline: nullable AerisMapKit.AWFAnimationTimeline;
+    property currentBoundsForData: AerisMapKit.AWFMapCoordinateBounds;
+    property animating: BOOL;
+    property loading: BOOL;
+    property ready: BOOL;
+    property played: BOOL;
+    property enabled: BOOL;
+    property dataSource: nullable AerisMapKit.IAWFAnimationDataSource;
+    property &delegate: nullable AerisMapKit.IAWFAnimationDelegate;
     [NonSwiftOnly]
-    method initWithStartDate(startDate: NSDate) endDate(endDate: NSDate): instancetype; public;
+    method initWithStartDate(startDate: NSDate) endDate(endDate: NSDate): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withStartDate(startDate: NSDate) endDate(endDate: NSDate): instancetype; public;
+    class constructor withStartDate(startDate: NSDate) endDate(endDate: NSDate): instancetype;
     [NonSwiftOnly]
-    method initWithTimeIntervalBeforeNow(intervalBeforeNow: NSTimeInterval): instancetype; public;
+    method initWithTimeIntervalBeforeNow(intervalBeforeNow: NSTimeInterval): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withTimeIntervalBeforeNow(intervalBeforeNow: NSTimeInterval): instancetype; public;
-    method start; public;
-    method stop; public;
-    method pause; public;
-    method restart; public;
+    class constructor withTimeIntervalBeforeNow(intervalBeforeNow: NSTimeInterval): instancetype;
+    method start;
+    method stop;
+    method pause;
+    method restart;
     [NonSwiftOnly]
-    method goToPosition(position: CGFloat); public;
+    method goToPosition(position: CGFloat);
     [Alias]
     [SwiftOnly]
-    method go(position: CGFloat); public;
+    method go(position: CGFloat);
     [NonSwiftOnly]
-    method goToTime(date: NSDate); public;
+    method goToTime(date: NSDate);
     [Alias]
     [SwiftOnly]
-    method go(date: NSDate); public;
+    method go(date: NSDate);
     [NonSwiftOnly]
-    method goToTime(date: NSDate) stop(stop: BOOL); public;
+    method goToTime(date: NSDate) stop(stop: BOOL);
     [Alias]
     [SwiftOnly]
-    method go(date: NSDate) stop(stop: BOOL); public;
+    method go(date: NSDate) stop(stop: BOOL);
     [NonSwiftOnly]
-    method goToTimeIntervalWithOffset(timeOffset: NSTimeInterval); public;
+    method goToTimeIntervalWithOffset(timeOffset: NSTimeInterval);
     [Alias]
     [SwiftOnly]
-    method goToTimeInterval(timeOffset: NSTimeInterval); public;
-    method reloadData; public;
-    method reset; public;
-
+    method goToTimeInterval(timeOffset: NSTimeInterval);
+    method reloadData;
+    method reset;
   end;
 
   AerisMapKit.IAWFAnimatableOverlay = interface(IMKOverlay, AerisMapKit.IAWFAnimationDataSource)
-    property animation: AerisMapKit.AWFAnimation read write; public;
-
-    property maximumIntervalsForAnimation: NSInteger read write; public;
-
-
+    property animation: AerisMapKit.AWFAnimation read write;
+    property maximumIntervalsForAnimation: NSInteger read write;
   end;
 
   AerisMapKit.IAWFDataAnimationDataSource = interface(AerisMapKit.IAWFAnimationDataSource)
     [NonSwiftOnly]
-    method dataObjectsForAnimation(animation: AerisMapKit.AWFAnimation): NSArray<AerisMapKit.IAWFDataRepresentable>; public;
+    method dataObjectsForAnimation(animation: AerisMapKit.AWFAnimation): NSArray<AerisMapKit.IAWFDataRepresentable>;
     [Alias]
     [SwiftOnly]
-    method dataObjects(animation: AerisMapKit.AWFAnimation): NSArray<AerisMapKit.IAWFDataRepresentable>; public;
+    method dataObjects(animation: AerisMapKit.AWFAnimation): NSArray<AerisMapKit.IAWFDataRepresentable>;
     [NonSwiftOnly]
-    method shouldLoadDataForAnimation(animation: AerisMapKit.AWFAnimation): BOOL; public;
+    method shouldLoadDataForAnimation(animation: AerisMapKit.AWFAnimation): BOOL;
     [Alias]
     [SwiftOnly]
-    method shouldLoadData(animation: AerisMapKit.AWFAnimation): BOOL; public;
-
+    method shouldLoadData(animation: AerisMapKit.AWFAnimation): BOOL;
   end;
 
   AerisMapKit.IAWFDataAnimationDelegate = interface(AerisMapKit.IAWFAnimationDelegate)
-    method animation(animation: AerisMapKit.AWFDataAnimation) didAddDataObjects(objects: NSArray<AerisMapKit.IAWFDataRepresentable>); public;
-    method animation(animation: AerisMapKit.AWFDataAnimation) didRemoveDataObjects(objects: NSArray<AerisMapKit.IAWFDataRepresentable>); public;
-
+    method animation(animation: AerisMapKit.AWFDataAnimation) didAddDataObjects(objects: NSArray<AerisMapKit.IAWFDataRepresentable>);
+    method animation(animation: AerisMapKit.AWFDataAnimation) didRemoveDataObjects(objects: NSArray<AerisMapKit.IAWFDataRepresentable>);
   end;
 
   AerisMapKit.AWFDataAnimation = class(AerisMapKit.AWFAnimation)
-  private
-
-    property representableType: AerisMapKit.AWFDataRepresentableType; public;
-
-    property dataSource: nullable AerisMapKit.IAWFDataAnimationDataSource; public;
-
-    property &delegate: nullable AerisMapKit.IAWFDataAnimationDelegate; public;
-
-
+  public
+    property representableType: AerisMapKit.AWFDataRepresentableType;
+    property dataSource: nullable AerisMapKit.IAWFDataAnimationDataSource;
+    property &delegate: nullable AerisMapKit.IAWFDataAnimationDelegate;
   end;
 
   AerisMapKit.IAWFStylable = interface(INSObject)
-    property style: id read write; public;
-
-
+    property style: id read write;
   end;
 
   AerisMapKit.AWFPointSource = class(AerisMapKit.AWFMapContentSource, AerisMapKit.IAWFStylable, AerisMapKit.IAWFAnimatableOverlay, AerisMapKit.IAWFDataAnimationDataSource)
-  private
-
-    property annotations: NSArray<AerisMapKit.IAWFAnnotation>; public;
-
-    property requestOptions: AWFWeatherRequestOptions; public;
-
-    property requestAction: NSString; public;
-
-    property style: id; public;
-
-    property legendStyle: AerisMapKit.AWFLegendStyle; public;
-
-    property minimumInteritemDistance: CGFloat; public;
-
-    property animation: AerisMapKit.AWFDataAnimation; public;
-
+  public
+    property annotations: NSArray<AerisMapKit.IAWFAnnotation>;
+    property requestOptions: AWFWeatherRequestOptions;
+    property requestAction: NSString;
+    property style: id;
+    property legendStyle: AerisMapKit.AWFLegendStyle;
+    property minimumInteritemDistance: CGFloat;
+    property animation: AerisMapKit.AWFDataAnimation;
     [NonSwiftOnly]
-    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<AerisMapKit.IAWFAnnotation>; error: NSError)); public;
+    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<AerisMapKit.IAWFAnnotation>; error: NSError));
     [Alias]
     [SwiftOnly]
-    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<AerisMapKit.IAWFAnnotation>; error: NSError)); public;
+    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<AerisMapKit.IAWFAnnotation>; error: NSError));
     [NonSwiftOnly]
-    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) fromDate(fromDate: NSDate) toDate(toDate: NSDate) results(results: method(Param0: NSArray<AerisMapKit.IAWFAnnotation>; Param1: NSError)); public;
+    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) fromDate(fromDate: NSDate) toDate(toDate: NSDate) results(results: method(Param0: NSArray<AerisMapKit.IAWFAnnotation>; Param1: NSError));
     [Alias]
     [SwiftOnly]
-    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) &from(fromDate: NSDate) &to(toDate: NSDate) results(results: method(Param0: NSArray<AerisMapKit.IAWFAnnotation>; Param1: NSError)); public;
-    method reset; public;
-
+    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) &from(fromDate: NSDate) &to(toDate: NSDate) results(results: method(Param0: NSArray<AerisMapKit.IAWFAnnotation>; Param1: NSError));
+    method reset;
   end;
 
   AerisMapKit.AWFLabelDataFormatter = block(object: AWFWeatherObject): NSString;
 
   AerisMapKit.AWFLabelSource = class(AerisMapKit.AWFPointSource)
-  private
-
-    property formatter: method(object: AWFWeatherObject): NSString; public;
-
-    method setValueFormatter(formatter: method(object: AWFWeatherObject): NSString); public;
-    property valueFormatter: method(object: AWFWeatherObject): NSString; public;
-
-
+  public
+    property formatter: method(object: AWFWeatherObject): NSString;
+    method setValueFormatter(formatter: method(object: AWFWeatherObject): NSString);
+    property valueFormatter: method(object: AWFWeatherObject): NSString;
   end;
 
   AerisMapKit.AWFWeatherMapType = enum ([NonSwiftOnly] AWFWeatherMapTypeApple = 0, [NonSwiftOnly] Apple = 0, [SwiftOnly] apple = 0, [NonSwiftOnly] AWFWeatherMapTypeGoogle = 1, [NonSwiftOnly] Google = 1, [SwiftOnly] google = 1, [NonSwiftOnly] AWFWeatherMapTypeMapbox = 2, [NonSwiftOnly] Mapbox = 2, [SwiftOnly] mapbox = 2, [NonSwiftOnly] AWFWeatherMapTypeDefault = 0, [NonSwiftOnly] &Default = 0, [SwiftOnly] &default = 0);
 
+  AerisMapKit.IAWFWeatherMapView = interface(INSObject)
+    property &delegate: id read write;
+  end;
+
   AerisMapKit.AWFWeatherMap = class(NSObject, AerisMapKit.IAWFMapContentDelegate, AerisMapKit.IAWFAnimationDelegate, AerisMapKit.IAWFMapStrategyDelegate)
-  private
-
-    property strategy: AerisMapKit.IAWFMapStrategy; public;
-
-    property weatherMapType: AerisMapKit.AWFWeatherMapType; public;
-
-    property weatherMapView: AerisMapKit.AWFWeatherMapContainerView; public;
-
-    property mapView: UIView; public;
-
-    property mapViewDelegate: nullable id; public;
-
-    property forecastModelType: AWFForecastModelType; public;
-
-    property futureIndicatorView: UIView; public;
-
-    property sources: NSArray<AerisMapKit.AWFMapContentSource>; public;
-
-    property activeLayerTypes: NSArray<AWFMapLayer>; public;
-
-    property activeLayerTypeCodes: NSArray<AWFMapLayer>; public;
-
-    property timeline: AerisMapKit.AWFAnimationTimeline; public;
-
-    property config: AerisMapKit.AWFWeatherMapConfig; public;
-
-    property style: AerisMapKit.AWFWeatherMapStyle; public;
-
-    property amp: AerisMapKit.AWFAmpTileSourceProvider; public;
-
-    property &delegate: nullable AerisMapKit.IAWFWeatherMapDelegate; public;
-
-    property dataSource: nullable AerisMapKit.IAWFWeatherMapDataSource; public;
-
-    property animationRepeatCount: NSInteger; public;
-
-    property animating: BOOL; public;
-
-    property loadingAnimation: BOOL; public;
-
+  public
+    property strategy: AerisMapKit.IAWFMapStrategy;
+    property weatherMapType: AerisMapKit.AWFWeatherMapType;
+    property weatherMapView: AerisMapKit.AWFWeatherMapContainerView;
+    property mapView: UIView;
+    property mapViewDelegate: nullable id;
+    property forecastModelType: AWFForecastModelType;
+    property futureIndicatorView: UIView;
+    property sources: NSArray<AerisMapKit.AWFMapContentSource>;
+    property activeLayerTypes: NSArray<AWFMapLayer>;
+    property activeLayerTypeCodes: NSArray<NSString>;
+    property timeline: AerisMapKit.AWFAnimationTimeline;
+    property config: AerisMapKit.AWFWeatherMapConfig;
+    property style: AerisMapKit.AWFWeatherMapStyle;
+    property amp: AerisMapKit.AWFAmpTileSourceProvider;
+    property &delegate: nullable AerisMapKit.IAWFWeatherMapDelegate;
+    property dataSource: nullable AerisMapKit.IAWFWeatherMapDataSource;
+    property animationRepeatCount: NSInteger;
+    property animating: BOOL;
+    property loadingAnimation: BOOL;
     [NonSwiftOnly]
-    method initWithMapType(mapType: AerisMapKit.AWFWeatherMapType): instancetype; public;
+    method initWithMapType(mapType: AerisMapKit.AWFWeatherMapType): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapType(mapType: AerisMapKit.AWFWeatherMapType): instancetype; public;
+    class constructor withMapType(mapType: AerisMapKit.AWFWeatherMapType): instancetype;
     [NonSwiftOnly]
-    method initWithMapType(mapType: AerisMapKit.AWFWeatherMapType) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype; public;
+    method initWithMapType(mapType: AerisMapKit.AWFWeatherMapType) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapType(mapType: AerisMapKit.AWFWeatherMapType) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype; public;
+    class constructor withMapType(mapType: AerisMapKit.AWFWeatherMapType) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype;
     [NonSwiftOnly]
-    method initWithMapView(mapView: id): instancetype; public;
+    method initWithMapView(mapView: id): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapView(mapView: id): instancetype; public;
+    class constructor withMapView(mapView: id): instancetype;
     [NonSwiftOnly]
-    method initWithMapView(mapView: id) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype; public;
+    method initWithMapView(mapView: id) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapView(mapView: id) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype; public;
-    method addSource(source: AerisMapKit.AWFMapContentSource); public;
-    method addSources(source: NSArray<AerisMapKit.AWFMapContentSource>); public;
-    method removeSource(source: AerisMapKit.AWFMapContentSource); public;
-    method removeSources(sources: NSArray<AerisMapKit.AWFMapContentSource>); public;
-    method containsSource(source: AerisMapKit.AWFMapContentSource): BOOL; public;
+    class constructor withMapView(mapView: id) config(mapConfig: nullable AerisMapKit.AWFWeatherMapConfig): instancetype;
+    method addSource(source: AerisMapKit.AWFMapContentSource);
+    method addSources(source: NSArray<AerisMapKit.AWFMapContentSource>);
+    method removeSource(source: AerisMapKit.AWFMapContentSource);
+    method removeSources(sources: NSArray<AerisMapKit.AWFMapContentSource>);
+    method containsSource(source: AerisMapKit.AWFMapContentSource): BOOL;
     [NonSwiftOnly]
-    method addSourceForLayerType(layerType: AWFMapLayer); public;
+    method addSourceForLayerType(layerType: AWFMapLayer);
     [Alias]
     [SwiftOnly]
-    method addSource(layerType: AWFMapLayer); public;
+    method addSource(layerType: AWFMapLayer);
     [NonSwiftOnly]
-    method addSourcesForLayerTypes(layerTypes: NSArray<AWFMapLayer>); public;
+    method addSourcesForLayerTypes(layerTypes: NSArray<AWFMapLayer>);
     [Alias]
     [SwiftOnly]
-    method addSources(layerTypes: NSArray<AWFMapLayer>); public;
+    method addSources(layerTypes: NSArray<AWFMapLayer>);
     [NonSwiftOnly]
-    method removeSourceForLayerType(layerType: AWFMapLayer); public;
+    method removeSourceForLayerType(layerType: AWFMapLayer);
     [Alias]
     [SwiftOnly]
-    method removeSource(layerType: AWFMapLayer); public;
+    method removeSource(layerType: AWFMapLayer);
     [NonSwiftOnly]
-    method removeSourcesForLayerTypes(layerTypes: NSArray<AWFMapLayer>); public;
+    method removeSourcesForLayerTypes(layerTypes: NSArray<AWFMapLayer>);
     [Alias]
     [SwiftOnly]
-    method removeSources(layerTypes: NSArray<AWFMapLayer>); public;
+    method removeSources(layerTypes: NSArray<AWFMapLayer>);
     [NonSwiftOnly]
-    method containsSourceForLayerType(layerType: AWFMapLayer): BOOL; public;
+    method containsSourceForLayerType(layerType: AWFMapLayer): BOOL;
     [Alias]
     [SwiftOnly]
-    method containsSource(layerType: AWFMapLayer): BOOL; public;
-    method sourceForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFMapContentSource; public;
-    method refreshAllSources; public;
-    method enableAutoRefresh; public;
-    method disableAutoRefresh; public;
+    method containsSource(layerType: AWFMapLayer): BOOL;
+    method sourceForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFMapContentSource;
+    method refreshAllSources;
+    method enableAutoRefresh;
+    method disableAutoRefresh;
     [NonSwiftOnly]
-    method updatePointDataForCurrentMapBounds; public;
+    method updatePointDataForCurrentMapBounds;
     [Alias]
     [SwiftOnly]
-    method updatePointData; public;
-    method startAnimating; public;
+    method updatePointData;
+    method startAnimating;
     [NonSwiftOnly]
-    method startAnimatingFromTime(time: NSDate); public;
+    method startAnimatingFromTime(time: NSDate);
     [Alias]
     [SwiftOnly]
-    method startAnimating(time: NSDate); public;
-    method stopAnimating; public;
-    method pauseAnimation; public;
+    method startAnimating(time: NSDate);
+    method loadAnimationIfNeeded;
+    method stopAnimating;
+    method pauseAnimation;
+    method resumeAnimation;
     [NonSwiftOnly]
-    method goToTime(time: NSDate); public;
+    method goToTime(time: NSDate);
     [Alias]
     [SwiftOnly]
-    method go(time: NSDate); public;
-    class method supportedForecastModels: NSArray<NSDictionary<NSString,NSString>>; public;
-
+    method go(time: NSDate);
+    class method supportedForecastModels: NSArray<NSDictionary<NSString,NSString>>;
   end;
 
   AerisMapKit.AWFWeatherMapContainerView = class(UIView, IUIGestureRecognizerDelegate)
-  private
-
-    property tapGestureRecognizer: UITapGestureRecognizer; public;
-
-    property longPressRecognizer: UILongPressGestureRecognizer; public;
-
-    property longPressRecognizerForCircle: UILongPressGestureRecognizer; public;
-
-    property &delegate: AerisMapKit.IAWFWeatherMapContainerViewDelegate; public;
-
-    property longPress: UILongPressGestureRecognizer; public;
-
-
+  public
+    property tapGestureRecognizer: UITapGestureRecognizer;
+    property longPressRecognizer: UILongPressGestureRecognizer;
+    property longPressRecognizerForCircle: UILongPressGestureRecognizer;
+    property &delegate: AerisMapKit.IAWFWeatherMapContainerViewDelegate;
+    property longPress: UILongPressGestureRecognizer;
   end;
 
   AerisMapKit.IAWFWeatherMapContainerViewDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didReceiveTapAtPoint(point: CGPoint); public;
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didReceiveTapAtPoint(point: CGPoint);
     [Alias]
     [SwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didReceiveTapAt(point: CGPoint); public;
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didReceiveTapAt(point: CGPoint);
     [NonSwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didStartLongPressGestureAtPoint(point: CGPoint); public;
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didStartLongPressGestureAtPoint(point: CGPoint);
     [Alias]
     [SwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didStartLongPressGestureAt(point: CGPoint); public;
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didStartLongPressGestureAt(point: CGPoint);
     [NonSwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didFinishLongPressGestureAtPoint(point: CGPoint); public;
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didFinishLongPressGestureAtPoint(point: CGPoint);
     [Alias]
     [SwiftOnly]
-    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didFinishLongPressGestureAt(point: CGPoint); public;
-    method weatherMapContainerViewDidCancelLongPressGesture(containerView: AerisMapKit.AWFWeatherMapContainerView); public;
-
+    method weatherMapContainerView(containerView: AerisMapKit.AWFWeatherMapContainerView) didFinishLongPressGestureAt(point: CGPoint);
+    method weatherMapContainerViewDidCancelLongPressGesture(containerView: AerisMapKit.AWFWeatherMapContainerView);
   end;
 
-  AWFLayerModifierType = NSString;
+  AerisMapKit.AWFDelegateProxy = class(NSObject)
+  public
+    property silentWhenEmpty: BOOL;
+    method addDelegate(&delegate: __gp_265);
+    method removeDelegate(&delegate: __gp_265);
+    method removeAllDelegates;
+  end;
 
   AerisMapKit.AWFMapLayersMetadata = class(NSObject)
-  private
-
-    property metadata: NSDictionary<AWFMapLayer,NSDictionary<NSString,AerisMapKit.AWFMapLayerModifierCategory>>; public;
-
-    property isLoading: BOOL; public;
-
-    property hasLoaded: BOOL; public;
-
-    method getWithCompletion(completionBlock: method()); public;
-    method addLoadCompletionCallback(callback: method()); public;
-    method isForecastModel(forecastModel: AWFForecastModelType) supportedByLayerType(layerType: AWFMapLayer): BOOL; public;
-
+  public
+    property metadata: NSDictionary<AWFMapLayer,NSDictionary<NSString,AerisMapKit.AWFMapLayerModifierCategory>>;
+    property isLoading: BOOL;
+    property hasLoaded: BOOL;
+    method getWithCompletion(completionBlock: method());
+    method addLoadCompletionCallback(callback: method());
+    method isValid(layerCode: NSString): BOOL;
+    method isForecastModelRequired(layerType: AWFMapLayer): BOOL;
+    method isForecastModel(forecastModel: AWFForecastModelType) supportedByLayerType(layerType: AWFMapLayer): BOOL;
   end;
 
-  AWFMapLayerOptions = NSDictionary<AWFLayerModifierType,AerisMapKit.AWFMapLayerModifierCategory>;
+  AWFMapLayerOptions = NSDictionary<NSString,AerisMapKit.AWFMapLayerModifierCategory>;
 
   AerisMapKit.AWFLayerMetadataLoadCallback = block();
 
   AerisMapKit.AWFMapLayerModifierCategory = class(NSObject)
-  private
-
-    property label: NSString; public;
-
-    property details: NSString; public;
-
-    property modifiers: NSArray<AerisMapKit.AWFMapLayerModifier>; public;
-
-
+  public
+    property label: NSString;
+    property details: NSString;
+    property modifiers: NSArray<AerisMapKit.AWFMapLayerModifier>;
   end;
 
   AerisMapKit.AWFMapLayerModifier = class(NSObject)
-  private
-
-    property identifier: NSString; public;
-
-    property label: NSString; public;
-
-
+  public
+    property identifier: NSString;
+    property label: NSString;
   end;
 
   AerisMapKit.AWFRasterSource = class(AerisMapKit.AWFMapContentSource)
-  private
-
-    property overlay: id; public;
-
-    property alpha: CGFloat; public;
-
+  public
+    property overlay: id;
+    property alpha: CGFloat;
     [NonSwiftOnly]
-    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype; public;
+    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype; public;
+    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype;
     [NonSwiftOnly]
-    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) layerType(layerType: AWFMapLayer): instancetype; public;
+    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) layerType(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) layerType(layerType: AWFMapLayer): instancetype; public;
-
+    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) layerType(layerType: AWFMapLayer): instancetype;
   end;
 
   AerisMapKit.AWFShapeSource = class(AerisMapKit.AWFMapContentSource, AerisMapKit.IAWFStylable)
-  private
-
-    property polygons: NSArray<AerisMapKit.IAWFPolygon>; public;
-
-    property polylines: NSArray<AerisMapKit.IAWFPolyline>; public;
-
-    property overlays: NSArray<id>; public;
-
-    property requestOptions: nullable AWFWeatherRequestOptions; public;
-
-    property requestAction: nullable NSString; public;
-
-    property style: nullable id; public;
-
-    property legendStyle: nullable AerisMapKit.AWFLegendStyle; public;
-
+  public
+    property polygons: NSArray<AerisMapKit.IAWFPolygon>;
+    property polylines: NSArray<AerisMapKit.IAWFPolyline>;
+    property overlays: NSArray<id>;
+    property requestOptions: nullable AWFWeatherRequestOptions;
+    property requestAction: nullable NSString;
+    property style: nullable id;
+    property legendStyle: nullable AerisMapKit.AWFLegendStyle;
     [NonSwiftOnly]
-    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<id>; error: NSError)); public;
+    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<id>; error: NSError));
     [Alias]
     [SwiftOnly]
-    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<id>; error: NSError)); public;
+    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) results(results: method(results: NSArray<id>; error: NSError));
     [NonSwiftOnly]
-    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) fromDate(fromDate: NSDate) toDate(toDate: NSDate) results(results: method(Param0: NSArray<id>; Param1: NSError)); public;
+    method loadForMapBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) fromDate(fromDate: NSDate) toDate(toDate: NSDate) results(results: method(Param0: NSArray<id>; Param1: NSError));
     [Alias]
     [SwiftOnly]
-    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) &from(fromDate: NSDate) &to(toDate: NSDate) results(results: method(Param0: NSArray<id>; Param1: NSError)); public;
+    method load(bounds: AerisMapKit.AWFMapCoordinateBounds) &from(fromDate: NSDate) &to(toDate: NSDate) results(results: method(Param0: NSArray<id>; Param1: NSError));
     [NonSwiftOnly]
-    method loadForMapWithResults(results: method(results: NSArray<id>; error: NSError)); public;
+    method loadForMapWithResults(results: method(results: NSArray<id>; error: NSError));
     [Alias]
     [SwiftOnly]
-    method loadForMap(results: method(results: NSArray<id>; error: NSError)); public;
-    method reset; public;
-
+    method loadForMap(results: method(results: NSArray<id>; error: NSError));
+    method reset;
   end;
 
   AerisMapKit.IAWFTimeDependent = interface(INSObject)
-    property date: NSDate read write; public;
-
-    property offset: NSString read write; public;
-
+    property date: NSDate read write;
+    property offset: NSString read write;
     [NonSwiftOnly]
-    method updateForDateClosestToDate(date: NSDate) updatingOffset(updateOffset: BOOL); public;
+    method updateForDateClosestToDate(date: NSDate) updatingOffset(updateOffset: BOOL);
     [Alias]
     [SwiftOnly]
-    method updateForDateClosest(date: NSDate) updatingOffset(updateOffset: BOOL); public;
-
+    method updateForDateClosest(date: NSDate) updatingOffset(updateOffset: BOOL);
   end;
 
   AerisMapKit.IAWFImageAnimationDataSource = interface(AerisMapKit.IAWFAnimationDataSource)
     [NonSwiftOnly]
-    method imagesForAnimation(animation: AerisMapKit.AWFAnimation): NSArray<UIImage>; public;
+    method imagesForAnimation(animation: AerisMapKit.AWFAnimation): NSArray<UIImage>;
     [Alias]
     [SwiftOnly]
-    method images(animation: AerisMapKit.AWFAnimation): NSArray<UIImage>; public;
+    method images(animation: AerisMapKit.AWFAnimation): NSArray<UIImage>;
     [NonSwiftOnly]
-    method loadImagesForAnimation; public;
+    method loadImagesForAnimation;
     [Alias]
     [SwiftOnly]
-    method loadImages; public;
-
+    method loadImages;
   end;
 
   AerisMapKit.IAWFImageAnimationDelegate = interface(AerisMapKit.IAWFAnimationDelegate)
     [NonSwiftOnly]
-    method animation(animation: AerisMapKit.AWFImageAnimation) didLoadImage(image: UIImage) forInterval(interval: NSInteger); public;
+    method animation(animation: AerisMapKit.AWFImageAnimation) didLoadImage(image: UIImage) forInterval(interval: NSInteger);
     [Alias]
     [SwiftOnly]
-    method animation(animation: AerisMapKit.AWFImageAnimation) didLoad(image: UIImage) forInterval(interval: NSInteger); public;
-
+    method animation(animation: AerisMapKit.AWFImageAnimation) didLoad(image: UIImage) forInterval(interval: NSInteger);
   end;
 
   AerisMapKit.AWFImageAnimation = class(AerisMapKit.AWFAnimation)
-  private
-
-    property imageView: UIImageView; public;
-
-    property currentImage: nullable UIImage; public;
-
-    property isFutureAnimation: BOOL; public;
-
-    property crossfade: BOOL; public;
-
-    property &delegate: AerisMapKit.IAWFImageAnimationDelegate; public;
-
+  public
+    property imageView: UIImageView;
+    property currentImage: nullable UIImage;
+    property isFutureAnimation: BOOL;
+    property shouldAlwaysShow: BOOL;
+    property crossfade: BOOL;
+    property &delegate: AerisMapKit.IAWFImageAnimationDelegate;
     [NonSwiftOnly]
-    method imageClosestToTime(time: NSDate): nullable UIImage; public;
+    method imageClosestToTime(time: NSDate): nullable UIImage;
     [Alias]
     [SwiftOnly]
-    method imageClosest(time: NSDate): nullable UIImage; public;
-    method setHasNoAnimationData; public;
-    property current: nullable UIImage; public;
-
-
+    method imageClosest(time: NSDate): nullable UIImage;
+    method setHasNoAnimationData;
+    property current: nullable UIImage;
   end;
 
   AerisMapKit.IAWFTileDataSource = interface(INSObject)
     [NonSwiftOnly]
-    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath): NSURL; public;
+    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(path: AerisMapKit.AWFTileOverlayPath): NSURL; public;
+    method URL(path: AerisMapKit.AWFTileOverlayPath): NSURL;
     [NonSwiftOnly]
-    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL; public;
+    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL; public;
-
+    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL;
   end;
 
   AerisMapKit.AWFTileSource = class(AerisMapKit.AWFMapContentSource, AerisMapKit.IAWFTileDataSource, AerisMapKit.IAWFTimeDependent, AerisMapKit.IAWFAnimatableOverlay, AerisMapKit.IAWFImageAnimationDataSource)
-  private
-
-    property URLTemplate: NSString; public;
-
-    property alpha: CGFloat; public;
-
-    property metadata: AerisMapKit.AWFOverlayMetadata; public;
-
-    property date: nullable NSDate; public;
-
-    property offset: nullable NSString; public;
-
-    property isFutureLayer: BOOL; public;
-
-    property animation: AerisMapKit.AWFImageAnimation; public;
-
-    property maximumIntervalsForAnimation: NSInteger; public;
-
-    property shouldUseRetinaImagery: BOOL; public;
-
-    property shouldUseRetinaImageryForAnimation: BOOL; public;
-
+  public
+    property URLTemplate: NSString;
+    property alpha: CGFloat;
+    property metadata: AerisMapKit.AWFOverlayMetadata;
+    property date: nullable NSDate;
+    property offset: nullable NSString;
+    property isFutureLayer: BOOL;
+    property shouldAlwaysShow: BOOL;
+    property animation: AerisMapKit.AWFImageAnimation;
+    property maximumIntervalsForAnimation: NSInteger;
+    property shouldUseRetinaImagery: BOOL;
+    property shouldUseRetinaImageryForAnimation: BOOL;
     [NonSwiftOnly]
-    method initWithURLTemplate(URLTemplate: NSString): id; public;
+    method initWithURLTemplate(URLTemplate: NSString): id;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withURLTemplate(URLTemplate: NSString): id; public;
+    class constructor withURLTemplate(URLTemplate: NSString): id;
     [NonSwiftOnly]
-    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath): NSURL; public;
+    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(path: AerisMapKit.AWFTileOverlayPath): NSURL; public;
+    method URL(path: AerisMapKit.AWFTileOverlayPath): NSURL;
     [NonSwiftOnly]
-    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method URLForTilePath(path: AerisMapKit.AWFTileOverlayPath) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(path: AerisMapKit.AWFTileOverlayPath) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method URL(path: AerisMapKit.AWFTileOverlayPath) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [NonSwiftOnly]
-    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL; public;
+    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL; public;
+    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString): NSURL;
     [NonSwiftOnly]
-    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method URLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [Alias]
     [SwiftOnly]
-    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
-    method reset; public;
-
+    method URL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) timestamp(timestamp: NSString) scaledForScreen(scaledForScreen: BOOL): NSURL;
+    method reset;
   end;
 
   AerisMapKit.AWFAmpTileSource = class(AerisMapKit.AWFTileSource)
-  private
-
-    property tileURL: AerisMapKit.AWFMapTileURL; public;
-
-
+  public
+    property tileURL: AerisMapKit.AWFMapTileURL;
   end;
 
   AerisMapKit.AWFAmpTileSourceProvider = class(NSObject)
-  private
-
-    property timestamp: NSDate; public;
-
-    property forecastModelType: AWFForecastModelType; public;
-
-    property maximumIntervalsForAnimation: NSUInteger; public;
-
-    property tileLayer: AerisMapKit.AWFAmpTileSource; public;
-
-    property textTileLayer: AerisMapKit.AWFAmpTileSource; public;
-
-    property futureTileLayer: AerisMapKit.AWFAmpTileSource; public;
-
-    property futureTextTileLayer: AerisMapKit.AWFAmpTileSource; public;
-
-    property shouldUseRetinaImagery: BOOL; public;
-
-    property shouldUseRetinaImageryForAnimation: BOOL; public;
-
-    property &delegate: nullable AerisMapKit.IAWFAmpTileSourceProviderDelegate; public;
-
+  public
+    property timestamp: NSDate;
+    property forecastModelType: AWFForecastModelType;
+    property maximumIntervalsForAnimation: NSUInteger;
+    property tileLayer: AerisMapKit.AWFAmpTileSource;
+    property textTileLayer: AerisMapKit.AWFAmpTileSource;
+    property futureTileLayer: AerisMapKit.AWFAmpTileSource;
+    property futureTextTileLayer: AerisMapKit.AWFAmpTileSource;
+    property shouldUseRetinaImagery: BOOL;
+    property shouldUseRetinaImageryForAnimation: BOOL;
+    property layerMetadata: AerisMapKit.AWFMapLayersMetadata;
+    property &delegate: nullable AerisMapKit.IAWFAmpTileSourceProviderDelegate;
     [NonSwiftOnly]
-    method initWithWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype; public;
+    method initWithWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype; public;
-    method init: instancetype; public;
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method addRasterLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>); public;
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) atIndex(&index: NSInteger); public;
+    class constructor withWeatherMap(weatherMap: AerisMapKit.AWFWeatherMap): instancetype;
+    method init: instancetype;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method addRasterLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>);
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) atIndex(&index: NSInteger);
     [NonSwiftOnly]
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) above(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) above(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) below(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) below(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method addRasterLayerBelowAllLayers(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayerBelowAllLayers(layer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method addRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method bringRasterLayerToTop(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method bringRasterLayerToTop(layer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method bringRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method bringRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method pushRasterLayerToBottom(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method pushRasterLayerToBottom(layer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method pushRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) toIndex(&index: NSInteger); public;
+    method pushRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) toIndex(&index: NSInteger);
     [NonSwiftOnly]
-    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) above(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) above(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
+    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) below(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
-    method removeRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method removeRasterLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>); public;
-    method containsLayerType(layerType: AWFMapLayer): BOOL; public;
-    method containsRasterLayer(layer: AerisMapKit.AWFRasterMapLayer): BOOL; public;
+    method moveRasterLayer(layer: AerisMapKit.AWFRasterMapLayer) below(otherLayer: AerisMapKit.AWFRasterMapLayer);
+    method removeRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method removeRasterLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>);
+    method containsLayerType(layerType: AWFMapLayer): BOOL;
+    method containsRasterLayer(layer: AerisMapKit.AWFRasterMapLayer): BOOL;
     [NonSwiftOnly]
-    method rasterLayerForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer; public;
+    method rasterLayerForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer;
     [Alias]
     [SwiftOnly]
-    method rasterLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer; public;
-    method addTextLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method rasterLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer;
+    method addTextLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method addTextLayerForRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method addTextLayerForRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method addTextLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method removeTextLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method addTextLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method removeTextLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method removeTextLayerForRasterLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method removeTextLayerForRasterLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [Alias]
     [SwiftOnly]
-    method removeTextLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
+    method removeTextLayer(layer: AerisMapKit.AWFRasterMapLayer);
     [NonSwiftOnly]
-    method textLayerForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer; public;
+    method textLayerForLayerType(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer;
     [Alias]
     [SwiftOnly]
-    method textLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer; public;
+    method textLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer;
     [NonSwiftOnly]
-    method updateLayersForDate(date: NSDate); public;
+    method updateLayersForDate(date: NSDate);
     [Alias]
     [SwiftOnly]
-    method updateLayers(date: NSDate); public;
-    method setNeedsAnimationIntervalUpdate; public;
-
+    method updateLayers(date: NSDate);
+    method setNeedsAnimationIntervalUpdate;
   end;
 
   AerisMapKit.IAWFAmpTileSourceProviderDelegate = interface(INSObject)
-    method ampSourceProvider(provider: AerisMapKit.AWFAmpTileSourceProvider) needsSourceAddedToMap(source: AerisMapKit.AWFTileSource); public;
-    method ampSourceProvider(provider: AerisMapKit.AWFAmpTileSourceProvider) needsSourceRemovedFromMap(source: AerisMapKit.AWFTileSource); public;
-
+    method ampSourceProvider(provider: AerisMapKit.AWFAmpTileSourceProvider) needsSourceAddedToMap(source: AerisMapKit.AWFTileSource);
+    method ampSourceProvider(provider: AerisMapKit.AWFAmpTileSourceProvider) needsSourceRemovedFromMap(source: AerisMapKit.AWFTileSource);
   end;
 
   AerisMapKit.AWFCombinedSource = class(AerisMapKit.AWFPointSource)
-  private
-
-    property overlays: NSArray<id>; public;
-
-    property polygons: NSArray<AerisMapKit.IAWFPolygon>; public;
-
-    property polylines: NSArray<AerisMapKit.IAWFPolyline>; public;
-
-    property overlayStyle: nullable id; public;
-
-    property styleProvider: nullable AerisMapKit.AWFDataRepresentableStyle; public;
-
-    property animations: NSArray<AerisMapKit.AWFAnimation>; public;
-
-    property showAnnotationsDuringAnimation: BOOL; public;
-
-    property showOverlaysDuringAnimation: BOOL; public;
-
-    property showPolygonsDuringAnimation: BOOL; public;
-
-    property showPolylinesDuringAnimation: BOOL; public;
-
-    method overlayForIdentifier(identifier: NSString): NSArray<id>; public;
-    method polygonsForIdentifier(identifier: NSString): NSArray<AerisMapKit.IAWFPolygon>; public;
-    method polylinesForIdentifier(identifier: NSString): NSArray<AerisMapKit.IAWFPolyline>; public;
-
+  public
+    property overlays: NSArray<id>;
+    property polygons: NSArray<AerisMapKit.IAWFPolygon>;
+    property polylines: NSArray<AerisMapKit.IAWFPolyline>;
+    property overlayStyle: nullable id;
+    property styleProvider: nullable AerisMapKit.AWFDataRepresentableStyle;
+    property animations: NSArray<AerisMapKit.AWFAnimation>;
+    property showAnnotationsDuringAnimation: BOOL;
+    property showOverlaysDuringAnimation: BOOL;
+    property showPolygonsDuringAnimation: BOOL;
+    property showPolylinesDuringAnimation: BOOL;
+    method overlayForIdentifier(identifier: NSString): NSArray<id>;
+    method polygonsForIdentifier(identifier: NSString): NSArray<AerisMapKit.IAWFPolygon>;
+    method polylinesForIdentifier(identifier: NSString): NSArray<AerisMapKit.IAWFPolyline>;
   end;
 
   AerisMapKit.IAWFStyledMapItem = interface(AerisMapKit.IAWFStylable)
-    property identifier: NSString read write; public;
-
-    property modelObject: AWFWeatherObject read write; public;
-
-    property layerType: AWFMapLayer read write; public;
-
+    property identifier: NSString read write;
+    property modelObject: AWFWeatherObject read write;
+    property layerType: AWFMapLayer read write;
     [NonSwiftOnly]
-    method initWithWeatherObject(object: AWFWeatherObject): instancetype; public;
+    method initWithWeatherObject(object: AWFWeatherObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWeatherObject(object: AWFWeatherObject): instancetype; public;
-
+    class constructor withWeatherObject(object: AWFWeatherObject): instancetype;
   end;
 
   AWFRasterBlendMode = NSString;
@@ -1959,109 +1757,89 @@ type
   AWFRasterMask = NSString;
 
   AerisMapKit.AWFRasterMapLayer = class(NSObject)
-  private
-
-    property layerType: AWFMapLayer; public;
-
-    property blendMode: AWFRasterBlendMode; public;
-
-    property forecastModel: AWFForecastModelType; public;
-
-    property alpha: CGFloat; public;
-
-    property blurAmount: CGFloat; public;
-
-    property mask: AWFRasterMask; public;
-
-    property filters: NSArray<AerisMapKit.AWFRasterMapLayerFilter>; public;
-
-    property darkStyle: BOOL; public;
-
-    property textLayer: BOOL; public;
-
-    property largeText: BOOL; public;
-
-    property metric: BOOL; public;
-
-    property includeTextData: BOOL; public;
-
-    property valueString: nullable NSString; public;
-
+  public
+    property layerType: AWFMapLayer;
+    property layerKey: NSString;
+    property blendMode: AWFRasterBlendMode;
+    property forecastModel: AWFForecastModelType;
+    property alpha: CGFloat;
+    property blurAmount: CGFloat;
+    property mask: AWFRasterMask;
+    property filters: NSArray<AerisMapKit.AWFRasterMapLayerFilter>;
+    property darkStyle: BOOL;
+    property textLayer: BOOL;
+    property largeText: BOOL;
+    property metric: BOOL;
+    property includeTextData: BOOL;
+    property valueString: nullable NSString;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer): instancetype; public;
+    method initWithLayerType(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer): instancetype;
     [NonSwiftOnly]
-    method initWithLayerKey(layerKey: NSString): instancetype; public;
+    method initWithLayerKey(layerKey: NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerKey(layerKey: NSString): instancetype; public;
+    class constructor withLayerKey(layerKey: NSString): instancetype;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype; public;
+    method initWithLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype; public;
-    method init: instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype;
+    method init: instancetype;
     [NonSwiftOnly]
-    class method layerWithLayerType(layerType: AWFMapLayer): instancetype; public;
+    class method layerWithLayerType(layerType: AWFMapLayer): instancetype;
     [Alias]
     [SwiftOnly]
-    class method layer(layerType: AWFMapLayer): instancetype; public;
+    class method layer(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer): instancetype;
     [NonSwiftOnly]
-    class method layerWithLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype; public;
+    class method layerWithLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype;
     [Alias]
     [SwiftOnly]
-    class method layer(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype; public;
+    class method layer(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer) forecastModel(forecastModel: AWFForecastModelType): instancetype;
     [NonSwiftOnly]
-    class method layerWithLayerKey(layerKey: NSString): instancetype; public;
+    class method layerWithLayerKey(layerKey: NSString): instancetype;
     [Alias]
     [SwiftOnly]
-    class method layer(layerKey: NSString): instancetype; public;
+    class method layer(layerKey: NSString): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerKey(layerKey: NSString): instancetype; public;
-    method addFilter(filter: AerisMapKit.AWFRasterMapLayerFilter); public;
-    method removeFilter(filter: AerisMapKit.AWFRasterMapLayerFilter); public;
-    class method layerTitles: NSDictionary<AWFMapLayer,NSString>; public;
-    class method futureLayerRequiresModel(layer: AWFMapLayer): BOOL; public;
+    class constructor withLayerKey(layerKey: NSString): instancetype;
+    method addFilter(filter: AerisMapKit.AWFRasterMapLayerFilter);
+    method removeFilter(filter: AerisMapKit.AWFRasterMapLayerFilter);
+    class method layerTitles: NSDictionary<AWFMapLayer,NSString>;
+    class method futureLayerRequiresModel(layerKey: NSString): BOOL;
     [NonSwiftOnly]
-    class method weatherDataTypeForLayerType(layerType: AWFMapLayer): AWFWeatherDataType; public;
+    class method weatherDataTypeForLayerType(layerType: AWFMapLayer): AWFWeatherDataType;
     [Alias]
     [SwiftOnly]
-    class method weatherDataType(layerType: AWFMapLayer): AWFWeatherDataType; public;
-
+    class method weatherDataType(layerType: AWFMapLayer): AWFWeatherDataType;
   end;
 
   AerisMapKit.AWFRasterMapLayerFilter = class(NSObject)
-  private
-
-    property valueString: NSString; public;
-
-
+  public
+    property valueString: NSString;
   end;
 
   AerisMapKit.AWFLayerEmbossFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
   end;
 
   AerisMapKit.AWFLayerBlurFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
-  private
-
-    property amount: CGFloat; public;
-
-
+  public
+    property amount: CGFloat;
   end;
 
   AerisMapKit.AWFLayerGrayFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
@@ -2095,277 +1873,239 @@ type
   end;
 
   AerisMapKit.AWFLayerColorizeAlphaFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithBlue(blue: CGFloat) yellow(yellow: CGFloat) red(red: CGFloat): instancetype; public;
+    method initWithBlue(blue: CGFloat) yellow(yellow: CGFloat) red(red: CGFloat): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBlue(blue: CGFloat) yellow(yellow: CGFloat) red(red: CGFloat): instancetype; public;
-
+    class constructor withBlue(blue: CGFloat) yellow(yellow: CGFloat) red(red: CGFloat): instancetype;
   end;
 
   AerisMapKit.AWFLayerColorToHueFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
   end;
 
   AerisMapKit.AWFLayerScaleHSLAFilter = class(AerisMapKit.AWFRasterMapLayerFilter)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithH0(h0: CGFloat) h1(h1: CGFloat) s0(s0: CGFloat) s1(s1: CGFloat) l0(l0: CGFloat) l1(l1: CGFloat) a0(a0: CGFloat) a1(a1: CGFloat): instancetype; public;
+    method initWithH0(h0: CGFloat) h1(h1: CGFloat) s0(s0: CGFloat) s1(s1: CGFloat) l0(l0: CGFloat) l1(l1: CGFloat) a0(a0: CGFloat) a1(a1: CGFloat): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withH0(h0: CGFloat) h1(h1: CGFloat) s0(s0: CGFloat) s1(s1: CGFloat) l0(l0: CGFloat) l1(l1: CGFloat) a0(a0: CGFloat) a1(a1: CGFloat): instancetype; public;
-
+    class constructor withH0(h0: CGFloat) h1(h1: CGFloat) s0(s0: CGFloat) s1(s1: CGFloat) l0(l0: CGFloat) l1(l1: CGFloat) a0(a0: CGFloat) a1(a1: CGFloat): instancetype;
   end;
 
   AerisMapKit.AWFBaseMapStyle = enum ([NonSwiftOnly] AWFBaseMapStyleNone = 0, [NonSwiftOnly] None = 0, [SwiftOnly] none = 0, [NonSwiftOnly] AWFBaseMapStyleFlat = 1, [NonSwiftOnly] Flat = 1, [SwiftOnly] flat = 1, [NonSwiftOnly] AWFBaseMapStyleFlatDark = 2, [NonSwiftOnly] FlatDark = 2, [SwiftOnly] flatDark = 2, [NonSwiftOnly] AWFBaseMapStyleTerrain = 3, [NonSwiftOnly] Terrain = 3, [SwiftOnly] terrain = 3);
 
   AerisMapKit.AWFMapURL = class(AWFAutoCodingObject)
-  private
-
-    property layers: NSArray<AerisMapKit.AWFRasterMapLayer>; public;
-
-    property layerTypes: NSArray<AWFMapLayer>; public;
-
-    property layerValues: NSArray<NSString>; public;
-
-    property URLPath: NSString; public;
-
-    property date: NSDate; public;
-
-    property timestamp: NSString; public;
-
-    property offset: NSString; public;
-
+  public
+    property layers: NSArray<AerisMapKit.AWFRasterMapLayer>;
+    property layerTypes: NSArray<AWFMapLayer>;
+    property layerValues: NSArray<NSString>;
+    property URLPath: NSString;
+    property URLPathExcludingLayers: NSString;
+    property date: NSDate;
+    property timestamp: NSString;
+    property offset: NSString;
     [NonSwiftOnly]
-    method initWithStyle(style: AerisMapKit.AWFBaseMapStyle): instancetype; public;
+    method initWithStyle(style: AerisMapKit.AWFBaseMapStyle): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withStyle(style: AerisMapKit.AWFBaseMapStyle): instancetype; public;
+    class constructor withStyle(style: AerisMapKit.AWFBaseMapStyle): instancetype;
     [NonSwiftOnly]
-    method initWithStyle(style: AerisMapKit.AWFBaseMapStyle) layers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>): instancetype; public;
+    method initWithStyle(style: AerisMapKit.AWFBaseMapStyle) layers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withStyle(style: AerisMapKit.AWFBaseMapStyle) layers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>): instancetype; public;
-    method addLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method addLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>); public;
-    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) atIndex(&index: NSInteger); public;
-    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
-    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer); public;
-    method moveLayer(layer: AerisMapKit.AWFRasterMapLayer) toIndex(&index: NSInteger); public;
-    method removeLayer(layer: AerisMapKit.AWFRasterMapLayer); public;
-    method removeLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>); public;
-    method removeAllLayers; public;
-    method layerForRasterLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer; public;
+    class constructor withStyle(style: AerisMapKit.AWFBaseMapStyle) layers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>): instancetype;
+    method addLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method addLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>);
+    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) atIndex(&index: NSInteger);
+    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) aboveLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
+    method insertLayer(layer: AerisMapKit.AWFRasterMapLayer) belowLayer(otherLayer: AerisMapKit.AWFRasterMapLayer);
+    method moveLayer(layer: AerisMapKit.AWFRasterMapLayer) toIndex(&index: NSInteger);
+    method removeLayer(layer: AerisMapKit.AWFRasterMapLayer);
+    method removeLayers(layers: NSArray<AerisMapKit.AWFRasterMapLayer>);
+    method removeAllLayers;
+    method layerForRasterLayer(layerType: AWFMapLayer): nullable AerisMapKit.AWFRasterMapLayer;
     [NonSwiftOnly]
-    method hasLayerForRasterLayer(layerType: AWFMapLayer): BOOL; public;
+    method hasLayerForRasterLayer(layerType: AWFMapLayer): BOOL;
     [Alias]
     [SwiftOnly]
-    method hasLayer(layerType: AWFMapLayer): BOOL; public;
-
+    method hasLayer(layerType: AWFMapLayer): BOOL;
   end;
 
   AerisMapKit.AWFMapImageURL = class(AerisMapKit.AWFMapURL)
-  private
-
-    property centerCoordinate: CLLocationCoordinate2D; public;
-
-    property boundingBox: AWFCoordinateRect; public;
-
-    property zoomLevel: NSUInteger; public;
-
-    property mapSize: CGSize; public;
-
-    property imageFormat: NSInteger; public;
-
+  public
+    property centerCoordinate: CLLocationCoordinate2D;
+    property boundingBox: AWFCoordinateRect;
+    property zoomLevel: NSUInteger;
+    property mapSize: CGSize;
+    property imageFormat: NSInteger;
     [NonSwiftOnly]
-    method centerOnPlace(place: AWFPlace); public;
+    method centerOnPlace(place: AWFPlace);
     [Alias]
     [SwiftOnly]
-    method center(place: AWFPlace); public;
-    property center: CLLocationCoordinate2D; public;
-
-
+    method center(place: AWFPlace);
+    property center: CLLocationCoordinate2D;
   end;
 
   AerisMapKit.AWFMapTileURL = class(AerisMapKit.AWFMapURL)
-  private
-
-    property URLPathWithOffset: NSString; public;
-
-    property boundingBoxURLPath: NSString; public;
-
+  public
+    property URLPathWithOffset: NSString;
+    property boundingBoxURLPath: NSString;
+    property boundingBoxURLPathExcludingLayers: NSString;
     [NonSwiftOnly]
-    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger): NSURL; public;
+    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger): NSURL; public;
+    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger): NSURL;
     [NonSwiftOnly]
-    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [NonSwiftOnly]
-    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString): NSURL; public;
+    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString): NSURL; public;
+    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString): NSURL;
     [NonSwiftOnly]
-    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method tileURLForX(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method tileURL(x: NSInteger) y(y: NSInteger) zoomLevel(zoomLevel: NSUInteger) offset(offset: nullable NSString) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [NonSwiftOnly]
-    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize): NSURL; public;
+    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize): NSURL; public;
+    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize): NSURL;
     [NonSwiftOnly]
-    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString): NSURL; public;
+    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString): NSURL; public;
+    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString): NSURL;
     [NonSwiftOnly]
-    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
+    method tileURLForBounds(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
     [Alias]
     [SwiftOnly]
-    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString) scaledForScreen(scaledForScreen: BOOL): NSURL; public;
-
+    method tileURL(bounds: AerisMapKit.AWFMapCoordinateBounds) size(size: CGSize) offset(offset: nullable NSString) includingLayers(includeLayers: BOOL) scaledForScreen(scaledForScreen: BOOL): NSURL;
   end;
 
   AerisMapKit.AWFTileOverlayPath = class(NSObject)
-  private
-
-    property x: NSInteger; public;
-
-    property y: NSInteger; public;
-
-    property z: NSInteger; public;
-
-    property contentScaleFactor: CGFloat; public;
-
-    property time: nullable NSString; public;
-
-    property offset: NSInteger; public;
-
+  public
+    property x: NSInteger;
+    property y: NSInteger;
+    property z: NSInteger;
+    property contentScaleFactor: CGFloat;
+    property time: nullable NSString;
+    property offset: NSInteger;
     [NonSwiftOnly]
-    class method overlayPathWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
+    class method overlayPathWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath;
     [Alias]
     [SwiftOnly]
-    class method withX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
+    class method withX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
+    class constructor withWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger): AerisMapKit.AWFTileOverlayPath;
     [NonSwiftOnly]
-    class method overlayPathWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
+    class method overlayPathWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath;
     [Alias]
     [SwiftOnly]
-    class method withX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
+    class method withX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath; public;
-
+    class constructor withWithX(x: NSInteger) y(y: NSInteger) z(z: NSInteger) offset(offset: NSInteger): AerisMapKit.AWFTileOverlayPath;
   end;
 
   AerisMapKit.IAWFMultiShapeOverlay = interface(INSObject)
     [NonSwiftOnly]
-    method initWithPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): instancetype; public;
+    method initWithPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): instancetype; public;
-    method updatePolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>); public;
-
+    class constructor withPolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>): instancetype;
+    method updatePolygons(polygons: NSArray<AerisMapKit.IAWFPolygon>) polylines(polylines: NSArray<AerisMapKit.IAWFPolyline>);
   end;
 
   AerisMapKit.IAWFAnnotationView = interface(INSObject)
-    property annotation: AerisMapKit.IAWFAnnotation read write; public;
-
+    property annotation: AerisMapKit.IAWFAnnotation read write;
     [NonSwiftOnly]
-    method initWithAnnotation(annotation: AerisMapKit.IAWFAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: AerisMapKit.AWFAnnotationStyle): instancetype; public;
+    method initWithAnnotation(annotation: AerisMapKit.IAWFAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: AerisMapKit.AWFAnnotationStyle): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withAnnotation(annotation: AerisMapKit.IAWFAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: AerisMapKit.AWFAnnotationStyle): instancetype; public;
-    method startAnimating; public;
-    method stopAnimating; public;
-    method animateOut; public;
-
+    class constructor withAnnotation(annotation: AerisMapKit.IAWFAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: AerisMapKit.AWFAnnotationStyle): instancetype;
+    method startAnimating;
+    method stopAnimating;
+    method animateOut;
   end;
 
   AerisMapKit.IAWFPolygon = interface(AerisMapKit.IAWFDataRepresentable)
-    property centroid: CLLocationCoordinate2D read write; public;
-
-    property area: CGFloat read write; public;
-
+    property centroid: CLLocationCoordinate2D read write;
+    property area: CGFloat read write;
     [NonSwiftOnly]
-    class method polygonWithGeographicObject(object: AWFGeographicObject): instancetype; public;
+    class method polygonWithGeographicObject(object: AWFGeographicObject): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polygon(object: AWFGeographicObject): instancetype; public;
+    class method polygon(object: AWFGeographicObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(object: AWFGeographicObject): instancetype; public;
+    class constructor withWith(object: AWFGeographicObject): instancetype;
     [NonSwiftOnly]
-    class method polygonWithGeoPolygon(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class method polygonWithGeoPolygon(geoPolygon: AWFGeoPolygon): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polygon(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class method polygon(geoPolygon: AWFGeoPolygon): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class constructor withWith(geoPolygon: AWFGeoPolygon): instancetype;
     [NonSwiftOnly]
-    class method polygonWithGeoPolygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
+    class method polygonWithGeoPolygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
+    class method polygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
-    class method polygon: instancetype; public;
-
+    class constructor withWith(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
+    class method polygon: instancetype;
   end;
 
   AerisMapKit.IAWFPolyline = interface(AerisMapKit.IAWFDataRepresentable)
     [NonSwiftOnly]
-    class method polylineWithGeographicObject(object: AWFGeographicObject): instancetype; public;
+    class method polylineWithGeographicObject(object: AWFGeographicObject): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polyline(object: AWFGeographicObject): instancetype; public;
+    class method polyline(object: AWFGeographicObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(object: AWFGeographicObject): instancetype; public;
+    class constructor withWith(object: AWFGeographicObject): instancetype;
     [NonSwiftOnly]
-    class method polylineWithGeoPolygon(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class method polylineWithGeoPolygon(geoPolygon: AWFGeoPolygon): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polyline(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class method polyline(geoPolygon: AWFGeoPolygon): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(geoPolygon: AWFGeoPolygon): instancetype; public;
+    class constructor withWith(geoPolygon: AWFGeoPolygon): instancetype;
     [NonSwiftOnly]
-    class method polylineWithGeoPolygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
+    class method polylineWithGeoPolygon(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
     [Alias]
     [SwiftOnly]
-    class method polyline(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
+    class method polyline(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWith(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype; public;
-    class method polyline: instancetype; public;
-
+    class constructor withWith(geoPolygon: AWFGeoPolygon) object(object: nullable AWFWeatherObject): instancetype;
+    class method polyline: instancetype;
   end;
 
   AerisMapKit.AWFAnnotationPriority = enum ([NonSwiftOnly] AWFAnnotationPriorityDefault = 0, [NonSwiftOnly] &Default = 0, [SwiftOnly] &default = 0, [NonSwiftOnly] AWFAnnotationPriorityHigh = 1, [NonSwiftOnly] High = 1, [SwiftOnly] high = 1);
@@ -2373,193 +2113,136 @@ type
   AerisMapKit.AWFCalloutFormatter = block(annotation: AerisMapKit.IAWFAnnotation);
 
   AerisMapKit.IAWFOverlayStylable = interface(INSObject)
-    property overlay: AerisMapKit.AWFMapItemStyle read write; public;
-
-    property polygons: AerisMapKit.AWFMapItemStyle read write; public;
-
-    property polylines: AerisMapKit.AWFMapItemStyle read write; public;
-
-
+    property overlay: AerisMapKit.AWFMapItemStyle read write;
+    property polygons: AerisMapKit.AWFMapItemStyle read write;
+    property polylines: AerisMapKit.AWFMapItemStyle read write;
   end;
 
   AerisMapKit.AWFAnnotationStyle = class(AerisMapKit.AWFMapItemStyle)
-  private
-
-    property radius: CGFloat; public;
-
-    property image: nullable UIImage; public;
-
-    property imageEdgeInsets: UIEdgeInsets; public;
-
-    property resizesImageToBounds: BOOL; public;
-
-    property showsPoint: BOOL; public;
-
-    property filled: BOOL; public;
-
-    property centerOffset: CGPoint; public;
-
-    property enabled: BOOL; public;
-
-    property priority: AerisMapKit.AWFAnnotationPriority; public;
-
-    property calloutFormatter: method(annotation: AerisMapKit.IAWFAnnotation); public;
-
-    property canShowCallout: BOOL; public;
-
-    property animatable: BOOL; public;
-
-    property shouldAnimate: BOOL; public;
-
-    property animationSecondsToHideAfterDisplaying: NSTimeInterval; public;
-
-    property transform: CATransform3D; public;
-
-    property inAnimation: nullable CAAnimation; public;
-
-    property outAnimation: nullable CAAnimation; public;
-
-    property icon: nullable UIImage; public;
-
+  public
+    property radius: CGFloat;
+    property image: nullable UIImage;
+    property imageEdgeInsets: UIEdgeInsets;
+    property resizesImageToBounds: BOOL;
+    property showsPoint: BOOL;
+    property filled: BOOL;
+    property centerOffset: CGPoint;
+    property enabled: BOOL;
+    property priority: AerisMapKit.AWFAnnotationPriority;
+    property calloutFormatter: method(annotation: AerisMapKit.IAWFAnnotation);
+    property canShowCallout: BOOL;
+    property animatable: BOOL;
+    property shouldAnimate: BOOL;
+    property animationSecondsToHideAfterDisplaying: NSTimeInterval;
+    property transform: CATransform3D;
+    property inAnimation: nullable CAAnimation;
+    property outAnimation: nullable CAAnimation;
+    property icon: nullable UIImage;
     [NonSwiftOnly]
-    class method styleWithRadius(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype; public;
+    class method styleWithRadius(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype;
     [Alias]
     [SwiftOnly]
-    class method style(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype; public;
+    class method style(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithRadius(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype; public;
+    class constructor withWithRadius(radius: CGFloat) fillColor(fillColor: UIColor) strokeColor(strokeColor: UIColor) strokeWidth(strokeWidth: CGFloat): instancetype;
     [NonSwiftOnly]
-    class method styleWithImage(image: UIImage): instancetype; public;
+    class method styleWithImage(image: UIImage): instancetype;
     [Alias]
     [SwiftOnly]
-    class method style(image: UIImage): instancetype; public;
+    class method style(image: UIImage): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithImage(image: UIImage): instancetype; public;
-    method imageFromStyle: nullable UIImage; public;
-    method setCalloutFormatter(calloutFormatter: method(annotation: AerisMapKit.IAWFAnnotation)); public;
+    class constructor withWithImage(image: UIImage): instancetype;
+    method imageFromStyle: nullable UIImage;
+    method setCalloutFormatter(calloutFormatter: method(annotation: AerisMapKit.IAWFAnnotation));
     [NonSwiftOnly]
-    method applyPresentationAnimationToLayer(layer: CALayer); public;
+    method applyPresentationAnimationToLayer(layer: CALayer);
     [Alias]
     [SwiftOnly]
-    method applyPresentationAnimation(layer: CALayer); public;
+    method applyPresentationAnimation(layer: CALayer);
     [NonSwiftOnly]
-    method applyDismissAnimationToLayer(layer: CALayer); public;
+    method applyDismissAnimationToLayer(layer: CALayer);
     [Alias]
     [SwiftOnly]
-    method applyDismissAnimation(layer: CALayer); public;
+    method applyDismissAnimation(layer: CALayer);
     [NonSwiftOnly]
-    class method defaultStyleForLayerType(layerType: AWFMapLayer): nullable id; public;
+    class method defaultStyleForLayerType(layerType: AWFMapLayer): nullable id;
     [Alias]
     [SwiftOnly]
-    class method defaultStyle(layerType: AWFMapLayer): nullable id; public;
-    property &in: nullable CAAnimation; public;
-
-
+    class method defaultStyle(layerType: AWFMapLayer): nullable id;
+    property &in: nullable CAAnimation;
   end;
 
   AerisMapKit.IAWFGroupedStyle = interface(INSObject)
-    class method identifiers: NSArray<NSString>; public;
-
+    class method identifiers: NSArray<NSString>;
   end;
 
   AerisMapKit.AWFGroupedStyle = class(NSObject, AerisMapKit.IAWFStyleProvider)
-  private
-
-    property styles: NSDictionary<NSString,__gp_426>; public;
-
-    property labels: NSDictionary<NSString,NSString>; public;
-
-    property &order: NSArray<NSString>; public;
-
-    property evaluators: NSDictionary<id,id>; public;
-
+  public
+    property styles: NSDictionary<NSString,__gp_435>;
+    property labels: NSDictionary<NSString,NSString>;
+    property &order: NSArray<NSString>;
+    property evaluators: NSDictionary<id,id>;
     [NonSwiftOnly]
-    method initWithStyles(styles: NSDictionary<NSString,__gp_426>): instancetype; public;
+    method initWithStyles(styles: NSDictionary<NSString,__gp_435>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withStyles(styles: NSDictionary<NSString,__gp_426>): instancetype; public;
-    method styleForIdentifier(identifier: NSString): __gp_426; public;
-    method setStyle(style: __gp_426) forIdentifier(identifier: NSString); public;
-    method labelForIdentifier(identifier: NSString): nullable NSString; public;
-    method setLabel(label: nullable NSString) forIdentifier(identifier: NSString); public;
+    class constructor withStyles(styles: NSDictionary<NSString,__gp_435>): instancetype;
+    method styleForIdentifier(identifier: NSString): __gp_435;
+    method setStyle(style: __gp_435) forIdentifier(identifier: NSString);
+    method labelForIdentifier(identifier: NSString): nullable NSString;
+    method setLabel(label: nullable NSString) forIdentifier(identifier: NSString);
     [NonSwiftOnly]
-    method identifierForModel(model: AWFWeatherObject): nullable NSString; public;
+    method identifierForModel(model: AWFWeatherObject): nullable NSString;
     [Alias]
     [SwiftOnly]
-    method identifier(model: AWFWeatherObject): nullable NSString; public;
-    method styleForModel(model: AWFWeatherObject): __gp_426; public;
-    method setModelEvaluatorBlocks(blocks: NSDictionary<NSString,method(model: __gp_424): BOOL>); public;
-    property modelEvaluatorBlocks: NSDictionary<NSString,method(model: __gp_424): BOOL>; public;
-
-
+    method identifier(model: AWFWeatherObject): nullable NSString;
+    method styleForModel(model: AWFWeatherObject): __gp_435;
+    method setModelEvaluatorBlocks(blocks: NSDictionary<NSString,method(model: __gp_433): BOOL>);
+    property modelEvaluatorBlocks: NSDictionary<NSString,method(model: __gp_433): BOOL>;
   end;
 
-  AerisMapKit.AWFModelIdentifierEvaluator = block(model: __gp_424): BOOL;
+  AerisMapKit.AWFModelIdentifierEvaluator = block(model: __gp_433): BOOL;
 
   AerisMapKit.IAWFDataRepresentableStyleProvider = interface(INSObject)
-    property styleProvider: AerisMapKit.AWFDataRepresentableStyle read write; public;
-
-
+    property styleProvider: AerisMapKit.AWFDataRepresentableStyle read write;
   end;
 
   AerisMapKit.AWFDataRepresentableStyle = class(NSObject, AerisMapKit.IAWFStyleProvider)
-  private
-
-    property annotations: AerisMapKit.AWFMapItemStyle; public;
-
-    property overlays: AerisMapKit.AWFMapItemStyle; public;
-
-    property polygons: AerisMapKit.AWFMapItemStyle; public;
-
-    property polylines: AerisMapKit.AWFMapItemStyle; public;
-
-
+  public
+    property annotations: AerisMapKit.AWFMapItemStyle;
+    property overlays: AerisMapKit.AWFMapItemStyle;
+    property polygons: AerisMapKit.AWFMapItemStyle;
+    property polylines: AerisMapKit.AWFMapItemStyle;
   end;
 
   AerisMapKit.AWFTextAnnotationStyle = class(AerisMapKit.AWFMapItemStyle)
-  private
-
-    property textStyle: AWFTextStyleSpec; public;
-
-    property cornerRadius: CGFloat; public;
-
-    property contentEdgeInsets: UIEdgeInsets; public;
-
+  public
+    property textStyle: AWFTextStyleSpec;
+    property cornerRadius: CGFloat;
+    property contentEdgeInsets: UIEdgeInsets;
     [NonSwiftOnly]
-    method imageFromStyleWithText(text: NSString): nullable UIImage; public;
+    method imageFromStyleWithText(text: NSString): nullable UIImage;
     [Alias]
     [SwiftOnly]
-    method imageFromStyle(text: NSString): nullable UIImage; public;
-
+    method imageFromStyle(text: NSString): nullable UIImage;
   end;
 
   AerisMapKit.AWFTextLabelAnnotation = class(NSObject, AerisMapKit.IAWFAnnotation, AerisMapKit.IAWFStyledMapItem)
-  private
-
-    property identifier: NSString; public;
-
-    property title: NSString; public;
-
-    property subtitle: NSString; public;
-
-    property style: id; public;
-
-    property modelObject: AWFWeatherObject; public;
-
-    property animatable: BOOL; public;
-
-    property belongsToTimelineAnimation: BOOL; public;
-
-    property labelValue: NSString; public;
-
-    property textStyle: AerisMapKit.AWFTextAnnotationStyle; public;
-
-
+  public
+    property identifier: NSString;
+    property title: NSString;
+    property subtitle: NSString;
+    property style: id;
+    property modelObject: AWFWeatherObject;
+    property animatable: BOOL;
+    property belongsToTimelineAnimation: BOOL;
+    property labelValue: NSString;
+    property textStyle: AerisMapKit.AWFTextAnnotationStyle;
   end;
 
   AWFAirQualityAnnotationType = NSString;
@@ -2570,21 +2253,13 @@ type
   AWFEarthquakeAnnotationType = NSString;
 
   AerisMapKit.AWFEarthquakeAnnotationStyle = class(AerisMapKit.AWFAnnotationStyle, AerisMapKit.IAWFGroupedStyle)
-  private
-
-    property ringColor: nullable UIColor; public;
-
-    property ringWidth: CGFloat; public;
-
-    property showsRing: BOOL; public;
-
-    property ringAnimationDuration: CGFloat; public;
-
-    property ringAnimationRepeatCount: CGFloat; public;
-
-    property ring: nullable UIColor; public;
-
-
+  public
+    property ringColor: nullable UIColor;
+    property ringWidth: CGFloat;
+    property showsRing: BOOL;
+    property ringAnimationDuration: CGFloat;
+    property ringAnimationRepeatCount: CGFloat;
+    property ring: nullable UIColor;
   end;
 
   AWFFireAnnotationType = NSString;
@@ -2613,11 +2288,8 @@ type
   AWFStormCellAnnotationType = NSString;
 
   AerisMapKit.AWFStormCellAnnotationStyle = class(AerisMapKit.AWFAnnotationStyle, AerisMapKit.IAWFGroupedStyle, AerisMapKit.IAWFDataRepresentableStyleProvider)
-  private
-
-    property styleProvider: AerisMapKit.AWFDataRepresentableStyle; public;
-
-
+  public
+    property styleProvider: AerisMapKit.AWFDataRepresentableStyle;
   end;
 
   AWFStormReportAnnotationType = NSString;
@@ -2628,11 +2300,8 @@ type
   AWFTropicalCycloneAnnotationType = NSString;
 
   AerisMapKit.AWFTropicalCycloneAnnotationStyle = class(AerisMapKit.AWFAnnotationStyle, AerisMapKit.IAWFGroupedStyle, AerisMapKit.IAWFDataRepresentableStyleProvider)
-  private
-
-    property styleProvider: AerisMapKit.AWFDataRepresentableStyle; public;
-
-
+  public
+    property styleProvider: AerisMapKit.AWFDataRepresentableStyle;
   end;
 
   AWFTropicalSystemAnnotationType = NSString;
@@ -2641,150 +2310,127 @@ type
   end;
 
   AerisMapKit.AWFPolygonStyle = class(AerisMapKit.AWFMapItemStyle)
-  private
-
+  public
     [NonSwiftOnly]
-    class method defaultStyleForLayerType(layerType: AWFMapLayer): nullable id; public;
+    class method defaultStyleForLayerType(layerType: AWFMapLayer): nullable id;
     [Alias]
     [SwiftOnly]
-    class method defaultStyle(layerType: AWFMapLayer): nullable id; public;
-
+    class method defaultStyle(layerType: AWFMapLayer): nullable id;
   end;
 
-  AerisMapKit.AWFConvectiveOutlookPolygonStyle = class(AerisMapKit.AWFPolygonStyle)
+  AerisMapKit.AWFConvectiveOutlookPolygonStyle = class(AerisMapKit.AWFPolygonStyle, AerisMapKit.IAWFGroupedStyle)
   end;
 
-  AerisMapKit.AWFDroughtIndexPolygonStyle = class(AerisMapKit.AWFPolygonStyle)
+  AerisMapKit.AWFDroughtIndexPolygonStyle = class(AerisMapKit.AWFPolygonStyle, AerisMapKit.IAWFGroupedStyle)
   end;
 
-  AerisMapKit.AWFFireOutlookPolygonStyle = class(AerisMapKit.AWFPolygonStyle)
+  AerisMapKit.AWFFireOutlookPolygonStyle = class(AerisMapKit.AWFPolygonStyle, AerisMapKit.IAWFGroupedStyle)
   end;
 
   AWFWarningPolygonType = NSString;
 
-  AerisMapKit.AWFWarningPolygonStyle = class(AerisMapKit.AWFPolygonStyle)
+  AerisMapKit.AWFWarningPolygonStyle = class(AerisMapKit.AWFPolygonStyle, AerisMapKit.IAWFGroupedStyle)
+  end;
+
+  AWFTropicalBreakpointPolygonType = NSString;
+
+  AerisMapKit.AWFTropicalBreakpointPolygonStyle = class(AerisMapKit.AWFPolygonStyle, AerisMapKit.IAWFGroupedStyle)
   end;
 
   AerisMapKit.AWFLegendRange = record
-  private
-
-    var min: CGFloat; public;
-    var max: CGFloat; public;
-
+  public
+    var min: CGFloat;
+    var max: CGFloat;
   end;
 
   AerisMapKit.AWFDataScale = record
-  private
-
-    var min: CGFloat; public;
-    var max: CGFloat; public;
-    var interval: CGFloat; public;
-
+  public
+    var min: CGFloat;
+    var max: CGFloat;
+    var interval: CGFloat;
   end;
 
   AerisMapKit.AWFLegendType = enum ([NonSwiftOnly] AWFLegendTypeBar = 0, [NonSwiftOnly] Bar = 0, [SwiftOnly] bar = 0, [NonSwiftOnly] AWFLegendTypePoint = 1, [NonSwiftOnly] Point = 1, [SwiftOnly] point = 1);
 
   AerisMapKit.AWFLegendConfig = class(NSObject, INSCopying)
-  private
-
-    property key: nullable NSString; public;
-
-    property &type: AerisMapKit.AWFLegendType; public;
-
-    property measurement: AWFMeasurement; public;
-
-    property units: AWFUnit; public;
-
-    property colorStops: NSArray<AWFColorStop>; public;
-
-    property pointItems: NSArray<AerisMapKit.AWFPointLegendItem>; public;
-
-    property pointOrder: NSArray<NSString>; public;
-
-    property scale: AerisMapKit.AWFLegendRange; public;
-
-    property interval: CGFloat; public;
-
+  public
+    property key: nullable NSString;
+    property &type: AerisMapKit.AWFLegendType;
+    property measurement: AWFMeasurement;
+    property units: AWFUnit;
+    property colorStops: NSArray<AWFColorStop>;
+    property pointItems: NSArray<AerisMapKit.AWFPointLegendItem>;
+    property pointOrder: NSArray<NSString>;
+    property scale: AerisMapKit.AWFLegendRange;
+    property interval: CGFloat;
     [NonSwiftOnly]
-    method initWithDictionary(data: NSDictionary<id,id>): instancetype; public;
+    method initWithDictionary(data: NSDictionary<id,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(data: NSDictionary<id,id>): instancetype; public;
+    class constructor withDictionary(data: NSDictionary<id,id>): instancetype;
     [NonSwiftOnly]
-    method initWithGroupedStyle(groupedStyle: AerisMapKit.AWFGroupedStyle<id,id>): instancetype; public;
+    method initWithGroupedStyle(groupedStyle: AerisMapKit.AWFGroupedStyle<id,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withGroupedStyle(groupedStyle: AerisMapKit.AWFGroupedStyle<id,id>): instancetype; public;
-    method pointItemsForKeys(keys: NSArray<NSString>): NSArray<AerisMapKit.AWFPointLegendItem>; public;
-
+    class constructor withGroupedStyle(groupedStyle: AerisMapKit.AWFGroupedStyle<id,id>): instancetype;
+    method pointItemsForKeys(keys: NSArray<NSString>): NSArray<AerisMapKit.AWFPointLegendItem>;
   end;
 
   AerisMapKit.AWFGroupedLegendConfig = class(NSObject)
-  private
-
-    property key: nullable NSString; public;
-
-    property configs: NSArray<AerisMapKit.AWFLegendConfig>; public;
-
+  public
+    property key: nullable NSString;
+    property configs: NSArray<AerisMapKit.AWFLegendConfig>;
     [NonSwiftOnly]
-    method initWithLegendConfigs(configs: NSArray<AerisMapKit.AWFLegendConfig>): instancetype; public;
+    method initWithLegendConfigs(configs: NSArray<AerisMapKit.AWFLegendConfig>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLegendConfigs(configs: NSArray<AerisMapKit.AWFLegendConfig>): instancetype; public;
-
+    class constructor withLegendConfigs(configs: NSArray<AerisMapKit.AWFLegendConfig>): instancetype;
   end;
 
   AWFLegendCode = NSString;
 
   AerisMapKit.AWFLegendMetadata = class(NSObject)
-  private
-
-    property config: NSDictionary<NSString,AerisMapKit.AWFLegendConfig>; public;
-
-    property hasLoaded: BOOL; public;
-
-    method getWithCompletion(completionBlock: method()); public;
-    method configForKey(key: NSString): nullable AerisMapKit.AWFLegendConfig; public;
-    method configForLayerType(code: AWFMapLayer): nullable AerisMapKit.AWFLegendConfig; public;
+  public
+    property config: NSDictionary<NSString,AerisMapKit.AWFLegendConfig>;
+    property hasLoaded: BOOL;
+    method getWithCompletion(completionBlock: method());
+    method configForKey(key: NSString): nullable AerisMapKit.AWFLegendConfig;
+    method configForLayerType(code: AWFMapLayer): nullable AerisMapKit.AWFLegendConfig;
     [NonSwiftOnly]
-    method styleForLayerType(code: AWFMapLayer): nullable AerisMapKit.AWFLegendStyle; public;
+    method styleForLayerType(code: AWFMapLayer): nullable AerisMapKit.AWFLegendStyle;
     [Alias]
     [SwiftOnly]
-    method style(code: AWFMapLayer): nullable AerisMapKit.AWFLegendStyle; public;
+    method style(code: AWFMapLayer): nullable AerisMapKit.AWFLegendStyle;
     [NonSwiftOnly]
-    method titleForKey(key: NSString): nullable NSString; public;
+    method titleForKey(key: NSString): nullable NSString;
     [Alias]
     [SwiftOnly]
-    method title(key: NSString): nullable NSString; public;
-    class method sharedInstance: instancetype; public;
-    method init: instancetype; public;
-
+    method title(key: NSString): nullable NSString;
+    class method sharedInstance: instancetype;
   end;
 
   AerisMapKit.IAWFLegendRenderer = interface(INSObject)
-    property style: AerisMapKit.AWFLegendStyle read write; public;
-
+    property style: AerisMapKit.AWFLegendStyle read write;
     [NonSwiftOnly]
-    method initWithConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype; public;
+    method initWithConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype; public;
+    class constructor withConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype;
     [NonSwiftOnly]
-    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
+    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
     [Alias]
     [SwiftOnly]
-    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
-    method sizeThatFits: CGSize; public;
+    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
+    method sizeThatFits: CGSize;
     [NonSwiftOnly]
-    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize; public;
+    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize;
     [Alias]
     [SwiftOnly]
-    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize; public;
-
+    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize;
   end;
 
   AerisMapKit.AWFLegendOrientation = enum ([NonSwiftOnly] AWFLegendOrientationHorizontal = 0, [NonSwiftOnly] Horizontal = 0, [SwiftOnly] horizontal = 0, [NonSwiftOnly] AWFLegendOrientationVertical = 1, [NonSwiftOnly] Vertical = 1, [SwiftOnly] vertical = 1);
@@ -2794,885 +2440,683 @@ type
   AerisMapKit.AWFPointType = enum ([NonSwiftOnly] AWFPointTypeCircle = 0, [NonSwiftOnly] Circle = 0, [SwiftOnly] circle = 0, [NonSwiftOnly] AWFPointTypeSquare = 1, [NonSwiftOnly] Square = 1, [SwiftOnly] square = 1);
 
   AerisMapKit.AWFLegendStyle = class(NSObject, INSCopying)
-  private
-
-    property name: NSString; public;
-
-    property layerTypes: NSArray<AWFMapLayer>; public;
-
-    property labelStyle: nullable AWFTextStyleSpec; public;
-
-    property labelOffset: UIOffset; public;
-
-    property interitemSpacing: CGFloat; public;
-
-    property contentEdgeInsets: UIEdgeInsets; public;
-
-    property adjustsLayoutToFitWidth: BOOL; public;
-
-    property shouldCenter: BOOL; public;
-
-    property cellInterval: CGFloat; public;
-
-    property cellIntervalRanges: NSArray<AWFColorRampIntervalRange>; public;
-
-    property cellSize: CGSize; public;
-
-    property labelInterval: CGFloat; public;
-
-    property labelIntervalRanges: NSArray<AWFColorRampIntervalRange>; public;
-
-    property isLabelIntervalByCounter: BOOL; public;
-
-    property labels: NSDictionary<NSNumber,NSString>; public;
-
-    property labelPosition: AerisMapKit.AWFLabelPosition; public;
-
-    property automaticallyGenerateLabels: BOOL; public;
-
-    property totalColumns: NSUInteger; public;
-
-    property lineSpacing: CGFloat; public;
-
-    property shouldUseEqualSpacingForSingleRow: BOOL; public;
-
-    property pointType: AerisMapKit.AWFPointType; public;
-
-    property pointSize: CGSize; public;
-
-    property pointStrokeWidth: CGFloat; public;
-
-    property pointStrokeColor: nullable UIColor; public;
-
-    property displayOrderForItemGroups: NSArray<NSString>; public;
-
-    property displayOrderForItems: NSArray<NSString>; public;
-
+  public
+    property name: NSString;
+    property layerTypes: NSArray<AWFMapLayer>;
+    property labelStyle: nullable AWFTextStyleSpec;
+    property labelOffset: UIOffset;
+    property interitemSpacing: CGFloat;
+    property contentEdgeInsets: UIEdgeInsets;
+    property adjustsLayoutToFitWidth: BOOL;
+    property shouldCenter: BOOL;
+    property cellInterval: CGFloat;
+    property cellIntervalRanges: NSArray<AWFColorRampIntervalRange>;
+    property cellSize: CGSize;
+    property labelInterval: CGFloat;
+    property labelIntervalRanges: NSArray<AWFColorRampIntervalRange>;
+    property isLabelIntervalByCounter: BOOL;
+    property labels: NSDictionary<NSNumber,NSString>;
+    property labelPosition: AerisMapKit.AWFLabelPosition;
+    property automaticallyGenerateLabels: BOOL;
+    property totalColumns: NSUInteger;
+    property lineSpacing: CGFloat;
+    property shouldUseEqualSpacingForSingleRow: BOOL;
+    property pointType: AerisMapKit.AWFPointType;
+    property pointSize: CGSize;
+    property pointStrokeWidth: CGFloat;
+    property pointStrokeColor: nullable UIColor;
+    property displayOrderForItemGroups: NSArray<NSString>;
+    property displayOrderForItems: NSArray<NSString>;
     [NonSwiftOnly]
-    method initWithDictionary(dict: NSDictionary<id,id>): instancetype; public;
+    method initWithDictionary(dict: NSDictionary<id,id>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withDictionary(dict: NSDictionary<id,id>): instancetype; public;
-    method cellIntervalForValue(value: CGFloat): CGFloat; public;
-    method labelIntervalForValue(value: CGFloat): CGFloat; public;
-    property pointStroke: nullable UIColor; public;
-
-
+    class constructor withDictionary(dict: NSDictionary<id,id>): instancetype;
+    method cellIntervalForValue(value: CGFloat): CGFloat;
+    method labelIntervalForValue(value: CGFloat): CGFloat;
+    property pointStroke: nullable UIColor;
   end;
 
   AerisMapKit.AWFBarLegend = class(NSObject, AerisMapKit.IAWFLegendRenderer)
-  private
-
-    property config: AerisMapKit.AWFLegendConfig; public;
-
-    property orientation: AerisMapKit.AWFLegendOrientation; public;
-
-    property colorStops: NSArray<AWFColorStop>; public;
-
-    property scale: AerisMapKit.AWFDataScale; public;
-
-    property range: AerisMapKit.AWFLegendRange; public;
-
-    property style: AerisMapKit.AWFLegendStyle; public;
-
-    property metric: BOOL; public;
-
+  public
+    property config: AerisMapKit.AWFLegendConfig;
+    property orientation: AerisMapKit.AWFLegendOrientation;
+    property colorStops: NSArray<AWFColorStop>;
+    property scale: AerisMapKit.AWFDataScale;
+    property range: AerisMapKit.AWFLegendRange;
+    property style: AerisMapKit.AWFLegendStyle;
+    property metric: BOOL;
     [NonSwiftOnly]
-    method initWithConfig(config: AerisMapKit.AWFLegendConfig): instancetype; public;
+    method initWithConfig(config: AerisMapKit.AWFLegendConfig): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withConfig(config: AerisMapKit.AWFLegendConfig): instancetype; public;
+    class constructor withConfig(config: AerisMapKit.AWFLegendConfig): instancetype;
     [NonSwiftOnly]
-    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
+    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
     [Alias]
     [SwiftOnly]
-    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
-    method sizeThatFits: CGSize; public;
+    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
+    method sizeThatFits: CGSize;
     [NonSwiftOnly]
-    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize; public;
+    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize;
     [Alias]
     [SwiftOnly]
-    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize; public;
-
+    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize;
   end;
 
   AerisMapKit.AWFPointLegend = class(NSObject, AerisMapKit.IAWFLegendRenderer)
-  private
-
-    property config: AerisMapKit.AWFLegendConfig; public;
-
-    property items: NSArray<AerisMapKit.AWFPointLegendItem>; public;
-
-    property style: AerisMapKit.AWFLegendStyle; public;
-
-    property filterKeys: NSArray<NSString>; public;
-
+  public
+    property config: AerisMapKit.AWFLegendConfig;
+    property items: NSArray<AerisMapKit.AWFPointLegendItem>;
+    property style: AerisMapKit.AWFLegendStyle;
+    property filterKeys: NSArray<NSString>;
     [NonSwiftOnly]
-    method initWithConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype; public;
+    method initWithConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype; public;
+    class constructor withConfig(config: not nullable AerisMapKit.AWFLegendConfig): instancetype;
     [NonSwiftOnly]
-    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
+    method imageForSize(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
     [Alias]
     [SwiftOnly]
-    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage; public;
-    method sizeThatFits: CGSize; public;
+    method image(size: CGSize) insets(insets: UIEdgeInsets): nullable UIImage;
+    method sizeThatFits: CGSize;
     [NonSwiftOnly]
-    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize; public;
+    method sizeThatFitsConstrainedToWidth(maxWidth: CGFloat): CGSize;
     [Alias]
     [SwiftOnly]
-    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize; public;
-
+    method sizeThatFitsConstrained(maxWidth: CGFloat): CGSize;
   end;
 
   AerisMapKit.AWFPointLegendItem = class(NSObject)
-  private
-
-    property key: NSString; public;
-
-    property label: nullable NSString; public;
-
-    property color: UIColor; public;
-
+  public
+    property key: NSString;
+    property label: nullable NSString;
+    property color: UIColor;
     [NonSwiftOnly]
-    class method itemWithKey(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype; public;
+    class method itemWithKey(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype;
     [Alias]
     [SwiftOnly]
-    class method item(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype; public;
+    class method item(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithKey(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype; public;
-
+    class constructor withWithKey(key: NSString) label(label: nullable NSString) color(color: UIColor): instancetype;
   end;
 
   AerisMapKit.AWFLegendItemView = class(UIView)
-  private
-
-    property key: NSString; public;
-
-    property config: AerisMapKit.AWFLegendConfig; public;
-
-    property style: AerisMapKit.AWFLegendStyle; public;
-
-    property legend: AerisMapKit.IAWFLegendRenderer; public;
-
-    property metric: BOOL; public;
-
+  public
+    property key: NSString;
+    property config: AerisMapKit.AWFLegendConfig;
+    property style: AerisMapKit.AWFLegendStyle;
+    property legend: AerisMapKit.IAWFLegendRenderer;
+    property metric: BOOL;
     [NonSwiftOnly]
-    method initWithLegendConfig(config: AerisMapKit.AWFLegendConfig) frame(frame: CGRect): instancetype; public;
+    method initWithLegendConfig(config: AerisMapKit.AWFLegendConfig) frame(frame: CGRect): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLegendConfig(config: AerisMapKit.AWFLegendConfig) frame(frame: CGRect): instancetype; public;
+    class constructor withLegendConfig(config: AerisMapKit.AWFLegendConfig) frame(frame: CGRect): instancetype;
     [NonSwiftOnly]
-    method initWithLegendConfig(config: AerisMapKit.AWFLegendConfig) style(style: nullable AerisMapKit.AWFLegendStyle) frame(frame: CGRect): instancetype; public;
+    method initWithLegendConfig(config: AerisMapKit.AWFLegendConfig) style(style: nullable AerisMapKit.AWFLegendStyle) frame(frame: CGRect): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLegendConfig(config: AerisMapKit.AWFLegendConfig) style(style: nullable AerisMapKit.AWFLegendStyle) frame(frame: CGRect): instancetype; public;
+    class constructor withLegendConfig(config: AerisMapKit.AWFLegendConfig) style(style: nullable AerisMapKit.AWFLegendStyle) frame(frame: CGRect): instancetype;
     [NonSwiftOnly]
-    method initWithFrame(frame: CGRect): instancetype; public;
+    method initWithFrame(frame: CGRect): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withFrame(frame: CGRect): instancetype; public;
+    class constructor withFrame(frame: CGRect): instancetype;
     [NonSwiftOnly]
-    method updateByFilteringItemKeys(keys: NSArray<NSString>); public;
+    method updateByFilteringItemKeys(keys: NSArray<NSString>);
     [Alias]
     [SwiftOnly]
-    method update(keys: NSArray<NSString>); public;
-
+    method update(keys: NSArray<NSString>);
   end;
 
   AerisMapKit.AWFWeatherMapLegendPosition = enum ([NonSwiftOnly] AWFWeatherMapLegendPositionTop = 0, [NonSwiftOnly] Top = 0, [SwiftOnly] top = 0, [NonSwiftOnly] AWFWeatherMapLegendPositionBottom = 1, [NonSwiftOnly] Bottom = 1, [SwiftOnly] bottom = 1);
 
   AerisMapKit.AWFLegendView = class(UIView)
-  private
-
-    property legends: NSArray<AerisMapKit.AWFLegendItemView>; public;
-
-    property titleTextStyle: AWFTextStyleSpec; public;
-
-    property legendTextStyle: AWFTextStyleSpec; public;
-
-    property metric: BOOL; public;
-
-    property contentEdgeInsets: UIEdgeInsets; public;
-
-    property outerEdgeInsets: UIEdgeInsets; public;
-
-    property position: AerisMapKit.AWFWeatherMapLegendPosition; public;
-
-    property toggleButton: UIButton; public;
-
-    property showsCloseIndicator: BOOL; public;
-
-    property &delegate: AerisMapKit.IAWFLegendViewDelegate; public;
-
+  public
+    property legends: NSArray<AerisMapKit.AWFLegendItemView>;
+    property titleTextStyle: AWFTextStyleSpec;
+    property legendTextStyle: AWFTextStyleSpec;
+    property metric: BOOL;
+    property contentEdgeInsets: UIEdgeInsets;
+    property outerEdgeInsets: UIEdgeInsets;
+    property position: AerisMapKit.AWFWeatherMapLegendPosition;
+    property toggleButton: UIButton;
+    property showsCloseIndicator: BOOL;
+    property &delegate: AerisMapKit.IAWFLegendViewDelegate;
     [NonSwiftOnly]
-    method initWithMapStyle(style: AerisMapKit.AWFWeatherMapStyle) frame(frame: CGRect): instancetype; public;
+    method initWithMapStyle(style: AerisMapKit.AWFWeatherMapStyle) frame(frame: CGRect): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withMapStyle(style: AerisMapKit.AWFWeatherMapStyle) frame(frame: CGRect): instancetype; public;
+    class constructor withMapStyle(style: AerisMapKit.AWFWeatherMapStyle) frame(frame: CGRect): instancetype;
     [NonSwiftOnly]
-    method addLegendForLayerType(layerType: AWFMapLayer); public;
+    method initWithFrame(frame: CGRect): instancetype;
+    [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    method addLegend(layerType: AWFMapLayer); public;
+    class constructor withFrame(frame: CGRect): instancetype;
     [NonSwiftOnly]
-    method removeLegendForLayerType(layerType: AWFMapLayer); public;
+    method addLegendForLayerType(layerType: AWFMapLayer);
     [Alias]
     [SwiftOnly]
-    method removeLegend(layerType: AWFMapLayer); public;
+    method addLegend(layerType: AWFMapLayer);
     [NonSwiftOnly]
-    method hasLegendForLayerType(layerType: AWFMapLayer): BOOL; public;
+    method removeLegendForLayerType(layerType: AWFMapLayer);
     [Alias]
     [SwiftOnly]
-    method hasLegend(layerType: AWFMapLayer): BOOL; public;
-    method show(show: BOOL) animated(animated: BOOL); public;
+    method removeLegend(layerType: AWFMapLayer);
     [NonSwiftOnly]
-    method updateItemsForMapBoundsIfNeeded(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
+    method hasLegendForLayerType(layerType: AWFMapLayer): BOOL;
     [Alias]
     [SwiftOnly]
-    method updateItems(bounds: AerisMapKit.AWFMapCoordinateBounds); public;
-    property toggle: UIButton; public;
-
-
+    method hasLegend(layerType: AWFMapLayer): BOOL;
+    method show(show: BOOL) animated(animated: BOOL);
+    [NonSwiftOnly]
+    method updateItemsForMapBoundsIfNeeded(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    [Alias]
+    [SwiftOnly]
+    method updateItems(bounds: AerisMapKit.AWFMapCoordinateBounds);
+    property toggle: UIButton;
   end;
 
   AerisMapKit.IAWFLegendViewDelegate = interface(INSObject)
-    method legendViewDidPresent(legendView: AerisMapKit.AWFLegendView); public;
-    method legendViewDidDismiss(legendView: AerisMapKit.AWFLegendView); public;
-
+    method legendViewDidPresent(legendView: AerisMapKit.AWFLegendView);
+    method legendViewDidDismiss(legendView: AerisMapKit.AWFLegendView);
   end;
 
   AerisMapKit.AWFGroupedLegendView = class(UIView)
-  private
-
-    property renderers: NSArray<AerisMapKit.IAWFLegendRenderer>; public;
-
-    property interitemSpacing: CGFloat; public;
-
-    property labelStyle: nullable AWFTextStyleSpec; public;
-
-    property legendInsets: UIEdgeInsets; public;
-
+  public
+    property renderers: NSArray<AerisMapKit.IAWFLegendRenderer>;
+    property interitemSpacing: CGFloat;
+    property labelStyle: nullable AWFTextStyleSpec;
+    property legendInsets: UIEdgeInsets;
     [NonSwiftOnly]
-    method initWithLegendRenderers(renderers: NSArray<AerisMapKit.IAWFLegendRenderer>) title(titles: NSArray<NSString>) frame(frame: CGRect): instancetype; public;
+    method initWithLegendRenderers(renderers: NSArray<AerisMapKit.IAWFLegendRenderer>) title(titles: NSArray<NSString>) frame(frame: CGRect): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLegendRenderers(renderers: NSArray<AerisMapKit.IAWFLegendRenderer>) title(titles: NSArray<NSString>) frame(frame: CGRect): instancetype; public;
-
+    class constructor withLegendRenderers(renderers: NSArray<AerisMapKit.IAWFLegendRenderer>) title(titles: NSArray<NSString>) frame(frame: CGRect): instancetype;
   end;
 
   AerisMapKit.AWFAnimationTimeline = class(AerisMapKit.AWFAnimation)
-  private
-
-    property animations: NSArray<AerisMapKit.AWFAnimation>; public;
-
-    method addAnimations(animations: NSArray<AerisMapKit.AWFAnimation>); public;
-    method removeAnimations(animations: NSArray<AerisMapKit.AWFAnimation>); public;
-
+  public
+    property animations: NSArray<AerisMapKit.AWFAnimation>;
+    method addAnimations(animations: NSArray<AerisMapKit.AWFAnimation>);
+    method removeAnimations(animations: NSArray<AerisMapKit.AWFAnimation>);
   end;
 
   AerisMapKit.AWFImageAnimationProvider = class(NSObject, AerisMapKit.IAWFImageAnimationDataSource)
-  private
-
-    property animation: AerisMapKit.AWFImageAnimation; public;
-
+  public
+    property animation: AerisMapKit.AWFImageAnimation;
     [NonSwiftOnly]
-    method initWithAnimation(animation: AerisMapKit.AWFImageAnimation): instancetype; public;
+    method initWithAnimation(animation: AerisMapKit.AWFImageAnimation): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withAnimation(animation: AerisMapKit.AWFImageAnimation): instancetype; public;
-
+    class constructor withAnimation(animation: AerisMapKit.AWFImageAnimation): instancetype;
   end;
 
   AerisMapKit.AWFImageAnimationLoader = class(NSObject)
-  private
-
-    property requests: NSArray<AWFRequest>; public;
-
+  public
+    property requests: NSArray<AWFRequest>;
     [NonSwiftOnly]
-    method initWithSessionManager(sessionManager: AWFURLSessionManager): instancetype; public;
+    method initWithSessionManager(sessionManager: AWFURLSessionManager): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withSessionManager(sessionManager: AWFURLSessionManager): instancetype; public;
+    class constructor withSessionManager(sessionManager: AWFURLSessionManager): instancetype;
     [NonSwiftOnly]
-    method loadImagesFromURLs(URLs: NSArray<NSURL>) progress(progressBlock: method(idx: NSUInteger; task: NSURLSessionDataTask; image: UIImage; error: NSError)) completion(completionBlock: method(images: NSArray<UIImage>)); public;
+    method loadImagesFromURLs(URLs: NSArray<NSURL>) progress(progressBlock: method(idx: NSUInteger; task: NSURLSessionDataTask; image: UIImage; error: NSError)) completion(completionBlock: method(images: NSArray<UIImage>));
     [Alias]
     [SwiftOnly]
-    method loadImages(URLs: NSArray<NSURL>) progress(progressBlock: method(idx: NSUInteger; task: NSURLSessionDataTask; image: UIImage; error: NSError)) completion(completionBlock: method(images: NSArray<UIImage>)); public;
-    method cancel; public;
-
+    method loadImages(URLs: NSArray<NSURL>) progress(progressBlock: method(idx: NSUInteger; task: NSURLSessionDataTask; image: UIImage; error: NSError)) completion(completionBlock: method(images: NSArray<UIImage>));
+    method cancel;
   end;
 
   AerisMapKit.AWFMapControlStyle = class(NSObject)
-  private
-
-    property backgroundColor: UIColor; public;
-
-    property progressFillColor: UIColor; public;
-
-    property progressStrokeColor: UIColor; public;
-
-    property defaultTextStyle: AWFTextStyleSpec; public;
-
-    property detailTextStyle: AWFTextStyleSpec; public;
-
-    property progressFill: UIColor; public;
-
-    property progressStroke: UIColor; public;
-
-
+  public
+    property backgroundColor: UIColor;
+    property progressFillColor: UIColor;
+    property progressStrokeColor: UIColor;
+    property defaultTextStyle: AWFTextStyleSpec;
+    property detailTextStyle: AWFTextStyleSpec;
+    property progressFill: UIColor;
+    property progressStroke: UIColor;
   end;
 
   AerisMapKit.IAWFTimelineViewDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didPanToDate(date: NSDate); public;
+    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didPanToDate(date: NSDate);
     [Alias]
     [SwiftOnly]
-    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didPanTo(date: NSDate); public;
+    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didPanTo(date: NSDate);
     [NonSwiftOnly]
-    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didSelectDate(date: NSDate); public;
+    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didSelectDate(date: NSDate);
     [Alias]
     [SwiftOnly]
-    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didSelect(date: NSDate); public;
-
+    method timelineView(timelineView: AerisMapKit.AWFTimelineView) didSelect(date: NSDate);
   end;
 
   AerisMapKit.AWFTimelineView = class(UIView)
-  private
-
-    property currentTime: NSDate; public;
-
-    property startDate: NSDate; public;
-
-    property endDate: NSDate; public;
-
-    property position: CGFloat; public;
-
-    property barView: AerisMapKit.AWFTimelineBarView; public;
-
-    property positionView: AerisMapKit.AWFTimelinePositionView; public;
-
-    property playButton: UIButton; public;
-
-    property nowButton: UIButton; public;
-
-    property playing: BOOL; public;
-
-    property &delegate: AerisMapKit.IAWFTimelineViewDelegate; public;
-
-    method showLoading(loading: BOOL); public;
-    method setProgress(progress: CGFloat) animated(animated: BOOL); public;
+  public
+    property currentTime: NSDate;
+    property startDate: NSDate;
+    property endDate: NSDate;
+    property position: CGFloat;
+    property barView: AerisMapKit.AWFTimelineBarView;
+    property positionView: AerisMapKit.AWFTimelinePositionView;
+    property playButton: UIButton;
+    property nowButton: UIButton;
+    property playing: BOOL;
+    property &delegate: AerisMapKit.IAWFTimelineViewDelegate;
+    method showLoading(loading: BOOL);
+    method setProgress(progress: CGFloat) animated(animated: BOOL);
     [NonSwiftOnly]
-    method updatePositionForCurrentTime; public;
+    method setTextLabelFormatter(formatter: method(date: NSDate): NSString);
     [Alias]
     [SwiftOnly]
-    method updatePosition; public;
-    property play: UIButton; public;
-
-
+    method setTextLabel(formatter: method(date: NSDate): NSString);
+    [NonSwiftOnly]
+    method setDetailTextLabelFormatter(formatter: method(date: NSDate): NSString);
+    [Alias]
+    [SwiftOnly]
+    method setDetailTextLabel(formatter: method(date: NSDate): NSString);
+    [NonSwiftOnly]
+    method updatePositionForCurrentTime;
+    [Alias]
+    [SwiftOnly]
+    method updatePosition;
+    property play: UIButton;
+    property textLabelFormatter: method(date: NSDate): NSString;
+    property detailTextLabelFormatter: method(date: NSDate): NSString;
   end;
 
+  AerisMapKit.AWFTimelineDateFormatter = block(date: NSDate): NSString;
+
   AerisMapKit.AWFTimelineBarView = class(UIView)
-  private
-
-    property progress: CGFloat; public;
-
-    property futurePosition: CGFloat; public;
-
-    property barFillColor: UIColor; public;
-
-    property futureBarFillColor: UIColor; public;
-
-    property barStrokeColor: UIColor; public;
-
-    property barFill: UIColor; public;
-
-    property futureBarFill: UIColor; public;
-
-    property barStroke: UIColor; public;
-
-
+  public
+    property progress: CGFloat;
+    property futurePosition: CGFloat;
+    property barFillColor: UIColor;
+    property futureBarFillColor: UIColor;
+    property barStrokeColor: UIColor;
+    property barFill: UIColor;
+    property futureBarFill: UIColor;
+    property barStroke: UIColor;
   end;
 
   AerisMapKit.AWFTimelinePositionView = class(UIView)
-  private
-
-    property textLabel: UILabel; public;
-
-    property detailTextLabel: UILabel; public;
-
-    property radius: CGFloat; public;
-
-    property fillColor: UIColor; public;
-
-    property strokeColor: UIColor; public;
-
-    property strokeWidth: CGFloat; public;
-
-    property pressed: BOOL; public;
-
-    method showLoading(loading: BOOL); public;
-    property fill: UIColor; public;
-
-    property stroke: UIColor; public;
-
-
+  public
+    property textLabel: UILabel;
+    property detailTextLabel: UILabel;
+    property radius: CGFloat;
+    property fillColor: UIColor;
+    property strokeColor: UIColor;
+    property strokeWidth: CGFloat;
+    property pressed: BOOL;
+    method showLoading(loading: BOOL);
+    property fill: UIColor;
+    property stroke: UIColor;
   end;
 
   AerisMapKit.AWFBasicControlView = class(UIView)
-  private
-
-    property playButton: UIButton; public;
-
-    property progressView: AWFCircularProgressView; public;
-
-    property dayLabel: UILabel; public;
-
-    property timeLabel: UILabel; public;
-
-    property contentEdgeInsets: UIEdgeInsets; public;
-
-    property currentTime: NSDate; public;
-
-    class method defaultFrame: CGRect; public;
-    method setProgress(progress: CGFloat) animated(animated: BOOL); public;
-    method showLoading(loading: BOOL); public;
-    property play: UIButton; public;
-
-
+  public
+    property playButton: UIButton;
+    property progressView: AWFCircularProgressView;
+    property dayLabel: UILabel;
+    property timeLabel: UILabel;
+    property contentEdgeInsets: UIEdgeInsets;
+    property currentTime: NSDate;
+    class method defaultFrame: CGRect;
+    method setProgress(progress: CGFloat) animated(animated: BOOL);
+    method showLoading(loading: BOOL);
+    property play: UIButton;
   end;
 
   AerisMapKit.IAWFDataLoading = interface
-    property isLoading: BOOL read write; public;
-
+    property isLoading: BOOL read write;
+    property metric: BOOL read write;
     [NonSwiftOnly]
-    method loadForCoordinate(coord: CLLocationCoordinate2D); public;
+    method loadForCoordinate(coord: CLLocationCoordinate2D);
     [Alias]
     [SwiftOnly]
-    method load(coord: CLLocationCoordinate2D); public;
-    method setCompletionBlock(completionBlock: method()); public;
-    property completionBlock: method() read write; public;
-
-
+    method load(coord: CLLocationCoordinate2D);
+    method setCompletionBlock(completionBlock: method());
+    property completionBlock: method() read write;
   end;
 
   AerisMapKit.AWFObservationCalloutContentView = class(UIView, AerisMapKit.IAWFDataLoading)
-  private
-
-    property tempLabel: UILabel; public;
-
-    property iconView: UIImageView; public;
-
-    property hasData: BOOL; public;
-
-    property isLoading: BOOL; public;
-
-
+  public
+    property tempLabel: UILabel;
+    property iconView: UIImageView;
+    property hasData: BOOL;
+    property isLoading: BOOL;
+    property metric: BOOL;
   end;
 
   AerisMapKit.AWFTropicalCyclonePositionCalloutView = class(UIView)
-  private
-
-    method configure(data: AWFTropicalCyclonePosition); public;
-
+  public
+    method configure(data: AWFTropicalCyclonePosition);
   end;
 
   AerisMapKit.IAWFMapArrow = interface
-    property coordinate: CLLocationCoordinate2D read write; public;
-
-    property bounds: AWFCoordinateBounds read write; public;
-
+    property coordinate: CLLocationCoordinate2D read write;
+    property bounds: AWFCoordinateBounds read write;
     [NonSwiftOnly]
-    class method arrowWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class method arrowWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [Alias]
     [SwiftOnly]
-    class method arrow(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class method arrow(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class constructor withWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [NonSwiftOnly]
-    class method arrowWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
+    class method arrowWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
     [Alias]
     [SwiftOnly]
-    class method arrow(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
+    class method arrow(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
-
+    class constructor withWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
   end;
 
-  AerisMapKit.AWFMapOption = enum ([NonSwiftOnly] AWFMapOptionForecastModel = 0, [NonSwiftOnly] ForecastModel = 0, [SwiftOnly] forecastModel = 0, [NonSwiftOnly] AWFMapOptionTimelineStart = 1, [NonSwiftOnly] TimelineStart = 1, [SwiftOnly] timelineStart = 1, [NonSwiftOnly] AWFMapOptionTimelineEnd = 2, [NonSwiftOnly] TimelineEnd = 2, [SwiftOnly] timelineEnd = 2, [NonSwiftOnly] AWFMapOptionLegend = 3, [NonSwiftOnly] Legend = 3, [SwiftOnly] legend = 3);
+  AerisMapKit.AWFMapOption = enum ([NonSwiftOnly] AWFMapOptionForecastModel = 0, [NonSwiftOnly] ForecastModel = 0, [SwiftOnly] forecastModel = 0, [NonSwiftOnly] AWFMapOptionTimelineStart = 1, [NonSwiftOnly] TimelineStart = 1, [SwiftOnly] timelineStart = 1, [NonSwiftOnly] AWFMapOptionTimelineEnd = 2, [NonSwiftOnly] TimelineEnd = 2, [SwiftOnly] timelineEnd = 2, [NonSwiftOnly] AWFMapOptionUnits = 3, [NonSwiftOnly] Units = 3, [SwiftOnly] units = 3);
 
   AerisMapKit.AWFMapOptionsViewController = class(UIViewController)
-  private
-
-    property sections: NSArray<AWFTableSection>; public;
-
-    property tableView: UITableView; public;
-
-    property weatherMap: nullable AerisMapKit.AWFWeatherMap; public;
-
-    property useMetricLegend: BOOL; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapOptionsViewControllerDelegate; public;
-
-    property shouldDeferUpdatingWeatherMapOnDismissal: BOOL; public;
-
+  public
+    property sections: NSArray<AWFTableSection>;
+    property tableView: UITableView;
+    property weatherMap: nullable AerisMapKit.AWFWeatherMap;
+    property metric: BOOL;
+    property &delegate: nullable AerisMapKit.IAWFMapOptionsViewControllerDelegate;
+    property shouldDeferUpdatingWeatherMapOnDismissal: BOOL;
+    property allowsMultipleSelection: BOOL;
     [NonSwiftOnly]
-    method initWithWeatherMap(weatherMap: nullable AerisMapKit.AWFWeatherMap): instancetype; public;
+    method initWithWeatherMap(weatherMap: nullable AerisMapKit.AWFWeatherMap): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWeatherMap(weatherMap: nullable AerisMapKit.AWFWeatherMap): instancetype; public;
-    method sectionWithTitle(title: nullable NSString) layerTypes(layerTypes: NSArray<AWFMapLayer>): AWFTableSection; public;
-    method sectionWithTitle(title: nullable NSString) timeIntervals(intervals: NSArray<NSNumber>) rowFormatter(formatter: method(interval: NSInteger): NSString): AWFTableSection; public;
+    class constructor withWeatherMap(weatherMap: nullable AerisMapKit.AWFWeatherMap): instancetype;
+    method sectionWithTitle(title: nullable NSString) layerTypes(layerTypes: NSArray<AWFMapLayer>): AWFTableSection;
+    method sectionWithTitle(title: nullable NSString) timeIntervals(intervals: NSArray<NSNumber>) rowFormatter(formatter: method(interval: NSInteger): NSString): AWFTableSection;
     [NonSwiftOnly]
-    method setSection(section: nullable AWFTableSection) forMapOption(mapOption: AerisMapKit.AWFMapOption); public;
+    method setSection(section: nullable AWFTableSection) forMapOption(mapOption: AerisMapKit.AWFMapOption);
     [Alias]
     [SwiftOnly]
-    method setSection(section: nullable AWFTableSection) &for(mapOption: AerisMapKit.AWFMapOption); public;
-    method sectionForMapOption(mapOption: AerisMapKit.AWFMapOption): nullable AWFTableSection; public;
-    method sectionAtIndex(&index: NSInteger): nullable AWFTableSection; public;
+    method setSection(section: nullable AWFTableSection) &for(mapOption: AerisMapKit.AWFMapOption);
     [NonSwiftOnly]
-    method rowAtIndexPath(indexPath: NSIndexPath): nullable AWFTableSectionRow; public;
+    method removeSectionForMapOption(mapOption: AerisMapKit.AWFMapOption);
     [Alias]
     [SwiftOnly]
-    method row(indexPath: NSIndexPath): nullable AWFTableSectionRow; public;
+    method removeSection(mapOption: AerisMapKit.AWFMapOption);
+    method setWeatherSections(sections: NSArray<AWFTableSection>);
+    method sectionForMapOption(mapOption: AerisMapKit.AWFMapOption): nullable AWFTableSection;
+    method sectionAtIndex(&index: NSInteger): nullable AWFTableSection;
     [NonSwiftOnly]
-    method configureCell(cell: UITableViewCell) forRow(row: AWFTableSectionRow) atIndexPath(indexPath: NSIndexPath); public;
+    method rowAtIndexPath(indexPath: NSIndexPath): nullable AWFTableSectionRow;
     [Alias]
     [SwiftOnly]
-    method configureCell(cell: UITableViewCell) &for(row: AWFTableSectionRow) at(indexPath: NSIndexPath); public;
-    method close; public;
-
+    method row(indexPath: NSIndexPath): nullable AWFTableSectionRow;
+    [NonSwiftOnly]
+    method configureCell(cell: UITableViewCell) forRow(row: AWFTableSectionRow) atIndexPath(indexPath: NSIndexPath);
+    [Alias]
+    [SwiftOnly]
+    method configureCell(cell: UITableViewCell) &for(row: AWFTableSectionRow) at(indexPath: NSIndexPath);
+    method close;
+    property weatherSections: NSArray<AWFTableSection>;
   end;
 
   AerisMapKit.IAWFMapOptionsViewControllerDelegate = interface(INSObject)
     [NonSwiftOnly]
-    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didSelectSectionRow(row: AWFTableSectionRow) atIndexPath(indexPath: NSIndexPath); public;
+    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didSelectSectionRow(row: AWFTableSectionRow) atIndexPath(indexPath: NSIndexPath);
     [Alias]
     [SwiftOnly]
-    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didSelect(row: AWFTableSectionRow) at(indexPath: NSIndexPath); public;
-    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didAddLayerTypes(layerTypes: NSArray<AWFMapLayer>); public;
-    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didRemoveLayerTypes(layerTypes: NSArray<AWFMapLayer>); public;
-    method mapOptionsViewControllerWillDismiss(optionsController: AerisMapKit.AWFMapOptionsViewController); public;
-
+    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didSelect(row: AWFTableSectionRow) at(indexPath: NSIndexPath);
+    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didAddLayerTypes(layerTypes: NSArray<AWFMapLayer>);
+    method mapOptionsViewController(optionsController: AerisMapKit.AWFMapOptionsViewController) didRemoveLayerTypes(layerTypes: NSArray<AWFMapLayer>);
+    method mapOptionsViewControllerWillDismiss(optionsController: AerisMapKit.AWFMapOptionsViewController);
   end;
 
   AerisMapKit.AWFTableLayerTypeRow = class(AWFTableSectionRow)
-  private
-
-    property layerType: AWFMapLayer; public;
-
+  public
+    property layerType: AWFMapLayer;
     [NonSwiftOnly]
-    class method rowWithTitle(title: NSString) layerType(layerType: AWFMapLayer): instancetype; public;
+    class method rowWithTitle(title: NSString) layerType(layerType: AWFMapLayer): instancetype;
     [Alias]
     [SwiftOnly]
-    class method row(title: NSString) layerType(layerType: AWFMapLayer): instancetype; public;
+    class method row(title: NSString) layerType(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: NSString) layerType(layerType: AWFMapLayer): instancetype; public;
-
+    class constructor withWithTitle(title: NSString) layerType(layerType: AWFMapLayer): instancetype;
   end;
 
   AerisMapKit.AWFTableWeatherDataTypeRow = class(AWFTableSectionRow)
-  private
-
-    property weatherDataType: AWFWeatherDataType; public;
-
+  public
+    property weatherDataType: AWFWeatherDataType;
     [NonSwiftOnly]
-    class method rowWithTitle(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype; public;
+    class method rowWithTitle(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype;
     [Alias]
     [SwiftOnly]
-    class method row(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype; public;
+    class method row(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithTitle(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype; public;
-
+    class constructor withWithTitle(title: NSString) weatherDataType(weatherDataType: AWFWeatherDataType): instancetype;
   end;
 
   AerisMapKit.AWFWeatherMapViewController = class(UIViewController, AerisMapKit.IAWFWeatherMapDelegate, AerisMapKit.IAWFWeatherMapDataSource, AerisMapKit.IAWFTimelineViewDelegate, AerisMapKit.IAWFMapOptionsViewControllerDelegate)
-  private
-
-    property weatherMapType: AerisMapKit.AWFWeatherMapType; public;
-
-    property config: nullable AerisMapKit.AWFWeatherMapConfig; public;
-
-    property weatherMap: AerisMapKit.AWFWeatherMap; public;
-
-    property timelineView: AerisMapKit.AWFTimelineView; public;
-
-    property controlView: AerisMapKit.AWFBasicControlView; public;
-
-    property legendView: AerisMapKit.AWFLegendView; public;
-
-    property autorefreshEnabled: BOOL; public;
-
-
+  public
+    property weatherMapType: AerisMapKit.AWFWeatherMapType;
+    property config: AerisMapKit.AWFWeatherMapConfig;
+    property weatherMap: AerisMapKit.AWFWeatherMap;
+    property timelineView: AerisMapKit.AWFTimelineView;
+    property controlView: AerisMapKit.AWFBasicControlView;
+    property legendView: AerisMapKit.AWFLegendView;
+    property autorefreshEnabled: BOOL;
+    property optionsController: AerisMapKit.AWFMapOptionsViewController;
+    method showOptions;
+    method showLegendView(show: BOOL) animated(animated: BOOL);
   end;
 
   AerisMapKit.IAWFMapLayerOptionsViewControllerDelegate = interface(INSObject)
-    method optionsController(optionsController: AerisMapKit.AWFMapLayerOptionsViewController) didSelectLayerForType(layerType: AWFMapLayer); public;
-    method optionsController(optionsController: AerisMapKit.AWFMapLayerOptionsViewController) didDeselectLayerForType(layerType: AWFMapLayer); public;
-
+    method optionsController(optionsController: AerisMapKit.AWFMapLayerOptionsViewController) didSelectLayerForType(layerType: AWFMapLayer);
+    method optionsController(optionsController: AerisMapKit.AWFMapLayerOptionsViewController) didDeselectLayerForType(layerType: AWFMapLayer);
   end;
 
   AerisMapKit.AWFMapLayerOptionsViewController = class(UIViewController)
-  private
-
-    property tableView: UITableView; public;
-
-    property layerType: AWFMapLayer; public;
-
-    property selectedLayerType: AWFMapLayer; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapLayerOptionsViewControllerDelegate; public;
-
+  public
+    property tableView: UITableView;
+    property layerType: AWFMapLayer;
+    property selectedLayerType: AWFMapLayer;
+    property &delegate: nullable AerisMapKit.IAWFMapLayerOptionsViewControllerDelegate;
     [NonSwiftOnly]
-    method initWithLayerType(layerType: AWFMapLayer): instancetype; public;
+    method initWithLayerType(layerType: AWFMapLayer): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withLayerType(layerType: AWFMapLayer): instancetype; public;
+    class constructor withLayerType(layerType: AWFMapLayer): instancetype;
     [NonSwiftOnly]
-    method initWithNibName(nibNameOrNil: nullable NSString) bundle(nibBundleOrNil: nullable NSBundle): instancetype; public;
+    method initWithNibName(nibNameOrNil: nullable NSString) bundle(nibBundleOrNil: nullable NSBundle): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withNibName(nibNameOrNil: nullable NSString) bundle(nibBundleOrNil: nullable NSBundle): instancetype; public;
-
+    class constructor withNibName(nibNameOrNil: nullable NSString) bundle(nibBundleOrNil: nullable NSBundle): instancetype;
   end;
 
   AerisMapKit.AWFAppleMapStrategy = class(NSObject, AerisMapKit.IAWFMapStrategy, IMKMapViewDelegate)
-  private
-
-    property strategyType: AerisMapKit.AWFMapStrategyType; public;
-
-    property mapView: MKMapView; public;
-
-    property config: AerisMapKit.AWFWeatherMapConfig; public;
-
-    property overlayFactory: AerisMapKit.IAWFMapOverlayFactory; public;
-
-    property callout: AerisMapKit.AWFMapCallout; public;
-
-    property overlays: NSArray<id>; public;
-
-    property annotations: NSArray<id>; public;
-
-    property coordinateBounds: AerisMapKit.AWFMapCoordinateBounds; public;
-
-    property centerCoordinate: CLLocationCoordinate2D; public;
-
-    property zoomLevel: NSInteger; public;
-
-    property animationContainerView: id; public;
-
-    property mapViewDelegate: nullable IMKMapViewDelegate; public;
-
-    property &delegate: nullable AerisMapKit.IAWFMapStrategyDelegate; public;
-
-    property center: CLLocationCoordinate2D; public;
-
-
+  public
+    property strategyType: AerisMapKit.AWFMapStrategyType;
+    property mapView: MKMapView;
+    property config: AerisMapKit.AWFWeatherMapConfig;
+    property overlayFactory: AerisMapKit.IAWFMapOverlayFactory;
+    property callout: AerisMapKit.AWFMapCallout;
+    property overlays: NSArray<id>;
+    property annotations: NSArray<id>;
+    property coordinateBounds: AerisMapKit.AWFMapCoordinateBounds;
+    property centerCoordinate: CLLocationCoordinate2D;
+    property zoomLevel: NSInteger;
+    property animationContainerView: id;
+    property &delegate: nullable AerisMapKit.IAWFMapStrategyDelegate;
+    [NonSwiftOnly]
+    method defaultAnnotationViewForAnnotation(annotation: IMKAnnotation): MKAnnotationView;
+    [Alias]
+    [SwiftOnly]
+    method defaultAnnotationView(annotation: IMKAnnotation): MKAnnotationView;
+    [NonSwiftOnly]
+    method defaultRendererForOverlay(overlay: IMKOverlay): MKOverlayRenderer;
+    [Alias]
+    [SwiftOnly]
+    method defaultRenderer(overlay: IMKOverlay): MKOverlayRenderer;
+    property center: CLLocationCoordinate2D;
   end;
 
   AerisMapKit.AWFMKRasterSource = class(AerisMapKit.AWFRasterSource)
-  private
-
-    property overlay: AerisMapKit.AWFMKImageOverlay; public;
-
-
+  public
+    property overlay: AerisMapKit.AWFMKImageOverlay;
   end;
 
   AerisMapKit.IAWFOverlayProvider = interface(INSObject)
-    property overlay: id read write; public;
-
-
+    property overlay: id read write;
   end;
 
   AerisMapKit.IAWFMKTileProvider = interface(INSObject)
-    property overlay: IMKOverlay read write; public;
-
-    property overlayLevel: MKOverlayLevel read write; public;
-
-    property alpha: CGFloat read write; public;
-
-
+    property overlay: IMKOverlay read write;
+    property overlayLevel: MKOverlayLevel read write;
+    property alpha: CGFloat read write;
   end;
 
   AerisMapKit.AWFMKTileSource = class(AerisMapKit.AWFTileSource, AerisMapKit.IAWFOverlayProvider, AerisMapKit.IAWFMKTileProvider)
-  private
-
-    property overlay: IMKOverlay; public;
-
-    property overlayLevel: MKOverlayLevel; public;
-
-
+  public
+    property overlay: IMKOverlay;
+    property overlayLevel: MKOverlayLevel;
   end;
 
   AerisMapKit.AWFMKAmpTileSource = class(AerisMapKit.AWFAmpTileSource, AerisMapKit.IAWFOverlayProvider, AerisMapKit.IAWFMKTileProvider)
-  private
-
-    property overlay: IMKOverlay; public;
-
-    property overlayLevel: MKOverlayLevel; public;
-
-
+  public
+    property overlay: IMKOverlay;
+    property overlayLevel: MKOverlayLevel;
   end;
 
   AerisMapKit.AWFMKTileOverlay = class(MKTileOverlay)
-  private
+  public
+    property alpha: CGFloat;
+    property dataSource: nullable AerisMapKit.IAWFTileDataSource;
+    method cancelRequests;
+  end;
 
-    property alpha: CGFloat; public;
+  AerisMapKit.IAWFMKAmpTileOverlayDelegate = interface(INSObject)
+    method tileOverlay(tileOverlay: AerisMapKit.AWFMKAmpTileOverlay) didUpdateLayers(layers: NSArray<NSString>);
+    [NonSwiftOnly]
+    method tileOverlay(tileOverlay: AerisMapKit.AWFMKAmpTileOverlay) needsUpdateInMapRect(mapRect: MKMapRect);
+    [Alias]
+    [SwiftOnly]
+    method tileOverlay(tileOverlay: AerisMapKit.AWFMKAmpTileOverlay) needsUpdateIn(mapRect: MKMapRect);
+    method tileOverlayNeedsInvalidating(tileOverlay: AerisMapKit.AWFMKAmpTileOverlay);
+  end;
 
-    property dataSource: nullable AerisMapKit.IAWFTileDataSource; public;
-
-    method cancelRequests; public;
-
+  AerisMapKit.AWFMKAmpTileOverlay = class(AerisMapKit.AWFMKTileOverlay)
+  public
+    property layers: NSArray<NSString>;
+    property timestamp: NSString;
+    property &delegate: nullable AerisMapKit.IAWFMKAmpTileOverlayDelegate;
+    method addLayer(layer: NSString);
+    method addLayer(layer: NSString) atIndex(&index: NSUInteger);
+    method removeLayer(layer: NSString);
   end;
 
   AerisMapKit.AWFMKImageOverlay = class(NSObject, IMKOverlay)
-  private
-
+  public
     [NonSwiftOnly]
-    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype; public;
+    method initWithBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype; public;
-
+    class constructor withBounds(bounds: AerisMapKit.AWFMapCoordinateBounds): instancetype;
   end;
 
   AerisMapKit.AWFMKAnnotation = class(NSObject, IMKAnnotation, AerisMapKit.IAWFAnnotation, AerisMapKit.IAWFStyledMapItem)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property title: nullable NSString; public;
-
-    property subtitle: nullable NSString; public;
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property style: nullable AerisMapKit.AWFAnnotationStyle; public;
-
-    property modelObject: nullable AWFWeatherObject; public;
-
-    property belongsToTimelineAnimation: BOOL; public;
-
-
+  public
+    property identifier: nullable NSString;
+    property title: nullable NSString;
+    property subtitle: nullable NSString;
+    property coordinate: CLLocationCoordinate2D;
+    property style: nullable AerisMapKit.AWFAnnotationStyle;
+    property modelObject: nullable AWFWeatherObject;
+    property belongsToTimelineAnimation: BOOL;
   end;
 
   AerisMapKit.AWFMKAnnotationView = class(MKAnnotationView, AerisMapKit.IAWFAnnotationView)
-  private
-
-    property annotation: AerisMapKit.AWFMKAnnotation; public;
-
-    property style: nullable AerisMapKit.AWFAnnotationStyle; public;
-
-    property pointLayer: CAShapeLayer; public;
-
-    property reduceAnimatedEffects: BOOL; public;
-
-    property needsDisplayBeforeAddingToMap: BOOL; public;
-
-    property hasAnimationCompleted: BOOL; public;
-
+  public
+    property annotation: AerisMapKit.AWFMKAnnotation;
+    property style: nullable AerisMapKit.AWFAnnotationStyle;
+    property pointLayer: CAShapeLayer;
+    property reduceAnimatedEffects: BOOL;
+    property needsDisplayBeforeAddingToMap: BOOL;
+    property hasAnimationCompleted: BOOL;
     [NonSwiftOnly]
-    method initWithAnnotation(annotation: AerisMapKit.AWFMKAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: nullable AerisMapKit.AWFAnnotationStyle): instancetype; public;
+    method initWithAnnotation(annotation: AerisMapKit.AWFMKAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: nullable AerisMapKit.AWFAnnotationStyle): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withAnnotation(annotation: AerisMapKit.AWFMKAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: nullable AerisMapKit.AWFAnnotationStyle): instancetype; public;
-    method startAnimating; public;
-    method stopAnimating; public;
-    method animateOut; public;
-
+    class constructor withAnnotation(annotation: AerisMapKit.AWFMKAnnotation) reuseIdentifier(reuseIdentifier: NSString) style(style: nullable AerisMapKit.AWFAnnotationStyle): instancetype;
+    method startAnimating;
+    method stopAnimating;
+    method animateOut;
   end;
 
   AerisMapKit.AWFMKMultiShapeOverlay = class(NSObject, IMKOverlay, AerisMapKit.IAWFStyledMapItem, AerisMapKit.IAWFMultiShapeOverlay)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property style: nullable AerisMapKit.AWFMapItemStyle; public;
-
-    property layerType: AWFMapLayer; public;
-
-    property polygons: NSArray<MKPolygon>; public;
-
-    property polylines: NSArray<MKPolyline>; public;
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property boundingMapRect: MKMapRect; public;
-
+  public
+    property identifier: nullable NSString;
+    property style: nullable AerisMapKit.AWFMapItemStyle;
+    property layerType: AWFMapLayer;
+    property polygons: NSArray<MKPolygon>;
+    property polylines: NSArray<MKPolyline>;
+    property coordinate: CLLocationCoordinate2D;
+    property boundingMapRect: MKMapRect;
     [NonSwiftOnly]
-    method initWithPolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>): instancetype; public;
+    method initWithPolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withPolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>): instancetype; public;
-    method updatePolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>); public;
-
+    class constructor withPolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>): instancetype;
+    method updatePolygons(polygons: NSArray<MKPolygon>) polylines(polylines: NSArray<MKPolyline>);
   end;
 
   AerisMapKit.AWFMKMultiShapeOverlayRenderer = class(MKOverlayRenderer)
-  private
+  public
+    property polygons: NSArray<MKPolygon>;
+    property polylines: NSArray<MKPolyline>;
+    property fillColor: nullable UIColor;
+    property strokeColor: nullable UIColor;
+    property lineWidth: CGFloat;
+    property lineJoin: CGLineJoin;
+    property lineCap: CGLineCap;
+    property miterLimit: CGFloat;
+    property lineDashPattern: NSArray<id>;
+    property lineDashPhase: CGFloat;
+    property styleProvider: AerisMapKit.AWFDataRepresentableStyle;
+    property arrowheadType: AerisMapKit.AWFArrowheadType;
+    property arrowheadWidth: CGFloat;
+    property arrowheadLength: CGFloat;
+    property arrowColor: nullable UIColor;
+    property fill: nullable UIColor;
+    property stroke: nullable UIColor;
+  end;
 
-    property polygons: NSArray<MKPolygon>; public;
-
-    property polylines: NSArray<MKPolyline>; public;
-
-    property fillColor: nullable UIColor; public;
-
-    property strokeColor: nullable UIColor; public;
-
-    property lineWidth: CGFloat; public;
-
-    property lineJoin: CGLineJoin; public;
-
-    property lineCap: CGLineCap; public;
-
-    property miterLimit: CGFloat; public;
-
-    property lineDashPattern: NSArray<id>; public;
-
-    property lineDashPhase: CGFloat; public;
-
-    property styleProvider: AerisMapKit.AWFDataRepresentableStyle; public;
-
-    property arrowheadType: AerisMapKit.AWFArrowheadType; public;
-
-    property arrowheadWidth: CGFloat; public;
-
-    property arrowheadLength: CGFloat; public;
-
-    property arrowColor: nullable UIColor; public;
-
-    property fill: nullable UIColor; public;
-
-    property stroke: nullable UIColor; public;
-
-
+  AerisMapKit.AWFMKDebugOverlay = class(MKTileOverlay)
   end;
 
   AerisMapKit.AWFMKEarthquakeAnnotationView = class(AerisMapKit.AWFMKAnnotationView)
@@ -3685,112 +3129,88 @@ type
   end;
 
   AerisMapKit.AWFMKTextLabelAnnotationView = class(AerisMapKit.AWFMKAnnotationView)
-  private
-
-    property labelValue: nullable NSString; public;
-
-    property contentEdgeInsets: UIEdgeInsets; public;
-
-    method applyStyle(style: AerisMapKit.AWFTextAnnotationStyle); public;
-
+  public
+    property labelValue: nullable NSString;
+    property contentEdgeInsets: UIEdgeInsets;
+    method applyStyle(style: AerisMapKit.AWFTextAnnotationStyle);
   end;
 
   AerisMapKit.AWFMKArrow = class(MKMultiPoint, IMKOverlay)
-  private
-
-    property coordinate: CLLocationCoordinate2D; public;
-
-    property boundingMapRect: MKMapRect; public;
-
+  public
+    property coordinate: CLLocationCoordinate2D;
+    property boundingMapRect: MKMapRect;
     [NonSwiftOnly]
-    class method arrowWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class method arrowWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [Alias]
     [SwiftOnly]
-    class method arrow(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class method arrow(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype; public;
+    class constructor withWithCoordinates(coord: ^CLLocationCoordinate2D) count(count: NSUInteger): instancetype;
     [NonSwiftOnly]
-    class method arrowWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
+    class method arrowWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
     [Alias]
     [SwiftOnly]
-    class method arrow(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
+    class method arrow(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
     [InitFromClassFactoryMethod]
     [Alias]
     [SwiftOnly]
-    class constructor withWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype; public;
-
+    class constructor withWithPoints(points: ^MKMapPoint) count(count: NSUInteger): instancetype;
   end;
 
   AerisMapKit.AWFMKPolygon = class(MKPolygon, AerisMapKit.IAWFPolygon, AerisMapKit.IAWFStyledMapItem)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property style: nullable AerisMapKit.AWFPolygonStyle; public;
-
-    property modelObject: nullable AWFWeatherObject; public;
-
-    property centroid: CLLocationCoordinate2D; public;
-
-    property area: CGFloat; public;
-
-    class method polygon: instancetype; public;
-
+  public
+    property identifier: nullable NSString;
+    property style: nullable AerisMapKit.AWFPolygonStyle;
+    property modelObject: nullable AWFWeatherObject;
+    property centroid: CLLocationCoordinate2D;
+    property area: CGFloat;
+    class method polygon: instancetype;
   end;
 
   AerisMapKit.AWFMKPolyline = class(MKPolyline, AerisMapKit.IAWFPolyline, AerisMapKit.IAWFStyledMapItem)
-  private
-
-    property identifier: nullable NSString; public;
-
-    property style: nullable AerisMapKit.AWFPolygonStyle; public;
-
-    property modelObject: nullable AWFWeatherObject; public;
-
-
+  public
+    property identifier: nullable NSString;
+    property style: nullable AerisMapKit.AWFPolygonStyle;
+    property modelObject: nullable AWFWeatherObject;
   end;
 
   AerisMapKit.AerisMapKitCategory = extension class(MKMapView)
-  private
-
-    method awf_zoomLevel: NSUInteger; public;
-    method awf_zoomScale: MKZoomScale; public;
+  public
+    method awf_zoomLevel: NSUInteger;
+    method awf_zoomScale: MKZoomScale;
     [NonSwiftOnly]
-    method awf_setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL); public;
+    method awf_setCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL);
     [Alias]
     [SwiftOnly]
-    method awf_setCenter(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL); public;
+    method awf_setCenter(centerCoordinate: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger) animated(animated: BOOL);
     [NonSwiftOnly]
-    method awf_coordinateByOffsettingCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) offset(offset: UIOffset) zoomLevel(zoomLevel: NSUInteger): CLLocationCoordinate2D; public;
+    method awf_coordinateByOffsettingCenterCoordinate(centerCoordinate: CLLocationCoordinate2D) offset(offset: UIOffset) zoomLevel(zoomLevel: NSUInteger): CLLocationCoordinate2D;
     [Alias]
     [SwiftOnly]
-    method awf_coordinate(centerCoordinate: CLLocationCoordinate2D) offset(offset: UIOffset) zoomLevel(zoomLevel: NSUInteger): CLLocationCoordinate2D; public;
-    method awf_northwestCoordinate: CLLocationCoordinate2D; public;
-    method awf_southwestCoordinate: CLLocationCoordinate2D; public;
-    method awf_northeastCoordinate: CLLocationCoordinate2D; public;
-    method awf_southeastCoordinate: CLLocationCoordinate2D; public;
+    method awf_coordinate(centerCoordinate: CLLocationCoordinate2D) offset(offset: UIOffset) zoomLevel(zoomLevel: NSUInteger): CLLocationCoordinate2D;
+    method awf_northwestCoordinate: CLLocationCoordinate2D;
+    method awf_southwestCoordinate: CLLocationCoordinate2D;
+    method awf_northeastCoordinate: CLLocationCoordinate2D;
+    method awf_southeastCoordinate: CLLocationCoordinate2D;
     [NonSwiftOnly]
-    method awf_tileXYForCoordinate(coord: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger): CGPoint; public;
+    method awf_tileXYForCoordinate(coord: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger): CGPoint;
     [Alias]
     [SwiftOnly]
-    method awf_tileXY(coord: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger): CGPoint; public;
+    method awf_tileXY(coord: CLLocationCoordinate2D) zoomLevel(zoomLevel: NSUInteger): CGPoint;
     [NonSwiftOnly]
-    method af_coordinateBoundsForTileAtX(x: NSUInteger) y(y: NSUInteger): AerisMapKit.AWFMapCoordinateBounds; public;
+    method af_coordinateBoundsForTileAtX(x: NSUInteger) y(y: NSUInteger): AerisMapKit.AWFMapCoordinateBounds;
     [Alias]
     [SwiftOnly]
-    method af_coordinateBoundsForTile(x: NSUInteger) y(y: NSUInteger): AerisMapKit.AWFMapCoordinateBounds; public;
-
+    method af_coordinateBoundsForTile(x: NSUInteger) y(y: NSUInteger): AerisMapKit.AWFMapCoordinateBounds;
   end;
 
   AerisMapKit.NSBundle_AerisMapKitCategory = extension class(NSBundle)
-  private
-
-    class method awf_aerisMapKitBundle: NSBundle; public;
-    class method awf_aerisMapKitResourcesBundle: NSBundle; public;
-    class method awf_aerisMapKitStringsBundle: NSBundle; public;
-
+  public
+    class method awf_aerisMapKitBundle: NSBundle;
+    class method awf_aerisMapKitResourcesBundle: NSBundle;
+    class method awf_aerisMapKitStringsBundle: NSBundle;
   end;
 
   AWFStyleProvider = AerisMapKit.IAWFStyleProvider;
@@ -3802,8 +3222,6 @@ type
   AWFWeatherMapDataSource = AerisMapKit.IAWFWeatherMapDataSource;
 
   AWFCalloutViewDelegate = AerisMapKit.IAWFCalloutViewDelegate;
-
-  AWFWeatherMapDelegate = AerisMapKit.IAWFWeatherMapDelegate;
 
   AWFMapOverlayFactory = AerisMapKit.IAWFMapOverlayFactory;
 
@@ -3817,6 +3235,8 @@ type
 
   AWFMapContentDelegate = AerisMapKit.IAWFMapContentDelegate;
 
+  AWFWeatherMapDelegate = AerisMapKit.IAWFWeatherMapDelegate;
+
   AWFAnimationDataSource = AerisMapKit.IAWFAnimationDataSource;
 
   AWFAnimationDelegate = AerisMapKit.IAWFAnimationDelegate;
@@ -3828,6 +3248,8 @@ type
   AWFDataAnimationDelegate = AerisMapKit.IAWFDataAnimationDelegate;
 
   AWFStylable = AerisMapKit.IAWFStylable;
+
+  AWFWeatherMapView = AerisMapKit.IAWFWeatherMapView;
 
   AWFWeatherMapContainerViewDelegate = AerisMapKit.IAWFWeatherMapContainerViewDelegate;
 
@@ -3870,5 +3292,7 @@ type
   AWFOverlayProvider = AerisMapKit.IAWFOverlayProvider;
 
   AWFMKTileProvider = AerisMapKit.IAWFMKTileProvider;
+
+  AWFMKAmpTileOverlayDelegate = AerisMapKit.IAWFMKAmpTileOverlayDelegate;
 
 end.
