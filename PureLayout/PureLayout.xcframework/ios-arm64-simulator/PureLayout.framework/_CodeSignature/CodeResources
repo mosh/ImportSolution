@@ -26,7 +26,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		TY58+LG7ooWraXfzg5xkWYf9kR8=
+		IX+OtKjqlJDxw5+NMBt6iAhKIrc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,10 +41,6 @@
 	<dict>
 		<key>Headers/ALView+PureLayout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			PfAnIOKq4Itz6kd1EgGTBqrnAQY=
-			</data>
 			<key>hash2</key>
 			<data>
 			m4hOYTftCC58b0KGTA3cZ0VQhNrIvOD47d3NZsplNUc=
@@ -52,10 +48,6 @@
 		</dict>
 		<key>Headers/NSArray+PureLayout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			1xP2FIrTGjLhMDDgYL2MVpGis3s=
-			</data>
 			<key>hash2</key>
 			<data>
 			SI+GsvnFsYogH9WfeuWRFqttE+vS1cDbLkpB3lC9xkM=
@@ -63,10 +55,6 @@
 		</dict>
 		<key>Headers/NSLayoutConstraint+PureLayout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			i3nkBt++CJdf1VTapzvLXvF+J1Q=
-			</data>
 			<key>hash2</key>
 			<data>
 			bDewYxhVnyGj3htAEf0CM+xV1oHwI26Uwk8ySlheUyE=
@@ -74,10 +62,6 @@
 		</dict>
 		<key>Headers/PureLayout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9I6p/nWmol52AR130WaSnM20/7M=
-			</data>
 			<key>hash2</key>
 			<data>
 			eUu5ijXppw8MGiH0yjE5qf5xfXHw8ywCurYJYV/RDEA=
@@ -85,10 +69,6 @@
 		</dict>
 		<key>Headers/PureLayoutDefines.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/EMmmmBVf2gfOkjw2EG/doN7wWc=
-			</data>
 			<key>hash2</key>
 			<data>
 			vVh2n0KVzEXTo0FHXdcsnx0kwyjUxwUbqp53Xs8cLFI=
@@ -96,10 +76,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lz7gbAnOpV4N0wDrvmyF9kpEmjI=
-			</data>
 			<key>hash2</key>
 			<data>
 			2bqUgL30cU15VVb+766U+XeQzO0+Ma/jVeF2nj4wVo4=
@@ -107,10 +83,6 @@
 		</dict>
 		<key>PrivateHeaders/PureLayout+Internal.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hvxFbAnZ29P4vdCqMZVQJn5saKo=
-			</data>
 			<key>hash2</key>
 			<data>
 			7znOlVKERRP6CPaI7VgOe1nkzyDjLruQFT0x9q9Qf0w=
