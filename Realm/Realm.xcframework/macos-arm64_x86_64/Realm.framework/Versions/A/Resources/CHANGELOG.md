@@ -1,5 +1,1908 @@
+10.41.0 Release notes (2023-06-26)
+=============================================================
+
+### Enhancements
+
+* Add support for multiplexing sync connections. When enabled (the default), a single
+  connection is used per sync user rather than one per synchronized Realm. This
+  reduces resource consumption when multiple Realms are opened and will
+  typically improve performance ([PR #8282](https://github.com/realm/realm-swift/pull/8282)).
+* Sync timeout options can now be set on `RLMAppConfiguration` along with the
+  other app-wide configuration settings ([PR #8282](https://github.com/realm/realm-swift/pull/8282)).
+
+### Fixed
+
+* Import as `RLMRealm_Private.h` as a module would cause issues when using Realm as a subdependency.
+  ([#8164](https://github.com/realm/realm-swift/issues/8164), since 10.37.0)
+* Disable setting a custom logger by default on the sync client when the sync manager is created.
+  This was overriding the default logger set using `RLMLogger.defaultLogger`. (since v10.39.0).
+
+### Breaking Changes
+
+* The `RLMSyncTimeouts.appConfiguration` property has been removed. This was an
+  unimplemented read-only property which did not make any sense on the
+  containing type ([PR #8282](https://github.com/realm/realm-swift/pull/8282)).
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 14.1-15 beta 2.
+
+### Internal
+
+* Upgraded realm-core from 13.15.0 to 13.15.1
+
+10.40.2 Release notes (2023-06-09)
+=============================================================
+
+### Enhancements
+
+* `Actor.preconditionIsolated()` is now used for runtime actor checking when
+  available (i.e. building with Xcode 15 and running on iOS 17) rather than the
+  less reliable workaround.
+
+### Fixed
+
+* If downloading the fresh Realm file failed during a client reset on a
+  flexible sync Realm, the sync client would crash the next time the Realm was
+  opened. ([Core #6494](https://github.com/realm/realm-core/issues/6494), since v10.28.2)
+* If the order of properties in the local class definitions did not match the
+  order in the server-side schema, the before-reset Realm argument passed to a
+  client reset handler would have an invalid schema and likely crash if any
+  data was read from it. ([Core #6693](https://github.com/realm/realm-core/issues/6693), since v10.40.0)
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 14.1-15 beta 1.
+
+### Internal
+
+* Upgraded realm-core from 13.13.0 to 13.15.0.
+* The prebuilt library used for CocoaPods installations is now built with Xcode
+  14. This should not have any observable effects other than the download being
+  much smaller due to no longer including bitcode.
+
+10.40.1 Release notes (2023-06-06)
+=============================================================
+
+### Enhancements
+
+* Fix compilation with Xcode 15. Note that iOS 12 is the minimum supported
+  deployment target when using Xcode 15.
+* Switch to building the Carthage release with Xcode 14.3.1.
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 14.1-15 beta 1.
+
+### Internal
+
+* Overhauled SDK metrics collection to better drive future development efforts.
+
+10.40.0 Release notes (2023-05-26)
+=============================================================
+
+Drop support for Xcode 13 and add Xcode 14.3.1. Xcode 14.1 is now the minimum
+supported version.
+
+### Enhancements
+
+* Adjust the error message for private `Object` subclasses and subclasses
+  nested inside other types to explain how to make them work rather than state
+  that it's impossible. ([#5662](https://github.com/realm/realm-cocoa/issues/5662)).
+* Improve performance of SectionedResults. With a single section it is now ~10%
+  faster, and the runtime of sectioning no longer scales significantly with
+  section count, giving >100% speedups when there are large numbers of sections
+  ([Core #6606](https://github.com/realm/realm-core/pull/6606)).
+* Very slightly improve performance of runtime thread checking on the main
+  thread. ([Core #6606](https://github.com/realm/realm-core/pull/6606))
+
+### Fixed
+
+* Allow support for implicit boolean queries on Swift's Type Safe Queries API
+  ([#8212](https://github.com/realm/realm-swift/issues/8212)).
+* Fixed a fatal error (reported to the sync error handler) during client reset
+  or automatic partition-based to flexible sync migration if the reset has been
+  triggered during an async open and the schema being applied has added new
+  classes. Due to this bug automatic flexibly sync migration has been disabled
+  for older releases and this is now the minimum version required.
+  ([#6601](https://github.com/realm/realm-core/issues/6601), since automatic
+  client resets were introduced in v10.25.0)
+* Dictionaries sometimes failed to map unresolved links to nil. If the target
+  of a link in a dictionary was deleted by another sync client, reading that
+  field from the dictionary would sometimes give an invalid object rather than
+  nil. In addition, queries on dictionaries would sometimes have incorrect
+  results. ([Core #6644](https://github.com/realm/realm-core/pull/6644), since v10.8.0)
+* Older versions of Realm would sometimes fail to properly mark objects as
+  being the target of an incoming link from another object. When this happened,
+  deleting the target object would hit an assertion failure due to the
+  inconsistent state. We now reconstruct a valid state rather than crashing.
+  ([Core #6585](https://github.com/realm/realm-core/issues/6585), since v5.0.0)
+* Fix several UBSan failures which did not appear to result in functional bugs
+  ([Core #6649](https://github.com/realm/realm-core/pull/6649)).
+* Using both synchronous and asynchronous transactions on the same thread or
+  scheduler could hit the assertion failure "!realm.is_in_transaction()" if one
+  of the callbacks for an asynchronous transaction happened to be scheduled
+  during a synchronous transaction
+  ([Core #6659](https://github.com/realm/realm-core/issues/6659), since v10.26.0)
+* The stored deployment location for Apps was not being updated correctly after
+  receiving a redirect response from the server, resulting in every connection
+  attempting to connect to the old URL and getting redirected rather than only
+  the first connection after the deployment location changed.
+  ([Core #6630](https://github.com/realm/realm-core/issues/6630), since v10.38.2)
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 14.1-14.3.1.
+
+### Internal
+
+* Upgraded realm-core from 13.10.1 to 13.13.0.
+
+10.39.1 Release notes (2023-05-05)
+=============================================================
+
+### Enhancements
+
+* New notifiers can now be registered in write transactions until changes have
+  actually been made in the write transaction. This makes it so that new
+  notifications can be registered inside change notifications triggered by
+  beginning a write transaction (unless a previous callback performed writes).
+  ([#4818](https://github.com/realm/realm-swift/issues/4818)).
+* Reduce the memory footprint of an automatic (discard or recover) client reset
+  when there are large incoming changes from the server.
+  ([Core #6567](https://github.com/realm/realm-core/issues/6567)).
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+### Internal
+
+* Upgraded realm-core from 13.10.0 to 13.10.1.
+
+10.39.0 Release notes (2023-05-03)
+=============================================================
+
+### Enhancements
+
+* Add support for actor-isolated Realms, opened with `try await Realm(actor: actor)`.
+
+  Rather than being confined to the current thread or a dispatch queue,
+  actor-isolated Realms are isolated to an actor. This means that they can be
+  used from any thread as long as it's within a function isolated to that
+  actor, and they remain valid over suspension points where a task may hop
+  between threads. Actor-isolated Realms can be used with either global or
+  local actors:
+
+  ```swift
+  @MainActor function mainThreadFunction() async throws {
+      // These are identical: the async init continues to produce a
+      // MainActor-confined Realm if no actor is supplied
+      let realm1 = try await Realm()
+      let realm2 = try await Realm(MainActor.shared)
+  }
+
+  // A simple example of a custom global actor
+  @globalActor actor BackgroundActor: GlobalActor {
+      static var shared = BackgroundActor()
+  }
+
+  @BackgroundActor backgroundThreadFunction() async throws {
+      // Explicitly specifying the actor is required for everything but MainActor
+      let realm = try await Realm(actor: BackgroundActor.shared)
+      try await realm.write {
+          _ = realm.create(MyObject.self)
+      }
+      // Thread-confined Realms would sometimes throw an exception here, as we
+      // may end up on a different thread after an `await`
+      print("\(realm.objects(MyObject.self).count)")
+  }
+
+  actor MyActor {
+      // An implicitly-unwrapped optional is used here to let us pass `self` to
+      // `Realm(actor:)` within `init`
+      var realm: Realm!
+      init() async throws {
+          realm = try await Realm(actor: self)
+      }
+
+      var count: Int {
+          realm.objects(MyObject.self).count
+      }
+
+      func create() async throws {
+          try await realm.asyncWrite {
+              realm.create(MyObject.self)
+          }
+      }
+  }
+
+  // This function isn't isolated to the actor, so each operation has to be async
+  func createObjects() async throws {
+      let actor = try await MyActor()
+      for _ in 0..<5 {
+        await actor.create()
+      }
+      print("\(await actor.count)")
+  }
+
+  // In an isolated function, an actor-isolated Realm can be used synchronously
+  func createObjects(in actor: isolated MyActor) async throws {
+      await actor.realm.write {
+          actor.realm.create(MyObject.self)
+      }
+      print("\(actor.realm.objects(MyObject.self).count)")
+  }
+  ```
+
+  Actor-isolated Realms come with a more convenient syntax for asynchronous
+  writes. `try await realm.write { ... }` will suspend the current task,
+  acquire the write lock without blocking the current thread, and then invoke
+  the block. The actual data is then written to disk on a background thread,
+  and the task is resumed once that completes. As this does not block the
+  calling thread while waiting to write and does not perform i/o on the calling
+  thread, this will often be safe to use from `@MainActor` functions without
+  blocking the UI. Sufficiently large writes may still benefit from being done
+  on a background thread.
+
+  Asynchronous writes are only supported for actor-isolated Realms or in
+  `@MainActor` functions.
+
+  Actor-isolated Realms require Swift 5.8 (Xcode 14.3). Enabling both strict
+  concurrency checking (`SWIFT_STRICT_CONCURRENCY=complete` in Xcode) and
+  runtime actor data race detection (`OTHER_SWIFT_FLAGS=-Xfrontend
+  -enable-actor-data-race-checks`) is strongly recommended when using
+  actor-isolated Realms.
+* Add support for automatic partition-based to flexible sync migration.
+  Connecting to a server-side app configured to use flexible sync with a
+  client-side partition-based sync configuration is now supported, and will
+  automatically create the appropriate flexible sync subscriptions to subscribe
+  to the requested partition. This allows changing the configuration on the
+  server from partition-based to flexible without breaking existing clients.
+  ([Core #6554](https://github.com/realm/realm-core/issues/6554))
+* Now you can use an array `[["_id": 1], ["breed": 0]]` as sorting option for a
+  MongoCollection. This new API fixes the issue where the resulting documents
+  when using more than one sort parameter were not consistent between calls.
+  ([#7188](https://github.com/realm/realm-swift/issues/7188), since v10.0.0).
+* Add support for adding a user created default logger, which allows implementing your own logging logic
+  and the log threshold level.
+  You can define your own logger creating an instance of `Logger` and define the log function which will be
+  invoked whenever there is a log message.
+
+  ```swift
+  let logger = Logger(level: .all) { level, message in
+     print("Realm Log - \(level): \(message)")
+  }
+  ```
+
+  Set this custom logger as Realm default logger using `Logger.shared`.
+   ```swift
+  Logger.shared = logger
+   ```
+* It is now possible to change the default log threshold level at any point of the application's lifetime.
+  ```swift
+  Logger.shared.logLevel = .debug
+  ```
+  This will override the log level set anytime before by a user created logger.
+* We have set `.info` as the default log threshold level for Realm. You will now see some
+  log message in your console. To disable use `Logger.shared.level = .off`.
+
+### Fixed
+
+* Several schema initialization functions had incorrect `@MainActor`
+  annotations, resulting in runtime warnings if the first time a Realm was
+  opened was on a background thread
+  ([#8222](https://github.com/realm/realm-swift/issues/8222), since v10.34.0).
+
+### Deprecations
+
+* `App.SyncManager.logLevel` and `App.SyncManager.logFunction` are deprecated in favour of 
+  setting a default logger.
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+### Internal
+
+* Upgraded realm-core from v13.9.4 to v13.10.0.
+
+10.38.3 Release notes (2023-04-28)
+=============================================================
+
+### Enhancements
+
+* Improve performance of cancelling a write transactions after making changes.
+  If no KVO observers are used this is now constant time rather than taking
+  time proportional to the number of changes to be rolled back. Cancelling a
+  write transaction with KVO observers is 10-20% faster. ([Core PR #6513](https://github.com/realm/realm-core/pull/6513)).
+
+### Fixed
+
+* Performing a large number of queries without ever performing a write resulted
+  in steadily increasing memory usage, some of which was never fully freed due
+  to an unbounded cache ([#7978](https://github.com/realm/realm-swift/issues/7978), since v10.27.0).
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+### Internal
+
+* Upgraded realm-core from 13.9.3 to 13.9.4
+
+10.38.2 Release notes (2023-04-25)
+=============================================================
+
+### Enhancements
+
+* Improve performance of equality queries on a non-indexed AnyRealmValue
+  property by about 30%. ([Core #6506](https://github.com/realm/realm-core/issues/6506))
+
+### Fixed
+
+* SSL handshake errors were treated as fatal errors rather than errors which
+  should be retried. ([Core #6434](https://github.com/realm/realm-core/issues/6434), since v10.35.0)
+
+### Compatibility
+
+* Realm Studio: 14.0.1 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+### Internal
+
+* Upgraded realm-core from 13.9.0 to 13.9.3.
+
+10.38.1 Release notes (2023-04-25)
+=============================================================
+
+### Fixed
+
+* The error handler set on EventsConfiguration was not actually used (since v10.26.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+10.38.0 Release notes (2023-03-31)
+=============================================================
+
+Switch to building the Carthage release with Xcode 14.3.
+
+### Enhancements
+
+* Add Xcode 14.3 binaries to the release package. Note that CocoaPods 1.12.0
+  does not support Xcode 14.3.
+* Add support for sharing encrypted Realms between multiple processes.
+  ([Core #1845](https://github.com/realm/realm-core/issues/1845))
+
+### Fixed
+
+* Fix a memory leak reported by Instruments on `URL.path` in
+  `Realm.Configuration.fileURL` when using a string partition key in Partition
+  Based Sync ([#8195](https://github.com/realm/realm-swift/pull/8195)), since v10.0.0).
+* Fix a data race in version management. If one thread committed a write
+  transaction which increased the number of live versions above the previous
+  highest seen during the current session at the same time as another thread
+  began a read, the reading thread could read from a no-longer-valid memory
+  mapping. This could potentially result in strange crashes when opening,
+  refreshing, freezing or thawing a Realm
+  ([Core #6411](https://github.com/realm/realm-core/pull/6411), since v10.35.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.4-14.3.
+
+### Internal
+
+* Upgraded realm-core from 13.8.0 to 13.9.0.
+
+10.37.2 Release notes (2023-03-29)
+=============================================================
+
+### Fixed
+
+* Copying a `RLMRealmConfiguration` failed to copy several fields. This
+  resulted in migrations being passed the incorrect object type in Swift when
+  using the default configuration (since v10.34.0) or async open (since
+  v10.37.0). This also broke using the Events API in those two scenarios (since
+  v10.26.0 for default configuration and v10.37.0 for async open). ([#8190](https://github.com/realm/realm-swift/issues/8190))
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+10.37.1 Release notes (2023-03-27)
+=============================================================
+
+### Enhancements
+
+* Performance improvement for the following queries ([Core #6376](https://github.com/realm/realm-core/issues/6376)):
+    * Significant (~75%) improvement when counting (`Results.count`) the number
+      of exact matches (with no other query conditions) on a
+      string/int/UUID/ObjectID property that has an index. This improvement
+      will be especially noticiable if there are a large number of results
+      returned (duplicate values).
+    * Significant (~99%) improvement when querying for an exact match on a Date
+      property that has an index.
+    * Significant (~99%) improvement when querying for a case insensitive match
+      on an AnyRealmValue property that has an index.
+    * Moderate (~25%) improvement when querying for an exact match on a Bool
+      property that has an index.
+    * Small (~5%) improvement when querying for a case insensitive match on an
+      AnyRealmValue property that does not have an index.
+
+### Fixed
+
+* Add missing `@Sendable` annotations to several sync and app services related
+  callbacks ([PR #8169](https://github.com/realm/realm-swift/pull/8169), since v10.34.0).
+* Fix some bugs in handling task cancellation for async Realm init. Some very
+  specific timing windows could cause crashes, and the download would not be
+  cancelled if the Realm was already open ([PR #8178](https://github.com/realm/realm-swift/pull/8178), since v10.37.0).
+* Fix a crash when querying an AnyRealmValue property with a string operator
+  (contains/like/beginswith/endswith) or with case insensitivity.
+  ([Core #6376](https://github.com/realm/realm-core/issues/6376), since v10.8.0)
+* Querying for case-sensitive equality of a string on an indexed AnyRealmValue
+  property was returning case insensitive matches. For example querying for
+  `myIndexedAny == "Foo"` would incorrectly match on values of "foo" or "FOO" etc.
+  ([Core #6376](https://github.com/realm/realm-core/issues/6376), since v10.8.0)
+* Adding an index to an AnyRealmValue property when objects of that type
+  already existed would crash with an assertion.
+  ([Core #6376](https://github.com/realm/realm-core/issues/6376), since v10.8.0).
+* Fix a bug that may have resulted in arrays being in different orders on
+  different devices. Some cases of “Invalid prior_size” may be fixed too.
+  ([Core #6191](https://github.com/realm/realm-core/issues/6191), since v10.25.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+### Internal
+
+* Upgraded realm-core from 13.6.0 to 13.8.0
+
+10.37.0 Release notes (2023-03-09)
+=============================================================
+
+### Enhancements
+
+* `MongoCollection.watch().subscribe(on:)` now supports any swift Scheduler
+  rather than only dispatch queues ([PR #8131](https://github.com/realm/realm-swift/pull/8130)).
+* Add an async sequence wrapper for `MongoCollection.watch()`, allowing you to
+  do `for try await change in collection.changeEvents { ... }`
+  ([PR #8131](https://github.com/realm/realm-swift/pull/8130)).
+* The internals of error handling and reporting have been significantly
+  reworked. The visible effects of this are that some errors which previously
+  had unhelpful error messages now include more detail about what went wrong,
+  and App errors now expose a much more complete set of error codes
+  ([PR #8002](https://github.com/realm/realm-swift/pull/8002)).
+* Expose compensating write error information. When the server rejects a
+  modification made by the client (such as if the user does not have the
+  required permissions), a `SyncError` is delivered to the sync error handler
+  with the code `.writeRejected` and a non-nil `compensatingWriteInfo` field
+  which contains information about what was rejected and why. This information
+  is intended primarily for debugging and logging purposes and may not have a
+  stable format. ([PR #8002](https://github.com/realm/realm-swift/pull/8002))
+* Async `Realm.init()` now handles Task cancellation and will cancel the async
+  open if the Task is cancelled ([PR #8148](https://github.com/realm/realm-swift/pull/8148)).
+* Cancelling async opens now has more consistent behavior. The previously
+  intended and documented behavior was that cancelling an async open would
+  result in the callback associated with the specific task that was cancelled
+  never being called, and all other pending callbacks would be invoked with an
+  ECANCELED error. This never actually worked correctly, and the callback which
+  was not supposed to be invoked at all sometimes would be. We now
+  unconditionally invoke all of the exactly once, passing ECANCELED to all of
+  them ([PR #8148](https://github.com/realm/realm-swift/pull/8148)).
+
+### Fixed
+
+* `UserPublisher` incorrectly bounced all notifications to the main thread instead
+  of setting up the Combine publisher to correctly receive on the main thread.
+  ([#8132](https://github.com/realm/realm-swift/issues/8132), since 10.21.0)
+* Fix warnings when building with Xcode 14.3 beta 2.
+* Errors in async open resulting from invalid queries in `initialSubscriptions`
+  would result in the callback being invoked with both a non-nil Realm and a
+  non-nil Error even though the Realm was in an invalid state. Now only the
+  error is passed to the callback ([PR #8148](https://github.com/realm/realm-swift/pull/8148), since v10.28.0).
+* Converting a local realm to a synced realm would crash if an embedded object
+  was null ([Core #6294](https://github.com/realm/realm-core/issues/6294), since v10.22.0).
+* Subqueries on indexed properties performed extremely poorly. ([Core #6327](https://github.com/realm/realm-core/issues/6327), since v5.0.0)
+* Fix a crash when a SSL read successfully read a non-zero number of bytes and
+  also reported an error. ([Core #5435](https://github.com/realm/realm-core/issues/5435), since 10.0.0)
+* The sync client could get stuck in an infinite loop if the server sent an
+  invalid changeset which caused a transform error. This now results in a
+  client reset instead. ([Core #6051](https://github.com/realm/realm-core/issues/6051), since v10.0.0)
+* Strings in queries which contained any characters which required multiple
+  bytes when encoded as utf-8 were incorrectly encoded as binary data when
+  serializing the query to send it to the server for a flexible sync
+  subscription, resulting the server rejecting the query
+  ([Core #6350](https://github.com/realm/realm-core/issues/6350), since 10.22.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+### Internal
+
+* Upgraded realm-core from 13.4.1 to 13.6.0
+
+10.36.0 Release notes (2023-02-15)
+=============================================================
+
+### Enhancements
+
+* Add support for multiple overlapping or nested event scopes.
+  `Events.beginScope()` now returns a `Scope` object which is used to commit or
+  cancel that scope, and if more than one scope is active at a time events are
+  reported to all active scopes.
+
+### Fixed
+
+* Fix moving `List` items to a higher index in SwiftUI results in wrong destination index
+  ([#7956](https://github.com/realm/realm-swift/issues/7956), since v10.6.0).
+* Using the `searchable` view modifier with `@ObservedResults` in iOS 16 would
+  cause the collection observation subscription to cancel.
+  ([#8096](https://github.com/realm/realm-swift/issues/8096), since 10.21.0)
+* Client reset with recovery would sometimes crash if the recovery resurrected
+  a dangling link ([Core #6292](https://github.com/realm/realm-core/issues/6292), since v10.32.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+### Internal
+
+* Upgraded realm-core from 13.4.0 to 13.4.1
+
+10.35.1 Release notes (2023-02-10)
+=============================================================
+
+### Fixed
+
+* Client reset with recovery would crash if a client reset occurred the very
+  first time the Realm was opened with async open. The client reset callbacks
+  are now not called if the Realm had never been opened before
+  ([PR #8125](https://github.com/realm/realm-swift/pull/8125), since 10.32.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+10.35.0 Release notes (2023-02-07)
+=============================================================
+
+This version bumps the Realm file format version to 23. Realm files written by
+this version cannot be read by older versions of Realm.
+
+### Enhancements
+
+* The Realm file is now automatically shrunk if the file size is larger than
+  needed to store all of the data. ([Core PR #5755](https://github.com/realm/realm-core/pull/5755))
+* Pinning old versions (either with frozen Realms or with Realms on background
+  threads that simply don't get refreshed) now only prevents overwriting the
+  data needed by that version, rather than the data needed by that version and
+  all later versions. In addition, frozen Realms no longer pin the transaction
+  logs used to drive change notifications. This mostly eliminates the file size
+  growth caused by pinning versions. ([Core PR #5440](https://github.com/realm/realm-core/pull/5440))
+* Rework how Dictionaries/Maps are stored in the Realm file. The new design uses
+  less space and is typically significantly faster. This changes the iteration
+  order of Maps, so any code relying on that may be broken. We continue
+  to make no guarantees about iteration order on Maps ([Core #5764](https://github.com/realm/realm-core/issues/5764)).
+* Improve performance of freezing Realms ([Core PR #6211](https://github.com/realm/realm-core/pull/6211)).
+
+### Fixed
+
+* Fix a crash when using client reset with recovery and flexible sync with a
+  single subscription ([Core #6070](https://github.com/realm/realm-core/issues/6070), since v10.28.2)
+* Encrypted Realm files could not be opened on devices with a larger page size
+  than the one which originally wrote the file.
+  ([#8030](https://github.com/realm/realm-swift/issues/8030), since v10.32.1)
+* Creating multiple flexible sync subscriptions at once could hit an assertion
+  failure if the server reported an error for any of them other than the last
+  one ([Core #6038](https://github.com/realm/realm-core/issues/6038), since v10.21.1).
+* `Set<AnyRealmValue>` and `List<AnyRealmValue>` considered a string and binary
+  data containing that string encoded as UTF-8 to be equivalent. This could
+  result in a List entry not changing type on assignment and for the client be
+  inconsistent with the server if a string and some binary data with equivalent
+  content was inserted from Atlas.
+  ([Core #4860](https://github.com/realm/realm-core/issues/4860) and
+  [Core #6201](https://github.com/realm/realm-core/issues/6201), since v10.8.0)
+* Querying for NaN on Decimal128 properties did not match any objects
+  ([Core #6182](https://github.com/realm/realm-core/issues/6182), since v10.8.0).
+* When client reset with recovery is used and the recovery did not need to
+  make any changes to the local Realm, the sync client could incorrectly think
+  the recovery failed and report the error "A fatal error occured during client
+  reset: 'A previous 'Recovery' mode reset from <timestamp> did not succeed,
+  giving up on 'Recovery' mode to prevent a cycle'".
+  ([Core #6195](https://github.com/realm/realm-core/issues/6195), since v10.32.0)
+* Fix a crash when using client reset with recovery and flexible sync with a
+  single subscription ([Core #6070](https://github.com/realm/realm-core/issues/6070), since v10.28.2)
+* Writing to newly in-view objects while a flexible sync bootstrap was in
+  progress would not synchronize those changes to the server
+  ([Core #5804](https://github.com/realm/realm-core/issues/5804), since v10.21.1).
+* If a client reset with recovery or discard local was interrupted while the
+  "fresh" realm was being downloaded, the sync client could crash with a
+  MultpleSyncAgents exception ([Core #6217](https://github.com/realm/realm-core/issues/6217), since v10.25.0).
+* Sharing Realm files between a Catalyst app and Realm Studio did not properly
+  synchronize access to the Realm file ([Core #6258](https://github.com/realm/realm-core/pull/6258), since v10.0.0).
+
+### Compatibility
+
+* Realm Studio: 13.0.2 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+### Internal
+
+* Upgraded realm-core from 12.13.0 to 13.4.0
+
+10.34.1 Release notes (2023-01-20)
+=============================================================
+
+### Fixed
+
+* Add some missing `@preconcurrency` annotations which lead to build failures
+  with Xcode 14.0 when importing via SPM or CocoaPods
+  ([#8104](https://github.com/realm/realm-swift/issues/8104), since v10.34.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 - 12.0.0.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+10.34.0 Release notes (2023-01-13)
+=============================================================
+
+Swift 5.5 is no longer supported. Swift 5.6 (Xcode 13.3) is now the minimum
+supported version.
+
+The prebuilt binary for Carthage is now build with Xcode 14.2.
+
+### Enhancements
+
+* Improve performance of creating Projection objects and of change
+  notifications on projections ([PR #8050](https://github.com/realm/realm-swift/pull/8050)).
+* Allow initialising any sync configuration with `cancelAsyncOpenOnNonFatalErrors`.
+* Improve performance of Combine value publishers which do not use the
+  object/collection changesets a little.
+* All public types have been audited for sendability and are now marked as
+  Sendable when applicable. A few types which were incidentally not thread-safe
+  but make sense to use from multiple threads are now thread-safe.
+* Add support for building Realm with strict concurrency checking enabled.
+
+### Fixed
+
+* Fix bad memory access exception that can occur when watching change streams.
+  [PR #8039](https://github.com/realm/realm-swift/pull/8039).
+* Object change notifications on projections only included the first projected
+  property for each source property ([PR #8050](https://github.com/realm/realm-swift/pull/8050), since v10.21.0).
+* `@AutoOpen` failed to open flexible sync Realms while offline
+  ([#7986](https://github.com/realm/realm-swift/issues/7986), since v10.27.0).
+* Fix "Publishing changes from within view updates is not allowed" warnings
+  when using `@ObservedResults` or `@ObservedSectionedResults`
+  ([#7908](https://github.com/realm/realm-swift/issues/7908)).
+* Fix "Publishing changes from within view updates is not allowed" warnings
+  when using `@AutoOpen` or `@AsyncOpen`.
+  ([#7908](https://github.com/realm/realm-swift/issues/7908)).
+* Defer `Realm.asyncOpen` execution on `@AsyncOpen` and `@AutoOpen` property
+  wrappers until all the environment values are set. This will guarantee the
+  configuration and partition value are set set before opening the realm.
+  ([#7931](https://github.com/realm/realm-swift/issues/7931), since v10.12.0).
+* `@ObservedResults.remove()` could delete the wrong object if a write on a
+  background thread which changed the index of the object being removed
+  occurred at a very specific time (since v10.6.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 - 12.0.0. 13.0.0 is currently incompatible.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.2.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.3-14.2.
+
+10.33.0 Release notes (2022-12-01)
+=============================================================
+
+### Enhancements
+
+* Flexible sync subscription state will change to
+  `SyncSubscriptionState.pending` (`RLMSyncSubscriptionStatePending`) while
+  waiting for the server to have sent all pending history after a bootstrap and
+  before marking a subscription as Complete.
+  ([#5795](https://github.com/realm/realm-core/pull/5795))
+* Add custom column names API, which allows to set a different column name in the realm
+  from the one used in your object declaration.
+  ```swift
+  class Person: Object {
+      @Persisted var firstName: String
+      @Persisted var birthDate: Date
+      @Persisted var age: Int
+
+      override class public func propertiesMapping() -> [String: String] {
+          ["firstName": "first_name",
+           "birthDate": "birth_date"]
+      }
+  }
+  ```
+  This is very helpful in cases where you want to name a property differently
+  from your `Device Sync` JSON schema.
+  This API is only available for old and modern object declaration syntax on the
+  `RealmSwift` SDK.
+* Flexible sync bootstraps now apply 1MB of changesets per write transaction
+  rather than applying all of them in a single write transaction.
+  ([Core PR #5999](https://github.com/realm/realm-core/pull/5999)).
+
+### Fixed
+
+* Fix a race condition which could result in "operation cancelled" errors being
+  delivered to async open callbacks rather than the actual sync error which
+  caused things to fail ([Core PR #5968](https://github.com/realm/realm-core/pull/5968), since the introduction of async open).
+* Fix database corruption issues which could happen if an application was
+  terminated at a certain point in the process of comitting a write
+  transaciton. ([Core PR #5993](https://github.com/realm/realm-core/pull/5993), since v10.21.1)
+* `@AsyncOpen` and `@AutoOpen` would begin and then cancel a second async open
+  operation ([PR #8038](https://github.com/realm/realm-swift/pull/8038), since v10.12.0).
+* Changing the search text when using the searchable SwiftUI extension would
+  trigger multiple updates on the View for each change
+  ([PR #8038](https://github.com/realm/realm-swift/pull/8038), since v10.19.0).
+* Changing the filter or search properties of an `@ObservedResults` or
+  `@ObservedSectionedResults` would trigger up to three updates on the View
+  ([PR #8038](https://github.com/realm/realm-swift/pull/8038), since v10.6.0).
+* Fetching a user's profile while the user logs out would result in an
+  assertion failure. ([Core PR #6017](https://github.com/realm/realm-core/issues/5571), since v10.8.0)
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+### Internal
+
+* Upgraded realm-core from 12.11.0 to 12.13.0
+
+10.32.3 Release notes (2022-11-10)
+=============================================================
+
+### Fixed
+
+* Fix name lookup errors when importing Realm Swift built in library evolution
+  mode (([#8014](https://github.com/realm/realm-swift/issues/8014)).
+* The prebuilt watchOS library in the objective-c release package was missing
+  an arm64 slice. The Swift release package was uneffected
+  ([PR #8016](https://github.com/realm/realm-swift/pull/8016)).
+* Fix issue where `RLMUserAPIKey.key`/`UserAPIKey.key` incorrectly returned the name of the API
+  key instead of the key itself. ([#8021](https://github.com/realm/realm-swift/issues/8021), since v10.0.0)
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+10.32.2 Release notes (2022-11-01)
+=============================================================
+
+Switch to building the Carthage release with Xcode 14.1.
+
+### Fixed
+
+* Fix linker errors when building a release build with Xcode 14.1 when
+ installing via SPM ([#7995](https://github.com/realm/realm-swift/issues/7995)).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+10.32.1 Release notes (2022-10-25)
+=============================================================
+
+### Enhancements
+
+* Improve performance of client reset with automatic recovery and converting
+  top-level tables into embedded tables ([Core #5897](https://github.com/realm/realm-core/pull/5897)).
+* `Realm.Error` is now a typealias for `RLMError` rather than a
+  manually-defined version of what the automatic bridging produces. This should
+  have no effect on existing working code, but the manual definition was
+  missing a few things supplied by the automatic bridging.
+* Some sync errors sent by the server include a link to the server-side logs
+  associated with that error. This link is now exposed in the `serverLogURL`
+  property on `SyncError` (or `RLMServerLogURLKey` userInfo field when using NSError).
+
+### Fixed
+
+* Many sync and app errors were reported using undocumented internal error
+  codes and/or domains and could not be progammatically handled. Some notable
+  things which now have public error codes instead of unstable internal ones:
+  - `Realm.Error.subscriptionFailed`: The server rejected a flexible sync subscription.
+  - `AppError.invalidPassword`: A login attempt failed due to a bad password.
+  - `AppError.accountNameInUse`: A registration attempt failed due to the account name being in use.
+  - `AppError.httpRequestFailed`: A HTTP request to Atlas App Services
+    completed with an error HTTP code. The failing code is available in the
+    `httpStatusCode` property.
+  - Many other less common error codes have been added to `AppError`.
+  - All sync errors other than `SyncError.clientResetError` reported incorrect
+    error codes.
+  (since v10.0.0).
+* `UserAPIKey.objectId` was incorrectly bridged to Swift as `RLMObjectId` to
+  `ObjectId`. This may produce warnings about an unneccesary cast if you were
+  previously casting it to the correct type (since v10.0.0).
+* Fixed an assertion failure when observing change notifications on a sectioned
+  result, if the first modification was to a linked property that did not cause
+  the state of the sections to change.
+  ([Core #5912](https://github.com/realm/realm-core/issues/5912),
+  since the introduction of sectioned results in v10.29.0)
+* Fix a use-after-free if the last external reference to an encrypted
+  synchronized Realm was closed between when a client reset error was received
+  and when the download of the new Realm began.
+  ([Core #5949](https://github.com/realm/realm-core/pull/5949), since 10.28.4).
+* Fix an assertion failure during client reset with recovery when recovering
+  a list operation on an embedded object that has a link column in the path
+  prefix to the list from the top level object.
+  ([Core #5957](https://github.com/realm/realm-core/issues/5957),
+  since introduction of automatic recovery in v10.32.0).
+* Creating a write transaction which is rejected by the server due to it
+  exceeding the maximum transaction size now results in a client reset error
+  instead of synchronization breaking and becoming stuck forever
+  ([Core #5209](https://github.com/realm/realm-core/issues/5209), since v10).
+* Opening an unencrypted file with an encryption key would sometimes report a
+  misleading error message that indicated that the problem was something other
+  than a decryption failure ([Core #5915](https://github.com/realm/realm-core/pull/5915), since 0.89.0).
+* Fix a rare deadlock which could occur when closing a synchronized Realm
+  immediately after committing a write transaction when the sync worker thread
+  has also just finished processing a changeset from the server
+  ([Core #5948](https://github.com/realm/realm-core/pull/5948)).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.0.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+### Internal
+
+* Upgraded realm-core from 12.9.0 to 12.11.0.
+
+10.32.0 Release notes (2022-10-10)
+=============================================================
+
+### Enhancements
+
+* Add `.recoverUnsyncedChanges` (`RLMClientResetModeRecoverUnsyncedChanges`) and
+`.recoverOrDiscardUnsyncedChanges` (`RLMClientResetModeRecoverOrDiscardUnsyncedChanges`) behaviors to `ClientResetMode` (`RLMClientResetMode`).
+  - The newly added recover modes function by downloading a realm which reflects the latest
+    state of the server after a client reset. A recovery process is run locally in an
+    attempt to integrate the server state with any local changes from before the
+    client reset occurred.
+    The changes are integrated with the following rules:
+    1. Objects created locally that were not synced before client reset, will be integrated.
+    2. If an object has been deleted on the server, but was modified on the client, the delete takes precedence and the update is discarded.
+    3. If an object was deleted on the client, but not the server, then the client delete instruction is applied.
+    4. In the case of conflicting updates to the same field, the client update is applied.
+  - The client reset process will fallback to `ClientResetMode.discardUnsyncedChanges` if the recovery process fails in `.recoverOrDiscardUnsyncedChanges`.
+  - The client reset process will fallback to `ClientResetMode.manual` if the recovery process fails in `.recoverUnsyncedChanges`.
+  - The two new swift recovery modes support client reset callbacks: `.recoverUnsyncedChanges(beforeReset: ((Realm) -> Void)? = nil, afterReset: ((Realm, Realm) -> Void)? = nil)`.
+  - The two new Obj-C recovery modes support client reset callbacks in `notifyBeforeReset`
+    and `notifyAfterReset`for both `[RLMUser configurationWithPartitionValue]` and `[RLMUser flexibleSyncConfigurationWithClientResetMode]`
+    For more detail on client reset callbacks, see `ClientResetMode`, `RLMClientResetBeforeBlock`,
+    `RLMClientResetAfterBlock`, and the 10.25.0 changelog entry.
+* Add two new additional interfaces to define a manual client reset handler:
+  - Add a manual callback handler to `ClientResetMode.manual` -> `ClientResetMode.manual(ErrorReportingBlock? = nil)`.
+  - Add the `RLMSyncConfiguration.manualClientResetHandler` property (type `RLMSyncErrorReportingBlock`).
+  - These error reporting blocks are invoked in the event of a `RLMSyncErrorClientResetError`.
+  - See `ErrorReportingBlock` (`RLMSyncErrorReportingBlock`), and `ClientResetInfo` for more detail.
+  - Previously, manual client resets were handled only through the `SyncManager.ErrorHandler`. You have the
+    option, but not the requirement, to define manual reset handler in these interfaces.
+    Otherwise, the `SyncManager.ErrorHandler` is still invoked during the manual client reset process.
+  - These new interfaces are only invoked during a `RLMSyncErrorClientResetError`. All other sync errors
+    are still handled in the `SyncManager.ErrorHandler`.
+  - See 'Breaking Changes' for information how these interfaces interact with an already existing
+    `SyncManager.ErrorHandler`.
+
+### Breaking Changes
+
+* The default `clientResetMode` (`RLMClientResetMode`) is switched from `.manual` (`RLMClientResetModeManual`)
+  to `.recoverUnsyncedChanges` (`RLMClientResetModeRecoverUnsyncedChanges`).
+  - If you are currently using `.manual` and continue to do so, the only change
+    you must explicitly make is designating manual mode in
+    your `Realm.Configuration.SyncConfiguration`s, since they will now default to `.recoverUnsyncedChanges`.
+  - You may choose to define your manual client reset handler in the newly
+    introduced `manual(ErrorReportingBlock? = nil)`
+    or `RLMSyncConfiguration.manualClientResetHandler`, but this is not required.
+    The `SyncManager.errorHandler` will still be invoked during a client reset if
+    no callback is passed into these new interfaces.
+
+### Deprecations
+
+* `ClientResetMode.discardLocal` is deprecated in favor of `ClientResetMode.discardUnsyncedChanges`.
+  The reasoning is that the name better reflects the effect of this reset mode. There is no actual
+  difference in behavior.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.0.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+10.31.0 Release notes (2022-10-05)
+=============================================================
+
+The prebuilt binary for Carthage is now build with Xcode 14.0.1.
+
+### Enhancements
+
+* Cut the runtime of aggregate operations on large dictionaries in half
+  ([Core #5864](https://github.com/realm/realm-core/pull/5864)).
+* Improve performance of aggregate operations on collections of objects by 2x
+  to 10x ([Core #5864](https://github.com/realm/realm-core/pull/5864)).
+  Greatly improve the performance of sorting or distincting a Dictionary's keys
+  or values. The most expensive operation is now performed O(log N) rather than
+  O(N log N) times, and large Dictionaries can see upwards of 99% reduction in
+  time to sort. ([Core #5166](https://github.com/realm/realm-core/pulls/5166))
+* Add support for changing the deployment location for Atlas Apps. Previously
+  this was assumed to be immutable ([Core #5648](https://github.com/realm/realm-core/issues/5648)).
+* The sync client will now yield the write lock to other threads which are
+  waiting to perform a write transaction even if it still has remaining work to
+  do, rather than always applying all changesets received from the server even
+  when other threads are trying to write. ([Core #5844](https://github.com/realm/realm-core/pull/5844)).
+* The sync client no longer writes an unused temporary copy of the changesets
+  received from the server to the Realm file ([Core #5844](https://github.com/realm/realm-core/pull/5844)).
+
+### Fixed
+
+* Setting a `List` property with `Results` no longer throws an unrecognized
+  selector exception (since 10.8.0-beta.2)
+* `RLMProgressNotificationToken` and `ProgressNotificationToken` now hold a
+  strong reference to the sync session, keeping it alive until the token is
+  deallocated or invalidated, as the other notification tokens do.
+  ([#7831](https://github.com/realm/realm-swift/issues/7831), since v2.3.0).
+* Results permitted some nonsensical aggregate operations on column types which
+  do not make sense to aggregate, giving garbage results rather than reporting
+  an error ([Core #5876](https://github.com/realm/realm-core/pull/5876), since v5.0.0).
+* Upserting a document in a Mongo collection would crash if the document's id
+  type was anything other than ObjectId (since v10.0.0).
+* Fix a use-after-free when a sync session is closed and the app is destroyed
+  at the same time ([Core #5752](https://github.com/realm/realm-core/issues/5752),
+  since v10.19.0).
+
+### Deprecations
+
+* `RLMUpdateResult.objectId` has been deprecated in favor of
+  `RLMUpdateResult.documentId` to support reporting document ids which are not
+  object ids.
+### Breaking Changes
+* Private API `_realmColumnNames` has been renamed to a new public API
+  called `propertiesMapping()`. This change only affects the Swift API 
+  and doesn't have any effects in the obj-c API.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 14.0.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14.1.
+
+### Internal
+
+* Upgraded realm-core from 12.7.0 to 12.9.0
+
+10.30.0 Release notes (2022-09-20)
+=============================================================
+
+### Fixed
+
+* Incoming links from `RealmAny` properties were not handled correctly when
+  migrating an object type from top-level to embedded. `RealmAny` properties
+  currently cannot link to embedded objects.
+  ([Core #5796](https://github.com/realm/realm-core/pull/5796), since 10.8.0).
+* `Realm.refresh()` sometimes did not actually advance to the latest version.
+  It attempted to be semi-non-blocking in a very confusing way which resulted
+  in it sometimes advancing to a newer version that is not the latest version,
+  and sometimes blocking until notifiers are ready so that it could advance to
+  the latest version. This behavior was undocumented and didn't work correctly,
+  so it now always blocks if needed to advance to the latest version.
+  ([#7625](https://github.com/realm/realm-swift/issues/7625), since v0.98.0).
+* Fix the most common cause of thread priority inversions when performing
+  writes on the main thread. If beginning the write transaction has to wait for
+  the background notification calculations to complete, that wait is now done
+  in a QoS-aware way. ([#7902](https://github.com/realm/realm-swift/issues/7902))
+* Subscribing to link properties in a flexible sync Realm did not work due to a
+  mismatch between what the client sent and what the server needed.
+  ([Core #5409](https://github.com/realm/realm-core/issues/5409))
+* Attempting to use `AsymmetricObject` with partition-based sync now reports a
+  sensible error much earlier in the process. Asymmetric sync requires using
+  flexible sync. ([Core #5691](https://github.com/realm/realm-core/issues/5691), since 10.29.0).
+* Case-insensitive but diacritic-sensitive queries would crash on 4-byte UTF-8
+  characters ([Core #5825](https://github.com/realm/realm-core/issues/5825), since v2.2.0)
+* Accented characters are now handled by case-insensitive but
+  diacritic-sensitive queries. ([Core #5825](https://github.com/realm/realm-core/issues/5825), since v2.2.0)
+
+### Breaking Changes
+
+* `-[RLMASLoginDelegate authenticationDidCompleteWithError:]` has been renamed
+  to `-[RLMASLoginDelegate authenticationDidFailWithError:]` to comply with new
+  app store requirements. This only effects the obj-c API.
+  ([#7945](https://github.com/realm/realm-swift/issues/7945))
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1 - 14.
+
+### Internal
+
+* Upgraded realm-core from 12.6.0 to 12.7.0
+
+10.29.0 Release notes (2022-09-09)
+=============================================================
+
+### Enhancements
+
+* Add support for asymmetric sync. When a class inherits from
+  `AsymmetricObject`, objects created are synced unidirectionally to the server
+  and cannot be queried or read locally.
+
+```swift
+    class PersonObject: AsymmetricObject {
+       @Persisted(primaryKey: true) var _id: ObjectId
+       @Persisted var name: String
+       @Persisted var age: Int
+    }
+
+    try realm.write {
+       // This will create the object on the server but not locally.
+       realm.create(PersonObject.self, value: ["_id": ObjectId.generate(),
+                                               "name": "Dylan",
+                                               "age": 20])
+    }
+```
+* Add ability to section a collection which conforms to `RealmCollection`, `RLMCollection`.
+  Collections can be sectioned by a unique key retrieved from a keyPath or a callback and will return an instance of `SectionedResults`/`RLMSectionedResults`.
+  Each section in the collection will be an instance of `ResultsSection`/`RLMSection` which gives access to the elements corresponding to the section key.
+  `SectionedResults`/`RLMSectionedResults` and `ResultsSection`/`RLMSection` have the ability to be observed.
+  ```swift
+  class DemoObject: Object {
+      @Persisted var title: String
+      @Persisted var date: Date
+      var firstLetter: String {
+          return title.first.map(String.init(_:)) ?? ""
+      }
+  }
+  var sectionedResults: SectionedResults<String, DemoObject>
+  // ...
+  sectionedResults = realm.objects(DemoObject.self)
+      .sectioned(by: \.firstLetter, ascending: true)
+  ```
+* Add `@ObservedSectionedResults` for SwiftUI support. This property wrapper type retrieves sectioned results 
+  from a Realm using a keyPath or callback to determine the section key.
+  ```swift
+  struct DemoView: View {
+      @ObservedSectionedResults(DemoObject.self,
+                                sectionKeyPath: \.firstLetter) var demoObjects
+
+      var body: some View {
+          VStack {
+              List {
+                  ForEach(demoObjects) { section in
+                      Section(header: Text(section.key)) {
+                          ForEach(section) { object in
+                              MyRowView(object: object)
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+  ```
+* Add automatic handing for changing top-level objects to embedded objects in
+  migrations. Any objects of the now-embedded type which have zero incoming
+  links are deleted, and objects with multiple incoming links are duplicated.
+  This happens after the migration callback function completes, so there is no
+  functional change if you already have migration logic which correctly handles
+  this. ([Core #5737](https://github.com/realm/realm-core/pull/5737)).
+* Improve performance when a new Realm file connects to the server for the
+  first time, especially when significant amounts of data has been written
+  while offline. ([Core #5772](https://github.com/realm/realm-core/pull/5772))
+* Shift more of the work done on the sync worker thread out of the write
+  transaction used to apply server changes, reducing how long it blocks other
+  threads from writing. ([Core #5772](https://github.com/realm/realm-core/pull/5772))
+* Improve the performance of the sync changeset parser, which speeds up
+  applying changesets from the server. ([Core #5772](https://github.com/realm/realm-core/pull/5772))
+
+### Fixed
+
+* Fix all of the UBSan failures hit by our tests. It is unclear if any of these
+  manifested as visible bugs. ([Core #5665](https://github.com/realm/realm-core/pull/5665))
+* Upload completion callbacks were sometimes called before the final step of
+  interally marking the upload as complete, which could result in calling
+  `Realm.writeCopy()` from the completion callback failing due to there being
+  unuploaded changes. ([Core #4865](https://github.com/realm/realm-core/issues/4865)).
+* Writing to a Realm stored on an exFAT drive threw the exception "fcntl() with
+  F_BARRIERFSYNC failed: Inappropriate ioctl for device" when a write
+  transaction needed to expand the file.
+  ([Core #5789](https://github.com/realm/realm-core/issues/5789), since 10.27.0)
+* Syncing a Decimal128 with big significand could result in a crash.
+  ([Core #5728](https://github.com/realm/realm-core/issues/5728))
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 RC.
+
+### Internal
+
+* Upgraded realm-core from 12.5.1 to 12.6.0
+
+10.28.7 Release notes (2022-09-02)
+=============================================================
+
+### Enhancements
+
+* Add prebuilt binaries for Xcode 14 to the release package.
+
+### Fixed
+
+* Fix archiving watchOS release builds with Xcode 14.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 6.
+
+10.28.6 Release notes (2022-08-19)
+=============================================================
+
+### Fixed
+
+* Fixed an issue where having realm-swift as SPM sub-target dependency leads to
+  missing symbols error during iOS archiving ([Core #7645](https://github.com/realm/realm-core/pull/7645)).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 5.
+
+### Internal
+
+* Upgraded realm-core from 12.5.0 to 12.5.1
+
+10.28.5 Release notes (2022-08-09)
+=============================================================
+
+### Enhancements
+
+* Improve performance of accessing `SubscriptionSet` properties when no writes
+  have been made to the Realm since the last access.
+
+### Fixed
+
+* A use-after-free could occur if a Realm with audit events enabled was
+  destroyed while processing an upload completion for the events Realm on a
+  different thread. ([Core PR #5714](https://github.com/realm/realm-core/pull/5714))
+* Opening a read-only synchronized Realm for the first time via asyncOpen did
+  not set the schema version, which could lead to `m_schema_version !=
+  ObjectStore::NotVersioned` assertion failures later on.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 4.
+
+### Internal
+
+* Upgraded realm-core from 12.4.0 to 12.5.0
+
+10.28.4 Release notes (2022-08-03)
+=============================================================
+
+### Enhancements
+
+* Add support for building arm64 watchOS when installing Realm via CocoaPods.
+* Reduce the amount of virtual address space used
+  ([Core #5645](https://github.com/realm/realm-core/pull/5645)).
+
+### Fixed
+
+* Fix some warnings when building with Xcode 14
+  ([Core #5577](https://github.com/realm/realm-core/pull/5577)).
+* Fix compilation failures on watchOS platforms which do not support thread-local storage.
+  ([#7694](https://github.com/realm/realm-swift/issues/7694), [#7695](https://github.com/realm/realm-swift/issues/7695) since v10.21.1)
+* Fix a data race when committing a transaction while multiple threads are
+  waiting to begin write transactions. This appears to not have caused any
+  functional problems.
+* Fix a data race when writing audit events which could occur if the sync
+  client thread was busy with other work when the event Realm was opened.
+* Fix some cases of running out of virtual address space (seen/reported as mmap
+  failures) ([Core #5645](https://github.com/realm/realm-core/pull/5645)).
+* Audit event scopes containing only write events and no read events would
+  occasionally throw a `BadVersion` exception when a write transaction was
+  committed (since v10.26.0).
+* The client reset callbacks for the DiscardLocal mode would be passed invalid
+  Realm instances if the callback was invoked at a point where the Realm was
+  not otherwise open. ([Core #5654](https://github.com/realm/realm-core/pull/5654), since the introduction of DiscardLocal reset mode in v10.25.0)
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 4.
+
+### Internal
+
+* Upgraded realm-core from 12.3.0 to 12.4.0.
+
+10.28.3 Release notes (2022-07-27)
+=============================================================
+
+### Enhancements
+
+* Greatly improve the performance of obtaining cached Realm instances in Swift
+  when using a sync configuration.
+
+### Fixed
+
+* Add missing `initialSubscription` and `rerunOnOpen` to copyWithZone method on
+  `RLMRealmConfiguration`. This resulted in incorrect values when using
+  `RLMRealmConfiguration.defaultConfiguration`.
+* The sync error handler did not hold a strong reference to the sync session
+  while dispatching the error from the worker thread to the main thread,
+  resulting in the session passed to the error handler being invalid if there
+  were no other remaining strong references elsewhere.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 3.
+
+10.28.2 Release notes (2022-06-30)
+=============================================================
+
+### Fixed
+
+* Using `seedFilePath` threw an exception if the Realm file being opened
+  already existed ([#7840](https://github.com/realm/realm-swift/issues/7840),
+  since v10.26.0).
+* The `intialSubscriptions` callback was invoked every time a Realm was opened
+  regardless of the value of `rerunOnOpen` and if the Realm was already open on
+  another thread (since v10.28.0).
+* Allow using `RLMSupport.Swift` from RealmSwift's Cocoapods
+  ([#6886](https://github.com/realm/realm-swift/pull/6886)).
+* Fix a UBSan failure when mapping encrypted pages. Fixing this did not change
+  the resulting assembly, so there were probably no functional problems
+  resulting from this (since v5.0.0).
+* Improved performance of sync clients during integration of changesets with
+  many small strings (totalling > 1024 bytes per changeset) on iOS 14, and
+  devices which have restrictive or fragmented memory.
+  ([Core #5614](https://github.com/realm/realm-core/issues/5614))
+* Fix a data race when opening a flexible sync Realm (since v10.28.0).
+* Add a missing backlink removal when assigning null or a non-link value to an
+  `AnyRealmValue` property which previously linked to an object.
+  This could have resulted in "key not found" exceptions or assertion failures
+  such as `mixed.hpp:165: [realm-core-12.1.0] Assertion failed: m_type` when
+  removing the destination link object.
+  ([Core #5574](https://github.com/realm/realm-core/pull/5573), since the introduction of AnyRealmValue in v10.8.0)
+
+### Compatibility
+
+* Realm Studio: 12.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 2.
+
+### Internal
+
+* Upgraded realm-core from 12.1.0 to 12.3.0.
+
+10.28.1 Release notes (2022-06-10)
+=============================================================
+
+### Enhancements
+
+* Add support for Xcode 14. When building with Xcode 14, the minimum deployment
+  target is now iOS 11.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-14 beta 1.
+
+10.28.0 Release notes (2022-06-03)
+=============================================================
+
+### Enhancements
+
+* Replace mentions of 'MongoDB Realm' with 'Atlas App Services' in the documentation and update appropriate links to documentation.
+* Allow adding a subscription querying for all documents of a type in swift for flexible sync.
+```
+   try await subscriptions.update {
+      subscriptions.append(QuerySubscription<SwiftPerson>(name: "all_people"))
+   }
+```
+* Add Combine API support for flexible sync beta.
+* Add an `initialSubscriptions` parameter when retrieving the flexible sync configuration from a user,
+  which allows to specify a subscription update block, to bootstrap a set of flexible sync subscriptions
+  when the Realm is first opened.
+  There is an additional optional parameter flag `rerunOnOpen`, which allows to run this initial
+  subscriptions on every app startup.
+
+```swift
+    let config = user.flexibleSyncConfiguration(initialSubscriptions: { subs in
+        subs.append(QuerySubscription<SwiftPerson>(name: "people_10") {
+            $0.age > 10
+        })
+    }, rerunOnOpen: true)
+    let realm = try Realm(configuration: config)
+```
+* The sync client error handler will report an error, with detailed info about which object caused it, when writing an object to a flexible sync Realm outside of any query subscription. ([#5528](https://github.com/realm/realm-core/pull/5528))
+* Adding an object to a flexible sync Realm for a type that is not within a query subscription will now throw an exception. ([#5488](https://github.com/realm/realm-core/pull/5488)).
+
+### Fixed
+
+* Flexible Sync query subscriptions will correctly complete when data is synced to the local Realm. ([#5553](https://github.com/realm/realm-core/pull/5553), since v12.0.0)
+
+### Breaking Changes
+
+* Rename `SyncSubscriptionSet.write` to `SyncSubscriptionSet.update` to avoid confusion with `Realm.write`.
+* Rename `SyncSubscription.update` to `SyncSubscription.updateQuery` to avoid confusion with `SyncSubscriptionSet.update`.
+* Rename `RLMSyncSubscriptionSet.write` to `RLMSyncSubscriptionSet.update` to align it with swift API.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-13.4.
+
+### Internal
+
+* Upgraded realm-core from 12.0.0 to 12.1.0.
+
+10.27.0 Release notes (2022-05-26)
+=============================================================
+
+### Enhancements
+
+* `@AsyncOpen`/`@AutoOpen` property wrappers can be used with flexible sync.
+
+### Fixed
+
+* When installing via SPM, debug builds could potentially hit an assertion
+  failure during flexible sync bootstrapping. ([Core #5527](https://github.com/realm/realm-core/pull/5527))
+* Flexible sync now only applies bootstrap data if the entire bootstrap is
+  received. Previously orphaned objects could result from the read snapshot on
+  the server changing. ([Core #5331](https://github.com/realm/realm-core/pull/5331))
+* Partially fix a performance regression in write performance introduced in
+  v10.21.1. v10.21.1 fixed a case where a kernel panic or device's battery
+  dying at the wrong point in a write transaction could potentially result in a
+  corrected Realm file, but at the cost of a severe performance hit. This
+  version adjusts how file synchronization is done to provide the same safety
+  at a much smaller performance hit. ([#7740](https://github.com/realm/realm-swift/issues/7740)).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later (but see note below).
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-13.4.
+
+### Internal
+
+* Upgraded realm-core from 11.17.0 to 12.0.0.
+* Bump the version number for the lockfile used for interprocess
+  synchronization. This has no effect on persistent data, but means that
+  versions of Realm which use pre-12.0.0 realm-core cannot open Realm files at
+  the same time as they are opened by this version. Notably this includes Realm
+  Studio, and v11.1.2 (the latest at the time of this release) cannot open
+  Realm files which are simultaneously open in the simulator.
+
+10.26.0 Release notes (2022-05-19)
+=============================================================
+
+Xcode 13.1 is now the minimum supported version of Xcode, as Apple no longer
+allows submitting to the app store with Xcode 12.
+
+### Enhancements
+
+* Add Xcode 13.4 binaries to the release package.
+* Add Swift API for asynchronous transactions
+```swift
+    try? realm.writeAsync {
+        realm.create(SwiftStringObject.self, value: ["string"])
+    } onComplete: { error in
+        // optional handling on write complete
+    }
+
+    try? realm.beginAsyncWrite {
+        realm.create(SwiftStringObject.self, value: ["string"])
+        realm.commitAsyncWrite()
+    }
+
+    let asyncTransactionId = try? realm.beginAsyncWrite {
+        // ...
+    }
+    try! realm.cancelAsyncWrite(asyncTransactionId)
+```
+* Add Obj-C API for asynchronous transactions
+```
+   [realm asyncTransactionWithBlock:^{
+        [StringObject createInRealm:realm withValue:@[@"string"]];
+    } onComplete:^(NSError *error) {
+        // optional handling
+    }];
+
+    [realm beginAsyncWriteTransaction:^{
+        [StringObject createInRealm:realm withValue:@[@"string"]];
+        [realm commitAsyncWriteTransaction];
+    }];
+
+    RLMAsyncTransactionId asyncTransactionId = [realm beginAsyncWriteTransaction:^{
+        // ...
+    }];
+    [realm cancelAsyncTransaction:asyncTransactionId];
+```
+* Improve performance of opening a Realm with `objectClasses`/`objectTypes` set
+  in the configuration.
+* Implement the Realm event recording API for reporting reads and writes on a
+  Realm file to Atlas.
+
+### Fixed
+
+* Lower minimum OS version for `async` login and FunctionCallables to match the
+  rest of the `async` functions. ([#7791]https://github.com/realm/realm-swift/issues/7791)
+* Consuming a RealmSwift XCFramework with library evolution enabled would give the error
+  `'Failed to build module 'RealmSwift'; this SDK is not supported by the compiler'`
+  when the XCFramework was built with an older XCode version and is
+  then consumed with a later version. ([#7313](https://github.com/realm/realm-swift/issues/7313), since v3.18.0)
+* A data race would occur when opening a synchronized Realm with the client
+  reset mode set to `discardLocal` on one thread at the same time as a client
+  reset was being processed on another thread. This probably did not cause any
+  functional problems in practice and the broken timing window was very tight (since 10.25.0).
+* If an async open of a Realm triggered a client reset, the callbacks for
+  `discardLocal` could theoretically fail to be called due to a race condition.
+  The timing for this was probably not possible to hit in practice (since 10.25.0).
+* Calling `[RLMRealm freeze]`/`Realm.freeze` on a Realm which had been created from `writeCopy`
+  would not produce a frozen Realm. ([#7697](https://github.com/realm/realm-swift/issues/7697), since v5.0.0)
+* Using the dynamic subscript API on unmanaged objects before first opening a
+  Realm or if `objectTypes` was set when opening a Realm would throw an
+  exception ([#7786](https://github.com/realm/realm-swift/issues/7786)).
+* The sync client may have sent a corrupted upload cursor leading to a fatal
+  error from the server due to an uninitialized variable.
+  ([#5460](https://github.com/realm/realm-core/pull/5460), since v10.25.1)
+* Flexible sync would not correctly resume syncing if a bootstrap was interrupted
+  ([#5466](https://github.com/realm/realm-core/pull/5466), since v10.21.1).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.4.
+* CocoaPods: 1.10 or later.
+* Xcode: 13.1-13.4.
+
+### Internal
+
+* Upgraded realm-core from v11.15.0 to v11.17.0
+
+10.25.2 Release notes (2022-04-27)
+=============================================================
+
+### Enhancements
+
+* Replace Xcode 13.3 binaries with 13.3.1 binaries.
+
+### Fixed
+
+* `List<AnyRealmValue>` would contain an invalidated object instead of null when
+  the object linked to was deleted by a difference sync client
+  ([Core #5215](https://github.com/realm/realm-core/pull/5215), since v10.8.0).
+* Adding an object to a Set, deleting the parent object of the Set, and then
+  deleting the object which was added to the Set would crash
+  ([Core #5387](https://github.com/realm/realm-core/issues/5387), since v10.8.0).
+* Synchronized Realm files which were first created using v10.0.0-beta.3 would
+  be redownloaded instead of using the existing file, possibly resulting in the
+  loss of any unsynchronized data in those files (since v10.20.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.3.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3.1.
+
+### Internal
+
+* Upgraded realm-core from v11.14.0 to v11.15.0
+
+10.25.1 Release notes (2022-04-11)
+=============================================================
+
+### Fixed
+
+* Fixed various memory corruption bugs when encryption is used caused by not
+  locking a mutex when needed.
+  ([#7640](https://github.com/realm/realm-swift/issues/7640), [#7659](https://github.com/realm/realm-swift/issues/7659), since v10.21.1)
+* Changeset upload batching did not calculate the accumulated size correctly,
+  resulting in “error reading body failed to read: read limited at 16777217
+  bytes” errors from the server when writing large amounts of data
+  ([Core #5373](https://github.com/realm/realm-core/pull/5373), since 10.25.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3.
+
+### Internal
+
+* Upgraded realm-core from v11.13.0 to v11.14.0.
+
+10.25.0 Release notes (2022-03-29)
+=============================================================
+
+Synchronized Realm files written by this version cannot be opened by older
+versions of Realm. Existing files will be automatically upgraded when opened.
+
+Non-synchronized Realm files remain backwards-compatible.
+
+### Enhancements
+
+* Add ability to use Swift Query syntax in `@ObservedResults`, which allows you
+  to filter results using the `where` parameter.
+* Add ability to use `MutableSet` with `StateRealmObject` in SwiftUI.
+* Async/Await extensions are now compatible with iOS 13 and above when building
+  with Xcode 13.3.
+* Sync changesets waiting to be uploaded to the server are now compressed,
+  reducing the disk space needed when large write transactions are performed
+  while offline or limited in bandwidth.([Core #5260](https://github.com/realm/realm-core/pull/5260)).
+* Added new `SyncConfiguration.clientResetMode` and `RLMSyncConfiguration.clientResetMode` properties.
+  - The values of these properties will dictate client behavior in the event of a [client reset](https://docs.mongodb.com/realm/sync/error-handling/client-resets/).
+  - See below for information on `ClientResetMode` values.
+  - `clientResetMode` defaults to `.manual` if not set otherwise.
+* Added new `ClientResetMode` and `RLMClientResetMode` enums.
+  - These enums represent possible client reset behavior for `SyncConfiguration.clientResetMode` and `RLMSyncConfiguration.clientResetMode`, respectively.
+  - `.manual` and `RLMClientResetModeManual`
+    - The local copy of the Realm is copied into a recovery
+      directory for safekeeping, and then deleted from the original location. The next time
+      the Realm for that partition value is opened, the Realm will automatically be re-downloaded from
+      MongoDB Realm, and can be used as normal.
+    - Data written to the Realm after the local copy of the Realm diverged from the backup
+      remote copy will be present in the local recovery copy of the Realm file. The
+      re-downloaded Realm will initially contain only the data present at the time the Realm
+      was backed up on the server.
+    -  `rlmSync_clientResetBackedUpRealmPath` and `SyncError.clientResetInfo()` are used for accessing the recovery directory.
+  - `.discardLocal` and `RLMClientResetDiscardLocal`
+    - All unsynchronized local changes are automatically discarded and the local state is
+      automatically reverted to the most recent state from the server. Unsynchronized changes
+      can then be recovered in a post-client-reset callback block (See changelog below for more details).
+    - If RLMClientResetModeDiscardLocal is enabled but the client reset operation is unable to complete
+      then the client reset process reverts to manual mode.
+    - The realm's underlying object accessors remain bound so the UI may be updated in a non-disruptive way.
+* Added support for client reset notification blocks for `.discardLocal` and `RLMClientResetDiscardLocal`
+  - **RealmSwift implementation**: `discardLocal(((Realm) -> Void)? = nil, ((Realm, Realm) -> Void)? = nil)` 
+    - RealmSwift client reset blocks are set when initializing the user configuration
+    ```swift
+    var configuration = user.configuration(partitionValue: "myPartition", clientResetMode: .discardLocal(beforeClientResetBlock, afterClientResetBlock))
+    ```
+    - The before client reset block -- `((Realm) -> Void)? = nil` -- is executed prior to a client reset. Possible usage includes:
+    ```swift
+    let beforeClientResetBlock: (Realm) -> Void = { beforeRealm in
+      var recoveryConfig = Realm.Configuration()
+        recoveryConfig.fileURL = myRecoveryPath
+        do {
+          beforeRealm.writeCopy(configuration: recoveryConfig)
+            /* The copied realm could be used later for recovery, debugging, reporting, etc. */
+        } catch {
+            /* handle error */
+        }
+    }
+    ```
+    - The after client reset block -- `((Realm, Realm) -> Void)? = nil)` -- is executed after a client reset. Possible usage includes:
+    ```Swift
+    let afterClientResetBlock: (Realm, Realm) -> Void = { before, after in
+    /* This block could be used to add custom recovery logic, back-up a realm file, send reporting, etc. */
+    for object in before.objects(myClass.self) {
+        let res = after.objects(myClass.self)
+        if (res.filter("primaryKey == %@", object.primaryKey).first != nil) {
+             /* ...custom recovery logic... */
+        } else {
+             /* ...custom recovery logic... */
+        }
+    }
+    ```
+  - **Realm Obj-c implementation**: Both before and after client reset callbacks exist as properties on `RLMSyncConfiguration` and are set at initialization.
+    ```objective-c
+      RLMRealmConfiguration *config = [user configurationWithPartitionValue:partitionValue
+                                                            clientResetMode:RLMClientResetModeDiscardLocal
+                                                          notifyBeforeReset:beforeBlock
+                                                           notifyAfterReset:afterBlock];
+    ```
+    where `beforeBlock` is of type `RLMClientResetBeforeBlock`. And `afterBlock` is of type `RLMClientResetAfterBlock`.
+
+### Breaking Changes
+
+* Xcode 13.2 is no longer supported when building with Async/Await functions. Use
+  Xcode 13.3 to build with Async/Await functionality.
+
+### Fixed
+
+* Adding a Realm Object to a `ObservedResults` or a collections using
+  `StateRealmObject` that is managed by the same Realm would throw if the
+  Object was frozen and not thawed before hand.
+* Setting a Realm Configuration for @ObservedResults using it's initializer
+  would be overrode by the Realm Configuration stored in
+  `.environment(\.realmConfiguration, ...)` if they did not match
+  ([Cocoa #7463](https://github.com/realm/realm-swift/issues/7463), since v10.6.0).
+* Fix searchable component filter overriding the initial filter on `@ObservedResults`, (since v10.23.0).
+* Comparing `Results`, `LinkingObjects` or `AnyRealmCollection` when using Realm via XCFramework 
+  would result in compile time errors ([Cocoa #7615](https://github.com/realm/realm-swift/issues/7615), since v10.21.0)
+* Opening an encrypted Realm while the keychain is locked on macOS would crash
+  ([#7438](https://github.com/realm/realm-swift/issues/7438)).
+* Updating subscriptions while refreshing the access token would crash
+  ([Core #5343](https://github.com/realm/realm-core/issues/5343), since v10.22.0)
+* Fix several race conditions in `SyncSession` related to setting
+  `customRequestHeaders` while using the `SyncSession` on a different thread.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3.
+
+### Internal
+
+* Upgraded realm-core from v11.12.0 to v11.13.0
+
+10.24.2 Release notes (2022-03-18)
+=============================================================
+
+### Fixed
+
+* Application would sometimes crash with exceptions like 'KeyNotFound' or
+  assertion "has_refs()". Other issues indicating file corruption may also be
+  fixed by this. The one mentioned here is the one that lead to solving the
+  problem.
+  ([Core #5283](https://github.com/realm/realm-core/issues/5283), since v5.0.0)
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3.
+
+### Internal
+
+* Upgraded realm-core from 11.11.0 to 11.12.0
+
+10.24.1 Release notes (2022-03-14)
+=============================================================
+
+Switch to building the Carthage binary with Xcode 13.3. This release contains
+no functional changes from 10.24.0.
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.3.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3.
+
+10.24.0 Release notes (2022-03-05)
+=============================================================
+
+### Enhancements
+
+* Add ability to use Swift Query syntax in `@ObservedResults`, which allows you 
+  to filter results using the `where` parameter.
+
+### Fixed
+
+* If a list of objects contains links to objects not included in the
+  synchronized partition, collection change notifications for that list could
+  be incorrect ([Core #5164](https://github.com/realm/realm-core/issues/5164), since v10.0.0).
+* Adding a new flexible sync subscription could crash with
+  "Assertion failed: !m_unbind_message_sent" in very specific timing scenarios
+  ([Core #5149](https://github.com/realm/realm-core/pull/5149), since v10.22.0).
+* Converting floats/doubles into Decimal128 would yield imprecise results
+  ([Core #5184](https://github.com/realm/realm-core/pull/5184), since v10.0.0)
+* Using accented characters in class and field names in a synchronized Realm
+  could result in sync errors ([Core #5196](https://github.com/realm/realm-core/pull/5196), since v10.0.0).
+* Calling `Realm.invalidate()` from inside a Realm change notification could
+  result in the write transaction which produced the notification not being
+  persisted to disk (since v10.22.0).
+* When a client reset error which results in the current Realm file being
+  backed up and then deleted, deletion errors were ignored as long as the copy
+  succeeded. When this happens the deletion of the old file is now scheduled
+  for the next launch of the app. ([Core #5180](https://github.com/realm/realm-core/issues/5180), since v2.0.0)
+* Fix an error when compiling a watchOS Simulator target not supporting
+  Thread-local storage ([#7623](https://github.com/realm/realm-swift/issues/7623), since v10.21.0).
+* Add a validation check to report a sensible error if a Realm configuration
+  indicates that an in-memory Realm should be encrypted. ([Core #5195](https://github.com/realm/realm-core/issues/5195))
+* The Swift package set the linker flags on the wrong target, resulting in
+  linker errors when SPM decides to build the core library as a dynamic library
+  ([#7266](https://github.com/realm/realm-swift/issues/7266)).
+* The download-core task failed if run in an environment without TMPDIR set
+  ([#7688](https://github.com/realm/realm-swift/issues/7688), since v10.23.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.2.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3 beta 3.
+
+### Internal
+
+* Upgraded realm-core from 11.9.0 to 11.11.0
+
+10.23.0 Release notes (2022-02-28)
+=============================================================
+
+### Enhancements
+
+* Add `Realm.writeCopy(configuration:)`/`[RLMRealm writeCopyForConfiguration:]` which gives the
+  following functionality:
+    - Export a local non-sync Realm to be used with MongoDB Realm Sync
+      when the configuration is derived from a sync `RLMUser`/`User`.
+    - Write a copy of a local Realm to a destination specified in the configuration.
+    - Write a copy of a synced Realm in use with user A, and open it with user B.
+    - Note that migrations may be required when using a local realm configuration to open a realm file that
+      was copied from a synchronized realm.
+
+  An exception will be thrown if a Realm exists at the destination.
+* Add a `seedFilePath` option to `RLMRealmConfiguration` and `Configuration`. If this
+  option is set then instead of creating an empty Realm, the realm at the `seedFilePath` will
+  be copied to the `fileURL` of the new Realm. If a Realm file already exists at the
+  desitnation path, the seed file will not be copied and the already existing Realm
+  will be opened instead. Note that to use this parameter with a synced Realm configuration
+  the seed Realm must be appropriately copied to a destination with 
+  `Realm.writeCopy(configuration:)`/`[RLMRealm writeCopyForConfiguration:]` first.
+* Add ability to permanently delete a User from a MongoDB Realm app. This can
+  be invoked with `User.delete()`/`[RLMUser deleteWithCompletion:]`.
+* Add `NSCopying` conformance to `RLMDecimal128` and `RLMObjectId`.
+* Add Xcode 13.3 binaries to the release package (and remove 13.0).
+
+### Fixed
+
+* Add support of arm64 in Carthage build ([#7154](https://github.com/realm/realm-cocoa/issues/7154)
+* Adding missing support for `IN` queries to primitives types on Type Safe Queries.
+  ```swift
+  let persons = realm.objects(Person.self).where {
+    let acceptableNames = ["Tom", "James", "Tyler"]
+    $0.name.in([acceptableNames])
+  }
+  ```
+  ([Cocoa #7633](https://github.com/realm/realm-swift/issues/7633), since v10.19.0)
+* Work around a compiler crash when building with Swift 5.6 / Xcode 13.3.
+  CustomPersistable's PersistedType must now always be a built-in type rather
+  than possibly another CustomPersistable type as Swift 5.6 has removed support
+  for infinitely-recursive associated types ([#7654](https://github.com/realm/realm-swift/issues/7654)).
+* Fix redundant call to filter on `@ObservedResults` from `searchable`
+  component (since v10.19.0).
+
+### Compatibility
+
+* Realm Studio: 11.0.0 or later.
+* APIs are backwards compatible with all previous releases in the 10.x.y series.
+* Carthage release for Swift is built with Xcode 13.2.1.
+* CocoaPods: 1.10 or later.
+* Xcode: 12.4-13.3 beta 3.
+
 10.22.0 Release notes (2022-01-25)
 =============================================================
+
 ### Enhancements
 
 * Add beta support for flexible sync. See the [backend](https://docs.mongodb.com/realm/sync/data-access-patterns/flexible-sync/) and [SDK](https://docs.mongodb.com/realm/sdk/swift/examples/flexible-sync/) documentation for more information. Please report any issues with the beta through Github.
@@ -355,15 +2258,12 @@ Xcode 12.4 is now the minimum supported version of Xcode.
 
 10.17.0 Release notes (2021-10-06)
 =============================================================
+
 ### Enhancements
 
 * Add a new `@ThreadSafe` property wrapper. Objects and collections wrapped by `@ThreadSafe` may be passed between threads. It's
   intended to allow local variables and function parameters to be used across
   threads when needed.
-
-### Fixed
-
-* None.
 
 ### Compatibility
 
@@ -1292,7 +3192,7 @@ Xcode 12.2 is now the minimum supported version.
 * Allow enumerating objects in migrations with types which are no longer
   present in the schema.
 * Add `RLMResponse.customStatusCode`. This fixes timeout exceptions that were
-  occuring with a poor connection. ([#4188](https://github.com/realm/realm-core/issues/4188))
+  occurring with a poor connection. ([#4188](https://github.com/realm/realm-core/issues/4188))
 * Limit availability of ObjectKeyIdentifiable to platforms which support
   Combine to match the change made in the Xcode 12.5 SDK.
   ([#7083](https://github.com/realm/realm-swift/issues/7083))
@@ -1388,7 +3288,7 @@ Xcode 12.2 is now the minimum supported version.
 
 ### Fixed
 
-* Integrating changsets from the server would sometimes hit the assertion
+* Integrating changesets from the server would sometimes hit the assertion
   failure "n != realm::npos" inside Table::create_object_with_primary_key()
   when creating an object with a primary key which previously had been used and
   had incoming links. ([Core PR #4180](https://github.com/realm/realm-core/pull/4180), since v10.0.0).
@@ -2577,11 +4477,11 @@ upgraded Realms.
 ### Fixed
 
 * Fix the spelling of `ObjectKeyIdentifiable`. The old spelling is available
-  and deprecated for compatiblity.
+  and deprecated for compatibility.
 * Rename `RealmCollection.publisher` to `RealmCollection.collectionPublisher`.
   The old name interacted with the `publisher` defined by `Sequence` in very
   confusing ways, so we need to use a different name. The `publisher` name is
-  still available for compatiblity. ([#6516](https://github.com/realm/realm-swift/issues/6516))
+  still available for compatibility. ([#6516](https://github.com/realm/realm-swift/issues/6516))
 * Work around "xcodebuild timed out while trying to read
   SwiftPackageManagerExample.xcodeproj" errors when installing Realm via
   Carthage. ([#6549](https://github.com/realm/realm-swift/issues/6549)).
@@ -6674,7 +8574,7 @@ Prebuilt frameworks are now built with Xcode 7.1.
 
 ### Enhancements
 
-* Improve compatiblity of encrypted Realms with third-party crash reporters.
+* Improve compatibility of encrypted Realms with third-party crash reporters.
 
 ### Bugfixes
 
