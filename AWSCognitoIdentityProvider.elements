@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{3FF95890-785B-47B1-B0C1-88D9D059CD7F}</ProjectGuid>
+    <OutputType>Import</OutputType>
+    <RootNamespace>AWSCognitoIdentityProvider</RootNamespace>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SubMode>iOS</SubMode>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>.\Bin\Debug</OutputPath>
+    <EnableAsserts>True</EnableAsserts>
+    <Optimize>False</Optimize>
+    <GenerateDebugInfo>True</GenerateDebugInfo>
+    <ConditionalDefines>DEBUG;TRACE;</ConditionalDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>.\Bin\Release</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="#" />
+    <ProjectReference Include="AWSCore.elements">
+      <HintPath>Bin\Release\iOS\arm64\AWSCore.fx</HintPath>
+      <Project>{8B6DF0C7-0D59-446A-9C3E-7AB293B45024}</Project>
+      <ProjectFile>AWSCore.elements</ProjectFile>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImportFramework Include="aws-sdk-ios-2.33.1\AWSCognitoIdentityProvider.xcframework" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
+</Project>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{DBC1350B-466C-4322-AE4D-B8774612D6B8}</ProjectGuid>
+    <OutputType>Import</OutputType>
+    <RootNamespace>AWSCognito</RootNamespace>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SubMode>iOS</SubMode>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>.\Bin\Debug</OutputPath>
+    <EnableAsserts>True</EnableAsserts>
+    <Optimize>False</Optimize>
+    <GenerateDebugInfo>True</GenerateDebugInfo>
+    <ConditionalDefines>DEBUG;TRACE;</ConditionalDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>.\Bin\Release</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="#" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
+</Project>
