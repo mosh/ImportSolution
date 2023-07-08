@@ -37,7 +37,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ImportFramework Include="aws-sdk-ios-2.33.1\AWSAuthCore.xcframework" />
+    <ImportFramework Include="aws-sdk-ios-2.33.1\AWSAuthCore.xcframework">
+      <Private>True</Private>
+    </ImportFramework>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
