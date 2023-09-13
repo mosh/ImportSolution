@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/CHANGELOG.md</key>
 		<data>
-		3G6sDKToOojhMUlO+U4uJ03hENs=
+		GNwfbDJ8TSYnRQV74y9gAYHX/BU=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		Ha/2US2LPu+VKqoXOf+1Of77WK4=
+		QMK/dhORuO2iJssSFzymuPvZqdM=
 		</data>
 		<key>Resources/LICENSE</key>
 		<data>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			I0iusExV7YvVkdt6MHXOAwNHJ2iVzHJciY0geWG3g5A=
+			7zN2nXgEwGfrPRtbgqtfoLrwJbwqohcVvU/OyA/07Lk=
 			</data>
 		</dict>
 		<key>Headers/RLMEmailPasswordAuth.h</key>
@@ -170,7 +170,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eMx63OF3EFRqAGsLMEXvv+y0YnKqWOB1RiyzlyW2+IE=
+			wnJWmMW0z3xO9KVRJKpiE+xkaKkzXBXiH5j+8eaFmcA=
 			</data>
 		</dict>
 		<key>Headers/RLMNetworkTransport.h</key>
@@ -213,13 +213,6 @@
 			<key>hash2</key>
 			<data>
 			8oCJihoGgigIF170SRk/yU5RLDNX9TYQUrXxLjYrtuM=
-			</data>
-		</dict>
-		<key>Headers/RLMPlatform.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			L0mOKhJ6tDl4S6VMEBG3wOahF1oDVR+ctnXfc1wdSrM=
 			</data>
 		</dict>
 		<key>Headers/RLMProperty.h</key>
@@ -324,7 +317,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5LmZIE8xGowlohcHQbqAFZPAvtN5iGOzI4NAWfglzI0=
+			rFV4QDsBonA29YqdZXsYhNSVewEYkrafSLPWBGaEhqI=
 			</data>
 		</dict>
 		<key>Headers/RLMSyncSession.h</key>
@@ -380,14 +373,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XojGXRDQANLfoU7VwvyqGGmZmf/oNUXjRNXzxcxJZEA=
+			kjoP0TvFhg49q7sxVEgPoNFg+zqo9bCE2Uh0YOpDpbE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UDqXkLimJ+9qpDCcsMjIqR5Qsd7iEaavhqi8J7iEBhI=
+			KdpbsAGrxax/jx81TZ93YswnCwT1BZTor6VwIHvgRUs=
 			</data>
 		</dict>
 		<key>PrivateHeaders/RLMAccessor.h</key>
@@ -485,7 +478,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			glcepASGexcV1kvpkZeXGcPrdsuxPgyj7HNo6RMGNuQ=
+			0KjmazUjg/mYvymGTJ74ChBgvrqN2Lc9O0TqcYF/Mic=
 			</data>
 		</dict>
 		<key>PrivateHeaders/RLMObject_Private.h</key>
@@ -597,14 +590,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pJWnBvkpfRKsOguYB2GmoJWqvWBioMFoBYRHhPFcPpE=
+			l3AZQownO09geaJMTRs/cnmcV/NQSJYUZQe5zDMJtlc=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nJVfQGNV83Io8Lbz+D1M5+q06rjwqKTFipPRbeAwBvQ=
+			nKH86PZ/N2CPRvgSw5u4nWFXOB7A6Ax6TzxpFNjK8Zw=
 			</data>
 		</dict>
 		<key>Resources/LICENSE</key>
